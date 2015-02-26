@@ -1,5 +1,8 @@
 \documentclass[12pt,twoside,singlespace]{article}
+<<<<<<< HEAD
 %\usepackage{lgrind}
+=======
+>>>>>>> 6237c72ca984996ae4c0bf39202d186f124377b0
 \pagestyle{plain}
 
 \usepackage{array, paralist, enumerate, amsmath, amsthm, amsfonts, amssymb, color, mathrsfs,comment}
@@ -98,30 +101,93 @@
 \section{Definitions}
 
 \subsection{$1$-d Adinkras}
+Adinkras in [references] will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.  Note that while it is conventional to specify a natural number $N$ to denote the number of supersymmetries, we break with convention and instead specify $C$, a set of $N$ different colors.
 
-Let $V(A)$ be the vertices of $A$.
+\begin{definition}
+A $1$-d Adinkra with color set $C$ is $(V,E,\chi,\Delta,g)$ where
+\begin{itemize}
+\item $V$ is a finite set of vertices
+\item $E\subset V\times V$ is a set of edges
+\item $\chi:E\to C$ is a map called the coloring
+\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
+\item $g:V\to\ZZ$ is a map called the grading
+\end{itemize}
 
-Recall that a $1$-d adinkra $A$ has a rank function $g: V(A) \rightarrow \ZZ$ (making it into a graded poset). Let $V(A, r)$ be the vertices of $A$ with rank $r$. We will assume $0$ to be the lowest rank in the support of $g$.
+These are required to satisfy the following:
+\begin{itemize}
+\item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $\chi(v,w)=\chi(w,v)$ and $\Delta(v,w)=\Delta(w,v)$.
+\item For every $v\in V$ and $c\in C$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $\chi(v,w)=c$.
+\item If $c_1$, $c_2\in C$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $\chi(v,w)=\chi(x,y)=c_1$ and $\chi(w,x)=\chi(y,v)=c_2$ and $\Delta(v,w)\Delta(w,x)\Delta(x,y)\Delta(y,v)=-1$.
+\item If $(v,w)\in E$, then $|g(v)-g(w)|=1$.
+\end{itemize}
+\end{definition}
+Note that in [Reference], there is also a bigrading of the vertices.  This is rendered obsolete by the grading, since $g(v)$ is even if and only if $v$ is a boson.
 
+<<<<<<< HEAD
 Recall that a $1$-d adinkra has a code $L(A)$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n$ is the number of coordinates and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + L(A)$, so $|V(A)| = 2^{n-k}$.
+=======
+Let $V(A, r)=g^{-1}(\{r\})$ be the vertices of $A$ with rank $r$.  We will assume $0$ to be the lowest rank in the range of $g$.
+
+Recall that a $1$-d adinkra has a code $L$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n=|C|$ is the number of colors and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + L$, so $|V| = 2^{n-k}$.
+>>>>>>> 6237c72ca984996ae4c0bf39202d186f124377b0
 
 \subsection{$2$-d Adinkras}
+The notion of $2$-d Adinkras is described in Ref...[fill in references to various things].  We use a definition here that is equivalent to the one found in [some reference]: the proof is found in Appendix...[maybe?]
 
+<<<<<<< HEAD
 If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d adinkra} (of dimension $(p,q)$) is a finite simple connected graph $A$ such that:
 \begin{itemize}
 \item It is an $1$-d adinkra (with the associated ranking, dashing, etc.).
 \item It has two color sets $C_L$ and $C_R$, with $|C_L| = p$ and $|C_R| = q$, where the colors in $C_L$ are called \emph{left-moving} and the colors in $C_R$ are called \emph{right-moving}.'' We will slightly abuse notation from now on, saying that an edge is \emph{left-moving} if it has a left-moving color, for example.
 \item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d adinkra) a left-moving edge adds $-1$, and going up a right-moving edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
 \end{itemize} 
+=======
+A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges.
+>>>>>>> 6237c72ca984996ae4c0bf39202d186f124377b0
 
-Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
+More formally,
+\begin{definition}
+A 2-d Adinkra with disjoint color sets $C_L$ and $C_R$ is $(V,E,\chi,\Delta,g_L,g_R)$ where
+\begin{itemize}
+\item $V$ is a finite set of vertices
+\item $E\subset V\times V$ is a set of edges
+\item $\chi:E\to C_L\cup C_R$ is a map called the coloring
+\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
+\item $g_L:V\to\ZZ$ and $g_R:V\to\ZZ$ are maps called the left grading and right grading.
+\end{itemize}
 
-\section{Structure Theorems}
+These are required to satisfy:
+\begin{itemize}
+\item The first requirement for a 1-d Adinkra still holds.
+\item The second and third requirements for a 1-d Adinkra still hold with $C=C_L\cup C_R$.
+\item The fourth requirement is replaced by: if $(v,w)\in E$ and $\chi(v,w)\in C_L$, then $|g_L(v)-g_L(w)|=1$ and $g_R(v)=g_R(w)$.  If $(v,w)\in E$ and $\chi(v,w)\in C_R$, then $|g_R(v)-g_R(w)|=1$ and $g_L(v)=g_R(w)$.
+\end{itemize}
+\end{definition}
 
-\subsection{Bigrading}
+\section{Product of Adinkras}
+One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors.
 
-The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
+\begin{definition}
+Let $C_L$ and $C_R$ be disjoint color sets.  Let $A_1=(V_1, E_1, \chi_1, \Delta_1,g_1)$ be a $1$-d Adinkra with color set $C_L$; and let $A_2=(V_2, E_2, \chi_2, \Delta_2,g_2)$ be a $1$-d Adinkra with color set $C_R$.  We can define the product of these Adinkras as the following 2-Adinkra with color sets $(C_L,C_R)$.
+\[A_1\times A_2=(V,E,\chi,\Delta,g_L,g_R)\]
+where
+\begin{eqnarray*}
+V&=&V_1\times V_2\\
+E&=&E_1\cup E_2\mbox{ where}\\
+E_1&=&\{((v_1,w),(v_2,w))\,|\,(v_1, v_2)\in E_1,\mbox{ and } w\in V_2\}\\
+E_2&=&\{((v,w_1),(v,w_2))\,|\,v\in V, \mbox{ and }(w_1,w_2)\in E_2\}\\
+\chi((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
+\chi((v,w_1),(v,w_2))&=&c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
+g_L(v,w)&=&g_1(v)\\
+g_R(v,w)&=&g_2(w)\\
+\Delta((v_1,w),(v_2,w))&=&\Delta_1(v_1,v_2)\\
+\Delta((v,w_1),(v,w_2))&=&(-1)^{g_1(v)}\Delta_2(w_1,w_2)
+\end{eqnarray*}
+\end{definition}
 
+
+
+<<<<<<< HEAD
 \begin{prop}
 A $1$-d adinkra with color set $C_L \cup C_R$ can be extended to a $2$-d adinkra with left- and right-moving colors $C_L$ and $C_R$ if and only if the $1$-d adinkra has a \emph{bigrading} to $\ZZ^2$ consistent with $C_L$ and $C_R$; this is a map $g: V \rightarrow \ZZ^2$ such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
 \end{prop}
@@ -136,6 +202,12 @@ This grading allows us to define the notation $V(A, (x,y))$, which is the set of
 V(A,r) = \cup_{x + y = r} V(A, (x,y)).
 \]
 \end{comment}
+=======
+\section{Structure Theorems}
+
+\subsection{Bigrading}
+
+>>>>>>> 6237c72ca984996ae4c0bf39202d186f124377b0
 
 A really important consequence of having a bigrading is that we get to ``complete the square'' with the following Corollary:
 
@@ -302,6 +374,23 @@ What are all the $2$-d adinkras $A$ with the same valise adinkra $\val(A)$? Not 
 \end{prob}
 
 \section{Quotienting}
+To understand quotients, we first define the homomorphism from one $2$-d Adinkra to another.  This will be similar to the definition of homomorphism of graphs [give some standard reference to this terminology].
+
+\begin{definition}
+Let 
+$A_1=(V_1,E_1,\chi_1,\Delta_1,g_{L1},g_{R1})$
+and
+$A_2=(V_2,E_2,\chi_2,\Delta_2,g_{L2},g_{R2})$
+be 2-Adinkras with the same color set $C$.  A homomorphism from $A_1$ to $A_2$ is a map
+\[\phi:V_1\to V_2\]
+satisfying the following:
+\begin{itemize}
+\item If $(v,w)\in E_1$, then $\phi(v,w)\in E_2$ and $\chi_1(v,w)=\chi_2(\phi(v,w))$.
+\item If $v\in V_1$ then $g_{1L}(v)=g_{2L}(\phi(v))$.
+\item If $v\in V_1$ then $g_{1R}(v)=g_{2R}(\phi(v))$.
+\end{itemize}
+Note that there is no condition on the dashings $\Delta_1$ and $\Delta_2$.
+\end{definition}
 
 
 
@@ -643,6 +732,32 @@ Roughly, we want to understand off-shell representations of the $N$-extended Poi
 For more information, see \cite{zhang:thesis}, my thesis, for most details. My main publication on this is \cite{zhang:adinkras}, which is a subset of the material in my thesis.
 
 \end{comment}
+
+\appendix
+\section{Equivalence with other notions of $2$-d Adinkras}
+
+
+If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
+\begin{itemize}
+\item It is an $1$-d adinkra (with the associated ranking, dashing, etc.).
+\item It has $p + q = n$ colors, where the first $p$-colors are called ``left-moving'' and the second $q$-colors are called ``right-moving.''
+\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
+\end{itemize} 
+
+Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
+
+%%
+
+The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
+
+\begin{prop}
+A $1$-d adinkra can be extended to a $2$-d adinkra if and only if the $1$-d adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
+\end{prop}
+
+\begin{proof}
+Proof delayed until talking more with Kevin and Tristan about the easiest way to write things up to avoid reinventing wheels.
+\end{proof}
+
 
 \bibliographystyle{abbrv}
 \bibliography{Adinkras}
