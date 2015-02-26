@@ -117,6 +117,7 @@ These are required to satisfy the following:
 \item If $(v,w)\in E$, then $|g(v)-g(w)|=1$.
 \end{itemize}
 \end{definition}
+Note that in [Reference], there is also a bigrading of the vertices.  This is rendered obsolete by the grading, since $g(v)$ is even if and only if $v$ is a boson.
 
 Let $V(A, r)=g^{-1}(\{r\})$ be the vertices of $A$ with rank $r$.  We will assume $0$ to be the lowest rank in the range of $g$.
 
@@ -145,6 +146,28 @@ These are required to satisfy:
 \item The fourth requirement is replaced by: if $(v,w)\in E$ and $\chi(v,w)\in C_L$, then $|g_L(v)-g_L(w)|=1$ and $g_R(v)=g_R(w)$.  If $(v,w)\in E$ and $\chi(v,w)\in C_R$, then $|g_R(v)-g_R(w)|=1$ and $g_L(v)=g_R(w)$.
 \end{itemize}
 \end{definition}
+
+\section{Product of Adinkras}
+One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors.
+
+\begin{definition}
+Let $C_L$ and $C_R$ be disjoint color sets.  Let $A_1=(V_1, E_1, \chi_1, \Delta_1,g_1)$ be a $1$-d Adinkra with color set $C_L$; and let $A_2=(V_2, E_2, \chi_2, \Delta_2,g_2)$ be a $1$-d Adinkra with color set $C_R$.  We can define the product of these Adinkras as the following 2-Adinkra with color sets $(C_L,C_R)$.
+\[A_1\times A_2=(V,E,\chi,\Delta,g_L,g_R)\]
+where
+\begin{eqnarray*}
+V&=&V_1\times V_2\\
+E&=&E_1\cup E_2\mbox{ where}\\
+E_1&=&\{((v_1,w),(v_2,w))\,|\,(v_1, v_2)\in E_1,\mbox{ and } w\in V_2\}\\
+E_2&=&\{((v,w_1),(v,w_2))\,|\,v\in V, \mbox{ and }(w_1,w_2)\in E_2\}\\
+\chi((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
+\chi((v,w_1),(v,w_2))&=&c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
+g_L(v,w)&=&g_1(v)\\
+g_R(v,w)&=&g_2(w)\\
+\Delta((v_1,w),(v_2,w))&=&\Delta_1(v_1,v_2)\\
+\Delta((v,w_1),(v,w_2))&=&(-1)^{g_1(v)}\Delta_2(w_1,w_2)
+\end{eqnarray*}
+\end{definition}
+
 
 
 \section{Structure Theorems}
@@ -314,6 +337,23 @@ What are all the $2$-d adinkras $A$ with the same valise adinkra $\val(A)$? Not 
 \end{prob}
 
 \section{Quotienting}
+To understand quotients, we first define the homomorphism from one $2$-d Adinkra to another.  This will be similar to the definition of homomorphism of graphs [give some standard reference to this terminology].
+
+\begin{definition}
+Let 
+$A_1=(V_1,E_1,\chi_1,\Delta_1,g_{L1},g_{R1})$
+and
+$A_2=(V_2,E_2,\chi_2,\Delta_2,g_{L2},g_{R2})$
+be 2-Adinkras with the same color set $C$.  A homomorphism from $A_1$ to $A_2$ is a map
+\[\phi:V_1\to V_2\]
+satisfying the following:
+\begin{itemize}
+\item If $(v,w)\in E_1$, then $\phi(v,w)\in E_2$ and $\chi_1(v,w)=\chi_2(\phi(v,w))$.
+\item If $v\in V_1$ then $g_{1L}(v)=g_{2L}(\phi(v))$.
+\item If $v\in V_1$ then $g_{1R}(v)=g_{2R}(\phi(v))$.
+\end{itemize}
+Note that there is no condition on the dashings $\Delta_1$ and $\Delta_2$.
+\end{definition}
 
 Define a \emph{even-split doubly-even (ESDE) code} to be a doubly-even code isomorphic to a direct sum $C_L \oplus C_R$ of even codes. It was proved \cite{blah} that $1$-d adinkras are ismorphic to quotienting the hamming cube $H^n$ by a doubly-even code, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra.
 
