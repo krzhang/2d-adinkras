@@ -1,5 +1,4 @@
 \documentclass[12pt,twoside,singlespace]{article}
-\usepackage{lgrind}
 \pagestyle{plain}
 
 \usepackage{array, paralist, enumerate, amsmath, amsthm, amsfonts, amssymb, color, mathrsfs,comment}
@@ -98,42 +97,60 @@
 \section{Definitions}
 
 \subsection{$1$-d Adinkras}
+Adinkras in [references] will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.  Note that while it is conventional to specify a natural number $N$ to denote the number of supersymmetries, we break with convention and instead specify $C$, a set of $N$ different colors.
 
-Let $V(A)$ be the vertices of $A$.
+\begin{definition}
+A $1$-d Adinkra with color set $C$ is $(V,E,\chi,\Delta,g)$ where
+\begin{itemize}
+\item $V$ is a finite set of vertices
+\item $E\subset V\times V$ is a set of edges
+\item $\chi:E\to C$ is a map called the coloring
+\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
+\item $g:V\to\ZZ$ is a map called the grading
+\end{itemize}
 
-Recall that a $1$-d adinkra $A$ has a rank function $g: V(A) \rightarrow \ZZ$ (making it into a graded poset). Let $V(A, r)$ be the vertices of $A$ with rank $r$. We will assume $0$ to be the lowest rank in the support of $g$.
+These are required to satisfy the following:
+\begin{itemize}
+\item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $\chi(v,w)=\chi(w,v)$ and $\Delta(v,w)=\Delta(w,v)$.
+\item For every $v\in V$ and $c\in C$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $\chi(v,w)=c$.
+\item If $c_1$, $c_2\in C$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $\chi(v,w)=\chi(x,y)=c_1$ and $\chi(w,x)=\chi(y,v)=c_2$ and $\Delta(v,w)\Delta(w,x)\Delta(x,y)\Delta(y,v)=-1$.
+\item If $(v,w)\in E$, then $|g(v)-g(w)|=1$.
+\end{itemize}
+\end{definition}
 
-Recall that a $1$-d adinkra has a code $C(A)$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n$ is the number of coordinates and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + C(A)$, so $|V(A)| = 2^{n-k}$.
+Let $V(A, r)=g^{-1}(\{r\})$ be the vertices of $A$ with rank $r$.  We will assume $0$ to be the lowest rank in the range of $g$.
+
+Recall that a $1$-d adinkra has a code $L$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n=|C|$ is the number of colors and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + L$, so $|V| = 2^{n-k}$.
 
 \subsection{$2$-d Adinkras}
+The notion of $2$-d Adinkras is described in Ref...[fill in references to various things].  We use a definition here that is equivalent to the one found in [some reference]: the proof is found in Appendix...[maybe?]
 
-If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
+A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges.
+
+More formally,
+\begin{definition}
+A 2-d Adinkra with disjoint color sets $C_L$ and $C_R$ is $(V,E,\chi,\Delta,g_L,g_R)$ where
 \begin{itemize}
-\item It is an $1$-d adinkra (with the associated ranking, dashing, etc.).
-\item It has $p + q = n$ colors, where the first $p$-colors are called ``left-moving'' and the second $q$-colors are called ``right-moving.''
-\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
-\end{itemize} 
+\item $V$ is a finite set of vertices
+\item $E\subset V\times V$ is a set of edges
+\item $\chi:E\to C_L\cup C_R$ is a map called the coloring
+\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
+\item $g_L:V\to\ZZ$ and $g_R:V\to\ZZ$ are maps called the left grading and right grading.
+\end{itemize}
 
-Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
+These are required to satisfy:
+\begin{itemize}
+\item The first requirement for a 1-d Adinkra still holds.
+\item The second and third requirements for a 1-d Adinkra still hold with $C=C_L\cup C_R$.
+\item The fourth requirement is replaced by: if $(v,w)\in E$ and $\chi(v,w)\in C_L$, then $|g_L(v)-g_L(w)|=1$ and $g_R(v)=g_R(w)$.  If $(v,w)\in E$ and $\chi(v,w)\in C_R$, then $|g_R(v)-g_R(w)|=1$ and $g_L(v)=g_R(w)$.
+\end{itemize}
+\end{definition}
+
 
 \section{Structure Theorems}
 
 \subsection{Bigrading}
 
-The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
-
-\begin{prop}
-A $1$-d adinkra can be extended to a $2$-d adinkra if and only if the $1$-d adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
-\end{prop}
-
-\begin{proof}
-Proof delayed until talking more with Kevin and Tristan about the easiest way to write things up to avoid reinventing wheels.
-\end{proof}
-
-This grading allows us to define the notation $V(A, (x,y))$, which is the set of vertices of $A$ of grading $(x,y) \in \ZZ^2$. We will also use the notation $V(A, r)$ to similar refer to vertices of $A$ of grading $r \in \ZZ$ when referring to $1$-d adinkras, which will come up in our study. Notice that when we consider a $2$-d adinkra as a $1$-d adinkra, we have the relation
-\[
-V(A,r) = \cup_{x + y = r} V(A, (x,y)).
-\]
 
 A really important consequence of having a bigrading is that we get to ``complete the square'' with the following Corollary:
 
@@ -636,6 +653,32 @@ Roughly, we want to understand off-shell representations of the $N$-extended Poi
 For more information, see \cite{zhang:thesis}, my thesis, for most details. My main publication on this is \cite{zhang:adinkras}, which is a subset of the material in my thesis.
 
 \end{comment}
+
+\appendix
+\section{Equivalence with other notions of $2$-d Adinkras}
+
+
+If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
+\begin{itemize}
+\item It is an $1$-d adinkra (with the associated ranking, dashing, etc.).
+\item It has $p + q = n$ colors, where the first $p$-colors are called ``left-moving'' and the second $q$-colors are called ``right-moving.''
+\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
+\end{itemize} 
+
+Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
+
+%%
+
+The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
+
+\begin{prop}
+A $1$-d adinkra can be extended to a $2$-d adinkra if and only if the $1$-d adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
+\end{prop}
+
+\begin{proof}
+Proof delayed until talking more with Kevin and Tristan about the easiest way to write things up to avoid reinventing wheels.
+\end{proof}
+
 
 \bibliographystyle{abbrv}
 \bibliography{Adinkras}

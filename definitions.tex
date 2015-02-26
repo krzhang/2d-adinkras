@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\newcommand{\bz}{\mathbb{Z}}
+\begin{document}
+
+A color set is a finite set, the elements of which are called colors.
+
+A 1-Adinkra with color set $C$ is $(V,E,\chi,\Delta,g)$ where
+\begin{itemize}
+\item $V$ is a finite set of vertices
+\item $E\subset V\times V$ is a set of edges
+\item $\chi:E\to C$ is a map called the coloring
+\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
+\item $g:V\to\bz$ is a map called the grading
+\end{itemize}
+
+These are required to satisfy the following:
+\begin{itemize}
+\item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $\chi(v,w)=\chi(w,v)$ and $\Delta(v,w)=\Delta(w,v)$.
+\item For every $v\in V$ and $c\in C$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $\chi(v,w)=c$.
+\item If $c_1$, $c_2\in C$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $\chi(v,w)=\chi(x,y)=c_1$ and $\chi(w,x)=\chi(y,v)=c_2$ and $\Delta(v,w)\Delta(w,x)\Delta(x,y)\Delta(y,v)=-1$.
+\item If $(v,w)\in E$, then $|g(v)-g(w)|=1$.
+\end{itemize}
+
+A 2-Adinkra with disjoint color sets $C_1$ and $C_2$ is $(V,E,\chi,\Delta,g_L,g_R)$ where
+\begin{itemize}
+\item $V$ is a finite set of vertices
+\item $E\subset V\times V$ is a set of edges
+\item $\chi:E\to C$ is a map called the coloring
+\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
+\item $g_L:V\to\bz$ and $g_R:V\to\bz$ are maps called the left grading and right grading.
+\end{itemize}
+
+These are required to satisfy:
+\begin{itemize}
+\item The first requirement for a 1-Adinkra still holds.
+\item The second and third requirements for a 1-Adinkra still hold with $C=C_1\cup C_2$.
+\item The fourth requirement is replaced by: if $(v,w)\in E$ and $\chi(v,w)\in C_1$, then $|g_L(v)-g_L(w)|=1$ and $g_R(v)=g_R(w)$.  If $(v,w)\in E$ and $\chi(v,w)\in C_2$, then $|g_R(v)-g_R(w)|=1$ and $g_L(v)=g_R(w)$.
+\end{itemize}
+
+Let $C_1$ and $C_2$ be disjoint color sets.  Let $A_1=(V_1, E_1, \chi_1, \Delta_1,g_1)$ be a 1-Adinkra with color set $C_1$; and let $A_2=(V_2, E_2, \chi_2, \Delta_2,g_2)$ be a 1-Adinkra with color set $C_2$.  We can define the product of these Adinkras as the following 2-Adinkra with color sets $(C_1,C_2)$.
+\[A_1\times A_2=(V,E,\chi,\Delta,g_L,g_R)\]
+where
+\begin{eqnarray*}
+V&=&V_1\times V_2\\
+E&=&E_1\cup E_2\mbox{ where}\\
+E_1&=&\{((v_1,w),(v_2,w))\,|\,(v_1, v_2)\in E_1,\mbox{ and } w\in V_2\}\\
+E_2&=&\{((v,w_1),(v,w_2))\,|\,v\in V, \mbox{ and }(w_1,w_2)\in E_2\}\\
+\chi((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
+\chi((v,w_1),(v,w_2))&=&c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
+g_L(v,w)&=&g_1(v)\\
+g_R(v,w)&=&g_2(w)\\
+\Delta((v_1,w),(v_2,w))&=&\Delta_1(v_1,v_2)\\
+\Delta((v,w_1),(v,w_2))&=&(-1)^{g_1(v)}\Delta_2(w_1,w_2)
+\end{eqnarray*}
+
+Let 
+$A_1=(V_1,E_1,\chi_1,\Delta_1,g_{L1},g_{R1})$
+and
+$A_2=(V_2,E_2,\chi_2,\Delta_2,g_{L2},g_{R2})$
+be 2-Adinkras with the same color set $C$.  A homomorphism from $A_1$ to $A_2$ is a map
+\[\phi:V_1\to V_2\]
+satisfying the following:
+\begin{itemize}
+\item If $(v,w)\in E_1$, then $\phi(v,w)\in E_2$ and $\chi_1(v,w)=\chi_2(\phi(v,w))$.
+\item If $v\in V_1$ then $g_{1L}(v)=g_{2L}(\phi(v))$.
+\item If $v\in V_1$ then $g_{1R}(v)=g_{2R}(\phi(v))$.
+\end{itemize}
+Note that there is no condition on the dashings $\Delta_1$ and $\Delta_2$.
+
+
+\end{document}
