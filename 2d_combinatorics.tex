@@ -239,7 +239,7 @@ Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ an
 
 %Let the \emph{left boundary} $B_L(A)$ and \emph{right boundary} $B_R(A)$ of the rectangle be the subgraphs of $A$ induced by vertices of $A$ that occur at the sets $\{(i,0) | 0 \leq i < l \}$ and $\{(0, j) | 0 \leq j < k \}$ respectively. It helps to picture the normal Cartesian plane rotated $45$ degrees counterclockwise, because then adjectives refer to the direction of ``movement'': this way, the left boundary corresponds to the lower-left vertices in the support rectangle and the right boundary corresponds to the lower-right vertices.
 
-With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true.
+With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the next section.
 
 \begin{comment}
 \begin{lem}
@@ -253,13 +253,6 @@ Because we have an ($1$-d) adinkra, the two edges in this path correspond to two
 
 \begin{comment}
 
-\begin{cor}
-\label{cor:factorization-connected-components}
-Consider the vertex $\overline{0} \in A$. Let the connected component of $A_L$ (resp. $A_R$) that $\overline{0}$ belongs to be labeled $A_L^0$ (resp. $A_R^0$). The adinkra $A$ is uniquely determined\footnote{This is fairly nuanced; we need to know not just the shape of $A_L^0$ and $A_R^0$, but also their vertices} by $A_L^0$ and $A_R^0$.
-\end{thm}
-\begin{proof}
-Consider the color sequence $d$ of any path from $\overline{0}$ to a vertex $v$. We can permute the sequence so that the left-moving colors all occur before the right-moving colors. Thus, we first make some moves in $A_L^0$, then by Proposition~\ref{prop:kevin} we make the remaining moves in a copy of $A_R^0$. 
-\end{proof}
 
 
 We will worry less about exact rankings right now with the following construction: 
@@ -291,6 +284,8 @@ Note that there is no condition on the dashings $\Delta_1$ and $\Delta_2$.
 \label{thm:quotient}
 Any $2$-d adinkra $A$ is isomorphic to $A_L^0 \times A_R^0 / G$ for some group $G$. 
 \end{thm}
+\begin{proof}
+\end{proof}
 
 \com{TODO}
 
@@ -339,45 +334,44 @@ Any $2$-d adinkra $A$ is isomorphic to $A_L^0 \times A_R^0 / G$ for some group $
 
 \section{ESDE Codes}
 
-In this section, we classify all ESDE codes.
+Define a \emph{even-split doubly-even (ESDE) code} to be a doubly-even code isomorphic to a direct sum $C_L \oplus C_R$ of even codes. Recall that $1$-d chromotopologies are in bijection with quotients of the hamming cube $I^n$ by a doubly-even code $L$, so any adinkra $A$ has a well-defined associated code $L(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras. To do this, we introduce a special family of $2$-d adinkras.
 
-Define a \emph{even-split doubly-even (ESDE) code} to be a doubly-even code isomorphic to a direct sum $C_L \oplus C_R$ of even codes. It was proved \cite{blah} that $1$-d adinkras are ismorphic to quotienting the hamming cube $H^n$ by a doubly-even code, so any adinkra $A$ has a well-defined associated code $L(A)$ that is uniquely determined by just the graph structure of the adinkra.
+For an $1$-d adinkra $A$ with grading function $g$, let $\val(A)$, the \emph{valise} of $A$, be defined as a $1$-d adinkra $A'$ identical to $A$ except for its grading function $g'$, defined as $g'(v) = 0$ if $g(v) \in 2\ZZ$ and $1$ otherwise. It is easy to see that $\val(A)$ is also an adinkra. Similarly, for any $2$-d adinkra $A$ with bigrading function $g$, there is a unique $2$-d adinkra $A'$ with the same chromotopology as $A$ such that $(A')_L^0 = \val(A_L^0)$ and $(A')_R^0 = \val(A_R^0)$, defined with a bigrading function $g'(v) = (x', y')$, where $x', y' \in \{0,1\}$ depending on $x$ and $y \pmod(2)$ respectively given $g(v) = (x,y)$. We similarly denote $A'$ by $\val(A)$ and call such an adinkra a \emph{valise} ($2$-d) adinkra. Equivalently, a valise adinkra is one where the supporting rectangle is a $2 \times 2$ square, and any $2$-d adinkra could be put into a valise form. 
 
-Our goal is to show
+\begin{figure}[htb]
+\begin{center}
+
+\begin{tikzpicture}[scale=0.10]
+%\SetVertexNormal
+\SetVertexNoLabel
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=-5,y=5]{H}
+\Vertex[x=0,y=20]{C}
+\Vertex[x=-5,y=25]{B}
+\Vertex[x=15,y=5]{D}
+\Vertex[x=20,y=0]{E}
+\Vertex[x=20,y=20]{G}
+\Vertex[x=15,y=25]{F}
+\Edges(A,B,G)
+\Edges(B,H,C)
+\Edges(G,D)
+\Edges(C,A,D,H,E,A)
+\Edges(D,F,C,G,E,F,B)
+\end{tikzpicture}
+\caption{A valise $2$-d adinkra that cannot be put into non-valise form.\label{fig:tight valise}}
+\end{center}
+\end{figure}
+
 \begin{thm}
-The image of $C$ of the set of $2$-d adinkras are exactly the ESDE codes.
+\label{thm:esde}
+For a code $L \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $L(A) = L$ if and only if $L$ is a ESDE code.
 \end{thm}
-
-This answers a conjecture of H\"{u}bsch \cite{}.
-
-To do this we need to show two things:
-
-\begin{prop}
-Any valise $2$-d adinkra $A$ has $L(A)$ equal to a ESDE code.
-\end{prop}
 \begin{proof}
+Suppose $L(A) = L$ for some $2$-d adinkra $A$. We know that $L$ is doubly-even. Consider any codeword $l \in L$. Starting at $\overline{0} \in A$, moving by a path corresponding to $l$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of which changes the $x$-coordinate (resp. $y$-coordinate) by $1$ in absolute value. Thus, $L$ must be ESDE.
 
-Note that the automorphism group of the adinkra is defined by the basepoint.
-
-TODO
+Now, take an ESDE code $L$. $L$ is doubly-even, so there exists a $1$-d adinkra $A$ with code $L(A) = L$. We can assume $A$ is a $1$-d valise by taking $A = \val(A)$ if necessary, which does not change the code. Now, any vertex $v \in A$ corresponds to an equivalence class $c+L \subset \ZZ_2^n.$ consider the function $g'\colon V(A) \rightarrow \{0,1\}$ that sends $v$ to $(x,y)$, where $x$ (resp. $y$) corresponds to the parity of the weight of the left-moving colors of any element in $c+L$. The fact that $L$ is ESDE precisely makes this notion well-defined. Since $g'$ gives $A$ a bigrading, $A$ is realizable as a $2$-d valise adinkra $A$ with code $L$, so we are done. 
 \end{proof}
-
-\begin{prop}
-Any ESDE code defines a valise $2$-d adinkra $A$.
-\end{prop}
-\begin{proof}
-TODO
-\end{proof}
-
-Here are some other problems:
-\begin{prob}
-Given two valise $1$-d adinkras $B_L(A)$ and $B_R(A)$ of equal size, what identifications of $V(B_L(A), 0)$ and $V(B_R(A), 0)$ are possible?
-\end{prob}
-\begin{proof}
-Data: if we have $\{0,1\} \cup \{2,3\}$ on one side, the other side must be $\{0,2\} \cup \{1, 3\}$.
-\end{proof}
-
-\com{There are two kinds of quotienting that we can think of: one quotient is directly quotienting the mega hypercube adinkra by a ESDE code; one quotient is given the valise adinkra with associated $B_L(A)$, $B_R(A)$ each with $2^{d+1}$ vertices, the necessary $d$-dimensional quotienting that occurs when we naively tensor the two parts (which gives $2^{2d}$ vertices in each corner, for $2^{2d+2}$ total vertices, when in the end we just want $2^{d+2}$ vertices.}
 
 
 \appendix
@@ -407,37 +401,20 @@ Proof delayed until talking more with Kevin and Tristan about the easiest way to
 
 \section{Misc. (unorganized)}
 
-For an $1$-d adinkra $A$ let $\val(A)$ be the valise form of $A$. For any $2$-d adinkra $A$ with $A_L^0$ and $A_L^R$ defined as in Corollary~\ref{cor:factorization-connected-components} above, there is a unique $2$-d adinkra $A'$ such that $(A')_L^0 = \val(A_L^0)$ and $(A')_R^0 = \val(A_R^0)$. We will abuse notation and call this new adinkra $\val(A)$, and call such an adinkra (i.e. where the rectangle is a $2 \times 2$ square) a \emph{valise} ($2$-d) adinkra. 
+\begin{cor}
+\label{cor:factorization-connected-components}
+Consider the vertex $\overline{0} \in A$. Let the connected component of $A_L$ (resp. $A_R$) that $\overline{0}$ belongs to be labeled $A_L^0$ (resp. $A_R^0$). The adinkra $A$ is uniquely determined\footnote{This is fairly nuanced; we need to know not just the shape of $A_L^0$ and $A_R^0$, but also their vertices} by $A_L^0$ and $A_R^0$.
+\end{cor}
+\begin{proof}
+Consider the color sequence $d$ of any path from $\overline{0}$ to a vertex $v$. We can permute the sequence so that the left-moving colors all occur before the right-moving colors. Thus, we first make some moves in $A_L^0$, then by Proposition~\ref{prop:kevin} we make the remaining moves in a copy of $A_R^0$. 
+\end{proof}
+
 
 \begin{cor}
 \label{cor:valise factorization}
 A valise $2$-d adinkra $A$ of type $(n,k)$ is uniquely determined by $B_L(A)$, $B_R(A)$, and an identification of $V(B_L(A), 0)$ and $V(B_R(A), 0)$. Furthermore, $|B_L(A)| = |B_R(A)| = 2^{n-k-1}$.
 \end{cor}
 
-\begin{figure}[htb]
-\begin{center}
-
-\begin{tikzpicture}[scale=0.10]
-%\SetVertexNormal
-\SetVertexNoLabel
-\SetUpEdge[labelstyle={draw}]
-\Vertex[x=0,y=0]{A}
-\Vertex[x=-5,y=5]{H}
-\Vertex[x=0,y=20]{C}
-\Vertex[x=-5,y=25]{B}
-\Vertex[x=15,y=5]{D}
-\Vertex[x=20,y=0]{E}
-\Vertex[x=20,y=20]{G}
-\Vertex[x=15,y=25]{F}
-\Edges(A,B,G)
-\Edges(B,H,C)
-\Edges(G,D)
-\Edges(C,A,D,H,E,A)
-\Edges(D,F,C,G,E,F,B)
-\end{tikzpicture}
-\caption{This is a tight valise which cannot be lifted.\label{fig:tight valise}}
-\end{center}
-\end{figure}
 
 \begin{prob}
 What are all the $2$-d adinkras $A$ with the same valise adinkra $\val(A)$? Not all lifts are possible. For example, the adinkra in Figure~\ref{fig:tight valise} cannot be lifted to any non-valise form!
@@ -446,5 +423,17 @@ What are all the $2$-d adinkras $A$ with the same valise adinkra $\val(A)$? Not 
 
 \bibliographystyle{abbrv}
 \bibliography{Adinkras}
+
+Here are some other problems:
+\begin{prob}
+Given two valise $1$-d adinkras $B_L(A)$ and $B_R(A)$ of equal size, what identifications of $V(B_L(A), 0)$ and $V(B_R(A), 0)$ are possible?
+\end{prob}
+\begin{proof}
+Data: if we have $\{0,1\} \cup \{2,3\}$ on one side, the other side must be $\{0,2\} \cup \{1, 3\}$.
+\end{proof}
+
+\com{There are two kinds of quotienting that we can think of: one quotient is directly quotienting the mega hypercube adinkra by a ESDE code; one quotient is given the valise adinkra with associated $B_L(A)$, $B_R(A)$ each with $2^{d+1}$ vertices, the necessary $d$-dimensional quotienting that occurs when we naively tensor the two parts (which gives $2^{2d}$ vertices in each corner, for $2^{2d+2}$ total vertices, when in the end we just want $2^{d+2}$ vertices.}
+
+
 
 \end{document}
