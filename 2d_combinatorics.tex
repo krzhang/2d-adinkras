@@ -97,73 +97,100 @@
 \section{Preliminaries}
 
 \subsection{$1$-d Adinkras}
-Adinkras in [references] will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.  Note that while it is conventional to specify a natural number $N$ to denote the number of supersymmetries, we break with convention and instead specify $C$, a set of $N$ different colors.
+Adinkras in [references] will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.  Note that while it is conventional to specify a natural number $N$ to denote the number of supersymmetries, we break with convention and instead specify $C$, a set of $n$ different colors.
 
 \begin{definition}
-Let $N$ be a non-negative integer.  A $1$-d Adinkra with $N$ colors is $(V,E,\chi,\Delta,g)$ where
+Let $n$ be a non-negative integer.  A $1$-d Adinkra with $n$ colors is $(V,E,c,\mu,g)$ where
 \begin{itemize}
 \item $V$ is a finite set of vertices
 \item $E\subset V\times V$ is a set of edges
-\item $\chi:E\to \{1,\ldots,N\}$ is a map called the coloring
-\item $\Delta:E\to \{1,-1\}$ is a map called the dashing
-\item $g:V\to\ZZ$ is a map called the grading
+\item $c:E\to \{1,\ldots,n\}$ is a map called the coloring
+\item $\mu:E\to \{1,-1\}$ is a map called the dashing
+\item $h:V\to\ZZ$ is a map called the grading
 \end{itemize}
 
 These are required to satisfy the following:
 \begin{itemize}
-\item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $\chi(v,w)=\chi(w,v)$ and $\Delta(v,w)=\Delta(w,v)$.
-\item For every $v\in V$ and $c\in \{1,\ldots,N\}$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $\chi(v,w)=c$.
-\item If $c_1$, $c_2\in C$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $\chi(v,w)=\chi(x,y)=c_1$ and $\chi(w,x)=\chi(y,v)=c_2$ and $\Delta(v,w)\Delta(w,x)\Delta(x,y)\Delta(y,v)=-1$.
-\item If $(v,w)\in E$, then $|g(v)-g(w)|=1$.
+\item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $c(v,w)=c(w,v)$ and $\mu(v,w)=\mu(w,v)$.  Intuitively, the edges are undirected.
+\item For every $v\in V$ and $c\in \{1,\ldots,n\}$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.
+\item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$ and $\mu(v,w)\mu(w,x)\mu(x,y)\mu(y,v)=-1$.
+\item If $(v,w)\in E$, then $|h(v)-h(w)|=1$.
 \end{itemize}
 \end{definition}
-Note that in [Reference], there is also a bipartition of the vertices.  This is rendered obsolete by the grading, since $g(v)$ is even if and only if $v$ is a boson.
+Note that in [Reference], there is also a bipartition of the vertices.  This is rendered obsolete by the grading, since $h(v)$ is even if and only if $v$ is a boson.
 
 Recall that a $1$-d adinkra has a code $L(A)$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n$ is the number of coordinates and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + L(A)$, so $|V(A)| = 2^{n-k}$.
 
 
-Let $A$ be a $1$-d Adinkra with $N$ colors, with vertex set $V$.  For all $1\le i\le N$, define
+Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $1\le i\le n$, define
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
 
-Note that for all $v\in V$, $q_i(q_i(v))=v$ and $q_i(q_j(v))=q_j(q_i(v))$.  As a result, we can then define an action of $\ZZ_2^N$ on $V$ in the following way:
-\[(x_1,\ldots,x_N)v=q_1^{x_1}\circ\cdots\circ q_N^{x_N}(v)\]
+If $(v,w)$ is an edge in the Adinkra, $(q_i(v),q_i(w))$ is an edge.  This follows from items 2 and 3 in the definition of an Adinkra above.  Therefore $q_i$ is a graph homomorphism.  From item 2 in the definition, we have that $q_i(q_i(v))=v$ for all $v\in V$, so $q_i$ is invertible and thus a graph isomorphism.  From item 3 in the definition we also have for all $i$ and $j$, $q_i(q_j(v))=q_j(q_i(v))$.  As a result, we can then define an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
+\[(x_1,\ldots,x_N)v=q_1^{x_1}\circ\cdots\circ q_n^{x_n}(v)\]
 
-Pick a vertex $v\in A$.  Define $C(A,v)$ to be the stabilizer of $v$ under this action of $\ZZ_2^N$.  Since it is a subgroup of $\ZZ_2^N$, $C(A,v)$ is a binary block code of length $N$.
+
+\subsection{The code for an Adinkra}
+Pick a vertex $v\in A$.  Define $C(A,v)$ to be the stabilizer of $v$ under this action of $\ZZ_2^n$.  Since it is a subgroup of $\ZZ_2^n$, $C(A,v)$ is a binary block code of length $n$.
 
 \begin{prop}
-The Adinkra $A$ is connected if and only if the $\ZZ_2^N$ action is transitive on $V$.
+The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.
 \end{prop}
 \begin{proof}
-Let $v$, $w$ be vertices in $V$.  If $A$ is connected, then there is a path in $A$ connecting $v$ to $w$.  The edges in this path have colors $c_1,\ldots,c_k$.  Then $q_{c_1}\cdots q_{c_k}(v)=w$.  By the commutativity of $\ZZ_2^N$, we can rearrange $q_{c_1}\cdots q_{c_k}$ to be in increasing order of $c_i$.  This is then of the form $q_1^{x_1}\circ \cdots \circ q_N^{x_N}$ for some $(x_1,\ldots,x_N)\in \{0,1\}^N$.
+Let $v$, $w$ be vertices of $A$.  If $A$ is connected, then there is a path in $A$ connecting $v$ to $w$.  The edges in this path have colors $c_1,\ldots,c_k$.  Then $q_{c_1}\cdots q_{c_k}(v)=w$.  By the commutativity of $\ZZ_2^n$, we can rearrange $q_{c_1}\cdots q_{c_k}$ to be in increasing order of $c_i$.  This is then of the form $q_1^{x_1}\circ \cdots \circ q_N^{x_n}$ for some $(x_1,\ldots,x_n)\in \{0,1\}^n$.
 \end{proof}
 
 \begin{prop}
 If $A$ is connected, then the code $C(A,v)$ does not depend on $v$.
 \end{prop}
 \begin{proof}
-Let $w\in V$.  By the previous proposition, there exists $h\in \ZZ_2^N$ so that $hv=w$.
+Let $w\in V$.  By the previous proposition, there exists a $\gamma\in \ZZ_2^n$ so that $\gamma v=w$.
 
-The result follows from the sequence of equivalences:
-\[gw=w\leftrightarrow ghv=hv \leftrightarrow hgv=hv \leftrightarrow gv=v\]
+Let $\alpha\in \ZZ_2^n$.  The result follows from the sequence of equivalences:
+\[\alpha w=w\Leftrightarrow \alpha\gamma v=\gamma v \Leftrightarrow \gamma \alpha v=\gamma v \Leftrightarrow \alpha v=v\]
 \end{proof}
 Thus, from now on we will refer to the code $C(A,v)$ as $C(A)$.
 
+The following Adinkra was defined in [reference] and will be useful now.
+\begin{definition}
+For any non-negative integer $n$, we have an Adinkra $I^n=(V,E,c,\mu,h)$ with
+\begin{itemize}
+\item $V=\ZZ_2^n=\{0,1\}^n$,
+\item $E=\{(v,w)\,|\,\mbox{$v$ and $w$ differ in precisely one coordinate}\}$,
+\item $c(v,w)$ is the coordinate where $v$ and $w$ differ,
+\item $\mu(v,w)$ is the number of $1$s in $v$ before the coordinate $c(v,w)$, modulo $2$,
+\item $h(v)=\wt(v)$ is the number of $1$s in $v$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Given $C$ a linear block code of length $n$, we can define a graph with edge colors $I^n/C$ as the orbit space of the action of $C\subset \ZZ_2^n$ on $I^n$ as a graph.
+\end{definition}
+
+\begin{definition}
+A graph homomorphism from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to\{1,\ldots,n\}$ and a coloring $c_2:E_2\to\{1,\ldots,n\}$, we say that $\phi$ preserves colors if $c_1(v,w)=c_2(\phi(v),\phi(w))$.
+\end{definition}
 
 \begin{thm}
-If $A$ is a connected Adinkra, then $A\cong \ZZ_2^N/C(A)$.
+If $A$ is a connected Adinkra, then there is a graph isomorphism from $I^n/C(A)$ to $A$ that preserves colors.
 \end{thm}
 \begin{proof}
-The relationship on vertices follows from standard group action theory.
 
-For edges, note that if $(v,w)$ is an edge in an Adinkra $A$, then $(q_i(v),q_i(w))$ is also an edge in $A$.  Therefore 
+Choose a vertex $\overline{0}$ in $A$.  Let
+\[\phi:I^n\to A\]
+\[\phi(x_1,\ldots,x_n)=(x_1,\ldots,x_n)\overline{0}\]
+where we are using the action of $\ZZ_2^n$ on $A$ as described above.
 
-...there is a graph homomorphism from $\ZZ_2$ to $A$...[ do we introduce graph homomorphisms definition here?]
+To see that this is a graph homomorphism, let $(x_1,\ldots,x_n)\in\ZZ_2^n$ and let $(y_1,\ldots,y_n)$ be another vertex connected to $(x_1,\ldots,x_n)$ with an edge of color $i$.  Then $y_j=x_j$ for all $j\not=i$ and $y_i=1-x_i$.  Then $(y_1,\ldots,y_n)\overline{0}=q_1^{y_1}\cdots q_n^{y_n}\overline{0} =  q_1^{x_1}\cdots q_i^{1-x_i} q_n^{x_n}\overline{0}=q_i(q_1^{x_1}\cdots q_n^{x_n}\overline{0})=q_i(x_1,\ldots,x_n)$.  So $\phi(x_1,\ldots,x_n)$ and $\phi(y_1,\ldots,y_n)$ are connected by an edge of color $i$.  Note that this shows that the graph homomorphism preserves colors.
+
+We now prove that $\phi$ is surjective.  Since $A$ is connected, $\ZZ_2^n$ acts transitively on the vertex set of $A$, and so for any vertex $v$ of $A$, there exists an element $\alpha \in\ZZ_2^n$ so that $\alpha \overline{0}=v$.  Then $v=\phi(\alpha)$.
+
+To prove the isomorphism from $I^n/C(A)$ to $A$, we consider the necessary and sufficient conditions for $\phi(x)=\phi(y)$ for $x$, $y\in \ZZ_2^n$.  The condition $\phi(x)=\phi(y)$ is equivalent to $\phi(x-y)\overline{0}=\overline{0}$.  This is equivalent to saying $x-y\in C(A)$.  Thus, the map $\phi$ descends to $I^n/C(A)$ and gives an isomorphism.
 \end{proof}
 
 
 Theorem from other paper:
-$C(A)$ is doubly even.  Furthermore, if a binary block code $C$ of length $N$ is doubly even, then there exists an Adinkra with $C(A)=C$.
+$C(A)$ is doubly even.  Furthermore, if a binary block code $C$ of length $n$ is doubly even, then there exists an Adinkra with $C(A)=C$.
 
 
 \subsection{$2$-d Adinkras}
@@ -173,10 +200,10 @@ A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called
 
 More formally,
 \begin{definition}
-Let $p$ and $q$ be non-negative integers.   A 2-d Adinkra with $(p,q)$ colors is a 1-d Adinkra $(V,E,\chi,\Delta,g)$ with $p+q$ colors, and two grading functions $g_L:V\to \ZZ$ and $g_R:V\to \ZZ$ so that
+Let $p$ and $q$ be non-negative integers.   A 2-d Adinkra with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
-\item $g(v)=g_L(v)+g_R(v)$
-\item if $(v,w)\in E$ and $\chi(v,w)\le p$, then $|g_L(v)-g_L(w)|=1$ and $g_R(v)=g_R(w)$.  If $(v,w)\in E$ and $\chi(v,w)>p$, then $|g_R(v)-g_R(w)|=1$ and $g_L(v)=g_R(w)$.
+\item $h(v)=h_L(v)+h_R(v)$
+\item if $(v,w)\in E$ and $c(v,w)\le p$, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)\in E$ and $c(v,w)>p$, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_R(w)$.
 \end{itemize}
 \end{definition}
 
@@ -185,29 +212,29 @@ Let $p$ and $q$ be non-negative integers.   A 2-d Adinkra with $(p,q)$ colors is
 One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors.
 
 \begin{definition}
-Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, \chi_1, \Delta_1,g_1)$ be a $1$-d Adinkra with $p$ colors and let $A_2=(V_2, E_2, \chi_2, \Delta_2,g_2)$ be a $1$-d Adinkra $q$ colors.  We can define the product of these Adinkras as the following 2-Adinkra with $(p,q)$ colors:
-\[A_1\times A_2=(V,E,\chi,\Delta,g_L,g_R)\]
+Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, c_1, \mu_1,h_1)$ be a $1$-d Adinkra with $p$ colors and let $A_2=(V_2, E_2, c_2, \mu_2,h_2)$ be a $1$-d Adinkra $q$ colors.  We can define the product of these Adinkras as the following 2-Adinkra with $(p,q)$ colors:
+\[A_1\times A_2=(V,E,c,\mu,h_L,h_R)\]
 where
 \begin{eqnarray*}
 V&=&V_1\times V_2\\
 E&=&E_1\cup E_2\mbox{ where}\\
 E_1&=&\{((v_1,w),(v_2,w))\,|\,(v_1, v_2)\in E_1,\mbox{ and } w\in V_2\}\\
 E_2&=&\{((v,w_1),(v,w_2))\,|\,v\in V, \mbox{ and }(w_1,w_2)\in E_2\}\\
-\chi((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
-\chi((v,w_1),(v,w_2))&=&p+c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
-g_L(v,w)&=&g_1(v)\\
-g_R(v,w)&=&g_2(w)\\
-\Delta((v_1,w),(v_2,w))&=&\Delta_1(v_1,v_2)\\
-\Delta((v,w_1),(v,w_2))&=&(-1)^{g_1(v)}\Delta_2(w_1,w_2)
+c((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
+c((v,w_1),(v,w_2))&=&p+c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
+h_L(v,w)&=&h_1(v)\\
+h_R(v,w)&=&h_2(w)\\
+\mu((v_1,w),(v_2,w))&=&\mu_1(v_1,v_2)\\
+\mu((v,w_1),(v,w_2))&=&(-1)^{h_1(v)}\mu_2(w_1,w_2)
 \end{eqnarray*}
 \end{definition}
 
 \begin{definition}
-Let $p$ and $q$ be non-negative integers and let $N=p+q$.
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.
 
-Given a binary block code $C$ of length $p$, we can define a binary block code $\hat{C}$ of length $N$ by appending to the end of every code word in $C$ a string of $0$s of length $q$.
+Given a binary block code $C$ of length $p$, we can define a binary block code $\hat{C}$ of length $n$ by appending to the end of every code word in $C$ a string of $0$s of length $q$.
 
-Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $N$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$.
+Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $n$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$.
 \end{definition}
 
 \begin{prop}
@@ -323,18 +350,18 @@ To understand quotients, we first define the homomorphism from one $2$-d Adinkra
 
 \begin{definition}
 Let 
-$A_1=(V_1,E_1,\chi_1,\Delta_1,g_{L1},g_{R1})$
+$A_1=(V_1,E_1,c_1,\mu_1,h_{L1},h_{R1})$
 and
-$A_2=(V_2,E_2,\chi_2,\Delta_2,g_{L2},g_{R2})$
+$A_2=(V_2,E_2,c_2,\mu_2,h_{L2},h_{R2})$
 be 2-Adinkras with $(p,q)$ colors.  A homomorphism from $A_1$ to $A_2$ is a map
 \[\phi:V_1\to V_2\]
 satisfying the following:
 \begin{itemize}
-\item If $(v,w)\in E_1$, then $\phi(v,w)\in E_2$ and $\chi_1(v,w)=\chi_2(\phi(v,w))$.
-\item If $v\in V_1$ then $g_{1L}(v)=g_{2L}(\phi(v))$.
-\item If $v\in V_1$ then $g_{1R}(v)=g_{2R}(\phi(v))$.
+\item If $(v,w)\in E_1$, then $\phi(v,w)\in E_2$ and $c_1(v,w)=c_2(\phi(v,w))$.
+\item If $v\in V_1$ then $h_{1L}(v)=h_{2L}(\phi(v))$.
+\item If $v\in V_1$ then $h_{1R}(v)=h_{2R}(\phi(v))$.
 \end{itemize}
-Note that there is no condition on the dashings $\Delta_1$ and $\Delta_2$.
+Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
 \end{definition}
 
 
@@ -349,7 +376,7 @@ Let $g\in\hat{C}(A_L^0)$ and $h\in \check{C}(A_R^0)$.  Then $g\overline{0}=\over
 \end{proof}
 
 \begin{thm}
-There is a binary block code $K$ of length $n$ so that
+There is a binary block code $K$ of length $n$ so that as colored graphs,
 \[A\cong (A_L^0\times A_R^0)/K\]
 and $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$.
 \end{thm}
@@ -365,9 +392,32 @@ A&\cong& \ZZ_2^N/C(A)\\
 &=&(\ZZ_2^N/C(A_L^0 \times A_R^0))/ K\\
 &=&(A_L^0 \times A_R^0)/ K
 \end{eqnarray*}
-
-
 \end{proof}
+
+\begin{thm}
+The bigrading $(h_L,h_R)$ on $(A_L^0\times A_R^0)$ descends to
+\[(A_L^0\times A_R^0)/K\]
+and the above isomorphism preserves this bigrading.
+\end{thm}
+\begin{proof}
+Let $(v,w)$ be a vertex of $A_L^0\times A_R^0$.  Let $\alpha\in K$.  Then $\alpha\in C(A)$.  We write $\alpha=\alpha_L+\alpha_R$ where $\alpha_L$ has $0$s for the last $q$ coordinates and $\alpha_R$ has $0$s for the first $p$ coordinates.  Then $\alpha_L(v)\in A_L^0$, and $\alpha_R(\alpha_L(v))=v$.  Since $\alpha_R$ preserves $h_L$, we have $h_L(\alpha_L(v))=h_L(v)$.
+
+Then we have
+\[h_L(\alpha(v,w))=h_L((\alpha_L(v),\alpha_R(w))=h_L(\alpha_L(v))=h_L(v)\]
+Likewise, $h_R(\alpha(v,w))=h_R(v)$.
+
+So the bigrading $(h_L,h_R)$ descends to the quotient.
+
+By definition,
+\[h_L(\overline{0},\overline{0})=h_L(\overline{0})=h_L(\phi(\overline{0},\overline{0})).\]
+
+Now let $(v,w)\in A_L^0\times A_R^0$ and consider $h_L(v,w)$ and $h_L(\phi(v,w))$.     ...  I guess we don't have $\phi$ defined explicitly here.  [to be completed later]
+
+The proof is similar for $h_R$.
+\end{proof}
+
+
+[Now discuss dashing]
 
 
 
