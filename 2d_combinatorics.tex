@@ -121,6 +121,51 @@ Note that in [Reference], there is also a bipartition of the vertices.  This is 
 
 Recall that a $1$-d adinkra has a code $L(A)$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n$ is the number of coordinates and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + L(A)$, so $|V(A)| = 2^{n-k}$.
 
+
+Let $A$ be a $1$-d Adinkra with color set $C$, with vertex set $V$.  Let $N=|C|$.  For all $1\le i\le N$, define
+\[q_i:V\to V\]
+so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
+
+Note that for all $v\in V$, $q_i(q_i(v))=v$ and $q_i(q_j(v))=q_j(q_i(v))$.  As a result, we can then define an action of $\ZZ_2^N$ on $V$ in the following way:
+\[(x_1,\ldots,x_N)v=q_1^{x_1}\circ\cdots\circ q_N^{x_N}(v)\]
+
+Pick a vertex $v\in A$.  Define $C(A,v)$ to be the stabilizer of $v$ under this action of $\ZZ_2^N$.  Since it is a subgroup of $\ZZ_2^N$, $C(A,v)$ is a binary block code of length $N$.
+
+\begin{prop}
+The Adinkra $A$ is connected if and only if the $\ZZ_2^N$ action is transitive on $V$.
+\end{prop}
+\begin{proof}
+Let $v$, $w$ be vertices in $V$.  If $A$ is connected, then there is a path in $A$ connecting $v$ to $w$.  The edges in this path have colors $c_1,\ldots,c_k$.  Then $q_{c_1}\cdots q_{c_k}(v)=w$.  By the commutativity of $\ZZ_2^N$, we can rearrange $q_{c_1}\cdots q_{c_k}$ to be in increasing order of $c_i$.  This is then of the form $q_1^{x_1}\circ \cdots \circ q_N^{x_N}$ for some $(x_1,\ldots,x_N)\in \{0,1\}^N$.
+\end{proof}
+
+\begin{prop}
+If $A$ is connected, then the code $C(A,v)$ does not depend on $v$.
+\end{prop}
+\begin{proof}
+Let $w\in V$.  By the previous proposition, there exists $h\in \ZZ_2^N$ so that $hv=w$.
+
+The result follows from the sequence of equivalences:
+\[gw=w\leftrightarrow ghv=hv \leftrightarrow hgv=hv \leftrightarrow gv=v\]
+\end{proof}
+Thus, from now on we will refer to the code $C(A,v)$ as $C(A)$.
+
+
+\begin{thm}
+If $A$ is a connected Adinkra, then $A\cong \ZZ_2^N/C(A)$.
+\end{thm}
+\begin{proof}
+The relationship on vertices follows from standard group action theory.
+
+For edges, note that if $(v,w)$ is an edge in an Adinkra $A$, then $(q_i(v),q_i(w))$ is also an edge in $A$.  Therefore 
+
+...there is a graph homomorphism from $\ZZ_2$ to $A$...[ do we introduce graph homomorphisms definition here?]
+\end{proof}
+
+
+Theorem from other paper:
+$C(A)$ is doubly even.  Furthermore, if a binary block code $C$ of length $N$ is doubly even, then there exists an Adinkra with $C(A)=C$.
+
+
 \subsection{$2$-d Adinkras}
 The notion of $2$-d Adinkras is described in Ref...[fill in references to various things].  We use a definition here that is equivalent to the one found in [some reference]: the proof is found in Appendix...[maybe?]
 
@@ -145,6 +190,16 @@ These are required to satisfy:
 \end{itemize}
 \end{definition}
 
+Alternative definition (maybe use instead?)
+\begin{definition}
+A 2-d Adinkra with disjoint color sets $C_L$ and $C_R$ is a 1-d Adinkra $(V,E,\chi,\Delta,g)$ with color set $C=C_L\cup C_R$, and two grading functions $g_L:V\to \ZZ$ and $g_R:V\to \ZZ$ so that
+\begin{itemize}
+\item $g(v)=g_L(v)+g_R(v)$
+\item if $(v,w)\in E$ and $\chi(v,w)\in C_L$, then $|g_L(v)-g_L(w)|=1$ and $g_R(v)=g_R(w)$.  If $(v,w)\in E$ and $\chi(v,w)\in C_R$, then $|g_R(v)-g_R(w)|=1$ and $g_L(v)=g_R(w)$.
+\end{itemize}
+\end{definition}
+
+
 \subsection{Product of Adinkras}
 One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors.
 
@@ -165,6 +220,27 @@ g_R(v,w)&=&g_2(w)\\
 \Delta((v,w_1),(v,w_2))&=&(-1)^{g_1(v)}\Delta_2(w_1,w_2)
 \end{eqnarray*}
 \end{definition}
+
+\begin{definition}
+Let $p$ and $q$ be non-negative integers and let $N=p+q$.
+
+Given a binary block code $C$ of length $p$, we can define a binary block code $\hat{C}$ of length $N$ by appending to the end of every code word in $C$ a string of $0$s of length $q$.
+
+Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $N$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$.
+\end{definition}
+
+\begin{prop}
+Let $A_1$ and $A_2$ be as above.  Then
+\[C(A_1\times A_2)=\hat{C}(A_1)\oplus \check{C}(A_2).\]
+\end{prop}
+\begin{proof}
+Let $(v_1,v_2)\in A_1\times A_2$.  Let $g\in \ZZ_2^N$.  We can write $g=g_1+g_2$ where $g_1$ is zero in the last $q$ bits and $g_2$ is zero in the first $p$ bits.  Now
+\[g(v_1,v_2)=(g_1+g_2)(v_1,v_2)=(g_1v_1,g_2v_2).\]
+This means that $g(v_1,v_2)=(v_1,v_2)$ if and only if $g_1v_1=v_1$ and $g_2 v_2=v_2$.
+
+So $g\in C(A_1\times A_2)$ if and only if $g_1\in \hat{C}(A_1)$ and $g_2\in \check{C}(A_2)$.
+\end{proof}
+
 
 
 \section{Structural Theorems}
@@ -278,6 +354,39 @@ satisfying the following:
 \end{itemize}
 Note that there is no condition on the dashings $\Delta_1$ and $\Delta_2$.
 \end{definition}
+
+
+
+
+
+\begin{prop}
+\[\hat{C}(A_L^0)\oplus \check{C}(A_R^0) \subseteq C(A).\]
+\end{prop}
+\begin{proof}
+Let $g\in\hat{C}(A_L^0)$ and $h\in \check{C}(A_R^0)$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in \hat{C}(A_L^0)$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
+\end{proof}
+
+\begin{thm}
+There is a binary block code $K$ of length $n$ so that
+\[A\cong (A_L^0\times A_R^0)/K\]
+and $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$.
+\end{thm}
+\begin{proof}
+From the previous proposition and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^N$ that is a vector space complement of
+$\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$ in $C(A)$.  That is,
+\[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K.\]
+Then
+\begin{eqnarray*}
+A&\cong& \ZZ_2^N/C(A)\\
+&=&\ZZ_2^N/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K)\\
+&=&(\ZZ_2^N/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)))/ K\\
+&=&(\ZZ_2^N/C(A_L^0 \times A_R^0))/ K\\
+&=&(A_L^0 \times A_R^0)/ K
+\end{eqnarray*}
+
+
+\end{proof}
+
 
 
 \begin{thm}
