@@ -102,38 +102,77 @@ Adinkras in [references] will be referred to as $1$-d Adinkras in this paper, si
 \begin{definition}
 Let $n$ be a non-negative integer.  A $1$-d Adinkra with $n$ colors is $(V,E,c,\mu,g)$ where
 \begin{itemize}
-\item $V$ is a finite set of vertices
-\item $E\subset V\times V$ is a set of edges
+\item $(V,E)$ is a finite undirected graph (called the underlying graph of the Adinkra) with vertex set $V$ and edge set $E\subset V\times V$.
 \item $c:E\to \{1,\ldots,n\}$ is a map called the coloring
 \item $\mu:E\to \{1,-1\}$ is a map called the dashing
 \item $h:V\to\ZZ$ is a map called the grading
 \end{itemize}
 
 These are required to satisfy the following:
-\begin{itemize}
+\begin{enumerate}
 \item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $c(v,w)=c(w,v)$ and $\mu(v,w)=\mu(w,v)$.  Intuitively, the edges are undirected.
 \item For every $v\in V$ and $c\in \{1,\ldots,n\}$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.
 \item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$ and $\mu(v,w)\mu(w,x)\mu(x,y)\mu(y,v)=-1$.
 \item If $(v,w)\in E$, then $|h(v)-h(w)|=1$.
-\end{itemize}
+\end{enumerate}
 \end{definition}
-Note that in [Reference], there is also a bipartition of the vertices.  This is rendered obsolete by the grading, since $h(v)$ is even if and only if $v$ is a boson.
+Note that in [Reference], there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because a vertex $v$ is a boson if and only if $h(v)$ is even.
 
-Recall that a $1$-d adinkra has a code $L(A)$, which is necessarily doubly-even. The code has parameters $(n,k)$, where $n$ is the number of coordinates and $k$ is the dimensions of the code. In this situation, the vertices of $A$ are labeled by cosets $\{0,1\}^n + L(A)$, so $|V(A)| = 2^{n-k}$.
-
-
+\subsection{The action of $\ZZ_2^n$ and the code}
 Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $1\le i\le n$, define
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
 
-If $(v,w)$ is an edge in the Adinkra, $(q_i(v),q_i(w))$ is an edge.  This follows from items 2 and 3 in the definition of an Adinkra above.  Therefore $q_i$ is a graph homomorphism.  From item 2 in the definition, we have that $q_i(q_i(v))=v$ for all $v\in V$, so $q_i$ is invertible and thus a graph isomorphism.  From item 3 in the definition we also have for all $i$ and $j$, $q_i(q_j(v))=q_j(q_i(v))$.  As a result, we can then define an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
+\begin{prop}
+\label{prop:qmap}
+The map $q_i$ extends to a graph isomorphism from the underlying graph of $A$ to itself which preserves colors.  It is an involution and for all $i$, $j$, we have
+\begin{equation}
+q_i\circ q_j=q_j\circ q_i.\label{eq:commute}
+\end{equation}
+\end{prop}
+\begin{proof}
+The statement that $q_i$ is a graph homomorphism means that if $(v,w)$ is an edge in $A$, then so is $(q_i(v),q_i(w))$.  This follows from items 2 and 3 in the definition of an Adinkra above, using $j=c(v,w)$.
+
+The fact that $q_i(q_i(v))=v$ for all $v\in V$ follows from item 2 in the definition, which means that $q_i$ is an involution and in particular is an isomorphism.
+
+The equation (\ref{eq:commute}) follows from item 3 of the definition.
+\end{proof}
+
+By combining the $q_1,\ldots, q_n$, we can define an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
+\begin{definition}
+The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on vertices by
 \[(x_1,\ldots,x_N)v=q_1^{x_1}\circ\cdots\circ q_n^{x_n}(v)\]
+and the fact that it acts on edges can be seen by the fact that each $q_i$ is a graph homomorphism.
+\end{definition}
+
+Suppose $v$ and $w$ are vertices of our Adinkra.  A path from $v$ to $w$ is a sequence of edges $((v,v_1),(v_1,v_2),\ldots,(v_{k-1},w))$ of the underlying graph.  The {\em color sequence} of the path is the sequence $(c(v,v_1),c(v_1,v_2),\ldots,c(v_{k-1},w))$.  So if there is a path from $v$ to $w$ with color sequence $(i_1, \ldots, i_k)$, we have $w=q_{i_k}\circ q_{i_{k-1}}\circ \cdots\circ q_{i_1}(v)$.
 
 
-\subsection{The code for an Adinkra}
-Pick a vertex $v\in A$.  Define $C(A,v)$ to be the stabilizer of $v$ under this action of $\ZZ_2^n$.  Since it is a subgroup of $\ZZ_2^n$, $C(A,v)$ is a binary block code of length $n$.
+Now, define a map $s$ that takes a color sequence and returns an element of $\ZZ_2^n=\{0,1\}^n$ where the $i$-th coordinate is the number of times (modulo $2$) that color $i$ appears in the sequence. For example, $s(3,1,2,1) = 0110$.  Note that $s(d)$ does not depend on the ordering of the color sequence $d$.  This relates to paths in Adinkras because of the following:
 
 \begin{prop}
+\label{prop:colorseqpath}
+Let $A$ be an Adinkra.  Let $v$ be a vertex of $A$ and let $p$ be a path that begins at $v$.  Let $d$ be the color sequence obtained from $p$.  Then the path $p$ ends at the vertex $s(d)v$.
+\end{prop}
+\begin{proof}
+If the color sequence is $d=(i_1,\ldots,i_k)$, then the path $p$ ends at
+$q_{i_k}\circ \cdots \circ q_{i_1}(v)$.  By the commutativity of the $q_i$, we can order them in non-decreasing order of $i_j$.  If any of the $q_i$ appear more than once, we use the fact that $q_i^2$ is the identity to reduce the number of $q_i$ modulo $2$.  The result is $s(d)v$.
+\end{proof}
+
+
+\begin{cor}
+\label{prop:pathands}
+Let $A$ be an Adinkra.  Let $v$ be a vertex of $A$ and let $p$ and $p'$ be paths that begin at $v$.  Let $d$ and $d'$ be the color sequences obtained from $p$ and $p'$, respectively.  If $s(d)=s(d')$, then $p$ and $p'$ both end at the same point.
+\end{cor}
+
+
+
+\begin{definition}
+Pick a vertex $v\in A$.  Define $C(A,v)$ to be the stabilizer of $v$ under this action of $\ZZ_2^n$.  Since it is a subgroup of $\ZZ_2^n$, $C(A,v)$ is a binary block code of length $n$.
+\end{definition}
+
+\begin{prop}
+\label{prop:transitive}
 The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.
 \end{prop}
 \begin{proof}
@@ -144,14 +183,40 @@ Let $v$, $w$ be vertices of $A$.  If $A$ is connected, then there is a path in $
 If $A$ is connected, then the code $C(A,v)$ does not depend on $v$.
 \end{prop}
 \begin{proof}
-Let $w\in V$.  By the previous proposition, there exists a $\gamma\in \ZZ_2^n$ so that $\gamma v=w$.
+Let $w\in V$.  By Proposition~\ref{prop:transitive}, there exists a $\gamma\in \ZZ_2^n$ so that $\gamma v=w$.
 
 Let $\alpha\in \ZZ_2^n$.  The result follows from the sequence of equivalences:
 \[\alpha w=w\Leftrightarrow \alpha\gamma v=\gamma v \Leftrightarrow \gamma \alpha v=\gamma v \Leftrightarrow \alpha v=v\]
 \end{proof}
-Thus, from now on we will refer to the code $C(A,v)$ as $C(A)$.
 
-The following Adinkra was defined in [reference] and will be useful now.
+\begin{definition}
+Given a connected Adinkra $A$, the code for $A$, called $C(A)$, is defined to be $C(A,v)$, where $v$ is a vertex of $A$.
+\end{definition}
+
+
+
+
+\begin{prop}
+\label{prop:paths}
+Let $A$ be an Adinkra.  Let $v$ be a vertex of $A$ and let $p$ and $p'$ be paths that begin at $v$.  Let $d$ and $d'$ be the color sequences obtained from $p$ and $p'$, respectively.  The paths $p$ and $p'$ end at the same vertex if and only if 
+\[s(d)-s(d')\in C(A).\]
+\end{prop}
+
+\begin{proof}
+Suppose $p$ and $p'$ end at the same vertex.  Then
+\[s(d)v=s(d')v.\]
+Then
+\[v=s(d)^{-1}(s(d')v)=s(d)(s(d')v)=(s(d)+s(d'))v=(s(d)-s(d'))v.\]
+Note that in this sequence of equations, $\ZZ_2^n$ is written additively but the group action is written multiplicatively.  Also note that $s(d)$ is an involution and in $\ZZ_2^n$, addition and subtraction are the same.  Thus, $s(d)-s(d')\in C(A)$.
+
+Now suppose $s(d)-s(d')\in C(A)$.  Then by reversing the above argument,
+\[s(d)v=s(d')v\]
+and thus, $p$ and $p'$ end at the same vertex.
+\end{proof}
+
+
+
+The following Adinkra was defined in [reference].
 \begin{definition}
 For any non-negative integer $n$, we have an Adinkra $I^n=(V,E,c,\mu,h)$ with
 \begin{itemize}
@@ -172,10 +237,10 @@ A graph homomorphism from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\
 \end{definition}
 
 \begin{thm}
+\label{thm:cubemodulocode}
 If $A$ is a connected Adinkra, then there is a graph isomorphism from $I^n/C(A)$ to $A$ that preserves colors.
 \end{thm}
 \begin{proof}
-
 Choose a vertex $\overline{0}$ in $A$.  Let
 \[\phi:I^n\to A\]
 \[\phi(x_1,\ldots,x_n)=(x_1,\ldots,x_n)\overline{0}\]
@@ -188,9 +253,21 @@ We now prove that $\phi$ is surjective.  Since $A$ is connected, $\ZZ_2^n$ acts 
 To prove the isomorphism from $I^n/C(A)$ to $A$, we consider the necessary and sufficient conditions for $\phi(x)=\phi(y)$ for $x$, $y\in \ZZ_2^n$.  The condition $\phi(x)=\phi(y)$ is equivalent to $\phi(x-y)\overline{0}=\overline{0}$.  This is equivalent to saying $x-y\in C(A)$.  Thus, the map $\phi$ descends to $I^n/C(A)$ and gives an isomorphism.
 \end{proof}
 
+In Reference ..., it was proved that if $A$ is a connected Adinkra, then $C(A)$ is a doubly even code.  Furthermore, if $C$ is any doubly even binary block code of length $n$, then there is an Adinkra with $C(A)=C$.
 
-Theorem from other paper:
-$C(A)$ is doubly even.  Furthermore, if a binary block code $C$ of length $n$ is doubly even, then there exists an Adinkra with $C(A)=C$.
+
+
+\begin{lem}
+\label{lem:uniqueiso}
+Given connected $1$-d Adinkras $A$ and $B$ and vertices $a$ of $A$ and $b$ of $B$, there is at most one graph isomorphism from $A$ to $B$ that preserves colors and sends $a$ to $b$.
+\end{lem}
+\begin{proof}
+Suppose $\phi:A\to B$ is a graph isomorphism that preserves colors and sends $a$ to $b$.
+
+Let $v$ be a vertex of $A$. Since $A$ is connected, there is a path from $a$ to $v$.  This produces a color sequence $d$.  Since $\phi$ is a graph isomorphism that preserves colors, $\phi$ sends this path to a path in $B$ starting from $b$ with the same color sequence.  Since there is only one path in $B$ with this property, this determines the endpoint of the path, which is $\phi(v)$.
+\end{proof}
+
+
 
 
 \subsection{$2$-d Adinkras}
@@ -257,69 +334,73 @@ In this section, we show that the coherence conditions of $2$-d adinkras force a
 
 \subsection{A $2$-d Adinkra Fits in a Rectangle}
 
-Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $g$) be defined as the range of $g$, its bigrading function. Now, we show that the support of $2$-d adinkra must form a rectangle in $\ZZ^2$. In this and the following sections, it helps to have some standard assumptions:
+Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
 
-\begin{itemize}
-\item Recall that any $1$-d adinkra has vertices labeled by equivalence classes of $\ZZ_2^n$ by some $(n,k)$ doubly-even code $L$. We will refer to vertices by these equivalence classes (or their representatives). We use the notation $(v_1, \ldots, v_n)$ and $(v_1 v_2 \cdots v_n)$ interchangeably.
+
+
+% In this and the following sections, it helps to have some standard assumptions:
+
+%\begin{itemize}
+%\item Recall that any $1$-d adinkra has vertices labeled by equivalence classes of $\ZZ_2^n$ by some $(n,k)$ doubly-even code $C$. We will refer to vertices by these equivalence classes (or their representatives). We use the notation $(v_1, \ldots, v_n)$ and $(v_1 v_2 \cdots v_n)$ interchangeably.
 %% No longer needed: \item Without loss of generality, let our color set $C_L \cup C_R = \{1,2,\ldots, n\}$, with $C_L = \{1, 2, \ldots, p\}$ and $C_R = \{p+1, p+2, \ldots, p+q=n\}$. We now identify these $n$ elements with the $n$ indices of the vertices thinking of them as the indices of $\ZZ_2^n$. For all $i \in C_L \cup C_R$, define the map $q_i$ that takes a vertex $v$ and returns the unique vertex joined to $v$ by an edge of color $i$. So if $v = (v_1, \ldots, v_n)$, $q_i(v) = (v_1, cdots, v_{i-1}, 1-v_i, v_{i+1}, \cdots, v_n)$. Note that $q_i^2(v) = v$.
 % But: do we need the N-cube?
-\item We will always define $\overline{0}$ to be the vertex corresponding to the equivalence class of $(00\cdots0)$. We will also assume that $g(\overline{0}) = (0,0)$. 
-\end{itemize}
+%\item We will always define $\overline{0}$ to be the vertex corresponding to the equivalence class of $(00\cdots0)$. We will also assume that $g(\overline{0}) = (0,0)$. 
+%\end{itemize}
 
-For every vertex pair $(v,w)$ in our $2$-d adinkra, there exist (many) paths from $v$ to $w$. Ignoring the dashings for now, let the sequence of colors on any path be called a \emph{color sequence} for the path. So, for example, in a chromotopology corresponding to the unique trivial $(4,0)$ code, the path with color sequence $(3,2,1,1)$ carries $\overline{0} = 0000$ to $0010$, $0110$, $1110$, and finally $0110$. Note that a color sequence $(i_1, i_2, \ldots, i_k)$ sends $v$ to $q_{i_k} q_{i_{k-1}} \cdots q_{i_1} (v)$.
 
-Now, define a map $s$ that takes a color sequence and returns an element of $V = \{0,1\}^n$ where the $i$-th element is the number of times (modulo $2$) that color $i$ appears in the sequence. For example, $s(3,2,1,1) = 0110$. Note that $s(d)$ will return (a member of the equivalence class of) the bitstring obtained by applying the sequence $d$ to $\overline{0}$.  In particular that we may permute a sequence from $d = (d_n)$ to $d' = (d_n')$ without changing the result of $s$. Thinking about paths is very important for us, because:
-
-\begin{prop}
-\label{prop:paths}
-Start at any vertex $v$ in an adinkra $A$ with code $L(A)$, following two paths with color sequences $d$ and $d'$ ends up at the same resulting vertex if and only if $s(d) = s(d') \pmod{L}$.
-\end{prop}
-\begin{prop}
-See [reference]. The main idea is that the $q_i$'s commute, so where we end up after a color sequence $d$ only depends on $s(d)$. By the definition of $L$, we end up at the same vertex only if the difference between the two sets of edges correspond to an element of $L$.
-\end{prop}
-
-Let $l(d)$ be a rearrangement of $d$ that moves all the left-moving colors to the beginning, and let $r(d)$ be a rearrangement of $d$ that moves all the right-moving colors to the beginning. Thus, suppose $p = q = 2$, we have $l((3,2,1,1)) = (2,1,1,3)$ and $r((3,2,1,1)) = (3,2,1,1)$. We always have $s(l(d)) = s(r(d))$ in general, since $l(d)$ and $r(d)$ are just permutations of each other.
+Let $d$ be a color sequence.  Let $l(d)$ be a rearrangement of $d$ that moves all the left-moving colors to the beginning, and let $r(d)$ be a rearrangement of $d$ that moves all the right-moving colors to the beginning. Thus, suppose $p = q = 2$, we have $l((3,1,2,1)) = (2,1,1,3)$ and $r((3,1,2,1)) = (3,2,1,1)$. We always have $s(l(d)) = s(r(d))$ in general, since $l(d)$ and $r(d)$ are just permutations of each other.
 
 \begin{prop}
 \label{prop:rectangle-completion}
-Suppose we have any path from $(x,y)$ to $(v,w)$ in a $2$-d adinkra $A$; then the vertices $(x,w)$ and $(v,y)$ are in $A$'s support.
+Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
 \end{prop}
 \begin{proof}
-Let this path take color sequence $d$. $l(d)$ and $r(d)$ must both end up at $(v,w)$, but $l(d)$ only changes along the $y$-axis in the first part of moves that only use left-moving colors, so it must end up at coordinate $(x,w)$ to be able to end up at $(v,w)$ (since it can only use right-moving / $x$-axis colors afterwards). Using the same argument for $r(d)$ shows we must end up in $(v,y)$ at some point in the path.
+The statement that $(x_1,y_1)$ and $(x_2,y_2)$ is in the support of $A$ means that there exist vertices $v_1$ and $v_2$ of $A$ with $(h_L(v_1),h_R(v_1))=(x_1,y_1)$ and $(h_L(v_2),h_R(v_2))=(x_2,y_2)$, respectively.  Since $A$ is connected, there exists a path from $v_1$ to $v_2$.
+
+Let $d$ be the color sequence of this path.  Now $l(d)$ is a color sequence that can be written as a concatenation $ab$ where $a$ is a color sequence only involving left-moving colors, and $b$ is a color sequence only involving right-moving colors.  Consider the vertex $u=s(a)v_1$.  The color sequence $a$ describes a path from $v_1$ to $u$ involving only left-moving colors, and so $h_R(u)=h_R(v_1)=y_1$.  The color sequence $b$ describes a path from $u$ to $v_2$ involving only right-moving colors, and so $h_L(u)=h_L(v_2)=x_2$.  To summarize, $(h_L(u),h_R(u))=(x_2,y_1)$.
+
+Repeating this procedure with $r(d)$ likewise provides a vertex $w$ with $(h_L(w),h_R(w))=(x_1,y_2)$.
 \end{proof}
 
 \begin{cor}
 \label{cor:rectangle}
-The support of a $2$-d adinkra is exactly some $k \times l$ rectangle. In other words, the set of points in $\ZZ^2$ in the range of $g$, the bigrading map, can be taken to the set of points $(x,y)$, $0 \leq x < l$, $0 \leq y < k$.
+The support of a connected $2$-d adinkra is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ so that the support is
+\[\{(x,y)\in\ZZ^2\,|\,x_0\le x\le x_1\mbox{ and }y_0\le y\le y_1\}\]
 \end{cor}
 \begin{proof}
-If the support is not a rectangle, then there must be some coordinates $(x,y)$ and $(v,w)$ in the support such that one of the other two diagonal coordinates are missing. This violates Proposition~\ref{prop:rectangle-completion}.
+Let $x_0$ and $y_0$ be the minima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra.  By Proposition~\ref{prop:rectangle-completion}, $(x_0,y_0)$ is in the support as well.
+
+Likewise, if $x_1$ and $y_1$ are the maxima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra, then $(x_1,y_1)$ is in the support.  By Proposition~\ref{prop:rectangle-completion}, $(x_1,y_0)$ and $(x_0,y_1)$ are also in the support.
+
+Since the Adinkra is connected, there must be paths from vertices with bigrading $(x_0,y_0)$ to vertices with bigrading $(x_1,y_1)$.  Since $h_L$ and $h_R$ can change by at most 1 along these paths, we see that for all $x_0\le x\le x_1$, there must exist $y_x$ so that $(x,y_x)$ is in the support.  Likewise for all $y_0\le y\le y_1$, there must exist $x_y$ so that $(x_y,y)$ is in the support.  By application of Proposition~\ref{prop:rectangle-completion} again, we get that $(x,y)$ is in the support for all $x_0\le x\le x_1$ and $y_0\le y\le y_1$.
 \end{proof}
 
 While it is neat that the vertices of a $2$-d adinkra $A$ line up nicely in a rectangle, we now show that there is even more regularity in its structure. Let $A_L$ (resp. $A_R)$ be the subgraphs of $A$ induced by left-moving (resp. right-moving) edges of $A$. %
 
 \begin{lem}
-\label{lem:kevin-translate-component}
-If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then $q_i(X)$ is the vertex set of a connected component of $A_L$. The analogous statement for $A_R$ also holds.
+\label{lem:qiso}
+Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then there is a graph isomorphism between $X$ and $q_i(X)$ that preserves colors and $h_L$.  The analogous statement for $A_R$ also holds.
 \end{lem}
 \begin{proof}
-Given two vertices $q_i(x)$ and $q_i(x')$ in $q_i(X)$, we know that $x$ and $x'$ are in $X$. Since $X$ is connected in $A_L$, there is a path with left-moving colors from $x$ to $x'$. This means 
-\[
-x' = q_{j_1}q_{j_2}\cdots q_{j_k} x,
-\]
-so
-\[
-q_i (x') = q_i q_{j_1} q_{j_2} \cdots q_{j_k} (x) = q_{j_1} q_{j_2} \cdots q_{j_k} q_i (x),
-\]
-meaning $q_i(x')$ and $q_i(x)$ are connected in $A_L$. The converse is equally easy.
+Propostion~\ref{prop:qmap} states that $q_i$ is a graph isomorphism from the underlying graph of $A$ to itself that preserves colors.  If we restrict  $q_i$ to a connected component $X$ of $A_L$, the restricted map is an isomorphism from $X$ to $q_i(X)$ that preserves colors.
+
+Since $i$ is a right-moving color, then for all vertices $v\in X$, $h_L(v)=h_L(q_i(v))$.
+\end{proof}
+
+\begin{lem}
+\label{lem:qiconnected}
+Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then $q_i(X)$ is the vertex set of a connected component of $A_L$. The analogous statement for $A_R$ also holds.
+\end{lem}
+\begin{proof}
+Because the property of connectedness is preserved under graph isomorphism, we know that $q_i(X)$ is connected.  If we let $X'$ be the connected component of $A_L$ that contains $q_i(X)$, then the same argument proves that $q_i(X')$ is connected as well.  Since $X$ was assumed to be a connected component of $A_L$, we have that $q_i(X')\subseteq X$.  But since $q_i^2$ is the identity, $X=q_i^2(X)\subseteq q_i(X')\subseteq X$.  This means $q_i(X')=X$.  By the fact that $q_i^2$ is the identity, we also have $q_i(X)=X'$.
 \end{proof}
 
 \begin{prop}
 \label{prop:kevin}
-All disconnected components in $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
 \end{prop}
 \begin{proof}
-Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$. Reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$. By Lemma~\ref{lem:kevin-translate-component}, each such edge puts us in a new connected component isomorphic to $X$, so $X$ is isomorphic to $Y$. They are all isomorphic as graded posets since translating via right-moving colors does not change the $y$-coordinate of the grading.
+Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$. Reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
 \end{proof}
 
 %Let the \emph{left boundary} $B_L(A)$ and \emph{right boundary} $B_R(A)$ of the rectangle be the subgraphs of $A$ induced by vertices of $A$ that occur at the sets $\{(i,0) | 0 \leq i < l \}$ and $\{(0, j) | 0 \leq j < k \}$ respectively. It helps to picture the normal Cartesian plane rotated $45$ degrees counterclockwise, because then adjectives refer to the direction of ``movement'': this way, the left boundary corresponds to the lower-left vertices in the support rectangle and the right boundary corresponds to the lower-right vertices.
@@ -365,42 +446,82 @@ Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
 \end{definition}
 
 
+The main result of this section is the following theorem:
+\begin{thm}
+\label{thm:quotient}
+Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$.
 
+There is a binary block code $K$ of length $n$ so that $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$, and there is an isomorphism
+\[A\cong (A_L^0\times A_R^0)/K\]
+of the underlying graphs that preserves colors and the bigrading.
+\end{thm}
 
-
-\begin{prop}
+Before we begin it will help to understand the relationship of the codes.
+\begin{lem}
+\label{lem:cplus}
 \[\hat{C}(A_L^0)\oplus \check{C}(A_R^0) \subseteq C(A).\]
-\end{prop}
+\end{lem}
 \begin{proof}
 Let $g\in\hat{C}(A_L^0)$ and $h\in \check{C}(A_R^0)$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in \hat{C}(A_L^0)$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
 \end{proof}
 
-\begin{thm}
-There is a binary block code $K$ of length $n$ so that as colored graphs,
-\[A\cong (A_L^0\times A_R^0)/K\]
-and $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$.
-\end{thm}
-\begin{proof}
-From the previous proposition and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^N$ that is a vector space complement of
+\begin{proof}[Proof of Theorem~\ref{thm:quotient}]
+From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^N$ that is a vector space complement of
 $\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$ in $C(A)$.  That is,
 \[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K.\]
-Then
-\begin{eqnarray*}
-A&\cong& \ZZ_2^N/C(A)\\
-&=&\ZZ_2^N/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K)\\
-&=&(\ZZ_2^N/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)))/ K\\
-&=&(\ZZ_2^N/C(A_L^0 \times A_R^0))/ K\\
-&=&(A_L^0 \times A_R^0)/ K
-\end{eqnarray*}
-\end{proof}
+Then by Theorem~\ref{thm:cubemodulocode}, there is an isomorphism
+\[i_1:A\cong I^n/C(A)\]
+that preserves colors.  The proof of this began with choosing a special vertex in $A$, and we specify here that we should use our chosen vertex $\overline{0}\in $A$.  This isomorphism then sends $\overline{0}$ to the coset containing $(0,\ldots,0)$ in $I^n/C(A)$.
 
-\begin{thm}
-The bigrading $(h_L,h_R)$ on $(A_L^0\times A_R^0)$ descends to
-\[(A_L^0\times A_R^0)/K\]
-and the above isomorphism preserves this bigrading.
-\end{thm}
-\begin{proof}
-Let $(v,w)$ be a vertex of $A_L^0\times A_R^0$.  Let $\alpha\in K$.  Then $\alpha\in C(A)$.  We write $\alpha=\alpha_L+\alpha_R$ where $\alpha_L$ has $0$s for the last $q$ coordinates and $\alpha_R$ has $0$s for the first $p$ coordinates.  Then $\alpha_L(v)\in A_L^0$, and $\alpha_R(\alpha_L(v))=v$.  Since $\alpha_R$ preserves $h_L$, we have $h_L(\alpha_L(v))=h_L(v)$.
+We now note that
+\begin{eqnarray*}
+I^n/C(A)
+&=&I^n/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K)\\
+&=&(I^n/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)))/ K\\
+&=&(I^n/C(A_L^0 \times A_R^0))/ K
+\end{eqnarray*}
+and again apply Theorem~\ref{cubemodulocode} to establish an isomorphism
+\[i_2:(I^n/C(A_L^0 \times A_R^0))/ K\cong (A_L^0\times A_R^0)/K\]
+that preserves colors and sends the coset of $(0,\ldots,0)$ to $(\overline{0},\overline{0})$.
+
+We compose these isomorphisms to define
+\[i_3:A\to (A_L^0\times A_R^0)/K\]
+an isomorphism of graphs that preserves colors.
+
+
+
+We now restrict $i_3$ to $A_L^0$.  This gives an isomorphism from $A_L^0$ to $A_L^0\times\{\overline{0}}$.  It preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$.  It is in fact the map that sends a vertex $v$ in $A_L^0$ to $(v,\overline{0})$.  This can be seen by the fact that the map sending $v$ to $(v,\overline{0})$ is also an isomorphism that preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$, and by Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
+
+Now let $v$ be any vertex of $A$.  The map $i_3$ sends $v$ to a pair $(u,w)$ where $u\in A_L^0$ and $w\in A_R^0$.  There is a path from $\overline{0}$ to $v$.  This gives a color sequence $d$.  
+
+  Let $p$ be a path from $\overline{0}$ to $v$.
+
+
+obsolete proof:
+
+If $v$ is any vertex in $A_L^0$, there is a path from $\overline{0}$ to $v$ that stays completely inside $A_L^0$.  This produces a color sequence with only left-moving colors, and since $i_3$ preserves colors, $i_3$ must send this path to a path within $A_L^0\times A_R^0$ with the same color sequence.  Since these are all left-moving colors, the image of this path under $i_3$ must be completely inside $A_L^0\times \{\overline{0}\}$, and since the path is determined by the color sequence, and since $A_L^0\times\{\overline{0}\}$ is by definition isomorphic to $A_L^0$ as a graph with colors and grading, we conclude that $i_3$ is the identity on this path.  In particular, $i_3(v)=(v,\overline{0})$.
+
+
+Now to continue with the proof of Theorem~\ref{thm:quotient},
+
+
+For the next step we verify that this isomorphism preserves the bigrading $(h_L,h_R)$.  For this we follow the above series of isomorphisms step by step with the bigrading.
+
+We use the isomorphism $i_1$ to push the bigrading on $A$ onto $I^n/C(A)$.  This bigrading then lifts to a bigrading of $I^n$ with the property that if $\alpha\in C(A)$ and $v\in I^n$, then $h_L(\alpha v)=h_L(v)$ and $h_R(\alpha v)=h_R(v)$.
+
+The sequence of equalities that gives
+\[I^n/C(A)=(I^n/C(A_L^0\times A_R^0))/K\]
+defines the bigrading $(h_L,h_R)$ on $(I^n/C(A_L^0\times A_R^0))/K$.
+
+
+
+Since the series of isomorphisms sends $\overline{0}$ to $(\overline{0},\overline{0})$, and preserves colors, 
+
+
+
+
+
+Let $(v,w)$ be a vertex of $A_L^0\times A_R^0$, and let $\alpha\in K$.  Then $\alpha\in C(A)$.  We write $\alpha=\alpha_L+\alpha_R$ where $\alpha_L$ has $0$s for the last $q$ coordinates and $\alpha_R$ has $0$s for the first $p$ coordinates.  Then $\alpha_L(v)\in A_L^0$, and $\alpha_R(\alpha_L(v))=v$.  Since $\alpha_R$ preserves $h_L$, we have $h_L(\alpha_L(v))=h_L(v)$.
 
 Then we have
 \[h_L(\alpha(v,w))=h_L((\alpha_L(v),\alpha_R(w))=h_L(\alpha_L(v))=h_L(v)\]
@@ -420,15 +541,6 @@ The proof is similar for $h_R$.
 [Now discuss dashing]
 
 
-
-\begin{thm}
-\label{thm:quotient}
-Any $2$-d adinkra $A$ is isomorphic to $A_L^0 \times A_R^0 / G$ for some group $G$. 
-\end{thm}
-\begin{proof}
-\end{proof}
-
-\com{TODO}
 
 \begin{figure}[htb]
 \begin{center}
