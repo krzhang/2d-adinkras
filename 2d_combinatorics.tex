@@ -471,7 +471,7 @@ $\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$ in $C(A)$.  That is,
 \[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K.\]
 Then by Theorem~\ref{thm:cubemodulocode}, there is an isomorphism
 \[i_1:A\cong I^n/C(A)\]
-that preserves colors.  The proof of this began with choosing a special vertex in $A$, and we specify here that we should use our chosen vertex $\overline{0}\in $A$.  This isomorphism then sends $\overline{0}$ to the coset containing $(0,\ldots,0)$ in $I^n/C(A)$.
+that preserves colors.  The proof of this began with choosing a special vertex in $A$, and we specify here that we should use our chosen vertex $\overline{0}$ of $A$.  This isomorphism then sends $\overline{0}$ to the coset containing $(0,\ldots,0)$ in $I^n/C(A)$.
 
 We now note that
 \begin{eqnarray*}
@@ -480,7 +480,7 @@ I^n/C(A)
 &=&(I^n/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)))/ K\\
 &=&(I^n/C(A_L^0 \times A_R^0))/ K
 \end{eqnarray*}
-and again apply Theorem~\ref{cubemodulocode} to establish an isomorphism
+and again apply Theorem~\ref{thm:cubemodulocode} to establish an isomorphism
 \[i_2:(I^n/C(A_L^0 \times A_R^0))/ K\cong (A_L^0\times A_R^0)/K\]
 that preserves colors and sends the coset of $(0,\ldots,0)$ to $(\overline{0},\overline{0})$.
 
@@ -490,51 +490,13 @@ an isomorphism of graphs that preserves colors.
 
 
 
-We now restrict $i_3$ to $A_L^0$.  This gives an isomorphism from $A_L^0$ to $A_L^0\times\{\overline{0}}$.  It preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$.  It is in fact the map that sends a vertex $v$ in $A_L^0$ to $(v,\overline{0})$.  This can be seen by the fact that the map sending $v$ to $(v,\overline{0})$ is also an isomorphism that preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$, and by Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
+We now restrict $i_3$ to $A_L^0$.  This gives an isomorphism from $A_L^0$ to $A_L^0\times\{\overline{0}\}$.  It preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$.  It is in fact the map that sends a vertex $v$ in $A_L^0$ to $(v,\overline{0})$.  This can be seen by the fact that the map sending $v$ to $(v,\overline{0})$ is also an isomorphism that preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$, and by Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
 
-Now let $v$ be any vertex of $A$.  The map $i_3$ sends $v$ to a pair $(u,w)$ where $u\in A_L^0$ and $w\in A_R^0$.  There is a path from $\overline{0}$ to $v$.  This gives a color sequence $d$.  
+Now let $v$ be any vertex of $A$.  The map $i_3$ sends $v$ to a pair $(u,w)$ where $u\in A_L^0$ and $w\in A_R^0$.  There is a path from $\overline{0}$ to $v$.  This gives a color sequence $d$.  Consider the reordered color sequence $l(d)$.  Write this as $ab$ where $a$ only involves left-moving colors and $b$ only uses right-moving colors.  Then define $x=s(a)\overline{0}$.  Because $a$ only involves left-moving colors, $x$ is in $A_L^0$.
 
-  Let $p$ be a path from $\overline{0}$ to $v$.
+Now since $b$ consists of right-moving colors, and connects $i_3(x)$ with $i_3(x)$, we have $h_L(i_3(v))=h_L(i_3(x))=h_L(x,\overline{0})=h_L(x)$.  This is $h_L(v)$ because $b$ only involves right-moving colors and connects $x$ with $v$.  Thus, $h_L(i_3(v))=h_L(v)$.
 
-
-obsolete proof:
-
-If $v$ is any vertex in $A_L^0$, there is a path from $\overline{0}$ to $v$ that stays completely inside $A_L^0$.  This produces a color sequence with only left-moving colors, and since $i_3$ preserves colors, $i_3$ must send this path to a path within $A_L^0\times A_R^0$ with the same color sequence.  Since these are all left-moving colors, the image of this path under $i_3$ must be completely inside $A_L^0\times \{\overline{0}\}$, and since the path is determined by the color sequence, and since $A_L^0\times\{\overline{0}\}$ is by definition isomorphic to $A_L^0$ as a graph with colors and grading, we conclude that $i_3$ is the identity on this path.  In particular, $i_3(v)=(v,\overline{0})$.
-
-
-Now to continue with the proof of Theorem~\ref{thm:quotient},
-
-
-For the next step we verify that this isomorphism preserves the bigrading $(h_L,h_R)$.  For this we follow the above series of isomorphisms step by step with the bigrading.
-
-We use the isomorphism $i_1$ to push the bigrading on $A$ onto $I^n/C(A)$.  This bigrading then lifts to a bigrading of $I^n$ with the property that if $\alpha\in C(A)$ and $v\in I^n$, then $h_L(\alpha v)=h_L(v)$ and $h_R(\alpha v)=h_R(v)$.
-
-The sequence of equalities that gives
-\[I^n/C(A)=(I^n/C(A_L^0\times A_R^0))/K\]
-defines the bigrading $(h_L,h_R)$ on $(I^n/C(A_L^0\times A_R^0))/K$.
-
-
-
-Since the series of isomorphisms sends $\overline{0}$ to $(\overline{0},\overline{0})$, and preserves colors, 
-
-
-
-
-
-Let $(v,w)$ be a vertex of $A_L^0\times A_R^0$, and let $\alpha\in K$.  Then $\alpha\in C(A)$.  We write $\alpha=\alpha_L+\alpha_R$ where $\alpha_L$ has $0$s for the last $q$ coordinates and $\alpha_R$ has $0$s for the first $p$ coordinates.  Then $\alpha_L(v)\in A_L^0$, and $\alpha_R(\alpha_L(v))=v$.  Since $\alpha_R$ preserves $h_L$, we have $h_L(\alpha_L(v))=h_L(v)$.
-
-Then we have
-\[h_L(\alpha(v,w))=h_L((\alpha_L(v),\alpha_R(w))=h_L(\alpha_L(v))=h_L(v)\]
-Likewise, $h_R(\alpha(v,w))=h_R(v)$.
-
-So the bigrading $(h_L,h_R)$ descends to the quotient.
-
-By definition,
-\[h_L(\overline{0},\overline{0})=h_L(\overline{0})=h_L(\phi(\overline{0},\overline{0})).\]
-
-Now let $(v,w)\in A_L^0\times A_R^0$ and consider $h_L(v,w)$ and $h_L(\phi(v,w))$.     ...  I guess we don't have $\phi$ defined explicitly here.  [to be completed later]
-
-The proof is similar for $h_R$.
+A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 \end{proof}
 
 
