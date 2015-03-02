@@ -488,13 +488,11 @@ We compose these isomorphisms to define
 \[i_3:A\to (A_L^0\times A_R^0)/K\]
 an isomorphism of graphs that preserves colors.
 
+We now restrict $i_3$ to $A_L^0$.  It turns out that this sends every vertex $v$ of $A_L^0$ to $(v,\overline{0})$ in $(A_L^0\times A_R^0)/K$.  This can be seen by noting that both the restriction of $i_3$ to $A_L^0$ and the map sending $v$ to $(v,\overline{0})$ are graph isomorphisms that preserve colors and send $\overline{0}$ to $(\overline{0},\overline{0})$.  By Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, a similar proof shows that if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
 
+Now let $v$ be any vertex of $A$.  There is a path from $\overline{0}$ to $v$.  This gives a color sequence $d$.  Consider the reordered color sequence $l(d)$.  Write this as $ab$ where $a$ only involves left-moving colors and $b$ only uses right-moving colors.  Then define $x=s(a)\overline{0}$.  Because $a$ only involves left-moving colors, $x$ is in $A_L^0$.
 
-We now restrict $i_3$ to $A_L^0$.  This gives an isomorphism from $A_L^0$ to $A_L^0\times\{\overline{0}\}$.  It preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$.  It is in fact the map that sends a vertex $v$ in $A_L^0$ to $(v,\overline{0})$.  This can be seen by the fact that the map sending $v$ to $(v,\overline{0})$ is also an isomorphism that preserves colors and sends $\overline{0}$ to $(\overline{0},\overline{0})$, and by Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
-
-Now let $v$ be any vertex of $A$.  The map $i_3$ sends $v$ to a pair $(u,w)$ where $u\in A_L^0$ and $w\in A_R^0$.  There is a path from $\overline{0}$ to $v$.  This gives a color sequence $d$.  Consider the reordered color sequence $l(d)$.  Write this as $ab$ where $a$ only involves left-moving colors and $b$ only uses right-moving colors.  Then define $x=s(a)\overline{0}$.  Because $a$ only involves left-moving colors, $x$ is in $A_L^0$.
-
-Now since $b$ consists of right-moving colors, and connects $i_3(x)$ with $i_3(x)$, we have $h_L(i_3(v))=h_L(i_3(x))=h_L(x,\overline{0})=h_L(x)$.  This is $h_L(v)$ because $b$ only involves right-moving colors and connects $x$ with $v$.  Thus, $h_L(i_3(v))=h_L(v)$.
+Now since $b$ consists of right-moving colors, and connects $i_3(x)$ with $i_3(v)$, we have $h_L(i_3(v))=h_L(i_3(x))=h_L(x,\overline{0})=h_L(x)$.  This is $h_L(v)$ because $b$ only involves right-moving colors and connects $x$ with $v$.  Thus, $h_L(i_3(v))=h_L(v)$.
 
 A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 \end{proof}
@@ -548,10 +546,14 @@ A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 
 
 \section{ESDE Codes}
+Let $p$ and $q$ be non-negative integers so that $p+q=n$, and let $C$ be a linear block code of length $n$.  For every element $\alpha\in\ZZ_2^n$, we define $\wt_L(\alpha)$ to be the number of $1$s of $\alpha$ in the first $p$ components, and $\wt_R(\alpha)$ to be the number of $1$s of $\alpha$ in the last $q$ components.  Then $\wt(\alpha)=\wt_L(\alpha)+\wt_R(\alpha)$.
 
-Define a \emph{even-split doubly-even (ESDE) code} to be a doubly-even code isomorphic to a direct sum $C_L \oplus C_R$ of even codes. Recall that $1$-d chromotopologies are in bijection with quotients of the hamming cube $I^n$ by a doubly-even code $L$, so any adinkra $A$ has a well-defined associated code $L(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras. To do this, we introduce a special family of $2$-d adinkras.
 
-For an $1$-d adinkra $A$ with grading function $g$, let $\val(A)$, the \emph{valise} of $A$, be defined as a $1$-d adinkra $A'$ identical to $A$ except for its grading function $g'$, defined as $g'(v) = 0$ if $g(v) \in 2\ZZ$ and $1$ otherwise. It is easy to see that $\val(A)$ is also an adinkra. Similarly, for any $2$-d adinkra $A$ with bigrading function $g$, there is a unique $2$-d adinkra $A'$ with the same chromotopology as $A$ such that $(A')_L^0 = \val(A_L^0)$ and $(A')_R^0 = \val(A_R^0)$, defined with a bigrading function $g'(v) = (x', y')$, where $x', y' \in \{0,1\}$ depending on $x$ and $y \pmod(2)$ respectively given $g(v) = (x,y)$. We similarly denote $A'$ by $\val(A)$ and call such an adinkra a \emph{valise} ($2$-d) adinkra. Equivalently, a valise adinkra is one where the supporting rectangle is a $2 \times 2$ square, and any $2$-d adinkra could be put into a valise form. 
+Define a \emph{even-split doubly-even (ESDE) code} of length $(p,q)$ to be a doubly-even code of length $n$ so that every word $\alpha$ in the code has $\wt_L(\alpha)$ and $\wt_R(\alpha)$ even.
+
+Recall that $1$-d chromotopologies are in bijection with quotients of the hamming cube $I^n$ by a doubly-even code $C$, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras. To do this, we introduce a special family of $2$-d adinkras.
+
+For a $1$-d adinkra $A$ with grading function $h$, let $\val(A)$, the \emph{valise} of $A$, be defined as a $1$-d Adinkra $A'$ identical to $A$ except for its grading function $h'$, defined as $h'(v) = 0$ if $h(v) \in 2\ZZ$ and $1$ otherwise. It is easy to see that $\val(A)$ is also an Adinkra. Similarly, for any $2$-d Adinkra $A$ with bigrading function $(h_L,h_R)$, there is a unique $2$-d adinkra $A'$ with the same chromotopology as $A$ such that $(A')_L^0 = \val(A_L^0)$ and $(A')_R^0 = \val(A_R^0)$, defined with a bigrading function $h'(v) = (x', y')$, where $x', y' \in \{0,1\}$ depending on $x$ and $y \pmod(2)$ respectively given $(h_L(v),h_R(v)) = (x,y)$. We similarly denote $A'$ by $\val(A)$ and call such an Adinkra a \emph{valise} ($2$-d) Adinkra. Equivalently, a valise Adinkra is one where the supporting rectangle is a $2 \times 2$ square, and any $2$-d Adinkra could be put into a valise form. 
 
 \begin{figure}[htb]
 \begin{center}
@@ -580,13 +582,19 @@ For an $1$-d adinkra $A$ with grading function $g$, let $\val(A)$, the \emph{val
 
 \begin{thm}
 \label{thm:esde}
-For a code $L \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $L(A) = L$ if and only if $L$ is a ESDE code.
+For a code $C \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
 \end{thm}
 \begin{proof}
-Suppose $L(A) = L$ for some $2$-d adinkra $A$. We know that $L$ is doubly-even. Consider any codeword $l \in L$. Starting at $\overline{0} \in A$, moving by a path corresponding to $l$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of which changes the $x$-coordinate (resp. $y$-coordinate) by $1$ in absolute value. Thus, $L$ must be ESDE.
+Suppose $C(A) = C$ for some $2$-d Adinkra $A$. We know that $C$ is doubly-even. Consider any codeword $\alpha \in C$. Starting at $\overline{0} \in A$, moving by a path corresponding to $\alpha$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of which changes the $h_L$ (resp. $h_R$) by $1$ in absolute value. Thus, $L$ must be ESDE.
 
-Now, take an ESDE code $L$. $L$ is doubly-even, so there exists a $1$-d adinkra $A$ with code $L(A) = L$. We can assume $A$ is a $1$-d valise by taking $A = \val(A)$ if necessary, which does not change the code. Now, any vertex $v \in A$ corresponds to an equivalence class $c+L \subset \ZZ_2^n.$ consider the function $g'\colon V(A) \rightarrow \{0,1\}$ that sends $v$ to $(x,y)$, where $x$ (resp. $y$) corresponds to the parity of the weight of the left-moving colors of any element in $c+L$. The fact that $L$ is ESDE precisely makes this notion well-defined. Since $g'$ gives $A$ a bigrading, $A$ is realizable as a $2$-d valise adinkra $A$ with code $L$, so we are done. 
+Now, take an ESDE code $C$. $C$ is doubly-even, so there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$.  
+
+Fix a vertex $\overline{0}$ of $A$.  For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number modulo 2 of left-moving colors in $d$ and likewise $h_R(V)$ is the number modulo 2 of right-moving colors in $d$.  Thus the support of $A$ is $\{(0,0),(0,1),(1,0),(1,1)\}$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $C$ is ESDE, then this is the case.
+
+
 \end{proof}
+
+
 
 
 \appendix
