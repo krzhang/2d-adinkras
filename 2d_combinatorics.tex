@@ -124,6 +124,11 @@ Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $1\le 
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
 
+\begin{definition}
+\label{defn:homomorphism}
+A graph homomorphism from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to\{1,\ldots,n\}$ and a coloring $c_2:E_2\to\{1,\ldots,n\}$, we say that $\phi$ preserves colors if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  If $\phi$ is bijective, we say that it is a graph isomorphism.
+\end{definition}
+
 \begin{prop}
 \label{prop:qmap}
 The map $q_i$ is a graph isomorphism from the underlying graph of $A$ to itself which preserves colors.  It is an involution and for all $i$, $j$, we have
@@ -142,9 +147,26 @@ The equation (\ref{eq:commute}) follows from item 3 of the definition when $i\no
 By combining the $q_1,\ldots, q_n$ maps, we can define an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
 \begin{definition}
 The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on vertices by
-\[(x_1,\ldots,x_N)v=q_1^{x_1}\circ\cdots\circ q_n^{x_n}(v)\]
-and the fact that it acts on edges can be seen by the fact that each $q_i$ is a graph homomorphism.  It preserves colors since each $q_i$ does.
+\[(x_1,\ldots,x_n)v=q_1^{x_1}\circ\cdots\circ q_n^{x_n}(v).\]
 \end{definition}
+
+\begin{prop}
+\label{prop:actioniso}
+The above defines an action by graph isomorphisms that preserve colors.
+\end{prop}
+\begin{proof}
+Acting on $v$ by $\vec{y}$ and then $\vec{x}$ gives
+\begin{eqnarray*}
+\vec{x}\vec{y}(v)
+&=&q_1^{x_1}\circ\cdots\circ q_n^{x_n}\circ
+q_1^{y_1}\circ\cdots\circ q_n^{y_n}(v)\\
+&=&q_1^{x_1+y_1}\circ\cdots\circ q_n^{x_n+y_n}(v)
+\end{eqnarray*}
+by the commutativity shown in (\ref{eq:commute}), and where the exponents are taken modulo $2$, because each $q_i$ is an involution.  Therefore this is equal to
+\[(\vec{x}+\vec{y})(v).\]
+
+Proposition~\ref{prop:qmap} says that each $q_i$ is an isomorphism which preserves colors, and this action is a composition of such maps.
+\end{proof}
 
 \begin{definition}
 A path is a finite sequence of edges of the form $((v_1,v_2),(v_2,v_3),\ldots,(v_{k-1},v_k))$.  The {\em color sequence} of the path is the sequence $(c(v_1,v_2),c(v_2,v_3),\ldots,c(v_{k-1},v_k))$.
@@ -161,9 +183,6 @@ This can be proved by induction on the length of $\sigma$, and using the fact th
 \end{proof}
 
 Now, define a map $s$ that takes a color sequence and returns an element of $\ZZ_2^n=\{0,1\}^n$ where the $i$-th coordinate is the number of times (modulo $2$) that color $i$ appears in the sequence. For example, $s(3,1,2,1) = 0110$.  Note that $s(\sigma)$ does not depend on the ordering of the color sequence $\sigma$.  This relates to paths in Adinkras because of the following:
-
-
-
 
 \begin{prop}
 \label{prop:colorendpath}
@@ -231,6 +250,74 @@ Conversely, suppose $s(\sigma)-s(\sigma')\in C(A)$.  Then by reversing the above
 and thus, by Proposition~\ref{prop:colorendpath}, $p$ and $p'$ end at the same vertex.
 \end{proof}
 
+\subsection{Quotients of graphs and Adinkras}
+\label{sec:quotient}
+As we have seen, $\ZZ_2^n$, and therefore subgroups of $\ZZ_2^n$, act on Adinkras (more precisely, the underlying graphs), and it will be important to understand quotients of Adinkras by codes.
+
+\begin{prop}
+Let $\Gamma=(V,E)$ be a graph, and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  Then $C$ acts on the set of edges in the following manner: if $c\in C$ and $(v,w)\in E$, then $c(v,w)=(cv,cw)$.
+\end{prop}
+\begin{proof}
+The fact that $(cv,cw)$ is an edge follows directly from the definition of graph isomorphism.
+
+The fact that this is a group action follows from the fact that $c(c'(v,w))=(c(c'(v)),c(c'(w)))=((cc')v,(cc')w)=(cc')(v,w)$.
+\end{proof}
+
+\begin{definition}
+Suppose $C$ is a group that acts on a graph $(V,E)$ via graph isomorphisms.  We say that this group action is distant if for every non-identity group element $c\in C$, and every vertex $v\in V$, every path from $v$ to $cv$ is of length greater than 2.
+\end{definition}
+
+\begin{construction}
+If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then we create a graph $\Gamma/C$ as follows: let the set of vertices be the orbit space $V/C$.  Edges in $\Gamma/C$ are pairs $(Cv,Cw)$ where there exist $c_1, c_2\in C$ so that $(c_1v,c_2h)$ is an edge in $E$.
+\end{construction}
+
+\begin{prop}
+\label{prop:distiso}
+If, in the previous construction, the group action is distant, then there is a bijection from $E/C$ to the set of edges in $\Gamma/C$.
+\end{prop}
+\begin{proof}
+For every orbit $C(v,w)$ of $C$ on the set of edges of $\Gamma$, there is an edge $(Cv,Cw)$.  This is an edge in $\Gamma/C$ because $(v,w)$ is an edge in $\Gamma$.  This assignment is independent of the choice of representative $(v,w)$ from $C(v,w)$ above since if $(v',w')$ is another representative, then there is a group element $c\in C$ so that $v'=cv$ and $w'=cw$.  Then $v'\in Cv$ and $w'\in Cw$ so that $Cv'=Cv$ and $Cw'=Cw$.
+
+To see that this assignment is surjective follows directly from the definition: for every edge in $\Gamma/C$, there is an edge $(v,w)$ in $\Gamma$ that gets sent to it.
+
+Now to prove that this is injective, suppose $(v,w)$ and $(v',w')$ are edges in $\Gamma$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $c_1$ and $c_2\in C$ so that $c_1v=v'$ and $c_2w=w'$.  On the other hand, there is an edge $(c_1v,c_1w)=(v',c_1w)$.  So $(v',c_1w)$ and $(v',c_2w)=(v',w')$ are edges in the graph.  Then $c_2c_1^{-1}$ is a group element that sends $c_1w$ to $c_2w$ but we have just constructed a path of length 2 from $c_1w$ to $c_2w$.  Since the group action is distant, we know that $c_2c_1^{-1}=1$ so that $c_1=c_2$.  Therefore $(v',w')=c_1(v,w)$.
+\end{proof}
+
+\begin{prop}
+\label{prop:quotient}
+If a group $C$ acts on an Adinkra $A$ using graph isomorphisms that preserve colors, and if the action is distant, then the coloring descends to a coloring on $A/C$ that satisfies those properties of Adinkras that relate to colors and not to dashings or grading.  That is, let $E/C$ denote the set of edges of $A/C$ as defined in the construction.  Then
+\begin{enumerate}
+\item If $(Cv,Cw)$ is an edge in $A/C$, then $(Cw,Cv)$ is also an edge.  Furthermore, $c(Cv,Cw)=c(Cw,Cv)$.
+\item For every $Cv\in V/C$ and $c\in \{1,\ldots,n\}$, there exist exactly one $Cw\in V/C$ so that $(Cv,Cw)\in E/C$ and $c(Cv,Cw)=c$.
+\item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $Cv\in V/C$, then there exist $Cw$, $Cx$, and $Cy\in V/C$ so that $(Cv,Cw)$, $(Cw,Cx)$, $(Cx,Cy)$, and $(Cy,Cv)\in E/C$, and $c(Cv,Cw)=c(Cx,Cy)=c_1$ and $c(Cw,Cx)=c(Cy,Cv)=c_2$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Since Proposition~\ref{prop:distiso} says that the edges of $A/C$ can be identified with $E/C$, and since the action of $C$ preserves colors, we can define the coloring on $E/C$, and thus, on the edges of $A/C$.
+
+Property 1 follows from the construction of the edges of $A/C$.
+
+Now we prove Property 2.  Let $Cv\in V/C$ and $c\in\{1,\ldots,n\}$.  Since $A$ is an Adinkra, there is exactly one vertex $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.  There is thus an edge $(Cv,Cw)$ in $A/C$ that has color $c$.  To show uniqueness, suppose there is an $x\in V$ so that $(Cv,Cx)$ is in $A/C$ with color $c$.  This means there are group elements $\alpha,\beta\in C$ so that $(\alpha v,\beta x)$ is an edge of $A$ of color $c$.  By acting by $\alpha^{-1}$, we see that without loss of generality, $\alpha=1$.  Because $A$ is an Adinkra, there is a unique edge from $v$ that has color $c$.  So $\beta x = w$.  Therefore $x\in Cw$.
+
+Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\in V/C$.  Since $A$ is an Adinkra, there are vertices $w$, $x$, and $y$ in $V$ so that $(v,w)$, $(w,x)$, $(x,y)$ and $(y,v)\in E$ and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$.  Then $Cw$, $Cx$, and $Cy$ are the requisite vertices in $V/C$ with the given property.
+\end{proof}
+
+
+[Change notation?  Colors and codes are both $C$ and $c$...  Graphs are often $G$ but here they are $\Gamma$ because groups are often $G$.]
+
+\begin{prop}
+If $A$ is an Adinkra and $C$ acts on $A$ via graph isomorphisms, then there is a map
+\[\pi:A\to A/C\]
+ that is a graph homomorphism.  If the action is distant and if $C$ acts preserving colors, then $\pi$ preserves colors.
+\end{prop}
+\begin{proof}
+Let $\pi(v)=vC$.  If $(v,w)$ is an edge in $A$, then $\pi(v)=vC$ and $\pi(w)=wC$ are connected via an edge in $A/C$ because of the existence of the edges $(v,w)$.
+
+If the action is distant and $C$ acts preserving colors, then by Proposition~\ref{prop:quotient}, $A/C$ has a well-defined coloring defined by the following: if $(v,w)$ is an edge, then the color of $(vC,wC)$ is the color of $(v,w)$.
+\end{proof}
+
+\subsection{Quotienting the cube by a code}
+
 
 
 The following $1$-d Adinkra was defined in [reference].
@@ -247,14 +334,10 @@ For any non-negative integer $n$, we have an Adinkra $I^n=(V,E,c,\mu,h)$ with
 
 
 \begin{definition}
-Given $C$ a linear block code of length $n$, we can define a graph with edge colors $I^n/C$ as the orbit space of the action of $C\subset \ZZ_2^n$ on $I^n$ as a graph.
+Given $C$ a linear block code of length $n$, with all non-zero code words having weight greater than $2$, we can define a graph with edge colors $I^n/C$ as the orbit space of the action of $C\subset \ZZ_2^n$ on $I^n$ as a graph.
 \end{definition}
 
-The fact that $C$ acts on $I^n$ via graph homomorphisms results in a graph (see later section on Quotients).
-
-\begin{definition}
-A graph homomorphism from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to\{1,\ldots,n\}$ and a coloring $c_2:E_2\to\{1,\ldots,n\}$, we say that $\phi$ preserves colors if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  If $\phi$ is bijective, we say that it is a graph isomorphism.
-\end{definition}
+Recall that $C$ acts via graph homomorphisms that preserve colors.  By Proposition~\ref{prop:quotient}, since code words are length at least $2$, the quotient $I^n/C$ makes sense as a graph with coloring.
 
 \begin{thm}
 \label{thm:cubemodulocode}
@@ -286,6 +369,25 @@ Suppose $\phi:A\to B$ is a graph isomorphism that preserves colors and sends $a$
 
 Let $v$ be a vertex of $A$. Since $A$ is connected, there is a path from $a$ to $v$.  This produces a color sequence $\sigma$.  Since $\phi$ is a graph isomorphism that preserves colors, $\phi$ sends this path to a path in $B$ starting from $b$ with the same color sequence.  By Proposition~\ref{prop:colorpath}, there is only one path in $B$ with this property.  The end of this path is $\phi(v)$.
 \end{proof}
+
+
+Maybe delete this:
+
+
+\begin{definition}
+Let 
+$A_1=(V_1,E_1,c_1,\mu_1,h_{L1},h_{R1})$
+and
+$A_2=(V_2,E_2,c_2,\mu_2,h_{L2},h_{R2})$
+be 2-Adinkras with $(p,q)$ colors.  A homomorphism from $A_1$ to $A_2$ is a graph homomorphism
+\[\phi:(V_1,E_1)\to (V_2,E_2)\]
+that preserves colors and so that:
+\begin{itemize}
+\item If $v\in V_1$ then $h_{1L}(v)=h_{2L}(\phi(v))$.
+\item If $v\in V_1$ then $h_{1R}(v)=h_{2R}(\phi(v))$.
+\end{itemize}
+Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
+\end{definition}
 
 
 
@@ -441,75 +543,6 @@ Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ an
 
 With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the next section.
 
-\section{Quotienting}
-To understand quotients, we first define the homomorphism from one $2$-d Adinkra to another.  This will be similar to the definition of homomorphism of graphs [give some standard reference to this terminology].
-
-\begin{definition}
-Let 
-$A_1=(V_1,E_1,c_1,\mu_1,h_{L1},h_{R1})$
-and
-$A_2=(V_2,E_2,c_2,\mu_2,h_{L2},h_{R2})$
-be 2-Adinkras with $(p,q)$ colors.  A homomorphism from $A_1$ to $A_2$ is a graph homomorphism
-\[\phi:(V_1,E_1)\to (V_2,E_2)\]
-that preserves colors and so that:
-\begin{itemize}
-\item If $v\in V_1$ then $h_{1L}(v)=h_{2L}(\phi(v))$.
-\item If $v\in V_1$ then $h_{1R}(v)=h_{2R}(\phi(v))$.
-\end{itemize}
-Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
-\end{definition}
-
-
-\begin{prop}
-If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then $C$ acts on the set of edges in the following manner: if $c\in C$ and $(v,w)\in E$, then $c(v,w)=(cv,cw)$.
-\end{prop}
-\begin{proof}
-The fact that $(cv,cw)$ is an edge follows directly from the definition of graph homomorphism.
-
-The fact that this is a group action follows from the fact that $c(c'(v,w))=(c(c'(v)),c(c'(w)))=((cc')v,(cc')w)=(cc')(v,w)$.
-\end{proof}
-
-\begin{definition}
-Suppose $C$ is a group that acts on a graph $(V,E)$ via graph isomorphisms.  We say that this group action is distant if for every non-identity group element $c\in C$, and every vertex $v\in V$, every path from $v$ to $cv$ is of length greater than 2.
-\end{definition}
-
-\begin{construction}
-If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then we create a graph $\Gamma/C$ as follows: let the set of vertices be the orbit space $V/C$.  Edges in $\Gamma/C$ are pairs $(Cv,Cw)$ where there exist $c_1, c_2\in C$ so that $(c_1v,c_2h)$ is an edge in $E$.
-\end{construction}
-
-\begin{prop}
-\label{prop:distiso}
-If, in the previous construction, the group action is distant, then there is a bijection from $E/C$ to the set of edges in $\Gamma/C$.
-\end{prop}
-\begin{proof}
-For every orbit $C(v,w)$ of $C$ on the set of edges of $\Gamma$, there is an edge $(Cv,Cw)$.  This is an edge in $\Gamma/C$ because $(v,w)$ is an edge in $\Gamma$.  This assignment is independent of the choice of representative $(v,w)$ from $C(v,w)$ above since if $(v',w')$ is another representative, then there is a group element $c\in C$ so that $v'=cv$ and $w'=cw$.  Then $v'\in Cv$ and $w'\in Cw$ so that $Cv'=Cv$ and $Cw'=Cw$.
-
-To see that this assignment is surjective follows directly from the definition: for every edge in $\Gamma/C$, there is an edge $(v,w)$ in $\Gamma$ that gets sent to it.
-
-Now to prove that this is injective, suppose $(v,w)$ and $(v',w')$ are edges in $\Gamma$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $c_1$ and $c_2\in C$ so that $c_1v=v'$ and $c_2w=w'$.  On the other hand, there is an edge $(c_1v,c_1w)=(v',c_1w)$.  So $(v',c_1w)$ and $(v',c_2w)=(v',w')$ are edges in the graph.  Then $c_2c_1^{-1}$ is a group element that sends $c_1w$ to $c_2w$ but we have just constructed a path of length 2 from $c_1w$ to $c_2w$.  Since the group action is distant, we know that $c_2c_1^{-1}=1$ so that $c_1=c_2$.  Therefore $(v',w')=c_1(v,w)$.
-\end{proof}
-
-\begin{prop}
-If a group $C$ acts on an Adinkra $A$ using graph isomorphisms that preserve colors, and if the action is distant, then the coloring descends to a coloring on $A/C$ that satisfies those properties of Adinkras that relate to colors and not to dashings or grading.  That is, let $E/C$ denote the set of edges of $A/C$ as defined in the construction.  Then
-\begin{enumerate}
-\item If $(Cv,Cw)$ is an edge in $A/C$, then $(Cw,Cv)$ is also an edge.  Furthermore, $c(Cv,Cw)=c(Cw,Cv)$.
-\item For every $Cv\in V/C$ and $c\in \{1,\ldots,n\}$, there exist exactly one $Cw\in V/C$ so that $(Cv,Cw)\in E/C$ and $c(Cv,Cw)=c$.
-\item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $Cv\in V/C$, then there exist $Cw$, $Cx$, and $Cy\in V/C$ so that $(Cv,Cw)$, $(Cw,Cx)$, $(Cx,Cy)$, and $(Cy,Cv)\in E/C$, and $c(Cv,Cw)=c(Cx,Cy)=c_1$ and $c(Cw,Cx)=c(Cy,Cv)=c_2$
-\end{enumerate}
-\end{prop}
-\begin{proof}
-Since Proposition~\ref{prop:distiso} says that the edges of $A/C$ can be identified with $E/C$, and since the action of $C$ preserves colors, we can define the coloring on $E/C$, and thus, on the edges of $A/C$.
-
-Property 1 follows from the construction of the edges of $A/C$.
-
-Now we prove Property 2.  Let $Cv\in V/C$ and $c\in\{1,\ldots,n\}$.  Since $A$ is an Adinkra, there is exactly one vertex $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.  There is thus an edge $(Cv,Cw)$ in $A/C$ that has color $c$.  To show uniqueness, suppose there is an $x\in V$ so that $(Cv,Cx)$ is in $A/C$ with color $c$.  This means there are group elements $\alpha,\beta\in C$ so that $(\alpha v,\beta x)$ is an edge of $A$ of color $c$.  By acting by $\alpha^{-1}$, we see that without loss of generality, $\alpha=1$.  Because $A$ is an Adinkra, there is a unique edge from $v$ that has color $c$.  So $\beta x = w$.  Therefore $x\in Cw$.
-
-Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\in V/C$.  Since $A$ is an Adinkra, there are vertices $w$, $x$, and $y$ in $V$ so that $(v,w)$, $(w,x)$, $(x,y)$ and $(y,v)\in E$ and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$.  Then $Cw$, $Cx$, and $Cy$ are the requisite vertices in $V/C$ with the given property.
-\end{proof}
-
-
-[Change notation?  Colors and codes are both $C$ and $c$...  Graphs are often $G$ but here they are $\Gamma$ because groups are often $G$.]
-
 
 
 
@@ -520,7 +553,9 @@ The main result of this section is the following theorem:
 \label{thm:quotient}
 Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$.
 
-There is a binary block code $K$ of length $n$ so that $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$, and there is a graph isomorphism
+There is a binary block code $K$ of length $n$ so that $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$, and
+\[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K,\]
+and there is a graph isomorphism
 \begin{equation}
 \label{eqn:quotientiso}
 A\cong (A_L^0\times A_R^0)/K
