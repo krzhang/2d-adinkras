@@ -682,7 +682,17 @@ Let $A$ be a connected $2$-d Adinkra.  Let $\overline{0}$, $A_L^0$, $A_R^0$, and
 
 Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A_L^0\times A_R^0$. At the same time, under the isomorphism (\ref{eqn:quotientiso}), the dashing $\mu$ on $A$ gets carried to $(A_L^0\times A_R^0)/K$.  The graph homomorphism
 \[\pi:A_L^0\times A_R^0\to (A_L^0\times A_R^0)/K\]
-pulls back the dashing to $\mu_2$ on $A_L^0\times A_R^0$. Note that Theorem~\ref{thm:dashing-under-quotient} can be reformulated as saying that $\mu_1$ and $\mu_2$ are equivalent under vertex switching. Our strategy will be to reduce the problem to checking a set of local conditions on cycles. We now give some definitions and auxiliary results for our approach.
+pulls back the dashing to $\mu_2$ on $A_L^0\times A_R^0$. While $\mu_1$ and $\mu_2$ are fairly different, they agree on the ``lower boundary:''
+
+\begin{lem}
+\label{lem:agree-on-boundary}
+The dashings $\mu_1$ and $\mu_2$ agree on $A_L^0\times \{\overline{0}\}$ and on $\{\overline{0}\}\times A_R^0$.
+\end{lem}
+\begin{proof}
+The construction of $\mu_1$ gives all edges in $A_L^0\times\{\overline{0}\}$ as the same as in $A_L^0$ under the association of every edge $(v,w)$ with $((v,\overline{0}),(w,\overline{0}))$.  For $\mu_2$, consider that $i_3$ sends every vector $v\in A_L^0$ to $(v,\overline{0})$, and likewise any edges in $A_L^0$ will be sent to the corresponding edge in $A_L^0\times\{\overline{0}\}$.  Therefore $\mu_1$ and $\mu_2$ agree on $A_L^0\times\{\overline{0}\}$.  Likewise for $\{0\}\times A_R^0$.
+\end{proof}
+
+Note that Theorem~\ref{thm:dashing-under-quotient} can be reformulated as saying that $\mu_1$ and $\mu_2$ are equivalent under vertex switching. Our strategy will be to reduce the problem to checking a set of local conditions on cycles. We now give some definitions and auxiliary results for our approach.
 
 \begin{definition}
 Given a cycle $C$ given by vertices $(v_0,\ldots,v_k)$ in an Adinkra with dashing function $\mu$, the \emph{parity of $\mu$ on $C$} is the sum
@@ -717,7 +727,7 @@ to
 \[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
 A color swap of this type leads to a new path from $\overline{0}$, via Proposition~\ref{prop:colorpath}.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  The effect on the parity of any dashing is, by property 3, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
 
-After a series of such color swaps, we rearrange $\sigma$ to $l(\sigma)$, and the path in question consists of left-moving edges, which remain in $A_L^0\times \{\overline{0}\}$, and then right-moving edges, which ends in $\overline{0}$, and so must be in $\{\overline{0}\}\times A_R^0$.  By the previous lemma, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
+After a series of such color swaps, we rearrange $\sigma$ to $l(\sigma)$, and the path in question consists of left-moving edges, which remain in $A_L^0\times \{\overline{0}\}$, and then right-moving edges, which ends in $\overline{0}$, and so must be in $\{\overline{0}\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
 
 Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
 \end{proof}
@@ -745,13 +755,6 @@ Since $\pi$ is a graph homomorphism, and $c_1$, $c_2$, $v$, $w$, $x$, and $y$ ar
 
 \end{proof}
 
-
-\begin{lem}
-The dashings $\mu_1$ and $\mu_2$ agree on $A_L^0\times \{\overline{0}\}$ and on $\{\overline{0}\}\times A_R^0$.
-\end{lem}
-\begin{proof}
-The construction of $\mu_1$ gives all edges in $A_L^0\times\{\overline{0}\}$ as the same as in $A_L^0$ under the association of every edge $(v,w)$ with $((v,\overline{0}),(w,\overline{0}))$.  For $\mu_2$, consider that $i_3$ sends every vector $v\in A_L^0$ to $(v,\overline{0})$, and likewise any edges in $A_L^0$ will be sent to the corresponding edge in $A_L^0\times\{\overline{0}\}$.  Therefore $\mu_1$ and $\mu_2$ agree on $A_L^0\times\{\overline{0}\}$.  Likewise for $\{0\}\times A_R^0$.
-\end{proof}
 
 \end{comment}
 
