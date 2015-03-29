@@ -98,15 +98,15 @@
 \section{Preliminaries}
 
 \subsection{$1$-d Adinkras}
-Adinkras in [references] will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
+Adinkras in \com{[references]} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
 
 \begin{definition}
-Let $n$ be a non-negative integer.  A $1$-d Adinkra with $n$ colors is $(V,E,c,\mu,h)$ where
+Let $n$ be a non-negative integer.  A \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
-\item $(V,E)$ is a finite undirected graph (called the underlying graph of the Adinkra) with vertex set $V$ and edge set $E\subset V\times V$,
-\item $c:E\to \{1,\ldots,n\}$ is a map called the coloring,
-\item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the dashing,
-\item $h:V\to\ZZ$ is a map called the grading.
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set $V$ and edge set $E\subset V\times V$,
+\item $c:E\to \{1,\ldots,n\}$ is a map called the \emph{coloring},
+\item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},
+\item $h:V\to\ZZ$ is a map called the \emph{grading}.
 \end{itemize}
 
 These are required to satisfy the following:
@@ -117,7 +117,7 @@ These are required to satisfy the following:
 \item If $(v,w)\in E$, then $|h(v)-h(w)|=1$.
 \end{enumerate}
 \end{definition}
-Note that in [Reference], there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because a vertex $v$ is a boson if and only if $h(v)$ is even.
+Note that in \com{[Reference]}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because a vertex $v$ is a boson if and only if $h(v)$ is even.
 
 \subsection{The action of $\ZZ_2^n$ and the code}
 Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $1\le i\le n$, define
@@ -126,7 +126,7 @@ so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge
 
 \begin{definition}
 \label{defn:homomorphism}
-A graph homomorphism from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to\{1,\ldots,n\}$ and a coloring $c_2:E_2\to\{1,\ldots,n\}$, we say that $\phi$ preserves colors if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  If $\phi$ is bijective, we say that it is a graph isomorphism.
+A \emph{graph homomorphism} from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to\{1,\ldots,n\}$ and a coloring $c_2:E_2\to\{1,\ldots,n\}$, we say that $\phi$ \emph{preserves colors} if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  If $\phi$ is bijective, we say that it is a \emph{graph isomorphism}.
 \end{definition}
 
 \begin{prop}
@@ -226,7 +226,7 @@ Let $\vec{x}\in \ZZ_2^n$.  The result follows from the sequence of equivalences:
 \end{proof}
 
 \begin{definition}
-Given a connected Adinkra $A$, the code for $A$, called $C(A)$, is defined to be $C(A,v)$, where $v$ is a vertex of $A$.
+Given a connected Adinkra $A$, the \emph{code} for $A$, called $C(A)$, is defined to be $C(A,v)$, where $v$ is a vertex of $A$.
 \end{definition}
 
 
@@ -303,7 +303,7 @@ Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\i
 \end{proof}
 
 
-[Change notation?  Colors and codes are both $C$ and $c$...  Graphs are often $G$ but here they are $\Gamma$ because groups are often $G$.]
+\com{[Change notation?  Colors and codes are both $C$ and $c$...  Graphs are often $G$ but here they are $\Gamma$ because groups are often $G$.]}
 
 \begin{prop}
 If $A$ is an Adinkra and $C$ acts on $A$ via graph isomorphisms, then there is a map
@@ -320,7 +320,7 @@ If the action is distant and $C$ acts preserving colors, then by Proposition~\re
 
 
 
-The following $1$-d Adinkra was defined in [reference].
+The following $1$-d Adinkra was defined in \com{[reference]}.
 \begin{construction}
 For any non-negative integer $n$, we have an Adinkra $I^n=(V,E,c,\mu,h)$ with
 \begin{itemize}
@@ -334,10 +334,10 @@ For any non-negative integer $n$, we have an Adinkra $I^n=(V,E,c,\mu,h)$ with
 
 
 \begin{definition}
-Given $C$ a linear block code of length $n$, with all non-zero code words having weight greater than $2$, we can define a graph with edge colors $I^n/C$ as the orbit space of the action of $C\subset \ZZ_2^n$ on $I^n$ as a graph.
+Given $C$ a linear block code of length $n$, with all non-zero code words having weight greater than $2$, we can define an (edge-colored) graph $I^n/C$ as the orbit space of the action of $C\subset \ZZ_2^n$ on $I^n$ as a graph.
 \end{definition}
 
-Recall that $C$ acts via graph homomorphisms that preserve colors.  By Proposition~\ref{prop:quotient}, since code words are length at least $2$, the quotient $I^n/C$ makes sense as a graph with coloring.
+Recall that $C$ acts via graph homomorphisms that preserve colors.  By Proposition~\ref{prop:quotient}, since code words are length at least $2$, the quotient $I^n/C$ makes sense as an edge-colored graph.
 
 \begin{thm}
 \label{thm:cubemodulocode}
@@ -356,7 +356,7 @@ We now prove that $\phi$ is surjective.  Since $A$ is connected, $\ZZ_2^n$ acts 
 To prove the isomorphism from $I^n/C(A)$ to $A$, we consider the necessary and sufficient conditions for $\phi(\vec{x})=\phi(\vec{y})$ for $\vec{x}$, $\vec{y}\in \ZZ_2^n$.  The condition $\phi(\vec{x})=\phi(\vec{y})$ is equivalent to $\phi(\vec{x}-\vec{y})\overline{0}=\overline{0}$.  This is equivalent to saying $\vec{x}-\vec{y}\in C(A)$.  Thus, the map $\phi$ descends to $I^n/C(A)$ and gives an isomorphism.
 \end{proof}
 
-In Reference ..., it was proved that if $A$ is a connected Adinkra, then $C(A)$ is a doubly even code.  Furthermore, if $C$ is any doubly even binary block code of length $n$, then there is an Adinkra with $C(A)=C$.
+In \com{Reference ...}, it was proved that if $A$ is a connected Adinkra, then $C(A)$ is a doubly even code.  Furthermore, if $C$ is any doubly even binary block code of length $n$, then there is an Adinkra with $C(A)=C$.
 
 
 
@@ -371,7 +371,7 @@ Let $v$ be a vertex of $A$. Since $A$ is connected, there is a path from $a$ to 
 \end{proof}
 
 
-Maybe delete this:
+\com{Maybe delete this:}
 
 
 \begin{definition}
@@ -393,13 +393,13 @@ Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
 
 
 \subsection{$2$-d Adinkras}
-The notion of $2$-d Adinkras is described in Ref...[fill in references to various things].  We use a definition here that is equivalent to the one found in [some reference]: the proof is found in Appendix...[maybe?]
+The notion of $2$-d Adinkras is described in \com{Ref...[fill in references to various things]}.  We use a definition here that is equivalent to the one found in \com{[some reference]}: the proof is found in Appendix \com{...[maybe?]}
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges.
 
 More formally,
 \begin{definition}
-Let $p$ and $q$ be non-negative integers.   A 2-d Adinkra with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
+Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
 \item $h(v)=h_L(v)+h_R(v)$
 \item if $(v,w)$ is a left-moving edge, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)$ is a right-moving edge, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_R(w)$.
@@ -412,7 +412,7 @@ One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where 
 
 \begin{construction}
 \label{const:product}
-Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, c_1, \mu_1,h_1)$ be a $1$-d Adinkra with $p$ colors and let $A_2=(V_2, E_2, c_2, \mu_2,h_2)$ be a $1$-d Adinkra $q$ colors.  We can define the product of these Adinkras $A_1\times A_2$ as the following 2-Adinkra with $(p,q)$ colors:
+Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, c_1, \mu_1,h_1)$ be a $1$-d Adinkra with $p$ colors and let $A_2=(V_2, E_2, c_2, \mu_2,h_2)$ be a $1$-d Adinkra $q$ colors.  We define the \emph{product} of these Adinkras $A_1\times A_2$ as the following 2-Adinkra with $(p,q)$ colors:
 \[A_1\times A_2=(V,E,c,\mu,h_L,h_R)\]
 where
 \begin{eqnarray*}
