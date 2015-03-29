@@ -103,7 +103,8 @@ Adinkras in \com{[references]} will be referred to as $1$-d Adinkras in this pap
 \begin{definition}
 Let $n$ be a non-negative integer.  A \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
-\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set $V$ and edge set $E\subset V\times V$,
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \com{[Reference]}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading.}
+ $V$ and edge set $E\subset V\times V$,
 \item $c:E\to \{1,\ldots,n\}$ is a map called the \emph{coloring},
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},
 \item $h:V\to\ZZ$ is a map called the \emph{grading}.
@@ -116,8 +117,94 @@ These are required to satisfy the following:
 \item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$ and $\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\equiv 1\pmod{2}$.  Note that $\mu$ is called admissible if this last condition holds for every $v$, $w$, $x$ and $y$ that satisfy the above.
 \item If $(v,w)\in E$, then $|h(v)-h(w)|=1$.
 \end{enumerate}
+
+Figure~\ref{fig:1d-examples} give examples of 1-d Adinkras.
 \end{definition}
-Note that in \com{[Reference]}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because a vertex $v$ is a boson if and only if $h(v)$ is even.
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{cc}
+\begin{tikzpicture}[scale=0.15]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=10,y=0]{11}
+\Vertex[x=10,y=10]{10}
+\Vertex[x=0,y=10]{01}
+\Vertex[x=0,y=0]{00}
+\Edge[color=green](00)(10)
+\Edge[color=red, style=dashed](00)(01)
+\Edge[color=red](10)(11)
+\Edge[color=green](01)(11)
+\end{tikzpicture}
+& 
+\begin{tikzpicture}[scale=0.15]
+%\SetVertexNormal
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{111}
+\Vertex[x=0,y=10]{101}
+\Vertex[x=0,y=20]{010}
+\Vertex[x=20,y=10]{000}
+\Vertex[x=-10,y=10]{110}
+\Vertex[x=10,y=10]{011}
+\Vertex[x=-10,y=20]{100}
+\Vertex[x=10,y=20]{001}
+\Edge[color=red](100)(101)
+\Edge[color=red](000)(001)
+\Edge[color=red](010)(011)
+\Edge[color=red](110)(111)
+\Edge[color=green](000)(100)
+\Edge[color=green, style=dashed](001)(101)
+\Edge[color=green](010)(110)
+\Edge[color=green, style=dashed](011)(111)
+\Edge[color=blue](000)(010)
+\Edge[color=blue, style=dashed](001)(011)
+\Edge[color=blue, style=dashed](100)(110)
+\Edge[color=blue](101)(111)
+\end{tikzpicture}
+\\
+\begin{tikzpicture}[scale=0.15]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=5,y=15]{11}
+\Vertex[x=10,y=7]{10}
+\Vertex[x=0,y=7]{01}
+\Vertex[x=5,y=0]{00}
+\Edge[color=green](00)(10)
+\Edge[color=red, style=dashed](00)(01)
+\Edge[color=red](10)(11)
+\Edge[color=green](01)(11)
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale=0.15]
+%\SetVertexNormal
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{111}
+\Vertex[x=0,y=10]{101}
+\Vertex[x=20,y=0]{010}
+\Vertex[x=20,y=10]{000}
+\Vertex[x=-10,y=10]{110}
+\Vertex[x=10,y=10]{011}
+\Vertex[x=-10,y=0]{100}
+\Vertex[x=10,y=0]{001}
+\Edge[color=red](100)(101)
+\Edge[color=red](000)(001)
+\Edge[color=red](010)(011)
+\Edge[color=red](110)(111)
+\Edge[color=green](000)(100)
+\Edge[color=green, style=dashed](001)(101)
+\Edge[color=green](010)(110)
+\Edge[color=green, style=dashed](011)(111)
+\Edge[color=blue](000)(010)
+\Edge[color=blue, style=dashed](001)(011)
+\Edge[color=blue, style=dashed](100)(110)
+\Edge[color=blue](101)(111)
+\Edge[color=black](100)(011)
+\Edge[color=black, style=dashed](000)(111)
+\Edge[color=black](010)(101)
+\Edge[color=black](110)(001)
+\end{tikzpicture}
+\end{tabular}
+\caption{Examples of $1$-d Adinkras. In each picture, the grading function is represented by the relative vertical heights on the page.  \label{fig:1d-examples}}
+\end{center}
+\end{figure}
 
 \subsection{The action of $\ZZ_2^n$ and the code}
 Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $1\le i\le n$, define
@@ -316,6 +403,14 @@ Let $\pi(v)=vC$.  If $(v,w)$ is an edge in $A$, then $\pi(v)=vC$ and $\pi(w)=wC$
 If the action is distant and $C$ acts preserving colors, then by Proposition~\ref{prop:quotient}, $A/C$ has a well-defined coloring defined by the following: if $(v,w)$ is an edge, then the color of $(vC,wC)$ is the color of $(v,w)$.
 \end{proof}
 
+\com{I think in the preliminaries we should build as much as possible on what we already have -- maybe the following theorem from my paper is helpful? (it captures ``distant action,'' and embeds within it the idea that these quotients are well-defined)}
+
+\begin{thm}
+\label{thm:chromotopology as quotient}
+Chromotopologies are exactly quotients $I^n_c/L$, where $L$ is an even code with no codeword of weight $2$.
+\end{thm}
+\com{...}
+
 \subsection{Quotienting the cube by a code}
 
 
@@ -404,8 +499,44 @@ Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colo
 \item $h(v)=h_L(v)+h_R(v)$
 \item if $(v,w)$ is a left-moving edge, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)$ is a right-moving edge, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_R(w)$.
 \end{itemize}
+
+See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \end{definition}
 
+\begin{figure}[htb]
+\begin{center}
+\begin{tikzpicture}[scale=0.05]
+\SetVertexNoLabel
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=-10,y=0]{H}
+\Vertex[x=-30,y=30]{C}
+\Vertex[x=-20,y=30]{B}
+\Vertex[x=20,y=30]{D}
+\Vertex[x=10,y=30]{E}
+\Vertex[x=0,y=60]{G}
+\Vertex[x=-10,y=60]{F}
+\Edge[color=red](A)(C)
+\Edge[color=red](B)(H)
+\Edge[color=red](G)(E)
+\Edge[color=red](F)(D)
+\Edge[color=green](A)(D)
+\Edge[color=green, style=dashed](E)(H)
+\Edge[color=green](G)(B)
+\Edge[color=green, style=dashed](F)(C)
+\Edge[color=blue, style=dashed](C)(H)
+\Edge[color=blue](B)(A)
+\Edge[color=blue, style=dashed](G)(D)
+\Edge[color=blue](F)(E)
+\Edge[color=black, style=dashed](D)(H)
+\Edge[color=black, style=dashed](A)(E)
+\Edge[color=black](G)(C)
+\Edge[color=black](B)(F)
+\end{tikzpicture}
+
+\caption{A $2$-d Adinkra with $(2,2)$ colors. The bigrading is visualized by the northwest and northeast directions, respectively. \label{fig:2d-example}}
+\end{center}
+\end{figure}
 
 \subsection{Product of Adinkras}
 One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors.
@@ -427,7 +558,100 @@ h_R(v,w)&=&h_2(w)\\
 \mu((v_1,w),(v_2,w))&=&\mu_1(v_1,v_2)\\
 \mu((v,w_1),(v,w_2))&=&\mu_2(w_1,w_2)+h_1(v)\pmod{2}
 \end{eqnarray*}
+See Figure~\ref{fig:product} for an example.
 \end{construction}
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{c|c|c}
+\begin{tikzpicture}[scale=0.1]
+%\SetVertexNormal
+\SetUpEdge[labelstyle={draw}]
+\SetVertexNoLabel
+\Vertex[x=0,y=0]{A}
+\Vertex[x=10,y=0]{B}
+\Vertex[x=0,y=20]{E}
+\Vertex[x=10,y=20]{F}
+\Edge[color=blue](A)(E)
+\Edge[color=blue, style=dashed](B)(F)
+\Edge[color=red](A)(F)
+\Edge[color=red](B)(E)
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale=0.1]
+\SetVertexNoLabel
+\Vertex[x=0,y=0]{A}
+\Vertex[x=0,y=40]{B}
+\Vertex[x=-5,y=20]{E}
+\Vertex[x=5,y=20]{F}
+\Edge[color=green](A)(E)
+\Edge[color=green, style=dashed](B)(F)
+\Edge[color=black](A)(F)
+\Edge[color=black](B)(E)
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale=0.1]
+%\SetVertexNormal
+\SetVertexNoLabel
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{BA}
+\Vertex[x=-10,y=0]{AA}
+\Vertex[x=-30,y=40]{EA}
+\Vertex[x=-20,y=40]{FA}
+\Vertex[x=20,y=45]{AF}
+\Vertex[x=10,y=45]{AE}
+\Vertex[x=0,y=85]{EF}
+\Vertex[x=-10,y=85]{EE}
+\Vertex[x=0,y=75]{FF}
+\Vertex[x=-10,y=75]{FE}
+
+\Vertex[x=30,y=80]{AB}
+\Vertex[x=40,y=80]{BB}
+\Vertex[x=10,y=120]{EB}
+\Vertex[x=20,y=120]{FB}
+\Vertex[x=20,y=35]{BF}
+\Vertex[x=10,y=35]{BE}
+
+\Edge[color=blue](AA)(EA)
+\Edge[color=blue, style=dashed](BA)(FA)
+\Edge[color=red](AA)(FA)
+\Edge[color=red](BA)(EA)
+\Edge[color=blue](AB)(EB)
+\Edge[color=blue, style=dashed](BB)(FB)
+\Edge[color=red](AB)(FB)
+\Edge[color=red](BB)(EB)
+\Edge[color=blue](AE)(EE)
+\Edge[color=blue, style=dashed](BE)(FE)
+\Edge[color=red](AE)(FE)
+\Edge[color=red](BE)(EE)
+\Edge[color=blue](AF)(EF)
+\Edge[color=blue, style=dashed](BF)(FF)
+\Edge[color=red](AF)(FF)
+\Edge[color=red](BF)(EF)
+
+\Edge[color=green](AA)(AE)
+\Edge[color=green, style=dashed](AB)(AF)
+\Edge[color=black](AA)(AF)
+\Edge[color=black](AB)(AE)
+\Edge[color=green](BA)(BE)
+\Edge[color=green, style=dashed](BB)(BF)
+\Edge[color=black](BA)(BF)
+\Edge[color=black](BB)(BE)
+
+\Edge[color=green, style=dashed](EA)(EE)
+\Edge[color=green](EB)(EF)
+\Edge[color=black, style=dashed](EA)(EF)
+\Edge[color=black, style=dashed](EB)(EE)
+\Edge[color=green, style=dashed](FA)(FE)
+\Edge[color=green](FB)(FF)
+\Edge[color=black, style=dashed](FA)(FF)
+\Edge[color=black, style=dashed](FB)(FE)
+
+\end{tikzpicture}
+\end{tabular}
+\caption{Constructing the $2$-d Adinkra from two smaller $1$-d Adinkras. Note that the dashings are all ``consistent'' with the smaller Adinkras, except for the right-moving edges on the upper-left ``boundary'' of the rectangle; these correspond to right-moving edges where the grading corresponding to the first adinkra has height $1$.\label{fig:product}}
+\end{center}
+\end{figure}
 
 \begin{prop}
 \label{prop:product-admissable}
