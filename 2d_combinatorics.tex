@@ -540,8 +540,74 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \end{center}
 \end{figure}
 
+\section{Structural Theorems}
+\label{sec:structural}
+
+In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. The main idea is that we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
+
+Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
+
+Let $\sigma$ be a color sequence.  Let $l(\sigma)$ be a rearrangement of $\sigma$ that moves all the left-moving colors to the beginning, and let $r(\sigma)$ be a rearrangement of $\sigma$ that moves all the right-moving colors to the beginning. Thus, suppose $p = q = 2$, we have $l((3,1,2,1)) = (2,1,1,3)$ and $r((3,1,2,1)) = (3,2,1,1)$. We always have $s(l(\sigma)) = s(r(\sigma))$ in general, since $l(\sigma)$ and $r(\sigma)$ are just permutations of each other.
+
+\begin{prop}
+\label{prop:rectangle-completion}
+Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
+\end{prop}
+\begin{proof}
+The statement that $(x_1,y_1)$ and $(x_2,y_2)$ is in the support of $A$ means that there exist vertices $v_1$ and $v_2$ of $A$ with $(h_L(v_1),h_R(v_1))=(x_1,y_1)$ and $(h_L(v_2),h_R(v_2))=(x_2,y_2)$, respectively.  Since $A$ is connected, there exists a path from $v_1$ to $v_2$.
+
+Let $\sigma$ be the color sequence of this path.  Now $l(\sigma)$ is a color sequence that can be written as a concatenation $\alpha\beta$ where $\alpha$ is a color sequence only involving left-moving colors, and $\beta$ is a color sequence only involving right-moving colors.  Consider the vertex $u=s(\alpha)v_1$.  The color sequence $\alpha$ describes a path from $v_1$ to $u$ involving only left-moving colors, and so $h_R(u)=h_R(v_1)=y_1$.  The color sequence $\beta$ describes a path from $u$ to $v_2$ involving only right-moving colors, and so $h_L(u)=h_L(v_2)=x_2$.  To summarize, $(h_L(u),h_R(u))=(x_2,y_1)$.
+
+Repeating this procedure with $r(\sigma)$ likewise provides a vertex $w$ with $(h_L(w),h_R(w))=(x_1,y_2)$.
+\end{proof}
+
+\begin{cor}
+\label{cor:rectangle}
+The support of a connected $2$-d adinkra is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ so that the support is
+\[\{(x,y)\in\ZZ^2\,|\,x_0\le x\le x_1\mbox{ and }y_0\le y\le y_1\}\]
+\end{cor}
+\begin{proof}
+Let $x_0$ and $y_0$ be the minima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra.  By Proposition~\ref{prop:rectangle-completion}, $(x_0,y_0)$ is in the support as well.
+
+Likewise, if $x_1$ and $y_1$ are the maxima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra, then $(x_1,y_1)$ is in the support.  By Proposition~\ref{prop:rectangle-completion}, $(x_1,y_0)$ and $(x_0,y_1)$ are also in the support.
+
+Since the Adinkra is connected, there must be paths from vertices with bigrading $(x_0,y_0)$ to vertices with bigrading $(x_1,y_1)$.  Since $h_L$ and $h_R$ can change by at most 1 along these paths, we see that for all $x_0\le x\le x_1$, there must exist $y_x$ so that $(x,y_x)$ is in the support.  Likewise for all $y_0\le y\le y_1$, there must exist $x_y$ so that $(x_y,y)$ is in the support.  By application of Proposition~\ref{prop:rectangle-completion} again, we get that $(x,y)$ is in the support for all $x_0\le x\le x_1$ and $y_0\le y\le y_1$.
+\end{proof}
+
+While it is neat that the vertices of a $2$-d adinkra $A$ line up nicely in a rectangle, we now show that there is even more regularity in its structure. Let $A_L$ (resp. $A_R)$ be the subgraphs of $A$ induced by left-moving (resp. right-moving) edges of $A$. %
+
+\begin{lem}
+\label{lem:qiso}
+Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then there is a graph isomorphism between $X$ and $q_i(X)$ that preserves colors and $h_L$.  The analogous statement for $A_R$ also holds.
+\end{lem}
+\begin{proof}
+Propostion~\ref{prop:qmap} states that $q_i$ is a graph isomorphism from the underlying graph of $A$ to itself that preserves colors.  If we restrict  $q_i$ to a connected component $X$ of $A_L$, the restricted map is an isomorphism from $X$ to $q_i(X)$ that preserves colors.
+
+Since $i$ is a right-moving color, then for all vertices $v\in X$, $h_L(v)=h_L(q_i(v))$.
+\end{proof}
+
+\begin{lem}
+\label{lem:qiconnected}
+Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then $q_i(X)$ is the vertex set of a connected component of $A_L$. The analogous statement for $A_R$ also holds.
+\end{lem}
+\begin{proof}
+Because the property of connectedness is preserved under graph isomorphism, we know that $q_i(X)$ is connected.  If we let $X'$ be the connected component of $A_L$ that contains $q_i(X)$, then the same argument proves that $q_i(X')$ is connected as well.  Since $X$ was assumed to be a connected component of $A_L$, we have that $q_i(X')\subseteq X$.  But since $q_i^2$ is the identity, $X=q_i^2(X)\subseteq q_i(X')\subseteq X$.  This means $q_i(X')=X$.  By the fact that $q_i^2$ is the identity, we also have $q_i(X)=X'$.
+\end{proof}
+
+\begin{prop}
+\label{prop:kevin}
+Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+\end{prop}
+\begin{proof}
+Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$. Reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
+\end{proof}
+
+With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the upcoming sections.
+
 \section{Products}
-How to begin our study of these $2$-d Adinkras? It is desirable to have some way of combining Adinkras to make bigger ones (and conversely, breaking down bigger ones into smaller pieces). It turns out that one way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors. 
+\label{sec:products}
+
+Section \ref{sec:structural} hints that the information contained in a $2$-d Adinkra may be captured by just looking at two ``slices'' of the Adinkra. It is natural to guess that there is some product structure lying underneath, especially given the rectangular shape of the support proven in Corollary~\ref{cor:rectangle}. It is also desirable to have some way of combining Adinkras to make bigger ones (and conversely, breaking down bigger ones into smaller pieces). These considerations induce us to consider products of Adinkras. It turns out that one way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra gives the left-moving colors and the second Adinkra gives the right-moving colors. We will eventually see in the next section that this operation (plus a quotient) is all we need to characterize a $2$-d Adinkra.
 
 \begin{construction}
 \label{const:product}
@@ -655,7 +721,7 @@ See Figure~\ref{fig:product} for an example.
 \end{center}
 \end{figure}
 
-The main non-obvious part of the definition is the dashings. Note that the naive approach (assigning $\mu((v,w_1), (v,w_2)) = \mu(w_1, w_2)$ would fail). This situation is analogous to assigning signs in the differential to a double chain complex, such as in Bott and Tu \cite{bott_tu}, where one would have to do a similar symmetry breaking. We now show that this sign-tweaking in fact gives an admissable dashing:
+The main non-obvious part of the definition is the dashings. The naive approach, assigning $\mu((v,w_1), (v,w_2)) = \mu(w_1, w_2)$, would fail to give us the odd parity we desire. This situation is analogous to assigning signs in the differential to a double chain complex, such as in Bott and Tu \cite{bott_tu}, where one would have to do a similar symmetry breaking. We now show that this sign-tweaking in fact gives an admissable dashing:
 
 \begin{prop}
 \label{prop:product-admissable}
@@ -702,87 +768,32 @@ This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ a
 
 
 
-\section{Structural Theorems}
 
-In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. The main idea is that we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
-
-Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
-
-Let $\sigma$ be a color sequence.  Let $l(\sigma)$ be a rearrangement of $\sigma$ that moves all the left-moving colors to the beginning, and let $r(\sigma)$ be a rearrangement of $\sigma$ that moves all the right-moving colors to the beginning. Thus, suppose $p = q = 2$, we have $l((3,1,2,1)) = (2,1,1,3)$ and $r((3,1,2,1)) = (3,2,1,1)$. We always have $s(l(\sigma)) = s(r(\sigma))$ in general, since $l(\sigma)$ and $r(\sigma)$ are just permutations of each other.
-
-\begin{prop}
-\label{prop:rectangle-completion}
-Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
-\end{prop}
-\begin{proof}
-The statement that $(x_1,y_1)$ and $(x_2,y_2)$ is in the support of $A$ means that there exist vertices $v_1$ and $v_2$ of $A$ with $(h_L(v_1),h_R(v_1))=(x_1,y_1)$ and $(h_L(v_2),h_R(v_2))=(x_2,y_2)$, respectively.  Since $A$ is connected, there exists a path from $v_1$ to $v_2$.
-
-Let $\sigma$ be the color sequence of this path.  Now $l(\sigma)$ is a color sequence that can be written as a concatenation $\alpha\beta$ where $\alpha$ is a color sequence only involving left-moving colors, and $\beta$ is a color sequence only involving right-moving colors.  Consider the vertex $u=s(\alpha)v_1$.  The color sequence $\alpha$ describes a path from $v_1$ to $u$ involving only left-moving colors, and so $h_R(u)=h_R(v_1)=y_1$.  The color sequence $\beta$ describes a path from $u$ to $v_2$ involving only right-moving colors, and so $h_L(u)=h_L(v_2)=x_2$.  To summarize, $(h_L(u),h_R(u))=(x_2,y_1)$.
-
-Repeating this procedure with $r(\sigma)$ likewise provides a vertex $w$ with $(h_L(w),h_R(w))=(x_1,y_2)$.
-\end{proof}
-
-\begin{cor}
-\label{cor:rectangle}
-The support of a connected $2$-d adinkra is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ so that the support is
-\[\{(x,y)\in\ZZ^2\,|\,x_0\le x\le x_1\mbox{ and }y_0\le y\le y_1\}\]
-\end{cor}
-\begin{proof}
-Let $x_0$ and $y_0$ be the minima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra.  By Proposition~\ref{prop:rectangle-completion}, $(x_0,y_0)$ is in the support as well.
-
-Likewise, if $x_1$ and $y_1$ are the maxima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra, then $(x_1,y_1)$ is in the support.  By Proposition~\ref{prop:rectangle-completion}, $(x_1,y_0)$ and $(x_0,y_1)$ are also in the support.
-
-Since the Adinkra is connected, there must be paths from vertices with bigrading $(x_0,y_0)$ to vertices with bigrading $(x_1,y_1)$.  Since $h_L$ and $h_R$ can change by at most 1 along these paths, we see that for all $x_0\le x\le x_1$, there must exist $y_x$ so that $(x,y_x)$ is in the support.  Likewise for all $y_0\le y\le y_1$, there must exist $x_y$ so that $(x_y,y)$ is in the support.  By application of Proposition~\ref{prop:rectangle-completion} again, we get that $(x,y)$ is in the support for all $x_0\le x\le x_1$ and $y_0\le y\le y_1$.
-\end{proof}
-
-While it is neat that the vertices of a $2$-d adinkra $A$ line up nicely in a rectangle, we now show that there is even more regularity in its structure. Let $A_L$ (resp. $A_R)$ be the subgraphs of $A$ induced by left-moving (resp. right-moving) edges of $A$. %
-
-\begin{lem}
-\label{lem:qiso}
-Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then there is a graph isomorphism between $X$ and $q_i(X)$ that preserves colors and $h_L$.  The analogous statement for $A_R$ also holds.
-\end{lem}
-\begin{proof}
-Propostion~\ref{prop:qmap} states that $q_i$ is a graph isomorphism from the underlying graph of $A$ to itself that preserves colors.  If we restrict  $q_i$ to a connected component $X$ of $A_L$, the restricted map is an isomorphism from $X$ to $q_i(X)$ that preserves colors.
-
-Since $i$ is a right-moving color, then for all vertices $v\in X$, $h_L(v)=h_L(q_i(v))$.
-\end{proof}
-
-\begin{lem}
-\label{lem:qiconnected}
-Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then $q_i(X)$ is the vertex set of a connected component of $A_L$. The analogous statement for $A_R$ also holds.
-\end{lem}
-\begin{proof}
-Because the property of connectedness is preserved under graph isomorphism, we know that $q_i(X)$ is connected.  If we let $X'$ be the connected component of $A_L$ that contains $q_i(X)$, then the same argument proves that $q_i(X')$ is connected as well.  Since $X$ was assumed to be a connected component of $A_L$, we have that $q_i(X')\subseteq X$.  But since $q_i^2$ is the identity, $X=q_i^2(X)\subseteq q_i(X')\subseteq X$.  This means $q_i(X')=X$.  By the fact that $q_i^2$ is the identity, we also have $q_i(X)=X'$.
-\end{proof}
-
-\begin{prop}
-\label{prop:kevin}
-Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
-\end{prop}
-\begin{proof}
-Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$. Reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
-\end{proof}
-
-With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the next section.
 
 \section{Every $2$-d Adinkra is a Quotient}
+\label{sec:quotient}
 
-The main result of this section is the following theorem:
+In Section~\ref{sec:products}, we showed that we can construct a $2$-d Adinkra by a product construction of two $1$-d Adinkras, each of which appears on the boundary of the product. In this section, we settle a conjecture of H\"ubsch \cite{hubsch:weaving} by showing that every $2$-d Adinkra is in fact a quotient of the the product of the two $1$-d Adinkras on its lower boundary. Our main result follows:
+
 \begin{thm}
 \label{thm:quotient}
-Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$.
-
-There is a binary block code $K$ of length $n$ so that $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$, and
-\[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K,\]
-and there is a graph isomorphism
+Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$. Then the following hold:
+\begin{enumerate}
+\item[I] There is a binary block code $K$ of length $n$ so that $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$, and
+\[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K;\]
+\item[II] there is a graph isomorphism
 \begin{equation}
 \label{eqn:quotientiso}
 A\cong (A_L^0\times A_R^0)/K
 \end{equation}
-of the underlying graphs that preserves colors and the bigrading.
+of the underlying graphs that preserves colors and the bigrading;
+\item[III] there is a representative $A'$ in the same vertex switching class of $A_L^0\times A_R^0$ whose dashing is invariant under $K$, and the quotient by $K$ gives a dashing that agrees with the dashing on $A$ when compared via the isomorphism given in $(II)$. 
+\end{enumerate}
 \end{thm}
 
-Before we begin it will help to understand the relationship of the codes.
+We first show parts $(I)$ and $(II)$ of this Theorem, starting with the codes.
+We will then define \emph{vertex switching class} and show $(III)$.
+
 \begin{lem}
 \label{lem:cplus}
 \[\hat{C}(A_L^0)\oplus \check{C}(A_R^0) \subseteq C(A).\]
@@ -791,7 +802,7 @@ Before we begin it will help to understand the relationship of the codes.
 Let $g\in\hat{C}(A_L^0)$ and $h\in \check{C}(A_R^0)$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in \hat{C}(A_L^0)$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:quotient}]
+\begin{proof}[Proof of Theorem~\ref{thm:quotient}, $(I)$ and $(II)$]
 From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^N$ that is a vector space complement of
 $\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$ in $C(A)$.  That is,
 \[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K.\]
@@ -871,9 +882,7 @@ A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 
 \end{comment}
 
-\section{Dashing}
-
-Theorem \ref{thm:quotient} gives the right colors and grading in the quotient. Ideally, we would want the concept of \emph{dashing} to also behave well. Unfortunately, it is too much to expect the dashing on $A_L^0\times A_R^0$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals.
+Unfortunately, it is too much to expect the dashing on $A_L^0\times A_R^0$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving part $(III)$ of Theorem~\ref{thm:quotient}.
 
 \begin{definition}
 Given an Adinkra $A$ (either $1$-d or $2$-d), and a vertex $v$ of $A$, we define \emph{vertex switching at $v$} to be the operation on $A$ that returns a new Adinkra $A'$ with the same vertices, edges, coloring, and grading(s) but a new dashing $\mu'$ so that
@@ -894,12 +903,7 @@ If $A$ is an Adinkra, then so is $A'$.
 Since the vertices, edges, coloring, and grading(s) are the same, the only thing to check is the admissibility of $\mu'$.  That is, given colors $c_1$ and $c_2$, and vertices $v$, $w$, $x$, and $y$, such that $(v,w)$ and $(x,y)$ are edges with color $c_1$ and $(w,x)$ and $(y,v)$ are edges with color $c_2$, that $\mu'(v,w)+\mu'(w,x)+\mu'(x,y)+\mu'(y,v)$ is odd.  If $v'$ is none of these vertices, then this sum is unchanged.  If $v'$ is any of these vertices, for instance, $v$, then $\mu'(v,w)$ and $\mu'(y,v)$ are both changed modulo $2$, so that the sum modulo $2$ is still unchanged.
 \end{proof}
 
-Douglas, Gates, and Wang \cite{douglas} examined dashings in adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs}, to disambiguate from Seidel's usage.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras. In this work, we use vertex switchings again to study $2$-d Adinkras. Our main result is the following statement:
-
-\begin{thm}
-\label{thm:dashing-under-quotient}
-Let $A$ be a connected $2$-d Adinkra.  Let $\overline{0}$, $A_L^0$, $A_R^0$, and $K$ be defined as in Theorem~\ref{thm:quotient}. Then there is a representative $A'$ in the same vertex switching class of $A_L^0\times A_R^0$ so that the action of $K$ leaves the dashing invariant on $A'$, and the quotient by $K$ gives a dashing that agrees with the dashing on $A$ when compared via the isomorphism given in Theorem~\ref{thm:quotient}.
-\end{thm}
+Douglas, Gates, and Wang \cite{douglas} examined dashings in adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs}, to disambiguate from Seidel's usage.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras. In this work, we use vertex switchings again to study $2$-d Adinkras.
 
 Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A_L^0\times A_R^0$. At the same time, under the isomorphism (\ref{eqn:quotientiso}), the dashing $\mu$ on $A$ gets carried to $(A_L^0\times A_R^0)/K$.  The graph homomorphism
 \[\pi:A_L^0\times A_R^0\to (A_L^0\times A_R^0)/K\]
@@ -913,7 +917,7 @@ The dashings $\mu_1$ and $\mu_2$ agree on $A_L^0\times \{\overline{0}\}$ and on 
 The construction of $\mu_1$ gives all edges in $A_L^0\times\{\overline{0}\}$ as the same as in $A_L^0$ under the association of every edge $(v,w)$ with $((v,\overline{0}),(w,\overline{0}))$.  For $\mu_2$, consider that $i_3$ sends every vector $v\in A_L^0$ to $(v,\overline{0})$, and likewise any edges in $A_L^0$ will be sent to the corresponding edge in $A_L^0\times\{\overline{0}\}$.  Therefore $\mu_1$ and $\mu_2$ agree on $A_L^0\times\{\overline{0}\}$.  Likewise for $\{0\}\times A_R^0$.
 \end{proof}
 
-Note that Theorem~\ref{thm:dashing-under-quotient} can be reformulated as saying that $\mu_1$ and $\mu_2$ are equivalent under vertex switching. Our strategy will be to reduce the problem to checking a set of local conditions on cycles. We now give some definitions and auxiliary results for our approach.
+Note that part $(III)$ of Theorem~\ref{thm:quotient} can be reformulated as saying that $\mu_1$ and $\mu_2$ are equivalent under vertex switching. Our strategy will be to reduce the problem to checking a set of local conditions on cycles. We now give some definitions and auxiliary results for our approach.
 
 \begin{definition}
 Given a cycle $C$ given by vertices $(v_0,\ldots,v_k)$ in an Adinkra with dashing function $\mu$, the \emph{parity of $\mu$ on $C$} is the sum
@@ -941,7 +945,7 @@ Finally, if $\mu$ and $\mu'$ are equal on $T$, consider any edge $e$ not in $T$.
 
 In light of the above Lemma, it suffices for us to prove that the parities of $\mu_1$ and $\mu_2$ agree on all cycles of $A_L^0\times A_R^0$:
 
-\begin{proof}[Proof of Theorem~\ref{thm:dashing-under-quotient}]
+\begin{proof}[Proof of Theorem~\ref{thm:quotient}, $(III)$]
 Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$. We first consider the case where $v_0=\overline{0}$.  Then there is a color sequence $\sigma$ from this.  We modify the path (and thereby modify the color sequence) by ``bubble sorting'' the colors.  Earlier, we noted that we could rearrange $\sigma$ to $l(\sigma)$ so that the left-moving colors were before the right-moving colors.  This can be more specifically done by a series of adjacent swaps of the type that sends the color sequence
 \[(i_1,\ldots,i_{j-1},i_j,i_{j+1},i_{j+2},\ldots,i_k)\]
 to
@@ -954,7 +958,7 @@ Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^
 \end{proof}
 
  
-Theorem~\ref{thm:dashing-under-quotient} tells us that our quotient (which did not, a priori, play well with dashing) respects dashing if we allow the action of vertex switching; an alternative interpretation is that dashings should really be thought of as equivalence classes.
+Theorem~\ref{thm:quotient} tells us that our quotient (which did not, a priori, play well with dashing) respects dashing if we allow the action of vertex switching; an alternative interpretation is that dashings should really be thought of as equivalence classes.
 
 \begin{comment} % isn't this already proved?
 
@@ -975,36 +979,34 @@ Since $\pi$ is a graph homomorphism, and $c_1$, $c_2$, $v$, $w$, $x$, and $y$ ar
 
 
 \end{proof}
-
-
 \end{comment}
 
 
 \section{ESDE Codes}
-Let $p$ and $q$ be non-negative integers so that $p+q=n$, and let $C$ be a linear block code of length $n$.  For every element $\vec{x}=(x_1,\ldots,x_n)\in\ZZ_2^n$, we define $\wt_L(\vec{x})$ to be the number of $1$s of $(x_1,\ldots,x_p)$ in the first $p$ components, and $\wt_R(\vec{x})$ to be the number of $1$s of $(x_{p+1},\ldots,x_n)$ in the last $q$ components.  Then $\wt(\vec{x})=\wt_L(\vec{x})+\wt_R(\vec{x})$.
 
+We have shown that each $2$-d Adinkra is constructed from a pair of $1$-d Adinkras plus a code; it is natural to ask which codes can appear. In this section, we exactly classify these codes, which is another part of the conjectures of H\"ubsch \cite{hubsch:weaving}. 
 
-Define a \emph{even-split doubly-even (ESDE) code} of length $(p,q)$ to be a doubly-even code of length $n$ so that every word $\vec{x}$ in the code has $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
+\begin{definition}[Weights, ESDE codes]
+Let $p$ and $q$ be non-negative integers so that $p+q=n$.  For every element $\vec{x}=(x_1,\ldots,x_n)\in\ZZ_2^n$, we define $\wt_L(\vec{x})$ to be the number of $1$s of $(x_1,\ldots,x_p)$ in the first $p$ components, and $\wt_R(\vec{x})$ to be the number of $1$s of $(x_{p+1},\ldots,x_n)$ in the last $q$ components.  Then $\wt(\vec{x})=\wt_L(\vec{x})+\wt_R(\vec{x})$. Define a \emph{even-split doubly-even (ESDE) code} of length $(p,q)$ to be a doubly-even code of length $n$ so that every word $\vec{x}$ in the code has $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
+\end{definition}
 
-Recall that $1$-d chromotopologies are in bijection with quotients of the hamming cube $I^n$ by a doubly-even code $C$, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras. To do this, we introduce a special family of $2$-d adinkras.
+Recall \com{give citation once Kevin decides which theorems to use} that $1$-d chromotopologies are in bijection with quotients of the Hamming cube $I^n$ by a doubly-even code $K$, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras\footnote{We remark that ESDE codes are no more restrictive than doubly-even codes; any doubly-even code can be made into an ESDE code trivially by assigning $(p,q) = (n, 0)$ or $(0, n)$. This corresponds to the fact that any $1$-d Adinkra is trivially a $2$-d Adinkra with all colors left-moving or all colors right-moving. It is more useful to think of ESDE c The combinatorics that arise from studying nontrivial splits of $(p,q)$ seem interesting.}. 
 
-In [references], there was a class of $1$-d Adinkras that were particularly easy to construct and study, called {\em Valise} Adinkras, whose height function had values in two adjacent integers (usually $0$ and $1$).  By analogy, given a ESDE code, we construct a $2$-d Adinkra called the {\em Valise 2-d Adinkra} that has support in a $2\times 2$ square.
+In \com{[references]}, there was a class of $1$-d Adinkras that were particularly easy to construct and study, called {\em Valise} Adinkras, whose height function had values in two adjacent integers (usually $0$ and $1$).  By analogy, given a ESDE code, we construct a $2$-d Adinkra called the {\em Valise 2-d Adinkra} that has support in a $2\times 2$ square.
 
 
 \begin{construction}
 \label{cons:valise}
-Let $C$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $K$, called the {\em Valise 2-d Adinkra}.
 
-$C$ is doubly-even, so there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$.  [reference: this was a construction somewhere else]
-
-We now wish to define a bigrading $(h_L,h_R)$.  To do this we do not use the grading $h$ that comes from the $1$-d Adinkra $A$.  Instead, fix a vertex $\overline{0}$ of $A$.  For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number modulo 2 of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $C$ is ESDE, then this is the case.
+$C$ is doubly-even, so there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$. \com{ [reference: this was a construction somewhere else]} We now wish to define a bigrading $(h_L,h_R)$.  To do this we do not use the grading $h$ that comes from the $1$-d Adinkra $A$.  Instead, fix a vertex $\overline{0}$ of $A$.  For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number modulo 2 of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
 \end{construction}
 
 \begin{thm}
-This construction gives a $2$-d Adinkra with code $C$.
+This construction gives a $2$-d Adinkra with code $K$.
 \end{thm}
 \begin{proof}
-By construction, $A$ is a $1$-d Adinkra with code $C$.  The only thing left to check is whether the $h_L$ and $h_R$ that are defined satisfy the correct properties on edges.
+By construction, $A$ is a $1$-d Adinkra with code $K$.  The only thing left to check is whether the $h_L$ and $h_R$ that are defined satisfy the correct properties on edges.
 
 Let $(v,w)$ be a left-moving edge in the Adinkra $A$.  Then the color of the edge is left-moving and so $h_L(v)\not=h_L(w)$ and $h_R(v)=h_R(w)$.  Since the possible values for $h_L$ and $h_R$ are $0$ and $1$, it follows that $|h_R(v)-h_R(w)|=1$.
 
@@ -1041,12 +1043,10 @@ The proof is similar for right-moving edges.
 
 \begin{thm}
 \label{thm:esde}
-For a code $C \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
+For a code $K \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = K$ if and only if $K$ is a ESDE code.
 \end{thm}
 \begin{proof}
-Suppose $C(A) = C$ for some $2$-d Adinkra $A$. We know that $C$ is doubly-even. Consider any codeword $\alpha \in C$. Starting at $\overline{0} \in A$, moving by a path corresponding to $\alpha$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of such edge changes the $h_L$ (resp. $h_R$) by $1$ in absolute value. Thus, $C$ must be ESDE.
-
-Conversely, given an ESDE code $C$, we can use Construction~\ref{cons:valise} to get a $2$-d Adinkra with code $C$.
+Suppose $C(A) = K$ for some $2$-d Adinkra $A$. We know that $K$ is doubly-even. Consider any codeword $\alpha \in K$. Starting at $\overline{0} \in A$, moving by a path corresponding to $\alpha$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of such edge changes the $h_L$ (resp. $h_R$) by $1$ in absolute value. Thus, $C$ must be ESDE. Conversely, given an ESDE code $K$, we can use Construction~\ref{cons:valise} to get a $2$-d Adinkra with code $K$.
 \end{proof}
 
 
@@ -1096,6 +1096,7 @@ To do:
 
 See if there is a place for a Lemma that says you can reorder a path so left colors come first.
 
+\newpage
 
 \appendix
 
