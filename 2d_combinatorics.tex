@@ -95,6 +95,10 @@
 
 \maketitle
 
+\begin{abstract}
+Adinkras are combinatorial objects developed to study supersymmetry representations. Most of the work so far on Adinkras apply to $1$-dimensional supersymmetry; in this paper, we give formal definitions and structural theorems for \emph{$2$-d Adinkras} to study $2$-dimensional supersymmetry. We show that the natural definitions we want (products, quotients, etc.) behave unexpectedly well, giving a nice interplay with the classical theory of \emph{switching graphs}. Our main result is settling a conjecture of H\"ubsch, which gives us a good understanding of most of the strucutre of $2$-d Adinkras. The methods are mostly self-contained.
+\end{abstract}
+
 \section{Preliminaries}
 
 \subsection{$1$-d Adinkras}
@@ -488,11 +492,9 @@ Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
 
 
 \subsection{$2$-d Adinkras}
-The notion of $2$-d Adinkras is described in \com{Ref...[fill in references to various things]}.  We use a definition here that is equivalent to the one found in \com{[some reference]}: the proof is found in Appendix \com{...[maybe?]}
+We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \com{Ref...[fill in references to various things]}.  We use a definition here that is equivalent to the one found in \com{[some reference]}: the proof is found in Appendix \com{...[maybe?]}
 
-A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges.
-
-More formally,
+A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally,
 \begin{definition}
 Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
@@ -510,10 +512,10 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{A}
 \Vertex[x=-10,y=0]{H}
-\Vertex[x=-30,y=30]{C}
-\Vertex[x=-20,y=30]{B}
-\Vertex[x=20,y=30]{D}
-\Vertex[x=10,y=30]{E}
+\Vertex[x=-35,y=30]{C}
+\Vertex[x=-25,y=30]{B}
+\Vertex[x=25,y=30]{D}
+\Vertex[x=15,y=30]{E}
 \Vertex[x=0,y=60]{G}
 \Vertex[x=-10,y=60]{F}
 \Edge[color=red](A)(C)
@@ -534,12 +536,12 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \Edge[color=black](B)(F)
 \end{tikzpicture}
 
-\caption{A $2$-d Adinkra with $(2,2)$ colors. The bigrading is visualized by the northwest and northeast directions, respectively. \label{fig:2d-example}}
+\caption{A $2$-d Adinkra with $(2,2)$ colors. The bigrading is visualized by the northwest and northeast directions, respectively (so the two vertices on the left have $h_L = 1$ and $h_R = 0$, for example). \label{fig:2d-example}}
 \end{center}
 \end{figure}
 
-\subsection{Product of Adinkras}
-One way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors.
+\section{Products}
+How to begin our study of these $2$-d Adinkras? It is desirable to have some way of combining Adinkras to make bigger ones (and conversely, breaking down bigger ones into smaller pieces). It turns out that one way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra uses only left-moving colors and the second Adinkra uses only right-moving colors. 
 
 \begin{construction}
 \label{const:product}
@@ -596,21 +598,21 @@ See Figure~\ref{fig:product} for an example.
 \SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{BA}
 \Vertex[x=-10,y=0]{AA}
-\Vertex[x=-30,y=40]{EA}
-\Vertex[x=-20,y=40]{FA}
-\Vertex[x=20,y=45]{AF}
-\Vertex[x=10,y=45]{AE}
+\Vertex[x=-35,y=40]{EA}
+\Vertex[x=-25,y=40]{FA}
+\Vertex[x=25,y=45]{AF}
+\Vertex[x=15,y=45]{AE}
 \Vertex[x=0,y=85]{EF}
 \Vertex[x=-10,y=85]{EE}
 \Vertex[x=0,y=75]{FF}
 \Vertex[x=-10,y=75]{FE}
 
-\Vertex[x=30,y=80]{AB}
-\Vertex[x=40,y=80]{BB}
-\Vertex[x=10,y=120]{EB}
-\Vertex[x=20,y=120]{FB}
-\Vertex[x=20,y=35]{BF}
-\Vertex[x=10,y=35]{BE}
+\Vertex[x=40,y=80]{AB}
+\Vertex[x=50,y=80]{BB}
+\Vertex[x=15,y=120]{EB}
+\Vertex[x=25,y=120]{FB}
+\Vertex[x=25,y=35]{BF}
+\Vertex[x=15,y=35]{BE}
 
 \Edge[color=blue](AA)(EA)
 \Edge[color=blue, style=dashed](BA)(FA)
@@ -653,6 +655,8 @@ See Figure~\ref{fig:product} for an example.
 \end{center}
 \end{figure}
 
+The main non-obvious part of the definition is the dashings. Note that the naive approach (assigning $\mu((v,w_1), (v,w_2)) = \mu(w_1, w_2)$ would fail). This situation is analogous to assigning signs in the differential to a double chain complex, such as in Bott and Tu \cite{bott_tu}, where one would have to do a similar symmetry breaking. We now show that this sign-tweaking in fact gives an admissable dashing:
+
 \begin{prop}
 \label{prop:product-admissable}
 Given Adinkras $A_1$ and $A_2$, $\mu$ is an admissible dashing for $A_1\times A_2$.  That is, given colors $c_1$ and $c_2$, and vertices $v$, $w$, $x$, and $y$ in $A_1\times A_2$, with edges $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)$ and colors $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$, we have $\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\equiv 1 \pmod{2}$.
@@ -680,13 +684,10 @@ Now if $c_1$ is left-moving and $c_2$ is right-moving, then write $v=(v_1,v_2)$.
 \end{eqnarray*}
 \end{proof}
 
+We have shown that our definition of product creates a legitimate $2$-d Adinkra from two $1$-d Adinkras. Recall that Adinkras correspond to linear codes; it is natural to expect that the codes of the relevant Adinkras are related nicely.
 
 \begin{definition}
-Let $p$ and $q$ be non-negative integers and let $n=p+q$.
-
-Given a binary block code $C$ of length $p$, we can define a binary block code $\hat{C}$ of length $n$ by appending to the end of every code word in $C$ a string of $0$s of length $q$.
-
-Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $n$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$.
+Let $p$ and $q$ be non-negative integers and let $n=p+q$. Given a binary block code $C$ of length $p$, we define a binary block code $\hat{C}$ of length $n$ by appending to the end of every code word in $C$ a string of $0$s of length $q$. For example, if $C = \{00, 11\}$ and $n = 5$, then $\hat{C} = \{00000, 11000\}$. Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $n$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$. \com{it is hard to see the difference between the two notations - maybe we should pick something else?}
 \end{definition}
 
 \begin{prop}
@@ -696,18 +697,14 @@ Let $A_1$ and $A_2$ be as above.  Then
 \begin{proof}
 Let $(v_1,v_2)\in A_1\times A_2$.  Let $\vec{x}\in \ZZ_2^N$.  We can write $\vec{x}=\vec{x}_1+\vec{x}_2$ where $\vec{x}_1$ is zero in the last $q$ bits and $\vec{x}_2$ is zero in the first $p$ bits.  Now
 \[\vec{x}(v_1,v_2)=(\vec{x}_1+\vec{x}_2)(v_1,v_2)=(\vec{x}_1v_1,\vec{x}_2v_2).\]
-This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ and $\vec{x}_2 v_2=v_2$.
-
-So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_1\in \hat{C}(A_1)$ and $\vec{x}_2\in \check{C}(A_2)$.
+This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ and $\vec{x}_2 v_2=v_2$. So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_1\in \hat{C}(A_1)$ and $\vec{x}_2\in \check{C}(A_2)$.
 \end{proof}
 
 
 
 \section{Structural Theorems}
 
-In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. In particular, we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
-
-\subsection{A $2$-d Adinkra Fits in a Rectangle}
+In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. The main idea is that we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
 
 Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
 
@@ -768,10 +765,7 @@ Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ an
 
 With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the next section.
 
-
-
-
-\section{Main Theorem}
+\section{Every $2$-d Adinkra is a Quotient}
 
 The main result of this section is the following theorem:
 \begin{thm}
@@ -829,7 +823,7 @@ Now since $\beta$ consists of right-moving colors, and connects $i_3(x)$ with $i
 A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 \end{proof}
 
-
+\begin{comment}
 
 
 
@@ -875,8 +869,11 @@ A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 \end{center}
 \end{figure}
 
-\subsection{Dashing}
-Ideally, we would want the concept of \emph{dashing} to behave well under the operations we have defined. Unfortunately, it is too much to expect the dashing on $A_L^0\times A_R^0$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals.
+\end{comment}
+
+\section{Dashing}
+
+Theorem \ref{thm:quotient} gives the right colors and grading in the quotient. Ideally, we would want the concept of \emph{dashing} to also behave well. Unfortunately, it is too much to expect the dashing on $A_L^0\times A_R^0$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals.
 
 \begin{definition}
 Given an Adinkra $A$ (either $1$-d or $2$-d), and a vertex $v$ of $A$, we define \emph{vertex switching at $v$} to be the operation on $A$ that returns a new Adinkra $A'$ with the same vertices, edges, coloring, and grading(s) but a new dashing $\mu'$ so that
@@ -1310,9 +1307,6 @@ A $1$-d adinkra can be extended to a $2$-d adinkra if and only if the $1$-d adin
 \begin{proof}
 Proof delayed until talking more with Kevin and Tristan about the easiest way to write things up to avoid reinventing wheels.
 \end{proof}
-
-\section{Misc. (unorganized)}
-
 
 \bibliographystyle{abbrv}
 \bibliography{Adinkras}
