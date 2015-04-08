@@ -104,7 +104,7 @@ Adinkras are combinatorial objects developed to study supersymmetry representati
 \subsection{$1$-d Adinkras}
 Adinkras in \com{[references]} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
 
-\begin{definition}
+\begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  A \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
 \item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \com{[Reference]}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading.}
@@ -118,7 +118,13 @@ These are required to satisfy the following:
 \begin{enumerate}
 \item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $c(v,w)=c(w,v)$ and $\mu(v,w)=\mu(w,v)$.  Intuitively, the edges are undirected.
 \item For every $v\in V$ and $c\in \{1,\ldots,n\}$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.
-\item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$ and $\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\equiv 1\pmod{2}$.  Note that $\mu$ is called admissible if this last condition holds for every $v$, $w$, $x$ and $y$ that satisfy the above.
+\item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$ and $\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\equiv 1\pmod{2}$.  We call $\mu$ \emph{admissible} if this last condition holds for every $v$, $w$, $x$ and $y$ that satisfy the above.
+
+\com{ I like this definition better, which I'll need later for the word ``parity.'' Merge/pick from the two as you wish. -Y}
+ Given a cycle $C$ given by vertices $(v_0,\ldots,v_k)$ in an Adinkra with dashing function $\mu$, the \emph{parity of $\mu$ on $C$} is the sum
+\[\sum_{i=0}^{k-1} \mu(v_i,v_{i+1})\pmod{2}.\]
+Using this language, an \emph{admissable} dashing is exactly one where the parity on all $2$-colored $4$-cycles are $1 \pmod{2}$.
+
 \item If $(v,w)\in E$, then $|h(v)-h(w)|=1$.
 \end{enumerate}
 
@@ -215,7 +221,7 @@ Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $1\le 
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
 
-\begin{definition}
+\begin{definition}[Graph homomorphisms]
 \label{defn:homomorphism}
 A \emph{graph homomorphism} from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to\{1,\ldots,n\}$ and a coloring $c_2:E_2\to\{1,\ldots,n\}$, we say that $\phi$ \emph{preserves colors} if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  If $\phi$ is bijective, we say that it is a \emph{graph isomorphism}.
 \end{definition}
@@ -495,7 +501,7 @@ Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
 We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \com{Ref...[fill in references to various things]}.  We use a definition here that is equivalent to the one found in \com{[some reference]}: the proof is found in Appendix \com{...[maybe?]}
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally,
-\begin{definition}
+\begin{definition}[$2$-d Adinkras]
 Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
 \item $h(v)=h_L(v)+h_R(v)$
@@ -752,7 +758,7 @@ Now if $c_1$ is left-moving and $c_2$ is right-moving, then write $v=(v_1,v_2)$.
 
 We have shown that our definition of product creates a legitimate $2$-d Adinkra from two $1$-d Adinkras. Recall that Adinkras correspond to linear codes; it is natural to expect that the codes of the relevant Adinkras are related nicely.
 
-\begin{definition}
+\begin{definition}[Extending codes]
 Let $p$ and $q$ be non-negative integers and let $n=p+q$. Given a binary block code $C$ of length $p$, we define a binary block code $\hat{C}$ of length $n$ by appending to the end of every code word in $C$ a string of $0$s of length $q$. For example, if $C = \{00, 11\}$ and $n = 5$, then $\hat{C} = \{00000, 11000\}$. Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $n$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$. \com{it is hard to see the difference between the two notations - maybe we should pick something else?}
 \end{definition}
 
@@ -884,7 +890,7 @@ A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 
 Unfortunately, it is too much to expect the dashing on $A_L^0\times A_R^0$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving part $(III)$ of Theorem~\ref{thm:quotient}.
 
-\begin{definition}
+\begin{definition}[Vertex switching]
 Given an Adinkra $A$ (either $1$-d or $2$-d), and a vertex $v$ of $A$, we define \emph{vertex switching at $v$} to be the operation on $A$ that returns a new Adinkra $A'$ with the same vertices, edges, coloring, and grading(s) but a new dashing $\mu'$ so that
 \begin{equation}
 \mu'(e)=\begin{cases}
@@ -918,12 +924,6 @@ The construction of $\mu_1$ gives all edges in $A_L^0\times\{\overline{0}\}$ as 
 \end{proof}
 
 Note that part $(III)$ of Theorem~\ref{thm:quotient} can be reformulated as saying that $\mu_1$ and $\mu_2$ are equivalent under vertex switching. Our strategy will be to reduce the problem to checking a set of local conditions on cycles. We now give some definitions and auxiliary results for our approach.
-
-\begin{definition}
-Given a cycle $C$ given by vertices $(v_0,\ldots,v_k)$ in an Adinkra with dashing function $\mu$, the \emph{parity of $\mu$ on $C$} is the sum
-\[\sum_{i=0}^{k-1} \mu(v_i,v_{i+1})\pmod{2}.\]
-Using this language, an admissable dashing is exactly one where the parity on all $2$-colored $4$-cycles are $1 \pmod{2}$.
-\end{definition}
 
 
 \begin{lem}
@@ -1172,8 +1172,8 @@ we have
 \[Q_jQ_i(b_v\otimes H^k)=-Q_iQ_j(b_v\otimes H^k).\]
 \end{proof}
 
-\begin{definition}
-A representation $M$ of $1$-d $n$-extended supersymmetry algebra is called adinkraic if there exists a $1$-d Adinkra $A$ with $n$ colors so that $R(A)=M$ in Construction~\ref{cons:susy1d}.
+\begin{definition}[Adinkraic representations]
+A representation $M$ of $1$-d $n$-extended supersymmetry algebra is called \emph{adinkraic} if there exists a $1$-d Adinkra $A$ with $n$ colors so that $R(A)=M$ in Construction~\ref{cons:susy1d}.
 \end{definition}
 
 Though not relevant for our theorems, one can notice that the grading $h$ provides a grading to $R$ in the following way: the mass dimension of $b_v\otimes H^k$ is $k+\frac12 h(v)$.  Then $H$ has grading $1$ and each $Q_i$ has grading $\frac12$.
