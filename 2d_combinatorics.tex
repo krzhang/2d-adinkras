@@ -413,13 +413,6 @@ Let $\pi(v)=vC$.  If $(v,w)$ is an edge in $A$, then $\pi(v)=vC$ and $\pi(w)=wC$
 If the action is distant and $C$ acts preserving colors, then by Proposition~\ref{prop:quotient}, $A/C$ has a well-defined coloring defined by the following: if $(v,w)$ is an edge, then the color of $(vC,wC)$ is the color of $(v,w)$.
 \end{proof}
 
-\com{I think in the preliminaries we should build as much as possible on what we already have -- maybe the following theorem from my paper is helpful? (it captures ``distant action,'' and embeds within it the idea that these quotients are well-defined)}
-
-\begin{thm}
-\label{thm:chromotopology as quotient}
-Chromotopologies are exactly quotients $I^n_c/L$, where $L$ is an even code with no codeword of weight $2$.
-\end{thm}
-\com{...}
 
 \subsection{Quotienting the cube by a code}
 
@@ -494,10 +487,26 @@ that preserves colors and so that:
 Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
 \end{definition}
 
+\subsection{[Possible things to use]}:
+
+\com{@Kevin: I'm going to put things here that may be helpful. It isn't superimportant that they be from my papers; my goal is just to make this section compact but not weasel-y.}
 
 
+\com{the following theorem  captures ``distant action,'' and embeds within it the idea that these quotients are well-defined). In this theorem, colors are part of the quotient.}
 
-\subsection{$2$-d Adinkras}
+\begin{thm}[\cite{zhang:adinkras}, Theorem 4.4]
+\label{thm:chromotopology as quotient}
+Chromotopologies are in bijection with quotients $I^n/K$, where $K$ is an even code with no codeword of weight $2$.
+\end{thm}
+
+\com{It seems we should make this color sequence thing more of an explicit function}.
+
+\begin{prop}
+Given an adinkra $A$ with code $K$, after fixing a vertex $\overline{0}$, we can assign a coset $\overline{v}+K$ to every vertex $v$, such that $\overline{v} = (v_1, v_2, \ldots, v_n)$ and $\prod q_i^{v_i} (\overline{0}) = v$.
+\end{prop}
+
+
+\section{$2$-d Adinkras}
 We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \com{Ref...[fill in references to various things]}.  We use a definition here that is equivalent to the one found in \com{[some reference]}: the proof is found in Appendix \com{...[maybe?]}
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally,
@@ -779,7 +788,7 @@ This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ a
 \section{Every $2$-d Adinkra is a Quotient}
 \label{sec:quotient}
 
-In Section~\ref{sec:products}, we showed that we can construct a $2$-d Adinkra by a product construction of two $1$-d Adinkras, each of which appears on the boundary of the product. In this section, we settle a conjecture of H\"ubsch \cite{hubsch:weaving} by showing that every $2$-d Adinkra is in fact a quotient of the the product of the two $1$-d Adinkras on its lower boundary. Our main result follows:
+In Section~\ref{sec:products}, we showed that we can construct a $2$-d Adinkra by a product construction of two $1$-d Adinkras, each of which appears on the boundary of the product. In this section, we settle a conjecture of H\"ubsch \cite{hubsch:weaving} by showing that every $2$-d Adinkra is in fact a quotient of the the product of the two $1$-d Adinkras on its lower boundary. Our main result is:
 
 \begin{thm}
 \label{thm:quotient}
@@ -797,8 +806,7 @@ of the underlying graphs that preserves colors and the bigrading;
 \end{enumerate}
 \end{thm}
 
-We first show parts $(I)$ and $(II)$ of this Theorem, starting with the codes.
-We will then define \emph{vertex switching class} and show $(III)$.
+We first show parts $(I)$ and $(II)$ of this Theorem, starting with the codes. We delay the proof and relevant definitions of $(III)$ to after.
 
 \begin{lem}
 \label{lem:cplus}
@@ -1001,9 +1009,7 @@ In \com{[references]}, there was a class of $1$-d Adinkras that were particularl
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $K$, called the {\em Valise 2-d Adinkra}.
-
-$C$ is doubly-even, so there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$. \com{ [reference: this was a construction somewhere else]} We now wish to define a bigrading $(h_L,h_R)$.  To do this we do not use the grading $h$ that comes from the $1$-d Adinkra $A$.  Instead, fix a vertex $\overline{0}$ of $A$.  For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number modulo 2 of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $K$, called the {\em Valise 2-d Adinkra}. First, since $K$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$. \com{ [reference: this was a construction somewhere else]} Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{K}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $K$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra. % Note t, h_R(v)) =    For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number $\pmod{2}$ of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
 \end{construction}
 
 \begin{figure}[htb]
@@ -1042,8 +1048,6 @@ Conversely, given an ESDE code $K$, we can use Construction~\ref{cons:valise} to
 
 \end{proof}
 
-
-\subsection{Finding $K$}
 Given a $2$-d Adinkra $A$, with special basepoint $\overline{0}$ and corresponding $A_L^0$ and $A_R^0$, there remains the question of finding the code $K$.  Recall that
 \[C(A)=\hat{C}(A_L^0)\oplus\check{C}(A_R^0)\oplus K.\]
 There is some choice involved in defining $K$; it merely has to be a vector space complement to
@@ -1085,16 +1089,11 @@ We now show that this function is the inverse of Construction~\ref{cons:findk}. 
 \end{proof}
 
 
-To do:
+\section*{Acknowledgments}
 
-See if there is a place for a Lemma that says you can reorder a path so left colors come first.
-
-\newpage
+The authors wish to thank Charles Doran, Sylvester Gates, and Tristan H\"ubsch for helpful conversation.
 
 \appendix
-
-
-
 
 \section{Representations of supersymmetry}
 The $1$-d $n$-extended supersymmetry algebra is a superalgebra consisting of an even operator $H$ and $n$ odd operators $Q_1, \ldots, Q_n$ with the following relations:
