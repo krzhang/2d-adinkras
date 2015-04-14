@@ -27,13 +27,13 @@
 \newtheorem{lem}[equation]{Lemma}
 \newtheorem{cor}[equation]{Corollary}
 \newtheorem{prop}[equation]{Proposition}
-\newtheorem{construction}[equation]{Construction}
 
 \theoremstyle{definition}
 \newtheorem{definition}[equation]{Definition}
 \newtheorem{ex}[equation]{Example}	
 \newtheorem{remark}[equation]{Remark}
 \newtheorem{prob}{Problem}
+\newtheorem{construction}[equation]{Construction}
 
 \newcommand{\BB}{\mathbf{B}}
 \newcommand{\ZZ}{\mathbf{Z}}
@@ -984,13 +984,17 @@ Since $\pi$ is a graph homomorphism, and $c_1$, $c_2$, $v$, $w$, $x$, and $y$ ar
 
 \section{ESDE Codes}
 
-We have shown that each $2$-d Adinkra is constructed from a pair of $1$-d Adinkras plus a code; it is natural to ask which codes can appear. In this section, we exactly classify these codes, which is another part of the conjectures of H\"ubsch \cite{hubsch:weaving}. 
+We have shown that each $2$-d Adinkra is constructed from a pair of $1$-d Adinkras plus a code; it is natural to ask which codes can appear. In this section, we classify these codes, which is another part of the conjectures of H\"ubsch \cite{hubsch:weaving}. 
 
 \begin{definition}[Weights, ESDE codes]
-Let $p$ and $q$ be non-negative integers so that $p+q=n$.  For every element $\vec{x}=(x_1,\ldots,x_n)\in\ZZ_2^n$, we define $\wt_L(\vec{x})$ to be the number of $1$s of $(x_1,\ldots,x_p)$ in the first $p$ components, and $\wt_R(\vec{x})$ to be the number of $1$s of $(x_{p+1},\ldots,x_n)$ in the last $q$ components.  Then $\wt(\vec{x})=\wt_L(\vec{x})+\wt_R(\vec{x})$. Define a \emph{even-split doubly-even (ESDE) code} of length $(p,q)$ to be a doubly-even code of length $n$ so that every word $\vec{x}$ in the code has $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
+Let $p$ and $q$ be non-negative integers so that $p+q=n$. For any $S \subset [n]$ and every element $\vec{x} \in \ZZ_2^n$, define $\wt_S(\vec{x})$ to be the number of $1$'s in the places corresponding to $S$; so in particular, $\wt_{[n]} = \wt$ as functions. Define a \emph{ESDE (even-split doubly-even) code of length $(p,q)$} to be a doubly-even code of length $n$ and a corresponding partition $L \cup R = [n]$ such that $|L| = p$, $|R| = q$, and every word $\vec{x}$ in the code has both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ be even-valued. For our work, we always assume that $L = \{1, 2, \ldots, p\}$ and $R = \{p+1, p+2, \ldots, n\}$, since we can permute the indices without changing the structure of the code.
+
+%For every element $\vec{x}=(x_1,\ldots,x_n)\in\ZZ_2^n$, we define $\wt_L(\vec{x})$ to be the number of $1$s of $(x_1,\ldots,x_p)$ in the first $p$ components, and $\wt_R(\vec{x})$ to be the number of $1$s of $(x_{p+1},\ldots,x_n)$ in the last $q$ components.  Then $\wt(\vec{x})=\wt_L(\vec{x})+\wt_R(\vec{x})$. 
+
+We remark that ESDE codes are no more restrictive than doubly-even codes; any doubly-even code can be made into an ESDE code trivially by assigning $(p,q) = (n, 0)$ or $(0, n)$. This corresponds to the fact that any $1$-d Adinkra is trivially a $2$-d Adinkra with all colors left-moving or all colors right-moving. The main data in ESDE codes is the splitting.
 \end{definition}
 
-Recall \com{give citation once Kevin decides which theorems to use} that $1$-d chromotopologies are in bijection with quotients of the Hamming cube $I^n$ by a doubly-even code $K$, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras\footnote{We remark that ESDE codes are no more restrictive than doubly-even codes; any doubly-even code can be made into an ESDE code trivially by assigning $(p,q) = (n, 0)$ or $(0, n)$. This corresponds to the fact that any $1$-d Adinkra is trivially a $2$-d Adinkra with all colors left-moving or all colors right-moving. It is more useful to think of ESDE c The combinatorics that arise from studying nontrivial splits of $(p,q)$ seem interesting.}. 
+Recall \com{give citation once Kevin decides which theorems to use} that $1$-d chromotopologies are in bijection with quotients of the Hamming cube $I^n$ by a doubly-even code $K$, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras.
 
 In \com{[references]}, there was a class of $1$-d Adinkras that were particularly easy to construct and study, called {\em Valise} Adinkras, whose height function had values in two adjacent integers (usually $0$ and $1$).  By analogy, given a ESDE code, we construct a $2$-d Adinkra called the {\em Valise 2-d Adinkra} that has support in a $2\times 2$ square.
 
@@ -1001,20 +1005,6 @@ Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d 
 
 $C$ is doubly-even, so there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$. \com{ [reference: this was a construction somewhere else]} We now wish to define a bigrading $(h_L,h_R)$.  To do this we do not use the grading $h$ that comes from the $1$-d Adinkra $A$.  Instead, fix a vertex $\overline{0}$ of $A$.  For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number modulo 2 of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
 \end{construction}
-
-\begin{thm}
-This construction gives a $2$-d Adinkra with code $K$.
-\end{thm}
-\begin{proof}
-By construction, $A$ is a $1$-d Adinkra with code $K$.  The only thing left to check is whether the $h_L$ and $h_R$ that are defined satisfy the correct properties on edges.
-
-Let $(v,w)$ be a left-moving edge in the Adinkra $A$.  Then the color of the edge is left-moving and so $h_L(v)\not=h_L(w)$ and $h_R(v)=h_R(w)$.  Since the possible values for $h_L$ and $h_R$ are $0$ and $1$, it follows that $|h_R(v)-h_R(w)|=1$.
-
-The proof is similar for right-moving edges.
-\end{proof}
-
-
-
 
 \begin{figure}[htb]
 \begin{center}
@@ -1046,7 +1036,10 @@ The proof is similar for right-moving edges.
 For a code $K \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = K$ if and only if $K$ is a ESDE code.
 \end{thm}
 \begin{proof}
-Suppose $C(A) = K$ for some $2$-d Adinkra $A$. We know that $K$ is doubly-even. Consider any codeword $\alpha \in K$. Starting at $\overline{0} \in A$, moving by a path corresponding to $\alpha$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of such edge changes the $h_L$ (resp. $h_R$) by $1$ in absolute value. Thus, $C$ must be ESDE. Conversely, given an ESDE code $K$, we can use Construction~\ref{cons:valise} to get a $2$-d Adinkra with code $K$.
+Suppose $C(A) = K$ for some $2$-d Adinkra $A$. We know that $K$ is doubly-even. Consider any codeword $\alpha \in K$. Starting at $\overline{0} \in A$, moving by a path corresponding to $\alpha$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of such edge changes the $h_L$ (resp. $h_R$) by $1$ in absolute value. Thus, $C$ must be ESDE. 
+
+Conversely, given an ESDE code $K$, we can use Construction~\ref{cons:valise} to get a $2$-d Adinkra with code $K$. By construction, $A$ is a $1$-d Adinkra with code $K$.  The only thing left to check is whether the $h_L$ and $h_R$ that are defined satisfy the correct properties on edges. Let $(v,w)$ be a left-moving edge in the Adinkra $A$.  Then the color of the edge is left-moving and so $h_L(v)\not=h_L(w)$ and $h_R(v)=h_R(w)$.  Since the possible values for $h_L$ and $h_R$ are $0$ and $1$, it follows that $|h_R(v)-h_R(w)|=1$. The proof is similar for right-moving edges.
+
 \end{proof}
 
 
