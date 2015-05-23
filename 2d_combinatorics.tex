@@ -515,7 +515,7 @@ Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colo
 \begin{itemize}
 \item $h(v)=h_L(v)+h_R(v)$
 \item Let $(v,w)\in E$.  If $c(v,w)\le p$ then $(v,w)$ is called a left-moving edge; if $c(v,w)>p$ then it is called a right-moving edge.
-\item if $(v,w)$ is a left-moving edge, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)$ is a right-moving edge, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_R(w)$.
+\item if $(v,w)$ is a left-moving edge, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)$ is a right-moving edge, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_L(w)$.
 \end{itemize}
 
 See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
@@ -1096,6 +1096,51 @@ We now show that this function is the inverse of Construction~\ref{cons:findk}. 
 [show the other composition is the identity]
 
 \end{proof}
+
+\section{Enumerating $2$-d Adinkras}
+As a final illustration that we have characterized all $2$-d Adinkras, note that the constructions so far suffice to enumerate all $2$-d Adinkras.
+
+\begin{construction}
+First choose an ESDC code $C$.  Let $\pi_L:\ZZ_2^n\to\ZZ_2^p$ and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ be projections onto the first $p$ and last $q$ bits, respectively.
+
+Use the construction from \cite{rAT2} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{hgt} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $h_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $h_R$ on $A_R^0$ invariant under $\pi_R(C)$.
+
+Now extend $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  Use \com{reference?} to re-order the color sequence to obtain a new path from $\overline{0}$ to $v$ that has all the left-moving edges first.  In other words, a path with left-moving edges from $\overline{0}$ to $w$, then a path with right-moving edges from $w$ to $v$.  Then $w\in A_L^0$ and define $h_L(v)=h_L(w)$.
+
+Likewise define $h_R$ on $A$.
+\end{construction}
+
+The fact that the result is a $2$-d Adinkra follows from the following results.
+
+\begin{lem}
+The gradings $h_L$ and $h_R$ defined above are independent of the paths $p$ and $q$.\label{lem:indep}
+\end{lem}
+
+\begin{proof}
+We first prove that $h_L$ is independent of the particular paths $p$ and $q$.  Suppose $p'$ is a left-moving path from $\overline{0}$ to $w'$ and $q'$ is a right-moving path from $w'$ to $v$.  Then $-p$ followed by $p'$ forms a left-moving path from $w$ to $w'$, and $q'$ followed by $-q$ forms a right-moving path from $w'$ to $w$.  These two paths form a cycle and so give an element of $C$.  The left-moving path from $w$ to $w'$ gives an element of $\pi_L(C)$.  Since $h_L$ is invariant under $\pi_L(C)$, we have that $h_L(w)=h_L(w')$.
+
+Therefore $h_L(v)$ is independent of the path chosen.  Likewise $h_R(v)$ is also independent of the path chosen.
+\end{proof}
+
+\begin{lem}
+If $v$ and $v'$ are vertices and $(v,v')$ is a left-moving edge, then
+$|h_L(v)-h_L(v')|=1$ and $h_R(v)=h_R(v')$.  If $(v,v')$ is a right-moving edge, then $|h_R(v)-h_R(v')|=1$ and $h_L(v)=h_L(v')$.
+\end{lem}
+
+\begin{proof}
+Let $v$ and $v'$ be vertices connected by an edge.  Fix a left-moving path $p$ from $\overline{0}$ to a vertex $w$ in $A_L^0$ and a right-moving path $q$ from $w$ to $v$.  Then $h_L(v)=h_L(w)$.
+
+Suppose the edge $(v,v')$ is a right-moving edge.  By appending to $q$ the edge $(v,v')$, we have a right-moving path from $w$ to $v'$.  By Lemma~\ref{lem:indep}, we have $h_L(v)=h_L(v')$.
+
+Now suppose the edge $(v,v')$ is a left-moving edge.  Let the color of this edge be $i$.  Let $w'=q_i(w)$.  The map $q_i$ is a graph isomorphism that sends the path $q$ to a new right-moving path $q'$ that connects $w'$ to $v'$.
+
+Since there is a left-moving path from $\overline{0}$ to $w'$ (consisting of $p$ appended with an $i$-colored edge) and a right-moving path from $w'$ to $v'$, we know that $h_L(w')=h_L(v')$.  
+
+Since there is a left-moving edge between $w$ and $w'$, we have $|h_L(w)-h_L(w')|=1$.  Since $h_L(w')=h_L(v')$ and $h_L(w)=h_L(v)$, we conclude that $|h_L(v)-h_L(v')|=1$.
+
+The other cases can be obtained by symmetry.
+\end{proof}
+
 
 
 \section*{Acknowledgments}
