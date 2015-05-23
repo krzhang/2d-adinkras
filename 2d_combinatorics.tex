@@ -566,13 +566,27 @@ Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h
 Let $\sigma$ be a color sequence.  Let $l(\sigma)$ be a rearrangement of $\sigma$ that moves all the left-moving colors to the beginning, and let $r(\sigma)$ be a rearrangement of $\sigma$ that moves all the right-moving colors to the beginning. Thus, suppose $p = q = 2$, we have $l((3,1,2,1)) = (2,1,1,3)$ and $r((3,1,2,1)) = (3,2,1,1)$. We always have $s(l(\sigma)) = s(r(\sigma))$ in general, since $l(\sigma)$ and $r(\sigma)$ are just permutations of each other.
 
 \begin{prop}
+\label{prop:reorderpath}
+If $v_1$ and $v_2$ are vertices of a $2$-d Adinkra, and $p$ is a path from $v_1$ to $v_2$, then there exists a path $p_L$ consisting only of left-moving edges from $v_1$ to a vertex $u$, and a path $p_R$ consisting only of right-moving edges from $u$ to $v_2$.
+
+Likewise there exists a path $q_R$ consisting only of right-moving edges from $v_1$ to a vertex $w$, and a path $q_L$ consisting only of left-moving edges from $w$ to $v_2$.
+\end{prop}
+
+\begin{proof}
+Take the color sequence $\sigma$ of the path $p$.  Then $s(\sigma)v_1=v_2$.  Let $\sigma_L$ be the subsequence consisting only of the left-moving colors, and let $\sigma_R$ be the subsequence consisting only of the right-moving colors.  Using Proposition~\ref{prop:colorpath}, we obtain the path $p_L$.  Let $x$ be the endpoint of this path.  We again use Proposition~\ref{prop:colorpath} with $\sigma_R$ starting from $x$, and obtain the path $p_R$.  By Proposition~\ref{prop:colorendpath}, the end of this path is $s(\sigma_R)s(\sigma_L)v_1=s(\sigma_R\sigma_L)v_1=s(\sigma)v_1=v_2$.
+
+The remaining result follows by symmetry.
+\end{proof}
+
+
+\begin{prop}
 \label{prop:rectangle-completion}
 Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
 \end{prop}
 \begin{proof}
 The statement that $(x_1,y_1)$ and $(x_2,y_2)$ is in the support of $A$ means that there exist vertices $v_1$ and $v_2$ of $A$ with $(h_L(v_1),h_R(v_1))=(x_1,y_1)$ and $(h_L(v_2),h_R(v_2))=(x_2,y_2)$, respectively.  Since $A$ is connected, there exists a path from $v_1$ to $v_2$.
 
-Let $\sigma$ be the color sequence of this path.  Now $l(\sigma)$ is a color sequence that can be written as a concatenation $\alpha\beta$ where $\alpha$ is a color sequence only involving left-moving colors, and $\beta$ is a color sequence only involving right-moving colors.  Consider the vertex $u=s(\alpha)v_1$.  The color sequence $\alpha$ describes a path from $v_1$ to $u$ involving only left-moving colors, and so $h_R(u)=h_R(v_1)=y_1$.  The color sequence $\beta$ describes a path from $u$ to $v_2$ involving only right-moving colors, and so $h_L(u)=h_L(v_2)=x_2$.  To summarize, $(h_L(u),h_R(u))=(x_2,y_1)$.
+By Proposition~\ref{prop:reorderpath}, there is a left-moving path from $v_1$ to a vertex $u$ and a right-moving path from $u$ to $v_2$.  Then $h_R(u)=h_R(v_1)=y_1$ and $h_L(u)=h_L(v_2)=x_2$.  Therefore $(x_2,y_1)$ is in the support of $A$.
 
 Repeating this procedure with $r(\sigma)$ likewise provides a vertex $w$ with $(h_L(w),h_R(w))=(x_1,y_2)$.
 \end{proof}
@@ -615,7 +629,7 @@ Because the property of connectedness is preserved under graph isomorphism, we k
 Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
 \end{prop}
 \begin{proof}
-Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$. Reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
+Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$.  Using Proposition~\ref{prop:reorderpath}, reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
 \end{proof}
 
 With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the upcoming sections.
@@ -842,9 +856,9 @@ an isomorphism of graphs that preserves colors.
 
 We now restrict $i_3$ to $A_L^0$.  It turns out that this sends every vertex $v$ of $A_L^0$ to $(v,\overline{0})$ in $(A_L^0\times A_R^0)/K$.  This can be seen by noting that both the restriction of $i_3$ to $A_L^0$ and the map sending $v$ to $(v,\overline{0})$ are graph isomorphisms that preserve colors and send $\overline{0}$ to $(\overline{0},\overline{0})$.  By Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, a similar proof shows that if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
 
-Now let $v$ be any vertex of $A$.  There is a path from $\overline{0}$ to $v$.  This gives a color sequence $\sigma$.  Consider the reordered color sequence $l(\sigma)$.  Write this as $\alpha\beta$ where $\alpha$ only involves left-moving colors and $\beta$ only uses right-moving colors.  Then define $x=s(\alpha)\overline{0}$.  Because $\alpha$ only involves left-moving colors, $x$ is in $A_L^0$.
+Now let $v$ be any vertex of $A$.  There is a path from $\overline{0}$ to $v$.  Using Proposition~\ref{prop:reorderpath}, there exists a left-moving path $p_L$ from $\overline{0}$ to a vertex $x$ and a right-moving path $p_R$ from  $x$ to $v$.  Since $p_L$ is a left-moving path, $x\in A_L^0$.
 
-Now since $\beta$ consists of right-moving colors, and connects $i_3(x)$ with $i_3(v)$, we have $h_L(i_3(v))=h_L(i_3(x))=h_L(x,\overline{0})=h_L(x)$.  This is $h_L(v)$ because $\beta$ only involves right-moving colors and connects $x$ with $v$.  Thus, $h_L(i_3(v))=h_L(v)$.
+Now since $p_R$ is right-moving and connects $i_3(x)$ with $i_3(v)$, we have $h_L(i_3(v))=h_L(i_3(x))=h_L(x,\overline{0})=h_L(x)$.  This is $h_L(v)$ because $p_R$ is right-moving and connects $x$ with $v$.  Thus, $h_L(i_3(v))=h_L(v)$.
 
 A similar proof shows that $h_R(i_3(v))=h_R(v)$.
 \end{proof}
@@ -966,6 +980,7 @@ After a series of such color swaps, we rearrange $\sigma$ to $l(\sigma)$, and th
 Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
 \end{proof}
 
+ \com{This is the only place now where we refer to color sequences in any substantial way that is not subsumed by \ref{prop:reorderpath}.}
  
 Theorem~\ref{thm:quotient} tells us that our quotient (which did not, a priori, play well with dashing) respects dashing if we allow the action of vertex switching; an alternative interpretation is that dashings should really be thought of as equivalence classes.
 
@@ -1084,7 +1099,9 @@ The above construction provides a bijective map
 \end{thm}
 \begin{proof}
 
-We now prove this map is bijective by providing its inverse.  Suppose $\vec{x}\in C(A)$.  Then by Proposition~\ref{prop:colorpath}, there is a loop in $A$ starting at $\overline{0}$ that follows the colors indicated by $\vec{x}$.  This gives a color sequence $\sigma$ so that $s(\sigma)=\vec{x}$.  Write $l(\sigma)=\alpha\beta$ where $\alpha$ only involves left-moving colors and $\beta$ only involves right-moving colors.  Let $v=s(\alpha)\overline{0}$.  Since $\alpha$ only involves left-moving colors, we have $v\in A_L^0$.  Since $s(\beta)v=\overline{0}$, and $\beta$ only involves right-moving colors, we have that $v\in A_R^0$.  Therefore $v\in V^0$.  Note that $v$ does not depend on the order of the left-moving colors in the color sequence, as long as they all come before the right-moving colors.  Thus we have a map
+We now prove this map is bijective by providing its inverse.  Suppose $\vec{x}\in C(A)$.  Then by Proposition~\ref{prop:colorpath}, there is a loop in $A$ starting at $\overline{0}$ that follows the colors indicated by $\vec{x}$.  By Proposition~\ref{prop:reorderpath}, there is a left-moving path $p_L$ from $\overline{0}$ to a vertex $v$, and a right-moving path $p_R$ from $v$ to $\overline{0}$.  Since $p_L$ is left-moving, $v\in A_L^0$.  Since $p_R$ is right-moving, $v\in A_R^0$.  Therefore $v\in V^0$.
+
+Note that $v$ does not depend on the order of the left-moving colors in the color sequence, as long as they all come before the right-moving colors.  Thus we have a map
 \[\Psi: C(A)  \to V^0.\]
 
 Now suppose $\vec{y}\in \hat{C}(A_L^0)$ and $\vec{z}\in \check{C}(A_R^0)$.  We consider how the loop in the previous paragraph changes if we replace $\vec{x}$ with $\vec{x}+\vec{y}+\vec{z}$.  We use Proposition~\ref{prop:colorpath} to create a loop $p_1$ in $A_L^0$ that starts at $\overline{0}$ and follows the colors indicated by $\vec{y}$.  Then let $p_2$ be the path from $\overline{0}$ following the colors indicated by $s(\alpha)$ and $p_3$ the path that continues this using $s(\beta)$.  Finally, let $p_4$ be the path from there using the colors of $\vec{z}$.  By Proposition~\ref{prop:colorpath}, since $p_2$ starts from $\overline{0}$, it must still end at the same point $v$.  Therefore the map $\Psi$ descends to a map
@@ -1092,6 +1109,7 @@ Now suppose $\vec{y}\in \hat{C}(A_L^0)$ and $\vec{z}\in \check{C}(A_R^0)$.  We c
 
 We now show that this function is the inverse of Construction~\ref{cons:findk}.  Let $v\in V^0$.  The construction gives a path $p_L$ of left-moving edges starting from $\overline{0}$ and ending in $v$ and a path $p_R$ of right-moving edges starting from $v$ to $\overline{0}$.  Composing these paths gives the result of the Construction.  Then we apply $\tilde{\Psi}$.  This takes the code word and finds the loop, which by Proposition~\ref{prop:colorpath} must be $p_Lp_R$.  Then $\Psi$ of the code word is the vertex at the end of $p_L$, which is $v$.
 
+\com{This is a bit messy.  Clean it up}
 
 [show the other composition is the identity]
 
@@ -1105,7 +1123,7 @@ First choose an ESDC code $C$.  Let $\pi_L:\ZZ_2^n\to\ZZ_2^p$ and $\pi_R:\ZZ_2^n
 
 Use the construction from \cite{rAT2} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{hgt} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $h_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $h_R$ on $A_R^0$ invariant under $\pi_R(C)$.
 
-Now extend $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  Use \com{reference?} to re-order the color sequence to obtain a new path from $\overline{0}$ to $v$ that has all the left-moving edges first.  In other words, a path with left-moving edges from $\overline{0}$ to $w$, then a path with right-moving edges from $w$ to $v$.  Then $w\in A_L^0$ and define $h_L(v)=h_L(w)$.
+Now extend $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  Use Proposition~\ref{prop:reorderpath} to obtain a left-moving path from $\overline{0}$ to a vertex $w$, and a right-moving path from $w$ to $v$.  Then $w\in A_L^0$ and define $h_L(v)=h_L(w)$.
 
 Likewise define $h_R$ on $A$.
 \end{construction}
@@ -1142,9 +1160,9 @@ The other cases can be obtained by symmetry.
 \end{proof}
 
 
-\begin{theorem}
+\begin{thm}
 Every $2$-d Adinkra can obtained by this construction.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Given any $2$-d Adinkra $A$, there is an ESDC code $C$.  Pick a vertex $\overline{0}$ and define $A_L^0$ and $A_R^0$ as in (\ref{thm}).
