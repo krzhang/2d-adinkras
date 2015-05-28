@@ -783,17 +783,21 @@ Now if $c_1$ is left-moving and $c_2$ is right-moving, then write $v=(v_1,v_2)$.
 We have shown that our definition of product creates a legitimate $2$-d Adinkra from two $1$-d Adinkras. Recall that Adinkras correspond to linear codes; it is natural to expect that the codes of the relevant Adinkras are related nicely.
 
 \begin{definition}[Extending codes]
-Let $p$ and $q$ be non-negative integers and let $n=p+q$. Given a binary block code $C$ of length $p$, we define a binary block code $\hat{C}$ of length $n$ by appending to the end of every code word in $C$ a string of $0$s of length $q$. For example, if $C = \{00, 11\}$ and $n = 5$, then $\hat{C} = \{00000, 11000\}$. Likewise, given a binary block code $C$ of length $q$, we can define a binary block code $\check{C}$ of length $n$ by prepending to the beginning of every code word in $C$ a string of $0$s of length $p$. \com{it is hard to see the difference between the two notations - maybe we should pick something else?}
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $Z_L:\ZZ_2^p\to\ZZ_2^n$ to be the function that appends $q$ zeros, so that for instance, if $p=4$ and $q=3$, then $Z_L(1011)=1011000$.  Likewise, define $Z_R:\ZZ_2^q\to\ZZ_2^n$ to be the function that prepends $p$ zeros.
+
+Define $\pi_L:\ZZ_2^n\to \ZZ_2^p$ to be the function that deletes the last $q$ bits, and $\pi_R:\ZZ_2^n\to \ZZ_2^q$ to be the function that deletes the first $p$ bits.  Note that $\pi_L$ is a left-inverse of $Z_L$ and $\pi_R$ is a left-inverse of $Z_R$.
+
+Our most common use of this notation is as follows: if $C$ is a binary block code of length $p$, we write $Z_L(C)$ for the image under $Z_L$.  Likewise, if $C'$ is a binary block code of length $q$, we write $Z_R(C)$ for the image under $Z_R$.
 \end{definition}
 
 \begin{prop}
 Let $A_1$ and $A_2$ be as above.  Then
-\[C(A_1\times A_2)=\hat{C}(A_1)\oplus \check{C}(A_2).\]
+\[C(A_1\times A_2)=Z_L(C(A_1))\oplus Z_R(C(A_2)).\]
 \end{prop}
 \begin{proof}
 Let $(v_1,v_2)\in A_1\times A_2$.  Let $\vec{x}\in \ZZ_2^N$.  We can write $\vec{x}=\vec{x}_1+\vec{x}_2$ where $\vec{x}_1$ is zero in the last $q$ bits and $\vec{x}_2$ is zero in the first $p$ bits.  Now
 \[\vec{x}(v_1,v_2)=(\vec{x}_1+\vec{x}_2)(v_1,v_2)=(\vec{x}_1v_1,\vec{x}_2v_2).\]
-This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ and $\vec{x}_2 v_2=v_2$. So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_1\in \hat{C}(A_1)$ and $\vec{x}_2\in \check{C}(A_2)$.
+This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ and $\vec{x}_2 v_2=v_2$. So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_1\in Z_L(C(A_1))$ and $\vec{x}_2\in Z_R(C(A_2))$.
 \end{proof}
 
 
@@ -809,8 +813,8 @@ In Section~\ref{sec:products}, we showed that we can construct a $2$-d Adinkra b
 \label{thm:quotient}
 Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$. Then the following hold:
 \begin{enumerate}
-\item[I] There is a binary block code $K$ of length $n$ so that $K\cap \hat{C}(A_L^0)=0$ and $K\cap \check{C}(A_R^0)=0$, and
-\[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K;\]
+\item[I] There is a binary block code $K$ of length $n$ so that $K\cap Z_L(C(A_L^0))=0$ and $K\cap Z_R(C(A_R^0))=0$, and
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K;\]
 \item[II] there is a graph isomorphism
 \begin{equation}
 \label{eqn:quotientiso}
@@ -825,29 +829,29 @@ We first show parts $(I)$ and $(II)$ of this Theorem, starting with the codes. W
 
 \begin{lem}
 \label{lem:cplus}
-\[\hat{C}(A_L^0)\oplus \check{C}(A_R^0) \subseteq C(A).\]
+\[Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)) \subseteq C(A).\]
 \end{lem}
 \begin{proof}
-Let $g\in\hat{C}(A_L^0)$ and $h\in \check{C}(A_R^0)$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in \hat{C}(A_L^0)$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
+Let $g\in Z_L(C(A_L^0))$ and $h\in Z_R(C(A_R^0))$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in Z_L(C(A_L^0))$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:quotient}, $(I)$ and $(II)$]
 From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^n$ that is a vector space complement of
-$\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$ in $C(A)$.  That is,
-\[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K.\]
+$Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
 
 
 
-As always, $\ZZ_2^n$ acts on $A_L^0\times A_R^0$ by color-preserving graph isomorphisms.  When this action is restricted to $K$, the action is faithful because $K\cap \hat{C}(A_L^0)\oplus \check{C}(A_R^0)=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$.
+As always, $\ZZ_2^n$ acts on $A_L^0\times A_R^0$ by color-preserving graph isomorphisms.  When this action is restricted to $K$, the action is faithful because $K\cap Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$.
 
 
 We now define a graph homomorphism
 \[\Phi:A_L^0\times A_R^0 \to A\]
 as follows.
 
-Let $(v_1,v_2)\in A_L^0\times A_R^0$.  Then by Proposition~\ref{prop:transitive}, there is a word $\vec{x}_1\in \hat{\ZZ}_2^p$ so that $\vec{x}_1\overline{0}=v_1$ and a word $\vec{x}_2\in \check{\ZZ}_2^q$ so that $\vec{x}_2\overline{0}=v_2$.  We define $\Phi(v_1,v_2)=(\vec{x}_1+\vec{x}_2)\overline{0}$ in $A$.
+Let $(v_1,v_2)\in A_L^0\times A_R^0$.  Then by Proposition~\ref{prop:transitive}, there is a word $\vec{x}_1\in Z_L(\ZZ_2^p)$ so that $\vec{x}_1\overline{0}=v_1$ and a word $\vec{x}_2\in Z_R(\ZZ_2^q)$ so that $\vec{x}_2\overline{0}=v_2$.  We define $\Phi(v_1,v_2)=(\vec{x}_1+\vec{x}_2)\overline{0}$ in $A$.
 
-The $\vec{x}_1$ and $\vec{x}_2$ are defined up to $\hat{C}(A_L^0)$ and $\check{C}(A_R^0)$, respectively.  Since $\hat{C}(A_L^0)$ and $\check{C}(A_R^0)$ are subgroups of $C(A)$, we see that the definition of $\Phi(v_1,v_2)$ does not depend on these choices.
+The $\vec{x}_1$ and $\vec{x}_2$ are defined up to $Z_L(C(A_L^0))$ and $Z_R(C(A_R^0))$, respectively.  Since $Z_L(C(A_L^0))$ and $Z_R(C(A_R^0))$ are subgroups of $C(A)$, we see that the definition of $\Phi(v_1,v_2)$ does not depend on these choices.
 
 \com{Describe action of $C(A)$ on $A_L^0\times A_R^0$.}
 
@@ -859,9 +863,9 @@ To show that this is onto, let $v$ be a vertex in $A$.  Since $A$ is connected, 
 
 Then $\Phi(v_1,v_2)=v$.
 
-To show that this is one-to-one, suppose $(v_1,v_2)$ and $(v_3,v_4)$ are vertices in $A_L^0\times A_R^0$ and suppose $\Phi(v_1,v_2)=\Phi(v_3,v_4)$.  Define $\vec{x}_1$, $\vec{x}_2$, $\vec{x}_3$, and $\vec{x}_4$ as above, so that $\vec{x}_1\overline{0}=v_1$, and so on.  We then have $(\vec{x}_1+\vec{x}_2)\overline{0}=(\vec{x}_3+\vec{x}_4)\overline{0}$.  Then $(\vec{x}_1-\vec{x}_3+\vec{x_2}-\vec{x}_4)\overline{0}=\overline{0}$, so that $\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4\in C(A)$.  Let $\vec{y}=\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4$.  Since $C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K$, we can write $\vec{y}=\vec{y}_1+\vec{y}_2+\vec{y}_3$ where $\vec{y}_1\in \hat{C}(A_L^0)$, $\vec{y}_2\in \check{C}(A_R^0)$, and $\vec{y}_3\in K$.
+To show that this is one-to-one, suppose $(v_1,v_2)$ and $(v_3,v_4)$ are vertices in $A_L^0\times A_R^0$ and suppose $\Phi(v_1,v_2)=\Phi(v_3,v_4)$.  Define $\vec{x}_1$, $\vec{x}_2$, $\vec{x}_3$, and $\vec{x}_4$ as above, so that $\vec{x}_1\overline{0}=v_1$, and so on.  We then have $(\vec{x}_1+\vec{x}_2)\overline{0}=(\vec{x}_3+\vec{x}_4)\overline{0}$.  Then $(\vec{x}_1-\vec{x}_3+\vec{x_2}-\vec{x}_4)\overline{0}=\overline{0}$, so that $\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4\in C(A)$.  Let $\vec{y}=\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4$.  Since $C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K$, we can write $\vec{y}=\vec{y}_1+\vec{y}_2+\vec{y}_3$ where $\vec{y}_1\in Z_L(C(A_L^0))$, $\vec{y}_2\in Z_R(C(A_R^0))$, and $\vec{y}_3\in K$.
 
-Then since $\vec{y}_1\in \hat{C}(A_L^0)$, we have that $(\vec{x}_1+\vec{y}_1)\overline{0}=v_1$.  Likewise, since $\vec{y}_2\in\check{C}(A_R^0)$, we have $(\vec{x}_2+\vec{y}_2)\overline{0}=v_2$.  Then $\vec{y}_3 (v_1,v_2) = (v_3,v_4)$.
+Then since $\vec{y}_1\in Z_L(C(A_L^0))$, we have that $(\vec{x}_1+\vec{y}_1)\overline{0}=v_1$.  Likewise, since $\vec{y}_2\in Z_R(C(A_R^0))$, we have $(\vec{x}_2+\vec{y}_2)\overline{0}=v_2$.  Then $\vec{y}_3 (v_1,v_2) = (v_3,v_4)$.
 
 \com{This is awkward notation}
 Take the $h_L(v_1,v_2)=h_1(v_1)$ and note that $h_L(\Phi(v_1,v_2))=h_1(v_1)$.  Likewise $h_R(\Phi(v_1,v_2))=h_2(v_2)$.
@@ -947,9 +951,9 @@ Since the vertices, edges, coloring, and grading(s) are the same, the only thing
 
 Douglas, Gates, and Wang \cite{douglas} examined dashings in adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs}, to disambiguate from Seidel's usage.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras. In this work, we use vertex switchings again to study $2$-d Adinkras.
 
-Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A_L^0\times A_R^0$. At the same time, under the isomorphism (\ref{eqn:quotientiso}), the dashing $\mu$ on $A$ gets carried to $(A_L^0\times A_R^0)/K$.  The graph homomorphism
-\[\pi:A_L^0\times A_R^0\to (A_L^0\times A_R^0)/K\]
-pulls back the dashing to $\mu_2$ on $A_L^0\times A_R^0$. While $\mu_1$ and $\mu_2$ are fairly different, they agree on the ``lower boundary:''
+Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A_L^0\times A_R^0$.   The graph homomorphism
+\[\Phi:A_L^0\times A_R^0\to A\]
+pulls back the dashing $\mu$ to $\mu_2$ on $A_L^0\times A_R^0$. While $\mu_1$ and $\mu_2$ are fairly different, they agree on the ``lower boundary:''
 
 \begin{lem}
 \label{lem:agree-on-boundary}
@@ -1086,9 +1090,9 @@ Conversely, given an ESDE code $K$, we can use Construction~\ref{cons:valise} to
 \end{proof}
 
 Given a $2$-d Adinkra $A$, with special basepoint $\overline{0}$ and corresponding $A_L^0$ and $A_R^0$, there remains the question of finding the code $K$.  Recall that
-\[C(A)=\hat{C}(A_L^0)\oplus\check{C}(A_R^0)\oplus K.\]
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
 There is some choice involved in defining $K$; it merely has to be a vector space complement to
-\[C'=\hat{C}(A_L^0)\oplus\check{C}(A_R^0).\]
+\[C'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)).\]
 $K$ will more naturally be defined as $C(A)/C'$, though computationally we can choose a representative to be $K$.
 
 
@@ -1102,7 +1106,7 @@ For every $v\in V^0$, there is a path $p_L$ from $\overline{0}$ to $v$ in $A_L^0
 
 The paths $p_L$ and $p_R$ are not canonical, but if $p'_L$ and $p'_R$ are other paths with those properties, then $p_L(p'_L)^{-1}$ is a loop in $A_L^0$ from $\overline{0}$.  Let $\sigma'_L$ and $\sigma'_R$ be the corresponding color sequences, then $s(\sigma_L)+s(\sigma'_L)\in C(A_L^0)$.  Likewise, $s(\sigma_R)+s(\sigma'_R)\in C(A_R^0)$.
 
-Thus, the choice of $\vec{x}_L+\vec{x}_R$ is well-defined modulo $C'=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$.  This provides a map from $V^0$ to $K=C(A)/C'$.
+Thus, the choice of $\vec{x}_L+\vec{x}_R$ is well-defined modulo $C'=Z_L(C(A_L^0))\oplus  Z_R(C(A_R^0))$.  This provides a map from $V^0$ to $K=C(A)/C'$.
 \end{construction}
 
 \begin{thm}
@@ -1117,7 +1121,7 @@ We now prove this map is bijective by providing its inverse.  Suppose $\vec{x}\i
 Note that $v$ does not depend on the order of the left-moving colors in the color sequence, as long as they all come before the right-moving colors.  Thus we have a map
 \[\Psi: C(A)  \to V^0.\]
 
-Now suppose $\vec{y}\in \hat{C}(A_L^0)$ and $\vec{z}\in \check{C}(A_R^0)$.  We consider how the loop in the previous paragraph changes if we replace $\vec{x}$ with $\vec{x}+\vec{y}+\vec{z}$.  We use Proposition~\ref{prop:colorpath} to create a loop $p_1$ in $A_L^0$ that starts at $\overline{0}$ and follows the colors indicated by $\vec{y}$.  Then let $p_2$ be the path from $\overline{0}$ following the colors indicated by $s(\alpha)$ and $p_3$ the path that continues this using $s(\beta)$.  Finally, let $p_4$ be the path from there using the colors of $\vec{z}$.  By Proposition~\ref{prop:colorpath}, since $p_2$ starts from $\overline{0}$, it must still end at the same point $v$.  Therefore the map $\Psi$ descends to a map
+Now suppose $\vec{y}\in Z_L(C(A_L^0))$ and $\vec{z}\in Z_R(C(A_R^0))$.  We consider how the loop in the previous paragraph changes if we replace $\vec{x}$ with $\vec{x}+\vec{y}+\vec{z}$.  We use Proposition~\ref{prop:colorpath} to create a loop $p_1$ in $A_L^0$ that starts at $\overline{0}$ and follows the colors indicated by $\vec{y}$.  Then let $p_2$ be the path from $\overline{0}$ following the colors indicated by $s(\alpha)$ and $p_3$ the path that continues this using $s(\beta)$.  Finally, let $p_4$ be the path from there using the colors of $\vec{z}$.  By Proposition~\ref{prop:colorpath}, since $p_2$ starts from $\overline{0}$, it must still end at the same point $v$.  Therefore the map $\Psi$ descends to a map
 \[\tilde{\Psi}:C(A)/C' \to V^0.\]
 
 We now show that this function is the inverse of Construction~\ref{cons:findk}.  Let $v\in V^0$.  The construction gives a path $p_L$ of left-moving edges starting from $\overline{0}$ and ending in $v$ and a path $p_R$ of right-moving edges starting from $v$ to $\overline{0}$.  Composing these paths gives the result of the Construction.  Then we apply $\tilde{\Psi}$.  This takes the code word and finds the loop, which by Proposition~\ref{prop:colorpath} must be $p_Lp_R$.  Then $\Psi$ of the code word is the vertex at the end of $p_L$, which is $v$.
