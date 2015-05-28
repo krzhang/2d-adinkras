@@ -832,36 +832,49 @@ Let $g\in\hat{C}(A_L^0)$ and $h\in \check{C}(A_R^0)$.  Then $g\overline{0}=\over
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:quotient}, $(I)$ and $(II)$]
-From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^N$ that is a vector space complement of
+From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^n$ that is a vector space complement of
 $\hat{C}(A_L^0)\oplus \check{C}(A_R^0)$ in $C(A)$.  That is,
 \[C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K.\]
-Then by Theorem~\ref{thm:cubemodulocode}, there is an isomorphism
-\[i_1:A\cong I^n/C(A)\]
-that preserves colors.  The proof of this began with choosing a special vertex in $A$, and we specify here that we should use our chosen vertex $\overline{0}$ of $A$.  This isomorphism then sends $\overline{0}$ to the coset containing $(0,\ldots,0)$ in $I^n/C(A)$.
 
-We now note that
-\begin{eqnarray*}
-I^n/C(A)
-&=&I^n/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K)\\
-&=&(I^n/(\hat{C}(A_L^0)\oplus \check{C}(A_R^0)))/ K\\
-&=&(I^n/C(A_L^0 \times A_R^0))/ K
-\end{eqnarray*}
-and again apply Theorem~\ref{thm:cubemodulocode} to establish an isomorphism
-\[i_2:(I^n/C(A_L^0 \times A_R^0))/ K\cong (A_L^0\times A_R^0)/K\]
-that preserves colors and sends the coset of $(0,\ldots,0)$ to $(\overline{0},\overline{0})$.
 
-We compose these isomorphisms to define
-\[i_3:A\to (A_L^0\times A_R^0)/K\]
-an isomorphism of graphs that preserves colors.
 
-We now restrict $i_3$ to $A_L^0$.  It turns out that this sends every vertex $v$ of $A_L^0$ to $(v,\overline{0})$ in $(A_L^0\times A_R^0)/K$.  This can be seen by noting that both the restriction of $i_3$ to $A_L^0$ and the map sending $v$ to $(v,\overline{0})$ are graph isomorphisms that preserve colors and send $\overline{0}$ to $(\overline{0},\overline{0})$.  By Lemma~\ref{lem:uniqueiso}, such a map is unique.  Therefore, $i_3(v)=(v,\overline{0})$ for all vertices $v$ in $A_L^0$.  Likewise, a similar proof shows that if $v\in A_R^0$, then $i_3(v)=(\overline{0},v)$.
+As always, $\ZZ_2^n$ acts on $A_L^0\times A_R^0$ by color-preserving graph isomorphisms.  When this action is restricted to $K$, the action is faithful because $K\cap \hat{C}(A_L^0)\oplus \check{C}(A_R^0)=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$.
 
-Now let $v$ be any vertex of $A$.  There is a path from $\overline{0}$ to $v$.  Using Proposition~\ref{prop:reorderpath}, there exists a left-moving path $p_L$ from $\overline{0}$ to a vertex $x$ and a right-moving path $p_R$ from  $x$ to $v$.  Since $p_L$ is a left-moving path, $x\in A_L^0$.
 
-Now since $p_R$ is right-moving and connects $i_3(x)$ with $i_3(v)$, we have $h_L(i_3(v))=h_L(i_3(x))=h_L(x,\overline{0})=h_L(x)$.  This is $h_L(v)$ because $p_R$ is right-moving and connects $x$ with $v$.  Thus, $h_L(i_3(v))=h_L(v)$.
+We now define a graph homomorphism
+\[\Phi:A_L^0\times A_R^0 \to A\]
+as follows.
 
-A similar proof shows that $h_R(i_3(v))=h_R(v)$.
+Let $(v_1,v_2)\in A_L^0\times A_R^0$.  Then by Proposition~\ref{prop:transitive}, there is a word $\vec{x}_1\in \hat{\ZZ}_2^p$ so that $\vec{x}_1\overline{0}=v_1$ and a word $\vec{x}_2\in \check{\ZZ}_2^q$ so that $\vec{x}_2\overline{0}=v_2$.  We define $\Phi(v_1,v_2)=(\vec{x}_1+\vec{x}_2)\overline{0}$ in $A$.
+
+The $\vec{x}_1$ and $\vec{x}_2$ are defined up to $\hat{C}(A_L^0)$ and $\check{C}(A_R^0)$, respectively.  Since $\hat{C}(A_L^0)$ and $\check{C}(A_R^0)$ are subgroups of $C(A)$, we see that the definition of $\Phi(v_1,v_2)$ does not depend on these choices.
+
+\com{Describe action of $C(A)$ on $A_L^0\times A_R^0$.}
+
+But actually by the same argument, for all $g\in C(A)$, $\Phi(g(v_1,v_2))=(v_1,v_2)$.  Therefore $\Phi$ actually acts on the quotient.
+
+
+
+To show that this is onto, let $v$ be a vertex in $A$.  Since $A$ is connected, there is a word $\vec{x}\in \ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Let $\pi_1:\ZZ_2^n\to \ZZ_2^p$ and $\pi_2:\ZZ_2^n\to\ZZ_2^q$ be projection onto the first $p$ and last $q$ bits, respectively.  Let $v_1=\pi_1(\vec{x})\overline{0}$ in $A_L^0$ and $v_2=\pi_2(\vec{x})\overline{0}$ in $A_R^0$.  \com{Do we worry about ambiguity here that these are the last $q$ bits shifted to be in the range 1...q?}
+
+Then $\Phi(v_1,v_2)=v$.
+
+To show that this is one-to-one, suppose $(v_1,v_2)$ and $(v_3,v_4)$ are vertices in $A_L^0\times A_R^0$ and suppose $\Phi(v_1,v_2)=\Phi(v_3,v_4)$.  Define $\vec{x}_1$, $\vec{x}_2$, $\vec{x}_3$, and $\vec{x}_4$ as above, so that $\vec{x}_1\overline{0}=v_1$, and so on.  We then have $(\vec{x}_1+\vec{x}_2)\overline{0}=(\vec{x}_3+\vec{x}_4)\overline{0}$.  Then $(\vec{x}_1-\vec{x}_3+\vec{x_2}-\vec{x}_4)\overline{0}=\overline{0}$, so that $\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4\in C(A)$.  Let $\vec{y}=\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4$.  Since $C(A)=\hat{C}(A_L^0)\oplus \check{C}(A_R^0)\oplus K$, we can write $\vec{y}=\vec{y}_1+\vec{y}_2+\vec{y}_3$ where $\vec{y}_1\in \hat{C}(A_L^0)$, $\vec{y}_2\in \check{C}(A_R^0)$, and $\vec{y}_3\in K$.
+
+Then since $\vec{y}_1\in \hat{C}(A_L^0)$, we have that $(\vec{x}_1+\vec{y}_1)\overline{0}=v_1$.  Likewise, since $\vec{y}_2\in\check{C}(A_R^0)$, we have $(\vec{x}_2+\vec{y}_2)\overline{0}=v_2$.  Then $\vec{y}_3 (v_1,v_2) = (v_3,v_4)$.
+
+\com{This is awkward notation}
+Take the $h_L(v_1,v_2)=h_1(v_1)$ and note that $h_L(\Phi(v_1,v_2))=h_1(v_1)$.  Likewise $h_R(\Phi(v_1,v_2))=h_2(v_2)$.
+
+
+
 \end{proof}
+
+Note that $\Phi(v,\overline{0})=v$ on $A_L^0\times\{\overline{0}\}$, and $\Phi(\overline{0},v)=v$ on $\{\overline{0}\}\times A_R^0$.
+
+
+
+
 
 \begin{comment}
 
