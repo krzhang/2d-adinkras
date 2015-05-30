@@ -842,30 +842,82 @@ $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
 
 
 
-As always, $\ZZ_2^n$ acts on $A_L^0\times A_R^0$ by color-preserving graph isomorphisms.  When this action is restricted to $K$, the action is faithful because $K\cap Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$.
+Since $A_L^0\times A_R^0$ is a $1$-d Adinkra, we have, by Proposition~\ref{prop:actioniso}, a color-preserving action of $\ZZ_2^n$ on $A_L^0\times A_R^0$.  Examining the product structure of $A_L^0\times A_R^0$, if we have $\vec{x}\in \ZZ_2^n$, the action is
+\[\vec{x}(v_1,v_2)=(\pi_L(\vec{x})v_1,\pi_R(\vec{x})v_2).\]
+In particular, if $\vec{x}=Z_L(\vec{x}_L)$, then
+\[Z_L(\vec{x}_L)(v_1,v_2)=(\vec{x}_L v_1,v_2)\]
+and if $\vec{x}=Z_R(\vec{x}_R)$,
+\[Z_R(\vec{x}_R)(v_1,v_2)=(v_1,\vec{x}_R v_2).\]
+
+When this action is restricted to $K$, the action is faithful because $K\cap Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$.
+
+
+
+
+
+Let $v$ be a vertex in $A$, and let $g\in C(A)$.  Then using the color sequence for $g$, we can use Proposition~\ref{prop:colorpath} to obtain a path starting at $v$.  Since $gv=v$, we know that this path ends at $v$.  Use Proposition~\ref{prop:reorderpath} to turn this path into a concatenation of a left-moving path $p_L$ and a right-moving path $p_R$.  The path $p_L$ ends at the vertex $\pi_L(g)v$.  Given that the path $p_R$ is right-moving and connects $\pi_L(g)v$ to $g$, we have that $h_L(\pi_L(g)v)=h_L(v)$.  Given that $p_L$ is left-moving and connects $g$ to $\pi_L(g)v$, we have that $h_R(\pi_L(g)v)=h_R(v)$.
+
+Likewise, $\pi_R(g)v$ has the same bigrading as $v$.
+
+Suppose $(v_1,v_2)\in A_L^0\times A_R^0$ and $g\in C(A)$.  The action of $g$ on $(v_1,v_2)$ gives $g(v_1,v_2)=(\pi_L(g)v_1,\pi_R(g)v_2)$.  Then $h_L(g(v_1,v_2))=h_L(\pi_L(g)v_1)=h_L(v_1)=h_L(v_1,v_2)$.  Likewise, $h_R(g(v_1,v_2))=h_R(v_1,v_2)$.  Therefore the bigrading descends to the quotient.
 
 
 We now define a graph homomorphism
 \[\Phi:A_L^0\times A_R^0 \to A\]
 as follows.
 
-Let $(v_1,v_2)\in A_L^0\times A_R^0$.  Then by Proposition~\ref{prop:transitive}, there is a word $\vec{x}_1\in Z_L(\ZZ_2^p)$ so that $\vec{x}_1\overline{0}=v_1$ and a word $\vec{x}_2\in Z_R(\ZZ_2^q)$ so that $\vec{x}_2\overline{0}=v_2$.  We define $\Phi(v_1,v_2)=(\vec{x}_1+\vec{x}_2)\overline{0}$ in $A$.
+Let $(v_1,v_2)\in A_L^0\times A_R^0$.  Then by Proposition~\ref{prop:transitive}, there is a word $\vec{x}_1\in \ZZ_2^p$ so that $\vec{x}_1\overline{0}=v_1$ and a word $\vec{x}_2 \in\ZZ_2^q$ so that $\vec{x}_2\overline{0}=v_2$.  We define $\Phi(v_1,v_2)=(Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}$ in $A$.
 
 The $\vec{x}_1$ and $\vec{x}_2$ are defined up to $Z_L(C(A_L^0))$ and $Z_R(C(A_R^0))$, respectively.  Since $Z_L(C(A_L^0))$ and $Z_R(C(A_R^0))$ are subgroups of $C(A)$, we see that the definition of $\Phi(v_1,v_2)$ does not depend on these choices.
 
-\com{Describe action of $C(A)$ on $A_L^0\times A_R^0$.}
+But actually by the same argument, for all $g\in C(A)$, $\Phi(g(v_1,v_2))=(v_1,v_2)$.  Therefore $\Phi$ actually descends to the quotient:
 
-But actually by the same argument, for all $g\in C(A)$, $\Phi(g(v_1,v_2))=(v_1,v_2)$.  Therefore $\Phi$ actually acts on the quotient.
+\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A\]
+
+Suppose $i$ is a color and $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$.  Let $\vec{e}_i$ be the vector that has a single $1$ in the $i$th bit and $0$s elsewhere, so that for all vertices $v$, $\vec{e}v=q_i(v)$.
+
+Then $\vec{e}(v_1,v_2)$ is a vertex connected to $(v_1,v_2)$ in $A_L^0\times A_R^0$ by an edge of color $i$.
+
+Suppose $i$ is a left-moving color.  Then $\vec{e}_i(v_1,v_2)=(q_i(v_1),v_2)$.
+
+\begin{eqnarray*}
+\Phi(\vec{e}_i(v_1,v_2))
+&=&\Phi(\vec{e}_iv_1,v_2)\\
+&=&(Z_L(\vec{x}_1+\vec{e}_i)+Z_R(\vec{x}_2))\overline{0}\\
+&=&\vec{e}_i(Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}\\
+&=&\vec{e}_i\Phi(v_1,v_2)
+\end{eqnarray*}
+so that $\Phi$ sends every edge of color $i$ to an edge of color $i$.
+
+A similar argument holds if $i$ is a right-moving color.  Therefore $\Phi$, and likewise $\tilde{\Phi}$, are color-preserving homomorphisms of graphs.
+
+Let $(v_1,v_2)\in A_L^0\times A_R^0$.  
+\begin{eqnarray*}
+h_L(\Phi(v_1,v_2)) &=& h_L((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0})\\
+ &=& h_L(Z_R(\vec{x}_2)Z_L(\vec{x}_1)\overline{0})\\
+\end{eqnarray*}
+Since $Z_R(\vec{x}_2)$ follows right-moving colors, this does not affect $h_L$, and so the above is
+\[h_L(Z_L(\vec{x}_1)\overline{0}).\]
+Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h(v_1)$.  On the other hand, in $A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
+
+Therefore $\Phi$ preserves $h_L$.  The fact that it preserves $h_R$ is proved similarly.
 
 
 
-To show that this is onto, let $v$ be a vertex in $A$.  Since $A$ is connected, there is a word $\vec{x}\in \ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Let $\pi_1:\ZZ_2^n\to \ZZ_2^p$ and $\pi_2:\ZZ_2^n\to\ZZ_2^q$ be projection onto the first $p$ and last $q$ bits, respectively.  Let $v_1=\pi_1(\vec{x})\overline{0}$ in $A_L^0$ and $v_2=\pi_2(\vec{x})\overline{0}$ in $A_R^0$.  \com{Do we worry about ambiguity here that these are the last $q$ bits shifted to be in the range 1...q?}
+We now show that $\tilde{\Phi}$ is an isomorphism.
 
-Then $\Phi(v_1,v_2)=v$.
+To show that $\tilde{\Phi}$ is onto, let $v$ be a vertex in $A$.  Since $A$ is connected, there is a word $\vec{x}\in \ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Let $v_1=\pi_L(\vec{x})\overline{0}$ in $A_L^0$ and $v_2=\pi_R(\vec{x})\overline{0}$ in $A_R^0$.  Then $\Phi(v_1,v_2)=(Z_L(\pi_L(\vec{x})) + Z_R(\pi_R(\vec{x})))\overline{0} = \vec{x}\overline{0}= v$.
 
-To show that this is one-to-one, suppose $(v_1,v_2)$ and $(v_3,v_4)$ are vertices in $A_L^0\times A_R^0$ and suppose $\Phi(v_1,v_2)=\Phi(v_3,v_4)$.  Define $\vec{x}_1$, $\vec{x}_2$, $\vec{x}_3$, and $\vec{x}_4$ as above, so that $\vec{x}_1\overline{0}=v_1$, and so on.  We then have $(\vec{x}_1+\vec{x}_2)\overline{0}=(\vec{x}_3+\vec{x}_4)\overline{0}$.  Then $(\vec{x}_1-\vec{x}_3+\vec{x_2}-\vec{x}_4)\overline{0}=\overline{0}$, so that $\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4\in C(A)$.  Let $\vec{y}=\vec{x}_1-\vec{x}_3+\vec{x}_2-\vec{x}_4$.  Since $C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K$, we can write $\vec{y}=\vec{y}_1+\vec{y}_2+\vec{y}_3$ where $\vec{y}_1\in Z_L(C(A_L^0))$, $\vec{y}_2\in Z_R(C(A_R^0))$, and $\vec{y}_3\in K$.
+To show that $\tilde{\Phi}$ is one-to-one, suppose $(v_1,v_2)$ and $(v_3,v_4)$ are vertices in $A_L^0\times A_R^0$ and suppose $\Phi(v_1,v_2)=\Phi(v_3,v_4)$.  Define $\vec{x}_1$, $\vec{x}_2$, $\vec{x}_3$, and $\vec{x}_4$ as above, so that $\vec{x}_1\overline{0}=v_1$, and so on.  We then have $(Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}=(Z_L(\vec{x}_3) +Z_R(\vec{x}_4))\overline{0}$.  Then $(Z_L(\vec{x}_3-\vec{x}_1)+Z_R(\vec{x_4}-\vec{x}_2))\overline{0}=\overline{0}$, so that if we let $\vec{y}=Z_L(\vec{x}_3-\vec{x}_1)+Z_R(\vec{x_4}-\vec{x}_2)$, then $\vec{y}\in C(A)$ and $\vec{y}(v_1,v_2)=(v_3,v_4)$.
 
-Then since $\vec{y}_1\in Z_L(C(A_L^0))$, we have that $(\vec{x}_1+\vec{y}_1)\overline{0}=v_1$.  Likewise, since $\vec{y}_2\in Z_R(C(A_R^0))$, we have $(\vec{x}_2+\vec{y}_2)\overline{0}=v_2$.  Then $\vec{y}_3 (v_1,v_2) = (v_3,v_4)$.
+Since $C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K$, we can write $\vec{y}=\vec{y}_1+\vec{y}_2+\vec{y}_3$ where $\vec{y}_1\in Z_L(C(A_L^0))$, $\vec{y}_2\in Z_R(C(A_R^0))$, and $\vec{y}_3\in K$.
+\begin{eqnarray*}
+(\vec{y}_1+\vec{y}_2+\vec{y}_3)(v_1,v_2)&=&(v_3,v_4)\\
+\vec{y}_3(\pi_L(\vec{y}_1)v_1,\pi_R(\vec{y}_2)v_2)&=&(v_3,v_4)\\
+\vec{y}_3(v_1,v_2)&=&(v_3,v_4)
+\end{eqnarray*}
+This proves that $\tilde{\Phi}$ is one-to-one.
+
 
 \com{This is awkward notation}
 Take the $h_L(v_1,v_2)=h_1(v_1)$ and note that $h_L(\Phi(v_1,v_2))=h_1(v_1)$.  Likewise $h_R(\Phi(v_1,v_2))=h_2(v_2)$.
