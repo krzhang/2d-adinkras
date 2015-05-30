@@ -526,7 +526,13 @@ Likewise, if $x_1$ and $y_1$ are the maxima of the $x$ and $y$ coordinates, resp
 Since the Adinkra is connected, there must be paths from vertices with bigrading $(x_0,y_0)$ to vertices with bigrading $(x_1,y_1)$.  Since $h_L$ and $h_R$ can change by at most 1 along these paths, we see that for all $x_0\le x\le x_1$, there must exist $y_x$ so that $(x,y_x)$ is in the support.  Likewise for all $y_0\le y\le y_1$, there must exist $x_y$ so that $(x_y,y)$ is in the support.  By application of Proposition~\ref{prop:rectangle-completion} again, we get that $(x,y)$ is in the support for all $x_0\le x\le x_1$ and $y_0\le y\le y_1$.
 \end{proof}
 
-While it is neat that the vertices of a $2$-d adinkra $A$ line up nicely in a rectangle, we now show that there is even more regularity in its structure. Let $A_L$ (resp. $A_R)$ be the subgraphs of $A$ induced by left-moving (resp. right-moving) edges of $A$. %
+\subsection{Left and Right parts of a $2$-d Adinkra}
+\begin{definition}
+Let $A$ be a $2$-d Adinkra with $(p,q)$ colors.  Let $A_L$ be the subgraph of $A$ consisting of the left-moving edges of $A$.  Together with the coloring, the dashing, and the grading $h_L$, this is a $1$-d Adinkra with $p$ colors.
+
+Let $A_R$ be the subgraph of $A$ consisting of right-moving edges of $A$.  Define the coloring $c'(e)=c(e)-p$ (so that the colors range from $1$ to $q$ instead of $p+1$ to $p+q$).  Using this coloring, the dashing, and the grading $h_R$, this is a $1$-d Adinkra with $q$ colors.
+\end{definition}
+The fact that these are $1$-d Adinkras is straightforward.  We now consider their connected components.
 
 \begin{lem}
 \label{lem:qiso}
@@ -555,6 +561,26 @@ Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ an
 \end{proof}
 
 With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the upcoming sections.
+
+\begin{definition}
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $\pi_L:\ZZ_2^n\to\ZZ_2^p$ to be projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ to be projection onto the last $q$ bits.
+\end{definition}
+
+\begin{prop}
+\label{prop:heightcode}
+Let $v$ be a vertex in the $2$-d Adinkra $A$, and let $g\in C(A)$.  Then $\pi_L(g)v$ and $\pi_R(g)v$ have the same bigrading as $v$.
+\end{prop}
+
+\begin{proof}
+Using the color sequence for $g$, we can use Proposition~\ref{prop:colorpath} to obtain a path starting at $v$ and ending at $gv$.  Since $g\in C(A)$, we know that $gv=v$.
+
+Use Proposition~\ref{prop:reorderpath} to turn this path into a concatenation of a left-moving path $p_L$ and a right-moving path $p_R$.  The path $p_L$ ends at the vertex $\pi_L(g)v$.  Given that the path $p_R$ is right-moving and connects $\pi_L(g)v$ to $g$, we have that $h_L(\pi_L(g)v)=h_L(v)$.  Given that $p_L$ is left-moving and connects $g$ to $\pi_L(g)v$, we have that $h_R(\pi_L(g)v)=h_R(v)$.
+
+Likewise, $\pi_R(g)v$ has the same bigrading as $v$.
+
+
+\end{proof}
+
 
 \section{Products}
 \label{sec:products}
@@ -705,9 +731,7 @@ Now if $c_1$ is left-moving and $c_2$ is right-moving, then write $v=(v_1,v_2)$.
 We have shown that our definition of product creates a legitimate $2$-d Adinkra from two $1$-d Adinkras. Recall that Adinkras correspond to linear codes; it is natural to expect that the codes of the relevant Adinkras are related nicely.
 
 \begin{definition}[Extending codes]
-Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $Z_L:\ZZ_2^p\to\ZZ_2^n$ to be the function that appends $q$ zeros, so that for instance, if $p=4$ and $q=3$, then $Z_L(1011)=1011000$.  Likewise, define $Z_R:\ZZ_2^q\to\ZZ_2^n$ to be the function that prepends $p$ zeros.
-
-Define $\pi_L:\ZZ_2^n\to \ZZ_2^p$ to be the function that deletes the last $q$ bits, and $\pi_R:\ZZ_2^n\to \ZZ_2^q$ to be the function that deletes the first $p$ bits.  Note that $\pi_L$ is a left-inverse of $Z_L$ and $\pi_R$ is a left-inverse of $Z_R$.
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $Z_L:\ZZ_2^p\to\ZZ_2^n$ to be the function that appends $q$ zeros, so that for instance, if $p=4$ and $q=3$, then $Z_L(1011)=1011000$.  Likewise, define $Z_R:\ZZ_2^q\to\ZZ_2^n$ to be the function that prepends $p$ zeros.  Note that $Z_L$ is a right-inverse of $\pi_L$ and $Z_R$ is a right-inverse of $\pi_R$.
 
 Our most common use of this notation is as follows: if $C$ is a binary block code of length $p$, we write $Z_L(C)$ for the image under $Z_L$.  Likewise, if $C'$ is a binary block code of length $q$, we write $Z_R(C)$ for the image under $Z_R$.
 \end{definition}
@@ -763,7 +787,6 @@ $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
 \[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
 
 
-
 Since $A_L^0\times A_R^0$ is a $1$-d Adinkra, we have, by Proposition~\ref{prop:actioniso}, a color-preserving action of $\ZZ_2^n$ on $A_L^0\times A_R^0$.  Examining the product structure of $A_L^0\times A_R^0$, if we have $\vec{x}\in \ZZ_2^n$, the action is
 \[\vec{x}(v_1,v_2)=(\pi_L(\vec{x})v_1,\pi_R(\vec{x})v_2).\]
 In particular, if $\vec{x}=Z_L(\vec{x}_L)$, then
@@ -773,15 +796,7 @@ and if $\vec{x}=Z_R(\vec{x}_R)$,
 
 When this action is restricted to $K$, the action is faithful because $K\cap Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$.
 
-
-
-
-
-Let $v$ be a vertex in $A$, and let $g\in C(A)$.  Then using the color sequence for $g$, we can use Proposition~\ref{prop:colorpath} to obtain a path starting at $v$.  Since $gv=v$, we know that this path ends at $v$.  Use Proposition~\ref{prop:reorderpath} to turn this path into a concatenation of a left-moving path $p_L$ and a right-moving path $p_R$.  The path $p_L$ ends at the vertex $\pi_L(g)v$.  Given that the path $p_R$ is right-moving and connects $\pi_L(g)v$ to $g$, we have that $h_L(\pi_L(g)v)=h_L(v)$.  Given that $p_L$ is left-moving and connects $g$ to $\pi_L(g)v$, we have that $h_R(\pi_L(g)v)=h_R(v)$.
-
-Likewise, $\pi_R(g)v$ has the same bigrading as $v$.
-
-Suppose $(v_1,v_2)\in A_L^0\times A_R^0$ and $g\in C(A)$.  The action of $g$ on $(v_1,v_2)$ gives $g(v_1,v_2)=(\pi_L(g)v_1,\pi_R(g)v_2)$.  Then $h_L(g(v_1,v_2))=h_L(\pi_L(g)v_1)=h_L(v_1)=h_L(v_1,v_2)$.  Likewise, $h_R(g(v_1,v_2))=h_R(v_1,v_2)$.  Therefore the bigrading descends to the quotient.
+Suppose $(v_1,v_2)\in A_L^0\times A_R^0$ and $g\in C(A)$.  The action of $g$ on $(v_1,v_2)$ gives $g(v_1,v_2)=(\pi_L(g)v_1,\pi_R(g)v_2)$.  Then $h_L(g(v_1,v_2))=h_L(\pi_L(g)v_1)$, which by Proposition~\ref{prop:heightcode}, is $h_L(v_1)=h_L(v_1,v_2)$.  Likewise, $h_R(g(v_1,v_2))=h_R(v_1,v_2)$.  Therefore the bigrading descends to the quotient.
 
 
 We now define a graph homomorphism
