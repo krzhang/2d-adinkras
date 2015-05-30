@@ -414,90 +414,14 @@ If the action is distant and $C$ acts preserving colors, then by Proposition~\re
 \end{proof}
 
 
-\subsection{Quotienting the cube by a code}
 
-
-
-The following $1$-d Adinkra was defined in \com{[reference]}.
-\begin{construction}
-For any non-negative integer $n$, we have an Adinkra $I^n=(V,E,c,\mu,h)$ with
-\begin{itemize}
-\item $V=\ZZ_2^n=\{0,1\}^n$,
-\item $E=\{(v,w)\,|\,\mbox{$v$ and $w$ differ in precisely one coordinate}\}$,
-\item $c(v,w)$ is the coordinate where $v$ and $w$ differ,
-\item $\mu(v,w)$ is the number of $1$s in $v$ before the coordinate $c(v,w)$, modulo $2$,
-\item $h(v)=\wt(v)$ is the number of $1$s in $v$.
-\end{itemize}
-\end{construction}
-
-
-\begin{definition}
-Given $C$ a linear block code of length $n$, with all non-zero code words having weight greater than $2$, we can define an (edge-colored) graph $I^n/C$ as the orbit space of the action of $C\subset \ZZ_2^n$ on $I^n$ as a graph.
-\end{definition}
-
-Recall that $C$ acts via graph homomorphisms that preserve colors.  By Proposition~\ref{prop:quotient}, since code words are length at least $2$, the quotient $I^n/C$ makes sense as an edge-colored graph.
-
-\begin{thm}
-\label{thm:cubemodulocode}
-If $A$ is a connected Adinkra, then there is a graph isomorphism from $I^n/C(A)$ to $A$ that preserves colors.
-\end{thm}
-\begin{proof}
-Choose a vertex $\overline{0}$ in $A$.  Let
-\[\phi:I^n\to A\]
-\[\phi(x_1,\ldots,x_n)=(x_1,\ldots,x_n)\overline{0}\]
-where we are using the action of $\ZZ_2^n$ on $A$ as described above.
-
-To see that this is a graph homomorphism, let $(x_1,\ldots,x_n)\in\ZZ_2^n$ and let $(y_1,\ldots,y_n)$ be another vertex connected to $(x_1,\ldots,x_n)$ with an edge of color $i$.  Then $y_j=x_j$ for all $j\not=i$ and $y_i=1-x_i$.  Then $(y_1,\ldots,y_n)\overline{0}=q_1^{y_1}\cdots q_n^{y_n}(\overline{0}) =  q_1^{x_1}\cdots q_i^{1-x_i}\cdots q_n^{x_n}(\overline{0})=q_i(q_1^{x_1}\cdots q_n^{x_n}(\overline{0}))=q_i(x_1,\ldots,x_n)$.  So $\phi(x_1,\ldots,x_n)$ and $\phi(y_1,\ldots,y_n)$ are connected by an edge of color $i$.  Note that this also shows that the graph homomorphism preserves colors.
-
-We now prove that $\phi$ is surjective.  Since $A$ is connected, $\ZZ_2^n$ acts transitively on the vertex set of $A$, and so for any vertex $v$ of $A$, there exists an element $\vec{x} \in\ZZ_2^n$ so that $\vec{x} \overline{0}=v$.  Then $v=\phi(\vec{x})$.
-
-To prove the isomorphism from $I^n/C(A)$ to $A$, we consider the necessary and sufficient conditions for $\phi(\vec{x})=\phi(\vec{y})$ for $\vec{x}$, $\vec{y}\in \ZZ_2^n$.  The condition $\phi(\vec{x})=\phi(\vec{y})$ is equivalent to $\phi(\vec{x}-\vec{y})\overline{0}=\overline{0}$.  This is equivalent to saying $\vec{x}-\vec{y}\in C(A)$.  Thus, the map $\phi$ descends to $I^n/C(A)$ and gives an isomorphism.
-\end{proof}
-
-In \com{Reference ...}, it was proved that if $A$ is a connected Adinkra, then $C(A)$ is a doubly even code.  Furthermore, if $C$ is any doubly even binary block code of length $n$, then there is an Adinkra with $C(A)=C$.
-
-
-
-\begin{lem}
-\label{lem:uniqueiso}
-Given connected $1$-d Adinkras $A$ and $B$ and vertices $a$ of $A$ and $b$ of $B$, there is at most one graph isomorphism from $A$ to $B$ that preserves colors and sends $a$ to $b$.
-\end{lem}
-\begin{proof}
-Suppose $\phi:A\to B$ is a graph isomorphism that preserves colors and sends $a$ to $b$.
-
-Let $v$ be a vertex of $A$. Since $A$ is connected, there is a path from $a$ to $v$.  This produces a color sequence $\sigma$.  Since $\phi$ is a graph isomorphism that preserves colors, $\phi$ sends this path to a path in $B$ starting from $b$ with the same color sequence.  By Proposition~\ref{prop:colorpath}, there is only one path in $B$ with this property.  The end of this path is $\phi(v)$.
-\end{proof}
-
-
-\com{Maybe delete this:}
-
-
-\begin{definition}
-Let 
-$A_1=(V_1,E_1,c_1,\mu_1,h_{L1},h_{R1})$
-and
-$A_2=(V_2,E_2,c_2,\mu_2,h_{L2},h_{R2})$
-be 2-Adinkras with $(p,q)$ colors.  A homomorphism from $A_1$ to $A_2$ is a graph homomorphism
-\[\phi:(V_1,E_1)\to (V_2,E_2)\]
-that preserves colors and so that:
-\begin{itemize}
-\item If $v\in V_1$ then $h_{1L}(v)=h_{2L}(\phi(v))$.
-\item If $v\in V_1$ then $h_{1R}(v)=h_{2R}(\phi(v))$.
-\end{itemize}
-Note that there is no condition on the dashings $\mu_1$ and $\mu_2$.
-\end{definition}
 
 \subsection{[Possible things to use]}:
 
 \com{@Kevin: I'm going to put things here that may be helpful. It isn't superimportant that they be from my papers; my goal is just to make this section compact but not weasel-y.}
 
 
-\com{the following theorem  captures ``distant action,'' and embeds within it the idea that these quotients are well-defined). In this theorem, colors are part of the quotient.}
 
-\begin{thm}[\cite{zhang:adinkras}, Theorem 4.4]
-\label{thm:chromotopology as quotient}
-Chromotopologies are in bijection with quotients $I^n/K$, where $K$ is an even code with no codeword of weight $2$.
-\end{thm}
 
 \com{It seems we should make this color sequence thing more of an explicit function}.
 
@@ -562,8 +486,6 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. The main idea is that we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
 
 Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
-
-Let $\sigma$ be a color sequence.  Let $l(\sigma)$ be a rearrangement of $\sigma$ that moves all the left-moving colors to the beginning, and let $r(\sigma)$ be a rearrangement of $\sigma$ that moves all the right-moving colors to the beginning. Thus, suppose $p = q = 2$, we have $l((3,1,2,1)) = (2,1,1,3)$ and $r((3,1,2,1)) = (3,2,1,1)$. We always have $s(l(\sigma)) = s(r(\sigma))$ in general, since $l(\sigma)$ and $r(\sigma)$ are just permutations of each other.
 
 \begin{prop}
 \label{prop:reorderpath}
@@ -1038,7 +960,7 @@ Finally, if $\mu$ and $\mu'$ are equal on $T$, consider any edge $e$ not in $T$.
 In light of the above Lemma, it suffices for us to prove that the parities of $\mu_1$ and $\mu_2$ agree on all cycles of $A_L^0\times A_R^0$:
 
 \begin{proof}[Proof of Theorem~\ref{thm:quotient}, $(III)$]
-Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$. We first consider the case where $v_0=\overline{0}$.  Then there is a color sequence $\sigma$ from this.  We modify the path (and thereby modify the color sequence) by ``bubble sorting'' the colors.  Earlier, we noted that we could rearrange $\sigma$ to $l(\sigma)$ so that the left-moving colors were before the right-moving colors.  This can be more specifically done by a series of adjacent swaps of the type that sends the color sequence
+Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$. We first consider the case where $v_0=\overline{0}$.  Then there is a color sequence $\sigma$ from this.  We modify the path (and thereby modify the color sequence) by ``bubble sorting'' the colors.  Earlier, we noted that we could rearrange $\sigma$ so that the left-moving colors were before the right-moving colors.  This can be more specifically done by a series of adjacent swaps of the type that sends the color sequence
 \[(i_1,\ldots,i_{j-1},i_j,i_{j+1},i_{j+2},\ldots,i_k)\]
 to
 \[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
