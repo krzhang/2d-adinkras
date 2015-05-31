@@ -118,13 +118,10 @@ These are required to satisfy the following:
 \begin{enumerate}
 \item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $c(v,w)=c(w,v)$ and $\mu(v,w)=\mu(w,v)$.  Intuitively, the edges are undirected.
 \item For every $v\in V$ and $c\in \{1,\ldots,n\}$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.
-\item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $v\in V$, then there exist $w$, $x$, and $y\in V$ so that $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)\in E$, and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$ and $\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\equiv 1\pmod{2}$.  We call $\mu$ \emph{admissible} if this last condition holds for every $v$, $w$, $x$ and $y$ that satisfy the above.
-
-\com{ I like this definition better, which I'll need later for the word ``parity.'' Merge/pick from the two as you wish. -Y}
- Given a cycle $C$ given by vertices $(v_0,\ldots,v_k)$ in an Adinkra with dashing function $\mu$, the \emph{parity of $\mu$ on $C$} is the sum
-\[\sum_{i=0}^{k-1} \mu(v_i,v_{i+1})\pmod{2}.\]
-Using this language, an \emph{admissable} dashing is exactly one where the parity on all $2$-colored $4$-cycles are $1 \pmod{2}$.
-
+\item Every two-colored simple cycle must be of length 4.  (A \emph{simple} cycle is one which does not repeat vertices, with the exception of the start vertex equalling the end vertex.  A \emph{two-colored} cycle is one where the set of colors of the edges is of cardinality exactly two.)
+\item The parity of $\mu$ on every two-colored simple cycle is 1.  The parity of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ means the sum
+\[\sum_{i=0}^{k-1}\mu(v_i,v_{i+1})\pmod{2}.\]
+If any dashing $\mu$ satisfies this condition for all two-colored simple cycles, we call $\mu$ \emph{admissible}.
 \item If $(v,w)\in E$, then $|h(v)-h(w)|=1$.
 \end{enumerate}
 
@@ -1138,13 +1135,13 @@ Every $2$-d Adinkra can obtained by this construction.
 \end{thm}
 
 \begin{proof}
-Given any $2$-d Adinkra $A$, there is an ESDC code $C$.  Pick a vertex $\overline{0}$ and define $A_L^0$ and $A_R^0$ as in (\ref{thm}).
+Given any $2$-d Adinkra $A$, there is an ESDC code $C$.  Pick a vertex $\overline{0}$ and define $A_L^0$ and $A_R^0$ as in (\ref{thm:quotient}).
 
 Restrict the gradings $h_L$ and $h_R$ onto $A_L^0$ and $A_R^0$.  Note that if $g\in C$, then $\pi_L(g)v=\pi_R(g)v$, and so $h_L(\pi_L(g)v)=h_L(v)$ and $h_R(\pi_L(g)v)=h_R(v)$.  Therefore $h_L$ restricted to $A_L^0$ is invariant under $\pi_L$.  Likewise $h_R$ restricted to $A_R^0$ is invariant under $\pi_R$.
 
 The dashings, as described in \cite{rAT2}, can be obtained by choosing the specific quotient $I^n/C$.
 
-Theorem~\ref{thm:main} gives a description of $A$ in terms of this construction.
+Theorem~\ref{thm:quotient} gives a description of $A$ in terms of this construction.
 
 \end{proof}
 
