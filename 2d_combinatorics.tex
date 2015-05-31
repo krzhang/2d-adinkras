@@ -349,12 +349,12 @@ and thus, by Proposition~\ref{prop:colorendpath}, $p$ and $p'$ end at the same v
 As we have seen, $\ZZ_2^n$, and therefore subgroups of $\ZZ_2^n$, act on Adinkras (more precisely, the underlying graphs), and it will be important to understand quotients of Adinkras by codes.
 
 \begin{prop}
-Let $\Gamma=(V,E)$ be a graph, and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  Then $C$ acts on the set of edges in the following manner: if $c\in C$ and $(v,w)\in E$, then $c(v,w)=(cv,cw)$.
+Let $\Gamma=(V,E)$ be a graph, and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  Then $C$ acts on the set of edges in the following manner: if $g\in C$ and $(v,w)\in E$, then $g(v,w)=(gv,gw)$.
 \end{prop}
 \begin{proof}
-The fact that $(cv,cw)$ is an edge follows directly from the definition of graph isomorphism.
+The fact that $(gv,gw)$ is an edge follows directly from the definition of graph isomorphism.
 
-The fact that this is a group action follows from the fact that $c(c'(v,w))=(c(c'(v)),c(c'(w)))=((cc')v,(cc')w)=(cc')(v,w)$.
+The fact that this is a group action follows from the fact that $g(g'(v,w))=(g(g'(v)),g(g'(w)))=((gg')v,(gg')w)=(gg')(v,w)$.
 \end{proof}
 
 \begin{definition}
@@ -362,7 +362,7 @@ Suppose $C$ is a group that acts on a graph $(V,E)$ via graph isomorphisms.  We 
 \end{definition}
 
 \begin{construction}
-If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then we create a graph $\Gamma/C$ as follows: let the set of vertices be the orbit space $V/C$.  Edges in $\Gamma/C$ are pairs $(Cv,Cw)$ where there exist $c_1, c_2\in C$ so that $(c_1v,c_2w)$ is an edge in $E$.
+If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then we create a graph $\Gamma/C$ as follows: let the set of vertices be the orbit space $V/C$.  Edges in $\Gamma/C$ are pairs $(Cv,Cw)$ where there exist $g_1, g_2\in C$ so that $(g_1v,g_2w)$ is an edge in $E$.
 \end{construction}
 
 \begin{prop}
@@ -370,18 +370,18 @@ If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then we cr
 If, in the previous construction, the group action is distant, then there is a bijection from $E/C$ to the set of edges in $\Gamma/C$.
 \end{prop}
 \begin{proof}
-For every orbit $C(v,w)$ of $C$ on the set of edges of $\Gamma$, there is an edge $(Cv,Cw)$.  This is an edge in $\Gamma/C$ because $(v,w)$ is an edge in $\Gamma$.  This assignment is independent of the choice of representative $(v,w)$ from $C(v,w)$ above since if $(v',w')$ is another representative, then there is a group element $c\in C$ so that $v'=cv$ and $w'=cw$.  Then $v'\in Cv$ and $w'\in Cw$ so that $Cv'=Cv$ and $Cw'=Cw$.
+For every orbit $C(v,w)$ of $C$ on the set of edges of $\Gamma$, there is an edge $(Cv,Cw)$.  This is an edge in $\Gamma/C$ because $(v,w)$ is an edge in $\Gamma$.  This assignment is independent of the choice of representative $(v,w)$ from $C(v,w)$ above since if $(v',w')$ is another representative, then there is a group element $g\in C$ so that $v'=gv$ and $w'=gw$.  Then $v'\in Cv$ and $w'\in Cw$ so that $Cv'=Cv$ and $Cw'=Cw$.
 
 To see that this assignment is surjective follows directly from the definition: for every edge in $\Gamma/C$, there is an edge $(v,w)$ in $\Gamma$ that gets sent to it.
 
-Now to prove that this is injective, suppose $(v,w)$ and $(v',w')$ are edges in $\Gamma$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $c_1$ and $c_2\in C$ so that $c_1v=v'$ and $c_2w=w'$.  On the other hand, there is an edge $(c_1v,c_1w)=(v',c_1w)$.  So $(v',c_1w)$ and $(v',c_2w)=(v',w')$ are edges in the graph.  Then $c_2c_1^{-1}$ is a group element that sends $c_1w$ to $c_2w$ but we have just constructed a path of length 2 from $c_1w$ to $c_2w$.  Since the group action is distant, we know that $c_2c_1^{-1}=1$ so that $c_1=c_2$.  Therefore $(v',w')=c_1(v,w)$.
+Now to prove that this is injective, suppose $(v,w)$ and $(v',w')$ are edges in $\Gamma$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $g_1$ and $g_2\in C$ so that $g_1v=v'$ and $g_2w=w'$.  On the other hand, there is an edge $(g_1v,g_1w)=(v',g_1w)$.  So $(v',g_1w)$ and $(v',g_2w)=(v',w')$ are edges in the graph.  Then $g_2g_1^{-1}$ is a group element that sends $g_1w$ to $g_2w$ but we have just constructed a path of length $2$ from $g_1w$ to $g_2w$.  Since the group action is distant, we know that $g_2g_1^{-1}=1$ so that $g_1=g_2$.  Therefore $(v',w')=g_1(v,w)$.
 \end{proof}
 
 \begin{prop}
 \label{prop:quotient}
 If a group $C$ acts on an Adinkra $A$ using graph isomorphisms that preserve colors, and if the action is distant, then the coloring descends to a coloring on $A/C$ that satisfies those properties of Adinkras that relate to colors and not to dashings or grading.  That is, let $E/C$ denote the set of edges of $A/C$ as defined in the construction.  Then
 \begin{enumerate}
-\item If $(Cv,Cw)$ is an edge in $A/C$, then $(Cw,Cv)$ is also an edge.  Furthermore, $c(Cv,Cw)=c(Cw,Cv)$.
+\item If $(Cv,Cw)$ is an edge in $A/C$, then $(Cw,Cv)$ is also an edge.  Furthermore, $g(Cv,Cw)=g(Cw,Cv)$.
 \item For every $Cv\in V/C$ and $c\in \{1,\ldots,n\}$, there exist exactly one $Cw\in V/C$ so that $(Cv,Cw)\in E/C$ and $c(Cv,Cw)=c$.
 \item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $Cv\in V/C$, then there exist $Cw$, $Cx$, and $Cy\in V/C$ so that $(Cv,Cw)$, $(Cw,Cx)$, $(Cx,Cy)$, and $(Cy,Cv)\in E/C$, and $c(Cv,Cw)=c(Cx,Cy)=c_1$ and $c(Cw,Cx)=c(Cy,Cv)=c_2$
 \end{enumerate}
@@ -397,7 +397,6 @@ Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\i
 \end{proof}
 
 
-\com{[Change notation?  Colors and codes are both $C$ and $c$...  Graphs are often $G$ but here they are $\Gamma$ because groups are often $G$.]}
 
 \begin{prop}
 If $A$ is an Adinkra and $C$ acts on $A$ via graph isomorphisms, then there is a map
