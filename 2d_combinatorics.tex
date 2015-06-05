@@ -348,34 +348,23 @@ and thus, by Proposition~\ref{prop:colorendpath}, $p$ and $p'$ end at the same v
 \label{sec:quotient}
 As we have seen, $\ZZ_2^n$, and therefore subgroups of $\ZZ_2^n$, act on Adinkras (more precisely, the underlying graphs), and it will be important to understand quotients of Adinkras by codes.
 
-\begin{prop}
-Let $\Gamma=(V,E)$ be a graph, and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  Then $C$ acts on the set of edges in the following manner: if $g\in C$ and $(v,w)\in E$, then $g(v,w)=(gv,gw)$.
-\end{prop}
-\begin{proof}
-The fact that $(gv,gw)$ is an edge follows directly from the definition of graph isomorphism.
+Let $\Gamma=(V,E)$ be a graph and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  If we wish to define the quotient $\Gamma/C$, the vertex set of $\Gamma/C$ should be the orbit space $V/C$, but the edge set requires a bit more care.  We can indeed define an action of $C$ on $E$ so that if $g\in C$, and $(v,w)$ is an edge in $E$, then $g(v,w)=(gv,gw)$.  But what is needed is a set of edges for $\Gamma/C$.  Let $Cv$ and $Cw$ be elements of $V/C$.  We say there is an edge between these two vertices if there exist vertices $v_1\in Cv$ and $w_1\in Cw$ so that there is an edge $(v_1,w_1)$ in $E$.
 
-The fact that this is a group action follows from the fact that $g(g'(v,w))=(g(g'(v)),g(g'(w)))=((gg')v,(gg')w)=(gg')(v,w)$.
-\end{proof}
+In fact, there is a map $j$ from the orbit space $E/C$ to the set of edges just defined, sending the orbit of $(v,w)$ to $(Cv,Cw)$.  That this map is surjective is clear from the definition.  But this map is, in general, not injective.  The problem is that a group element may connect two neighbors of a vertex, and thereby create a multiple edge.  Multiple edges are not profoundly problematic, but the formalism we are using to describe graphs does not allow it and it is inconvenient to alter the formalism to accommodate these features.  Fortunately, for the group actions described in this paper, these situations cannot arise.
 
 \begin{definition}
 Suppose $C$ is a group that acts on a graph $(V,E)$ via graph isomorphisms.  We say that this group action is distant if for every non-identity group element $c\in C$, and every vertex $v\in V$, every path from $v$ to $cv$ is of length greater than 2.
 \end{definition}
 
-\begin{construction}
-If a group $C$ acts on a graph $\Gamma=(V,E)$ via graph isomorphisms, then we create a graph $\Gamma/C$ as follows: let the set of vertices be the orbit space $V/C$.  Edges in $\Gamma/C$ are pairs $(Cv,Cw)$ where there exist $g_1, g_2\in C$ so that $(g_1v,g_2w)$ is an edge in $E$.
-\end{construction}
-
 \begin{prop}
-\label{prop:distiso}
-If, in the previous construction, the group action is distant, then there is a bijection from $E/C$ to the set of edges in $\Gamma/C$.
+\label{prop:distinject}
+If $C$ is a distant group action, then the map $j$ is injective.
 \end{prop}
 \begin{proof}
-For every orbit $C(v,w)$ of $C$ on the set of edges of $\Gamma$, there is an edge $(Cv,Cw)$.  This is an edge in $\Gamma/C$ because $(v,w)$ is an edge in $\Gamma$.  This assignment is independent of the choice of representative $(v,w)$ from $C(v,w)$ above since if $(v',w')$ is another representative, then there is a group element $g\in C$ so that $v'=gv$ and $w'=gw$.  Then $v'\in Cv$ and $w'\in Cw$ so that $Cv'=Cv$ and $Cw'=Cw$.
-
-To see that this assignment is surjective follows directly from the definition: for every edge in $\Gamma/C$, there is an edge $(v,w)$ in $\Gamma$ that gets sent to it.
-
-Now to prove that this is injective, suppose $(v,w)$ and $(v',w')$ are edges in $\Gamma$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $g_1$ and $g_2\in C$ so that $g_1v=v'$ and $g_2w=w'$.  On the other hand, there is an edge $(g_1v,g_1w)=(v',g_1w)$.  So $(v',g_1w)$ and $(v',g_2w)=(v',w')$ are edges in the graph.  Then $g_2g_1^{-1}$ is a group element that sends $g_1w$ to $g_2w$ but we have just constructed a path of length $2$ from $g_1w$ to $g_2w$.  Since the group action is distant, we know that $g_2g_1^{-1}=1$ so that $g_1=g_2$.  Therefore $(v',w')=g_1(v,w)$.
+Suppose $(v,w)$ and $(v',w')$ are edges in $E$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $g_1$ and $g_2\in C$ so that $g_1v=v'$ and $g_2w=w'$.  On the other hand, there is an edge $(g_1v,g_1w)=(v',g_1w)$.  So $(v',g_1w)$ and $(v',g_2w)=(v',w')$ are edges in the graph.  Then $g_2g_1^{-1}$ is a group element that sends $g_1w$ to $g_2w$ but we have just constructed a path of length $2$ from $g_1w$ to $g_2w$.  Since the group action is distant, we know that $g_2g_1^{-1}=1$ so that $g_1=g_2$.  Therefore $(v',w')=g_1(v,w)$.
 \end{proof}
+
+The benefit to this comes when our edges have colors and the group preserves colors:
 
 \begin{prop}
 \label{prop:quotient}
@@ -383,17 +372,19 @@ If a group $C$ acts on an Adinkra $A$ using graph isomorphisms that preserve col
 \begin{enumerate}
 \item If $(Cv,Cw)$ is an edge in $A/C$, then $(Cw,Cv)$ is also an edge.  Furthermore, $c(Cv,Cw)=c(Cw,Cv)$.
 \item For every $Cv\in V/C$ and $c\in \{1,\ldots,n\}$, there exist exactly one $Cw\in V/C$ so that $(Cv,Cw)\in E/C$ and $c(Cv,Cw)=c$.
+\item Every two-colored simple cycle in $A/C$ has length 4.
+
 \item If $c_1$, $c_2\in \{1,\ldots,n\}$ with $c_1\not=c_2$, and $Cv\in V/C$, then there exist $Cw$, $Cx$, and $Cy\in V/C$ so that $(Cv,Cw)$, $(Cw,Cx)$, $(Cx,Cy)$, and $(Cy,Cv)\in E/C$, and $c(Cv,Cw)=c(Cx,Cy)=c_1$ and $c(Cw,Cx)=c(Cy,Cv)=c_2$
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Since Proposition~\ref{prop:distiso} says that the edges of $A/C$ can be identified with $E/C$, and since the action of $C$ preserves colors, we can define the coloring on $E/C$, and thus, on the edges of $A/C$.
+Since Proposition~\ref{prop:distinject} says that the edges of $A/C$ can be identified with $E/C$, and since the action of $C$ preserves colors, we can define the coloring on $E/C$, and thus, on the edges of $A/C$.
 
 Property 1 follows from the construction of the edges of $A/C$.
 
 Now we prove Property 2.  Let $Cv\in V/C$ and $c\in\{1,\ldots,n\}$.  Since $A$ is an Adinkra, there is exactly one vertex $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.  There is thus an edge $(Cv,Cw)$ in $A/C$ that has color $c$.  To show uniqueness, suppose there is an $x\in V$ so that $(Cv,Cx)$ is in $A/C$ with color $c$.  This means there are group elements $\alpha,\beta\in C$ so that $(\alpha v,\beta x)$ is an edge of $A$ of color $c$.  By acting by $\alpha^{-1}$, we see that without loss of generality, $\alpha=1$.  Because $A$ is an Adinkra, there is a unique edge from $v$ that has color $c$.  So $\beta x = w$.  Therefore $x\in Cw$.
 
-Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\in V/C$.  Since $A$ is an Adinkra, there are vertices $w$, $x$, and $y$ in $V$ so that $(v,w)$, $(w,x)$, $(x,y)$ and $(y,v)\in E$ and $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$.  Then $Cw$, $Cx$, and $Cy$ are the requisite vertices in $V/C$ with the given property.
+Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\in V/C$.  By Proposition~\ref{prop:colorpath}, there is a path following the color sequence $(c_1,c_2,c_1,c_2)$ starting at $v$ in $A$.  By the fact that $A$ is an Adinkra, this is a cycle.  Because the action is distant, and in any cycle of length $4$, the maximum distance between vertices is $2$, we see that no two vertices are identified in the quotient, and so in the quotient, the corresponding cycle is of length $4$.
 \end{proof}
 
 
