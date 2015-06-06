@@ -975,7 +975,7 @@ By Lemma~\ref{lem:mainhomo}, there is a graph homomorphism
 \[\Phi:A_L^0\times A_R^0 \to A\]
 that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$, and pull it back to a dashing $\mu_2$ on $A_L^0\times A_R^0$, then Lemma~\ref{lem:switch12} says that there exists a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
 
-By Lemma~\ref{lem:kquotient}, $K$ acts on $A_L^0\times A_R^0$ to produce a well-defined $2$-d Adinkra without dashing:
+By Corollary~\ref{cor:kquotient}, $K$ acts on $A_L^0\times A_R^0$ to produce a well-defined $2$-d Adinkra without dashing:
 \[(A_L^0\times A_R^0)/K\]
 Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with dashing
 \[F(A_L^0\times A_R^0)/K\]
@@ -1061,36 +1061,18 @@ Let $V^0=A_L^0\cap A_R^0$.  Now for every $v\in V^0$, we have $h_L(v)=h_L(\overl
 
 We construct a bijection between $V^0$ and $C(A)/C'$.
 
-\begin{construction}
-\label{cons:findk}
-For every $v\in V^0$, there is a path $p_L$ from $\overline{0}$ to $v$ in $A_L^0$ and a path $p_R$ from $v$ to $\overline{0}$ in $A_R^0$.  These paths give color sequences $\sigma_L$ and $\sigma_R$ with $\beta_L=s(\sigma_L)$ and $\vec{x}_R=s(\sigma_R)$ so that $\vec{x}_L$ is $0$ in the last $q$ coordinates and $\vec{x}_R$ is $0$ in the first $p$ coordinates.  Since the paths $p_L$ and $p_R$ form a loop in $A$, we know that $\vec{x}_L+\vec{x}_R\in C(A)$.
-
-The paths $p_L$ and $p_R$ are not canonical, but if $p'_L$ and $p'_R$ are other paths with those properties, then $p_L(p'_L)^{-1}$ is a loop in $A_L^0$ from $\overline{0}$.  Let $\sigma'_L$ and $\sigma'_R$ be the corresponding color sequences, then $s(\sigma_L)+s(\sigma'_L)\in C(A_L^0)$.  Likewise, $s(\sigma_R)+s(\sigma'_R)\in C(A_R^0)$.
-
-Thus, the choice of $\vec{x}_L+\vec{x}_R$ is well-defined modulo $C'=Z_L(C(A_L^0))\oplus  Z_R(C(A_R^0))$.  This provides a map from $V^0$ to $K=C(A)/C'$.
-\end{construction}
-
 \begin{thm}
 \label{thm:findk}
-The above construction provides a bijective map
-\[\Phi:V^0\to C(A)/C'\]
+The map
+\[\Psi:C(A)/C'\to V^0\]
+given by
+\[\Psi(\vec{x})=\pi_L(\vec{x})\overline{0}\]
+is a bijection.
 \end{thm}
 \begin{proof}
+If $\vec{x}\in C(A)$, then $(\pi_L(\vec{x})+\pi_R(\vec{x}))\overline{0}=\overline{0}$, so $\pi_L(\vec{x})\overline{0}=\pi_R(\vec{x})\overline{0}$.  So $\Psi(\vec{x})\in A_L^0\cap A_R^0=V^0$.  This map is invariant under $C'$, so $\Psi$ is well-defined.
 
-We now prove this map is bijective by providing its inverse.  Suppose $\vec{x}\in C(A)$.  Then by Proposition~\ref{prop:colorpath}, there is a loop in $A$ starting at $\overline{0}$ that follows the colors indicated by $\vec{x}$.  By Proposition~\ref{prop:reorderpath}, there is a left-moving path $p_L$ from $\overline{0}$ to a vertex $v$, and a right-moving path $p_R$ from $v$ to $\overline{0}$.  Since $p_L$ is left-moving, $v\in A_L^0$.  Since $p_R$ is right-moving, $v\in A_R^0$.  Therefore $v\in V^0$.
-
-Note that $v$ does not depend on the order of the left-moving colors in the color sequence, as long as they all come before the right-moving colors.  Thus we have a map
-\[\Psi: C(A)  \to V^0.\]
-
-Now suppose $\vec{y}\in Z_L(C(A_L^0))$ and $\vec{z}\in Z_R(C(A_R^0))$.  We consider how the loop in the previous paragraph changes if we replace $\vec{x}$ with $\vec{x}+\vec{y}+\vec{z}$.  We use Proposition~\ref{prop:colorpath} to create a loop $p_1$ in $A_L^0$ that starts at $\overline{0}$ and follows the colors indicated by $\vec{y}$.  Then let $p_2$ be the path from $\overline{0}$ following the colors indicated by $s(\alpha)$ and $p_3$ the path that continues this using $s(\beta)$.  Finally, let $p_4$ be the path from there using the colors of $\vec{z}$.  By Proposition~\ref{prop:colorpath}, since $p_2$ starts from $\overline{0}$, it must still end at the same point $v$.  Therefore the map $\Psi$ descends to a map
-\[\tilde{\Psi}:C(A)/C' \to V^0.\]
-
-We now show that this function is the inverse of Construction~\ref{cons:findk}.  Let $v\in V^0$.  The construction gives a path $p_L$ of left-moving edges starting from $\overline{0}$ and ending in $v$ and a path $p_R$ of right-moving edges starting from $v$ to $\overline{0}$.  Composing these paths gives the result of the Construction.  Then we apply $\tilde{\Psi}$.  This takes the code word and finds the loop, which by Proposition~\ref{prop:colorpath} must be $p_Lp_R$.  Then $\Psi$ of the code word is the vertex at the end of $p_L$, which is $v$.
-
-\com{This is a bit messy.  Clean it up}
-
-[show the other composition is the identity]
-
+Suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $\pi_L(\vec{x})\overline{0}=\pi_L(\vec{y})\overline{0}$.  Therefore $\pi_L(\vec{x}+\vec{y})\in C(A_L^0)$.  Likewise $\pi_R(\vec{x}+\vec{y})\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.
 \end{proof}
 
 \section{Enumerating $2$-d Adinkras}
