@@ -403,6 +403,7 @@ If $(v,w)$ is an edge in $A$, then $(\pi(v),\pi(w))=(Cv,Cw)$ is an edge in $A/C$
 Adinkras also have dashings and gradings (and in a later section, we will consider bigradings).  The following result is similar to what was proved for colors above.
 
 \begin{prop}
+\label{prop:quotient2}
 If $A$ is an Adinkra and there is a distant action of $C$ on $A$ via graph isomorphisms that preserve colors, dashings, and grading, then these colors, dashings, and gradings descend to $A/C$ to make $A/C$ an Adinkra, and the map
 \[\pi:A\to A/C\]
 is an Adinkra homomorphism.
@@ -804,21 +805,25 @@ $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
 \end{proof}
 
 \begin{lem}
-\label{lem:kquotient}
-There is a distant action of $K$ on $A_L^0\times A_R^0$ so that $(A_L^0\times A_R^0)/K$ is a well-defined $2$-d Adinkra without dashing: that is, a graph with colors and bigrading, satisfying the conditions of a $2$-d Adinkra except those that refer to dashing.
+\label{lem:kaction}
+There is a faithful, distant action of $K$ on $A_L^0\times A_R^0$ that preserves colors and the bigrading.
 \end{lem}
 \begin{proof}
-Since $A_L^0\times A_R^0$ can be considered as a $1$-d Adinkra, we have, by Proposition~\ref{prop:actioniso}, a color-preserving action of $\ZZ_2^n$ on $A_L^0\times A_R^0$.  Examining the product structure of $A_L^0\times A_R^0$, if we have $\vec{x}\in \ZZ_2^n$, the action is
+Considering $A_L^0\times A_R^0$ as a $1$-d Adinkra, we have, by Proposition~\ref{prop:actioniso}, a color-preserving action of $\ZZ_2^n$ on $A_L^0\times A_R^0$.  Examining the product structure of $A_L^0\times A_R^0$, if we have $\vec{x}\in \ZZ_2^n$, the action is
 \[\vec{x}(v_1,v_2)=(\pi_L(\vec{x})v_1,\pi_R(\vec{x})v_2).\]
 
-%In particular, if $\vec{x}=Z_L(\vec{x}_L)$, then
-%\[Z_L(\vec{x}_L)(v_1,v_2)=(\vec{x}_L v_1,v_2)\]
-%and if $\vec{x}=Z_R(\vec{x}_R)$,
-%\[Z_R(\vec{x}_R)(v_1,v_2)=(v_1,\vec{x}_R v_2).\]
+When this action is restricted to $K$, the action is faithful because $K\cap (Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.
 
-When this action is restricted to $K$, the action is faithful because $K\cap Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.  By Proposition~\ref{prop:quotient}, there is a well-defined graph quotient $(A_L^0\times A_R^0)/K$, with coloring.
+Suppose $(v_1,v_2)\in A_L^0\times A_R^0$ and $g\in C(A)$.  The action of $g$ on $(v_1,v_2)$ gives $g(v_1,v_2)=(\pi_L(g)v_1,\pi_R(g)v_2)$.  Then $h_L(g(v_1,v_2))=h_L(\pi_L(g)v_1)$, which by Proposition~\ref{prop:heightcode}, is $h_L(v_1)$, which is $h_L(v_1,v_2)$.  Likewise, $h_R(g(v_1,v_2))=h_R(v_1,v_2)$.  Therefore the action of $K$ preserves the bigrading.
 
-Suppose $(v_1,v_2)\in A_L^0\times A_R^0$ and $g\in C(A)$.  The action of $g$ on $(v_1,v_2)$ gives $g(v_1,v_2)=(\pi_L(g)v_1,\pi_R(g)v_2)$.  Then $h_L(g(v_1,v_2))=h_L(\pi_L(g)v_1)$, which by Proposition~\ref{prop:heightcode}, is $h_L(v_1)=h_L(v_1,v_2)$.  Likewise, $h_R(g(v_1,v_2))=h_R(v_1,v_2)$.  Therefore the bigrading descends to the quotient.
+\end{proof}
+
+\begin{cor}
+\label{cor:kquotient}
+There is a distant action of $K$ on $A_L^0\times A_R^0$ so that $(A_L^0\times A_R^0)/K$ is a well-defined $2$-d Adinkra without dashing: that is, a graph with colors and bigrading, satisfying the conditions of a $2$-d Adinkra except those that refer to dashing.
+\end{cor}
+\begin{proof}
+This is a consequence of Lemma~\ref{lem:kaction} and Proposition~\ref{prop:quotient2}.
 \end{proof}
 
 \begin{definition}
