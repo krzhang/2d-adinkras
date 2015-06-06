@@ -498,6 +498,13 @@ In this section, we show that the coherence conditions of $2$-d adinkras force a
 
 Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
 
+
+\begin{definition}
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $\pi_L:\ZZ_2^n\to\ZZ_2^p$ to be projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ to be projection onto the last $q$ bits.
+\end{definition}
+
+
+
 \begin{prop}
 \label{prop:reorderpath}
 If $v_1$ and $v_2$ are vertices of a $2$-d Adinkra, and $p$ is a path from $v_1$ to $v_2$, then there exists a path $p_L$ consisting only of left-moving edges from $v_1$ to a vertex $u$, and a path $p_R$ consisting only of right-moving edges from $u$ to $v_2$.
@@ -512,6 +519,8 @@ The remaining result follows by symmetry.
 \end{proof}
 
 
+
+
 \begin{prop}
 \label{prop:rectangle-completion}
 Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
@@ -524,9 +533,13 @@ By Proposition~\ref{prop:reorderpath}, there is a left-moving path from $v_1$ to
 In the same way, Proposition~\ref{prop:reorderpath} provides a vertex $w$ with bigrading $(x_1,y_2)$.
 \end{proof}
 
+\begin{proof}[Alternate proof]
+Suppose $v_1$ is a vertex with bigrading $(x_1,y_1)$ and $v_2$ is a vertex with bigrading $(x_2,y_2)$.  Since $A$ is connected, there is an $\vec{x}\in\ZZ_2^n$ so that $\vec{x}v_1=v_2$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$, where $\vec{x}_L$ has only $1$s for left-moving colors and $\vec{x}_R$ has only $1$s for right-moving colors.  Then $\vec{x}_L(v_1)=\vec{x}_R(v_2)$ is a vertex that shares the $h_R$ of $v_1$ and $h_L$ of $v_2$, so that it has bigrading $(x_2,y_1)$; and $\vec{x}_L v_2=\vec{x}_R v_1$ likewise has bigrading $(x_1,y_2)$.
+\end{proof}
+
 \begin{cor}
 \label{cor:rectangle}
-The support of a connected $2$-d adinkra is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ so that the support is
+The support of a connected $2$-d Adinkra is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ so that the support is
 \[\{(x,y)\in\ZZ^2\,|\,x_0\le x\le x_1\mbox{ and }y_0\le y\le y_1\}\]
 \end{cor}
 \begin{proof}
@@ -535,6 +548,15 @@ Let $x_0$ and $y_0$ be the minima of the $x$ and $y$ coordinates, respectively, 
 Likewise, if $x_1$ and $y_1$ are the maxima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra, then $(x_1,y_1)$ is in the support.  By Proposition~\ref{prop:rectangle-completion}, $(x_1,y_0)$ and $(x_0,y_1)$ are also in the support.
 
 Since the Adinkra is connected, there must be paths from vertices with bigrading $(x_0,y_0)$ to vertices with bigrading $(x_1,y_1)$.  Since $h_L$ and $h_R$ can change by at most 1 along these paths, we see that for all $x_0\le x\le x_1$, there must exist $y_x$ so that $(x,y_x)$ is in the support.  Likewise for all $y_0\le y\le y_1$, there must exist $x_y$ so that $(x_y,y)$ is in the support.  By application of Proposition~\ref{prop:rectangle-completion} again, we get that $(x,y)$ is in the support for all $x_0\le x\le x_1$ and $y_0\le y\le y_1$.
+\end{proof}
+
+\begin{prop}
+\label{prop:heightcode}
+Let $v$ be a vertex in the $2$-d Adinkra $A$, and let $g\in C(A)$.  Then $Z_L(\pi_L(g))v=Z_R(\pi_R(g))v$ and this has the same bigrading as $v$.
+\end{prop}
+
+\begin{proof}
+If $g\in C(A)$, then $Z_R(\pi_R(g))(Z_L(\pi_L(g))v)=(Z_L(\pi_L(g))+Z_R(\pi_R(g)))=gv=v$, and by acting by $Z_R(\pi_R(g))$ we get $Z_L(\pi_L(g))v=Z_R(\pi_R(g))v$.  Since $Z_L(\pi_L(g))v$ has the same $h_R$ as $v$, and since $Z_R(\pi_R(g))v$ has the same $h_L$ as $v$, we have that $Z_L(\pi_L(g))v$ has the same bigrading as $v$.
 \end{proof}
 
 \subsection{Left and Right parts of a $2$-d Adinkra}
@@ -571,26 +593,14 @@ Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and re
 Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$.  Using Proposition~\ref{prop:reorderpath}, reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
 \end{proof}
 
-With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the upcoming sections.
+\begin{proof}[Alternate Proof]
+Let $X$ and $Y$ be two connected components of $A_L$.  Since $A$ is connected, there is a $\vec{x}\in \ZZ_2^n$ that send a vertex in $X$ to a vertex in $Y$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ has only $1$s for left-moving colors, and $\vec{x}_R$ has only $1$s for right-moving colors.  Since $X$ is a connected component of $A_L$, $\vec{x}_L$ sends $X$ to itself, and so $\vec{x}_R$ sends $X$ to $Y$.
 
-\begin{definition}
-Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $\pi_L:\ZZ_2^n\to\ZZ_2^p$ to be projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ to be projection onto the last $q$ bits.
-\end{definition}
-
-\begin{prop}
-\label{prop:heightcode}
-Let $v$ be a vertex in the $2$-d Adinkra $A$, and let $g\in C(A)$.  Then $\pi_L(g)v$ and $\pi_R(g)v$ have the same bigrading as $v$.
-\end{prop}
-
-\begin{proof}
-Using the color sequence for $g$, we can use Proposition~\ref{prop:colorpath} to obtain a path starting at $v$ and ending at $gv$.  Since $g\in C(A)$, we know that $gv=v$.
-
-Use Proposition~\ref{prop:reorderpath} to turn this path into a concatenation of a left-moving path $p_L$ and a right-moving path $p_R$.  The path $p_L$ ends at the vertex $\pi_L(g)v$.  Given that the path $p_R$ is right-moving and connects $\pi_L(g)v$ to $g$, we have that $h_L(\pi_L(g)v)=h_L(v)$.  Given that $p_L$ is left-moving and connects $g$ to $\pi_L(g)v$, we have that $h_R(\pi_L(g)v)=h_R(v)$.
-
-Likewise, $\pi_R(g)v$ has the same bigrading as $v$.
-
-
+Then $\vec{x}_R$ acts on $A$ via graph isomorphisms that preserve color, and preserves $h_L$.  Since $X$ is connected, $\vec{x}_R(X)$ is connected.  It is therefore a subset of $Y$.  Likewise, $\vec{x}_R(Y)$ is a connected subset of $X$.  Since $\vec{x}_R$ is an involution, $\vec{x}_R(X)=Y$ and acting by $\vec{x}_R$ produces an isomorphism.
 \end{proof}
+
+With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d Adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the upcoming sections.
+
 
 
 \section{Products}
@@ -752,9 +762,9 @@ Let $A_1$ and $A_2$ be as above.  Then
 \[C(A_1\times A_2)=Z_L(C(A_1))\oplus Z_R(C(A_2)).\]
 \end{prop}
 \begin{proof}
-Let $(v_1,v_2)\in A_1\times A_2$.  Let $\vec{x}\in \ZZ_2^N$.  We can write $\vec{x}=\vec{x}_1+\vec{x}_2$ where $\vec{x}_1$ is zero in the last $q$ bits and $\vec{x}_2$ is zero in the first $p$ bits.  Now
-\[\vec{x}(v_1,v_2)=(\vec{x}_1+\vec{x}_2)(v_1,v_2)=(\vec{x}_1v_1,\vec{x}_2v_2).\]
-This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_1v_1=v_1$ and $\vec{x}_2 v_2=v_2$. So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_1\in Z_L(C(A_1))$ and $\vec{x}_2\in Z_R(C(A_2))$.
+Let $(v_1,v_2)\in A_1\times A_2$.  Let $\vec{x}\in \ZZ_2^N$.  We can write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Now
+\[\vec{x}(v_1,v_2)=(\vec{x}_L+\vec{x}_R)(v_1,v_2)=(\vec{x}_Lv_1,\vec{x}_Rv_2).\]
+This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_Lv_1=v_1$ and $\vec{x}_R v_2=v_2$. So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_L\in Z_L(C(A_1))$ and $\vec{x}_R\in Z_R(C(A_2))$.
 \end{proof}
 
 
