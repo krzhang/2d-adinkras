@@ -534,7 +534,7 @@ In the same way, Proposition~\ref{prop:reorderpath} provides a vertex $w$ with b
 \end{proof}
 
 \begin{proof}[Alternate proof]
-Suppose $v_1$ is a vertex with bigrading $(x_1,y_1)$ and $v_2$ is a vertex with bigrading $(x_2,y_2)$.  Since $A$ is connected, there is an $\vec{x}\in\ZZ_2^n$ so that $\vec{x}v_1=v_2$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$, where $\vec{x}_L$ has only $1$s for left-moving colors and $\vec{x}_R$ has only $1$s for right-moving colors.  Then $\vec{x}_L(v_1)=\vec{x}_R(v_2)$ is a vertex that shares the $h_R$ of $v_1$ and $h_L$ of $v_2$, so that it has bigrading $(x_2,y_1)$; and $\vec{x}_L v_2=\vec{x}_R v_1$ likewise has bigrading $(x_1,y_2)$.
+Suppose $v_1$ is a vertex with bigrading $(x_1,y_1)$ and $v_2$ is a vertex with bigrading $(x_2,y_2)$.  Since $A$ is connected, there is an $\vec{x}\in\ZZ_2^n$ so that $\vec{x}v_1=v_2$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$, where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $\vec{x}_R(\vec{x}_Lv_1)=v_2$, and acting on both sides with $\vec{x}_R$, we get $\vec{x}_Lv_1=\vec{x}_Rv_2$.  This is a vertex that shares the $h_R$ of $v_1$ and $h_L$ of $v_2$, so that it has bigrading $(x_2,y_1)$.  Likewise, $\vec{x}_L v_2=\vec{x}_R v_1$ has bigrading $(x_1,y_2)$.
 \end{proof}
 
 \begin{cor}
@@ -552,11 +552,12 @@ Since the Adinkra is connected, there must be paths from vertices with bigrading
 
 \begin{prop}
 \label{prop:heightcode}
-Let $v$ be a vertex in the $2$-d Adinkra $A$, and let $g\in C(A)$.  Then $Z_L(\pi_L(g))v=Z_R(\pi_R(g))v$ and this has the same bigrading as $v$.
+Let $v$ be a vertex in the $2$-d Adinkra $A$, and let $\vec{x}\in C(A)$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $\vec{x}_L v=\vec{x}_R v$ and this has the same bigrading as $v$.
 \end{prop}
+This has a very similar proof to that of Proposition~\ref{prop:rectangle-completion}.
 
 \begin{proof}
-If $g\in C(A)$, then $Z_R(\pi_R(g))(Z_L(\pi_L(g))v)=(Z_L(\pi_L(g))+Z_R(\pi_R(g)))=gv=v$, and by acting by $Z_R(\pi_R(g))$ we get $Z_L(\pi_L(g))v=Z_R(\pi_R(g))v$.  Since $Z_L(\pi_L(g))v$ has the same $h_R$ as $v$, and since $Z_R(\pi_R(g))v$ has the same $h_L$ as $v$, we have that $Z_L(\pi_L(g))v$ has the same bigrading as $v$.
+Since $\vec{x}\in C(A)$, we know that $\vec{x}v=v$.  Write this as $\vec{x}_R(\vec{x}_L v)=v$ and act on both sides with $\vec{x}_R$ to get $\vec{x}_L v = \vec{x}_R v$.  Since $\vec{x}_L v$ has the same $h_R$ as $v$ and since $\vec{x}_R v$ has the same $h_L$ as $v$, we have that $\vec{x}_L v$ has the same bigrading as $v$.
 \end{proof}
 
 \subsection{Left and Right parts of a $2$-d Adinkra}
@@ -933,7 +934,7 @@ pulls back the dashing $\mu$ to $\mu_2$ on $A_L^0\times A_R^0$. While $\mu_1$ an
 The dashings $\mu_1$ and $\mu_2$ agree on $A_L^0\times \{\overline{0}\}$ and on $\{\overline{0}\}\times A_R^0$.
 \end{lem}
 \begin{proof}
-The construction of $\mu_1$ gives all edges in $A_L^0\times\{\overline{0}\}$ as the same as in $A_L^0$ under the association of every edge $(v,w)$ with $((v,\overline{0}),(w,\overline{0}))$.  For $\mu_2$, consider that $i_3$ sends every vector $v\in A_L^0$ to $(v,\overline{0})$, and likewise any edges in $A_L^0$ will be sent to the corresponding edge in $A_L^0\times\{\overline{0}\}$.  Therefore $\mu_1$ and $\mu_2$ agree on $A_L^0\times\{\overline{0}\}$.  Likewise for $\{0\}\times A_R^0$.
+The construction of $\mu_1$ gives all edges in $A_L^0\times\{\overline{0}\}$ as the same as in $A_L^0$ under the association of every edge $(v,w)$ with $((v,\overline{0}),(w,\overline{0}))$.  For $\mu_2$, consider that for every vector $v\in A_L^0$,  $\Phi$ sends $(v,\overline{0})$ to $v$, and likewise any edges in $A_L^0$ will be sent to the corresponding edge in $A_L^0\times\{\overline{0}\}$.  Therefore $\mu_1$ and $\mu_2$ agree on $A_L^0\times\{\overline{0}\}$.  Likewise for $\{0\}\times A_R^0$.
 \end{proof}
 
 
