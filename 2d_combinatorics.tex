@@ -863,17 +863,19 @@ The parities of $\mu_1$ and $\mu_2$ agree on every cycle of $A_L^0\times A_R^0$.
 Hence, by the above lemma, there exists a vertex switching that sends $\mu_1$ to $\mu_2$.
 \end{lem}
 \begin{proof}
-Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$. We first consider the case where $v_0=\overline{0}$.
+Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$.  We first consider the case where $v_0=\overline{0}$.
 
-Consider the set of 
+For this proof, we define a \emph{color sequence} of a path to be the sequence of colors $(c(v_0,v_1),c(v_1,v_2),\ldots,c(v_{k-1},v_k)$ of edges along the path.  Note that given a starting vertex $v_0$ and a color sequence, there is a unique path that starts at $v_0$ with that color sequence.  This follows by applying induction to Property 2 of the definition of an Adinkra.
 
-  Then there is a color sequence $\sigma$ from this.  We modify the path (and thereby modify the color sequence) by ``bubble sorting'' the colors.  Earlier, we noted that we could rearrange $\sigma$ so that the left-moving colors were before the right-moving colors.  This can be more specifically done by a series of adjacent swaps of the type that sends the color sequence
+We begin with the color sequence for the cycle $(v_0,\ldots,v_k)$.  We will now describe a series of modifications to this cycle, described by modifying the color sequence.  The idea is to perform a ``bubble sort'', by iteratively swapping adjacent colors until the left-moving colors are all at the beginning and the right-moving colors are all at the end.
+
+First, given a color sequence
 \[(i_1,\ldots,i_{j-1},i_j,i_{j+1},i_{j+2},\ldots,i_k)\]
-to
+an adjacent swap is a color sequence
 \[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
-A color swap of this type leads to a new path from $\overline{0}$, via Proposition~\ref{prop:colorpath}.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  The effect on the parity of any dashing is, by property 3, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
+Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  The effect on the parity of any dashing is, by property 3, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
 
-After a series of such color swaps, we rearrange $\sigma$ so that all of its left-moving colors occur first, and the resulting path consists of left-moving edges, which remain in $A_L^0\times \{\overline{0}\}$, and then right-moving edges, which ends in $\overline{0}$, and so must be in $\{\overline{0}\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
+It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
 
 Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
 \end{proof}
