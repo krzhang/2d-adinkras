@@ -107,7 +107,7 @@ Adinkras in \cite{d2l:first,d2l:graph-theoretic} will be referred to as $1$-d Ad
 \begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  A \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
-\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading.}
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading and property 5 below.}
  $V$ and edge set $E\subset V\times V$,
 \item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring},
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},
@@ -313,7 +313,7 @@ Property 1 follows from the construction of the edges of $A/C$.
 
 Now we prove Property 2.  Let $Cv\in V/C$ and $c\in [n]$.  Since $A$ is an Adinkra, there is exactly one vertex $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.  There is thus an edge $(Cv,Cw)$ in $A/C$ that has color $c$.  To show uniqueness, suppose there is an $x\in V$ so that $(Cv,Cx)$ is in $A/C$ with color $c$.  This means there are group elements $\alpha,\beta\in C$ so that $(\alpha v,\beta x)$ is an edge of $A$ of color $c$.  By acting by $\alpha^{-1}$, we see that without loss of generality, $\alpha=1$.  Because $A$ is an Adinkra, there is a unique edge from $v$ that has color $c$.  So $\beta x = w$.  Therefore $x\in Cw$.
 
-Now we prove Property 3.  Let $c_1$ and $c_2$ be two different colors, and $Cv\in V/C$.  By Proposition~\ref{prop:colorpath}, there is a path following the color sequence $(c_1,c_2,c_1,c_2)$ starting at $v$ in $A$.  By the fact that $A$ is an Adinkra, this is a cycle.  Because the action is distant, and in any cycle of length $4$, the maximum distance between vertices is $2$, we see that no two vertices are identified in the quotient, and so in the quotient, the corresponding cycle is of length $4$.
+Now we prove Property 3.  Let $i$ and $j$ be two different colors, and $Cv\in V/C$.  Let $\vec{e}_i$ and $\vec{e}_j$ be the vectors that are $1$ for bit $i$ (resp. bit $j$) and $0$ otherwise.  The vertices $v$, $\vec{e}_1 v$, $(\vec{e_1}+\vec{e_2})v$, and $\vec{e_2}v$ forms a simple two-colored cycle in $A$.  Because the action is distant, and in any cycle of length $4$, the maximum distance between vertices is $2$, we see that no two vertices are identified in the quotient, and so in the quotient, the corresponding cycle is of length $4$.
 \end{proof}
 
 
@@ -345,7 +345,7 @@ If $Cv$ and $Cw$ are vertices in $\Gamma/C$ that are connected by an edge, then 
 
 
 \subsection{Vertex switching}
-The following concept is first introduced in \cite{} and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
+The following concept is first introduced in \cite{d2l:first}, and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
 
 \begin{definition}[Vertex switching]
 Given an Adinkra $A$, and a vertex $v$ of $A$, we define \emph{vertex switching at $v$} to be the operation on $A$ that returns a new Adinkra $A'$ with the same vertices, edges, coloring, and grading but a new dashing $\mu'$ so that
@@ -926,7 +926,7 @@ In \cite{d2l:first,d2l:graph-theoretic}, there was a class of $1$-d Adinkras tha
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $K$, called the {\em Valise 2-d Adinkra}. First, since $K$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$. \com{ [reference: this was a construction somewhere else]} Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{K}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $K$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra. % Note t, h_R(v)) =    For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number $\pmod{2}$ of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $K$, called the {\em Valise 2-d Adinkra}. First, since $K$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$.\cite{d2l:topology}  Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{K}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $K$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra. % Note t, h_R(v)) =    For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number $\pmod{2}$ of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
 \end{construction}
 
 \begin{figure}[htb]
