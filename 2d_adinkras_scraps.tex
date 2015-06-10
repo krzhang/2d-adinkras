@@ -122,3 +122,11 @@ In the same way, Proposition~\ref{prop:reorderpath} provides a vertex $w$ with b
 \begin{proof}
 Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$.  Using Proposition~\ref{prop:reorderpath}, reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
 \end{proof}
+
+
+
+
+pick a path from $\overline{0}$ to $v$.  Use Proposition~\ref{prop:reorderpath} to obtain a left-moving path from $\overline{0}$ to a vertex $w$, and a right-moving path from $w$ to $v$.  Then $w\in A_L^0$ and define $h_L(v)=h_L(w)$.
+
+Likewise define $h_R$ on $A$.
+

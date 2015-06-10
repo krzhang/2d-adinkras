@@ -865,15 +865,15 @@ Hence, by the above lemma, there exists a vertex switching that sends $\mu_1$ to
 \begin{proof}
 Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$.  We first consider the case where $v_0=\overline{0}$.
 
-For this proof, we define a \emph{color sequence} of a path to be the sequence of colors $(c(v_0,v_1),c(v_1,v_2),\ldots,c(v_{k-1},v_k)$ of edges along the path.  Note that given a starting vertex $v_0$ and a color sequence, there is a unique path that starts at $v_0$ with that color sequence.  This follows by applying induction to Property 2 of the definition of an Adinkra.
+For this proof, we define a \emph{color sequence} of a path to be the sequence of colors $(c(v_0,v_1),c(v_1,v_2),\ldots,c(v_{k-1},v_k))$ of edges along the path.  Note that given a starting vertex $v_0$ and a color sequence, there is a unique path that starts at $v_0$ with that color sequence.  This follows by applying induction to Property 2 of the definition of an Adinkra.
 
 We begin with the color sequence for the cycle $(v_0,\ldots,v_k)$.  We will now describe a series of modifications to this cycle, described by modifying the color sequence.  The idea is to perform a ``bubble sort'', by iteratively swapping adjacent colors until the left-moving colors are all at the beginning and the right-moving colors are all at the end.
 
 First, given a color sequence
 \[(i_1,\ldots,i_{j-1},i_j,i_{j+1},i_{j+2},\ldots,i_k)\]
-an adjacent swap is a color sequence
+an adjacent swap results in a color sequence
 \[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
-Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  The effect on the parity of any dashing is, by property 3, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
+Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 4, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
 
 It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
 
@@ -996,23 +996,19 @@ As a final illustration that we have characterized all $2$-d Adinkras, note that
 \begin{construction}
 First choose an ESDC code $C$.  Let $\pi_L:\ZZ_2^n\to\ZZ_2^p$ and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ be projections onto the first $p$ and last $q$ bits, respectively.
 
-Use the construction from \cite{rAT2} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{hgt} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $h_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $h_R$ on $A_R^0$ invariant under $\pi_R(C)$.
+Use the construction from \cite{rAT2} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{hgt} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $\tilde{h}_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $\tilde{h}_R$ on $A_R^0$ invariant under $\pi_R(C)$.
 
-Now extend $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  Use Proposition~\ref{prop:reorderpath} to obtain a left-moving path from $\overline{0}$ to a vertex $w$, and a right-moving path from $w$ to $v$.  Then $w\in A_L^0$ and define $h_L(v)=h_L(w)$.
-
-Likewise define $h_R$ on $A$.
+Now extend $\tilde{h}_L$ to a grading $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, let $\vec{x}\in \ZZ_2^n$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $v_L=\vec{x}_L\overline{0}\in A_L^0$.  Define $h_L(v)=\tilde{h}_L(v_L)$.  Likewise $v_R=\vec{x}_R\overline{0}\in A_R^0$.  Define $h_R(v)=\tilde{h}_R(v_R)$.
 \end{construction}
 
 The fact that the result is a $2$-d Adinkra follows from the following results.
 
 \begin{lem}
-The gradings $h_L$ and $h_R$ defined above are independent of the paths $p$ and $q$.\label{lem:indep}
+The gradings $h_L$ and $h_R$ defined above are independent of $\vec{x}$.\label{lem:indep}
 \end{lem}
 
 \begin{proof}
-We first prove that $h_L$ is independent of the particular paths $p$ and $q$.  Suppose $p'$ is a left-moving path from $\overline{0}$ to $w'$ and $q'$ is a right-moving path from $w'$ to $v$.  Then $-p$ followed by $p'$ forms a left-moving path from $w$ to $w'$, and $q'$ followed by $-q$ forms a right-moving path from $w'$ to $w$.  These two paths form a cycle and so give an element of $C$.  The left-moving path from $w$ to $w'$ gives an element of $\pi_L(C)$.  Since $h_L$ is invariant under $\pi_L(C)$, we have that $h_L(w)=h_L(w')$.
-
-Therefore $h_L(v)$ is independent of the path chosen.  Likewise $h_R(v)$ is also independent of the path chosen.
+Suppose $\vec{x}$ and $\vec{y}$ have $\vec{x}\overline{0}=\vec{y}\overline{0}$.  Then $\vec{y}-\vec{x}\in C$.  Since $\tilde{h}_L$ is invariant under $\pi_L(C)$, we have that $\tilde{h}_L(\vec{y}_L\overline{0})=\tilde{h}_L(\vec{x}_L\overline{0})$.  So $h_L$ is independent of $\vec{x}$.  Likewise for $h_R$.
 \end{proof}
 
 \begin{lem}
@@ -1021,15 +1017,13 @@ $|h_L(v)-h_L(v')|=1$ and $h_R(v)=h_R(v')$.  If $(v,v')$ is a right-moving edge, 
 \end{lem}
 
 \begin{proof}
-Let $v$ and $v'$ be vertices connected by an edge.  Fix a left-moving path $p$ from $\overline{0}$ to a vertex $w$ in $A_L^0$ and a right-moving path $q$ from $w$ to $v$.  Then $h_L(v)=h_L(w)$.
+Let $v$ and $v'$ be vertices connected by an edge of color $i$.  Let $\vec{x}$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Let $w=\vec{x}_L\overilne{0}$.  Then $\vec{x}_R w = v$ so $h_L(v)=h_L(w)$.
 
-Suppose the edge $(v,v')$ is a right-moving edge.  By appending to $q$ the edge $(v,v')$, we have a right-moving path from $w$ to $v'$.  By Lemma~\ref{lem:indep}, we have $h_L(v)=h_L(v')$.
+Supppose the color $i$ is right-moving.  Then $\vec{e}_i v = v'$ and $h_L(v')=\tilde{h}_L(\pi_L(\vec{x}+\vec{e}_i)\overline{0})=\tilde{h}_L(\pi_L(\vec{x}))=h_L(v)$.
 
-Now suppose the edge $(v,v')$ is a left-moving edge.  Let the color of this edge be $i$.  Let $w'=q_i(w)$.  The map $q_i$ is a graph isomorphism that sends the path $q$ to a new right-moving path $q'$ that connects $w'$ to $v'$.
 
-Since there is a left-moving path from $\overline{0}$ to $w'$ (consisting of $p$ appended with an $i$-colored edge) and a right-moving path from $w'$ to $v'$, we know that $h_L(w')=h_L(v')$.  
-
-Since there is a left-moving edge between $w$ and $w'$, we have $|h_L(w)-h_L(w')|=1$.  Since $h_L(w')=h_L(v')$ and $h_L(w)=h_L(v)$, we conclude that $|h_L(v)-h_L(v')|=1$.
+Now suppose the color $i$ is left-moving.  Let $w'=q_i(w)$.  Then 
+$h_L(w')=\tilde{h}_L((\vec{x}_L+\vec{e}_i)\overline{0})=h_L(v')$.  Both $w'$ and $w$ are in $A_L^0$, so $|h_L(w)-h_L(w')|=1$.  Since $h_L(w')=h_L(v')$ and $h_L(w)=h_L(v)$, we conclude that $|h_L(v)-h_L(v')|=1$.
 
 The other cases can be obtained by symmetry.
 \end{proof}
