@@ -102,12 +102,12 @@ Adinkras are combinatorial objects developed to study supersymmetry representati
 \section{Preliminaries}
 
 \subsection{$1$-d Adinkras}
-Adinkras in \com{[references]} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
+Adinkras in \cite{d2l:first,d2l:graph-theoretic} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
 
 \begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  A \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
-\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \com{[Reference]}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading.}
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading.}
  $V$ and edge set $E\subset V\times V$,
 \item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring},
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},
@@ -345,7 +345,7 @@ If $Cv$ and $Cw$ are vertices in $\Gamma/C$ that are connected by an edge, then 
 
 
 \subsection{Vertex switching}
-The following concept is first introduced in \cite{} and is more thoroughly set in its context in \cite{Yan,cubicalcohomology}.
+The following concept is first introduced in \cite{} and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
 
 \begin{definition}[Vertex switching]
 Given an Adinkra $A$, and a vertex $v$ of $A$, we define \emph{vertex switching at $v$} to be the operation on $A$ that returns a new Adinkra $A'$ with the same vertices, edges, coloring, and grading but a new dashing $\mu'$ so that
@@ -369,7 +369,7 @@ Since the vertices, edges, coloring, and grading(s) are the same, the only thing
 Douglas, Gates, and Wang \cite{douglas} examined dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs}, to disambiguate from Seidel's usage.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras.
 
 \section{$2$-d Adinkras}
-We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \com{Ref...[fill in references to various things]}.  We use a definition here that is equivalent to the one found in \com{[some reference]}: the proof is found in Appendix \com{...[maybe?]}
+We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there: the proof is found in Appendix \com{...[maybe?]}
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally,
 \begin{definition}[$2$-d Adinkras]
@@ -718,7 +718,7 @@ $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
 There is a faithful, distant action of $K$ on $A_L^0\times A_R^0$ that preserves colors and the bigrading.
 \end{lem}
 \begin{proof}
-Considering $A_L^0\times A_R^0$ as a $1$-d Adinkra, we have, by Proposition~\ref{prop:actioniso}, a color-preserving action of $\ZZ_2^n$ on $A_L^0\times A_R^0$.  Examining the product structure of $A_L^0\times A_R^0$, if we have $\vec{x}\in \ZZ_2^n$, the action is
+Considering $A_L^0\times A_R^0$ as a $1$-d Adinkra, we have a color-preserving action of $\ZZ_2^n$ on $A_L^0\times A_R^0$.  Examining the product structure of $A_L^0\times A_R^0$, if we have $\vec{x}\in \ZZ_2^n$, the action is
 \[\vec{x}(v_1,v_2)=(\pi_L(\vec{x})v_1,\pi_R(\vec{x})v_2).\]
 
 When this action is restricted to $K$, the action is faithful because $K\cap (Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))=0$.  Since $K$ is a subgroup of $C(A)$, which is doubly even, we see that the action of $K$ is distant.
@@ -919,9 +919,9 @@ Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the co
 \end{proof}
 
 
-Recall \com{give citation once Kevin decides which theorems to use} that $1$-d chromotopologies are in bijection with quotients of the Hamming cube $I^n$ by a doubly-even code $K$, so any adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras.
+Recall\cite{d2l:omni,d2l:topology} that $1$-d chromotopologies are in bijection with quotients of the Hamming cube $I^n$ by a doubly-even code $K$, so any Adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras.
 
-In \com{[references]}, there was a class of $1$-d Adinkras that were particularly easy to construct and study, called {\em Valise} Adinkras, whose height function had values in two adjacent integers (usually $0$ and $1$).  By analogy, given a ESDE code, we construct a $2$-d Adinkra called the {\em Valise 2-d Adinkra} that has support in a $2\times 2$ square.
+In \cite{d2l:first,d2l:graph-theoretic}, there was a class of $1$-d Adinkras that were particularly easy to construct and study, called {\em Valise} Adinkras, whose height function had values in two adjacent integers (usually $0$ and $1$).  By analogy, given a ESDE code, we construct a $2$-d Adinkra called the {\em Valise 2-d Adinkra} that has support in a $2\times 2$ square.
 
 
 \begin{construction}
@@ -996,7 +996,7 @@ As a final illustration that we have characterized all $2$-d Adinkras, note that
 \begin{construction}
 First choose an ESDC code $C$.  Let $\pi_L:\ZZ_2^n\to\ZZ_2^p$ and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ be projections onto the first $p$ and last $q$ bits, respectively.
 
-Use the construction from \cite{rAT2} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{hgt} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $\tilde{h}_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $\tilde{h}_R$ on $A_R^0$ invariant under $\pi_R(C)$.
+Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $\tilde{h}_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $\tilde{h}_R$ on $A_R^0$ invariant under $\pi_R(C)$.
 
 Now extend $\tilde{h}_L$ to a grading $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, let $\vec{x}\in \ZZ_2^n$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $v_L=\vec{x}_L\overline{0}\in A_L^0$.  Define $h_L(v)=\tilde{h}_L(v_L)$.  Likewise $v_R=\vec{x}_R\overline{0}\in A_R^0$.  Define $h_R(v)=\tilde{h}_R(v_R)$.
 \end{construction}
@@ -1017,7 +1017,7 @@ $|h_L(v)-h_L(v')|=1$ and $h_R(v)=h_R(v')$.  If $(v,v')$ is a right-moving edge, 
 \end{lem}
 
 \begin{proof}
-Let $v$ and $v'$ be vertices connected by an edge of color $i$.  Let $\vec{x}$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Let $w=\vec{x}_L\overilne{0}$.  Then $\vec{x}_R w = v$ so $h_L(v)=h_L(w)$.
+Let $v$ and $v'$ be vertices connected by an edge of color $i$.  Let $\vec{x}$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Let $w=\vec{x}_L\overline{0}$.  Then $\vec{x}_R w = v$ so $h_L(v)=h_L(w)$.
 
 Supppose the color $i$ is right-moving.  Then $\vec{e}_i v = v'$ and $h_L(v')=\tilde{h}_L(\pi_L(\vec{x}+\vec{e}_i)\overline{0})=\tilde{h}_L(\pi_L(\vec{x}))=h_L(v)$.
 
@@ -1038,7 +1038,7 @@ Given any $2$-d Adinkra $A$, there is an ESDC code $C$.  Pick a vertex $\overlin
 
 Restrict the gradings $h_L$ and $h_R$ onto $A_L^0$ and $A_R^0$.  Note that if $g\in C$, then $\pi_L(g)v=\pi_R(g)v$, and so $h_L(\pi_L(g)v)=h_L(v)$ and $h_R(\pi_L(g)v)=h_R(v)$.  Therefore $h_L$ restricted to $A_L^0$ is invariant under $\pi_L$.  Likewise $h_R$ restricted to $A_R^0$ is invariant under $\pi_R$.
 
-The dashings, as described in \cite{rAT2}, can be obtained by choosing the specific quotient $I^n/C$.
+The dashings, as described in \cite{d2l:topology}, can be obtained by choosing the specific quotient $I^n/C$.
 
 Theorem~\ref{thm:quotient} gives a description of $A$ in terms of this construction.
 
