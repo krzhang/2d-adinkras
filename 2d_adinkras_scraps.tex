@@ -1,0 +1,124 @@
+
+
+ (\ref{eq:commute})
+\begin{prop}
+\label{prop:actioniso}
+The above defines an action by graph isomorphisms that preserve colors.
+\end{prop}
+\begin{proof}
+Acting on $v$ by $\vec{y}$ and then $\vec{x}$ gives
+\begin{eqnarray*}
+\vec{x}\vec{y}(v)
+&=&q_1^{x_1}\circ\cdots\circ q_n^{x_n}\circ
+q_1^{y_1}\circ\cdots\circ q_n^{y_n}(v)\\
+&=&q_1^{x_1+y_1}\circ\cdots\circ q_n^{x_n+y_n}(v)
+\end{eqnarray*}
+by the commutativity shown in (\ref{eq:commute}), and where the exponents are taken modulo $2$, because each $q_i$ is an involution.  Therefore this is equal to
+\[(\vec{x}+\vec{y})(v).\]
+
+Proposition~\ref{prop:qmap} says that each $q_i$ is an isomorphism which preserves colors, and this action is a composition of such maps.
+\end{proof}
+
+
+
+\begin{definition}
+A path is a finite sequence of edges of the form $((v_1,v_2),(v_2,v_3),\ldots,(v_{k-1},v_k))$.  The {\em color sequence} of the path is the sequence $(c(v_1,v_2),c(v_2,v_3),\ldots,c(v_{k-1},v_k))$.
+\end{definition}
+
+So if there is a path from $v$ to $w$ with color sequence $(i_1, \ldots, i_k)$, we have $w=q_{i_k}\circ \cdots\circ q_{i_1}(v)$.
+
+\begin{prop}
+\label{prop:colorpath}
+Let $A$ be an Adinkra and let $v$ be a vertex of $A$.  Let $\sigma$ be a color sequence.  There exists a unique path in $A$ that starts at $v$ and has color sequence $\sigma$.
+\end{prop}
+\begin{proof}
+This can be proved by induction on the length of $\sigma$, and using the fact that given a vertex $v_i$ of $A$, and a color $c_i$, there exists a unique vertex $v_{i+1}$ so that $(v_i,v_{i+1})$ is an edge of $A$ with color $c_i$.
+\end{proof}
+
+Now, define a map $s$ that takes a color sequence and returns an element of $\ZZ_2^n=\{0,1\}^n$ where the $i$-th coordinate is the number of times (modulo $2$) that color $i$ appears in the sequence. For example, $s(3,1,2,1) = 0110$.  Note that $s(\sigma)$ does not depend on the ordering of the color sequence $\sigma$.  This relates to paths in Adinkras because of the following:
+
+\begin{prop}
+\label{prop:colorendpath}
+Let $A$ be an Adinkra.  Let $v$ be a vertex of $A$ and let $p$ be a path that begins at $v$.  Let $\sigma$ be the color sequence obtained from $p$.  Then the path $p$ ends at the vertex $s(\sigma)v$.
+\end{prop}
+\begin{proof}
+If the color sequence is $\sigma=(i_1,\ldots,i_k)$, then the path $p$ ends at
+$q_{i_k}\circ \cdots \circ q_{i_1}(v)$.  By the commutativity of the $q_i$, we can order them in non-decreasing order of $i_j$.  If any of the $q_i$ appear more than once, we use the fact that $q_i^2$ is the identity to reduce the number of $q_i$ modulo $2$.  The result is $s(\sigma)v$.
+\end{proof}
+
+
+\begin{cor}
+\label{prop:pathands}
+Let $A$ be an Adinkra.  Let $v$ be a vertex of $A$ and let $p$ and $p'$ be paths that begin at $v$.  Let $\sigma$ and $\sigma'$ be the color sequences obtained from $p$ and $p'$, respectively.  If $s(\sigma)=s(\sigma')$, then $p$ and $p'$ both end at the same point.
+\end{cor}
+
+
+
+Let $v$, $w$ be vertices of $A$.  If $A$ is connected, then there is a path in $A$ connecting $v$ to $w$.  Let $\sigma$ be the color sequence obtained from this path.  Then by Proposition~\ref{prop:colorendpath}, $s(\sigma)v=w$.
+
+Conversely, suppose the action is transitive.  Let $v$ and $w$ be vertices of $A$.  Then there exists a $\vec{x}\in\ZZ_2^n$ so that $w=\vec{x}v$.  Write $\vec{x}=(x_1,\ldots,x_n)$ and construct a color sequence $\sigma$ by taking the $i$ for which $x_i=1$.  By Proposition~\ref{prop:colorpath}, there is a path starting at $v$ that has $\sigma$ as its color sequence.  By Proposition~\ref{prop:colorendpath}, this path ends at $s(\sigma)v=\vec{x}v=w$.
+
+
+
+\begin{definition}
+Given a connected Adinkra $A$, the \emph{code} for $A$, called $C(A)$, is defined to be $C(A,v)$, where $v$ is a vertex of $A$.
+\end{definition}
+
+
+
+\begin{prop}
+\label{prop:paths}
+Let $A$ be an Adinkra.  Let $v$ be a vertex of $A$ and let $p$ and $p'$ be paths that begin at $v$.  Let $\sigma$ and $\sigma'$ be the color sequences obtained from $p$ and $p'$, respectively.  The paths $p$ and $p'$ end at the same vertex if and only if 
+\[s(\sigma)-s(\sigma')\in C(A).\]
+\end{prop}
+
+\begin{proof}
+Suppose $p$ and $p'$ end at the same vertex.  Then by Proposition~\ref{prop:colorendpath},
+\[s(\sigma)v=s(\sigma')v.\]
+Then\footnote{Note that in this sequence of equations, $\ZZ_2^n$ is written additively but the group action is written multiplicatively.}
+\[v=s(\sigma')^{-1}(s(\sigma)v)=(s(\sigma)-s(\sigma'))v.\]
+Thus, $s(\sigma)-s(\sigma')\in C(A)$.
+
+Conversely, suppose $s(\sigma)-s(\sigma')\in C(A)$.  Then by reversing the above argument,
+\[s(\sigma)v=s(\sigma')v\]
+and thus, by Proposition~\ref{prop:colorendpath}, $p$ and $p'$ end at the same vertex.
+\end{proof}
+
+
+
+
+
+
+
+
+\begin{prop}
+\label{prop:reorderpath}
+If $v_1$ and $v_2$ are vertices of a $2$-d Adinkra, and $p$ is a path from $v_1$ to $v_2$, then there exists a path $p_L$ consisting only of left-moving edges from $v_1$ to a vertex $u$, and a path $p_R$ consisting only of right-moving edges from $u$ to $v_2$.
+
+Likewise there exists a path $q_R$ consisting only of right-moving edges from $v_1$ to a vertex $w$, and a path $q_L$ consisting only of left-moving edges from $w$ to $v_2$.
+\end{prop}
+
+\begin{proof}
+Take the color sequence $\sigma$ of the path $p$.  Then $s(\sigma)v_1=v_2$.  Let $\sigma_L$ be the subsequence consisting only of the left-moving colors, and let $\sigma_R$ be the subsequence consisting only of the right-moving colors.  Using Proposition~\ref{prop:colorpath}, we obtain the path $p_L$.  Let $x$ be the endpoint of this path.  We again use Proposition~\ref{prop:colorpath} with $\sigma_R$ starting from $x$, and obtain the path $p_R$.  By Proposition~\ref{prop:colorendpath}, the end of this path is $s(\sigma_R)s(\sigma_L)v_1=s(\sigma_R\sigma_L)v_1=s(\sigma)v_1=v_2$.
+
+The remaining result follows by symmetry.
+\end{proof}
+
+
+
+
+\begin{prop}
+\label{prop:rectangle-completion}
+Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
+\end{prop}
+\begin{proof}
+The statement that $(x_1,y_1)$ and $(x_2,y_2)$ is in the support of $A$ means that there exist vertices $v_1$ and $v_2$ of $A$ with $(h_L(v_1),h_R(v_1))=(x_1,y_1)$ and $(h_L(v_2),h_R(v_2))=(x_2,y_2)$, respectively.  Since $A$ is connected, there exists a path from $v_1$ to $v_2$.
+
+By Proposition~\ref{prop:reorderpath}, there is a left-moving path from $v_1$ to a vertex $u$ and a right-moving path from $u$ to $v_2$.  Then $h_R(u)=h_R(v_1)=y_1$ and $h_L(u)=h_L(v_2)=x_2$.  Therefore $(x_2,y_1)$ is in the support of $A$.
+
+In the same way, Proposition~\ref{prop:reorderpath} provides a vertex $w$ with bigrading $(x_1,y_2)$.
+\end{proof}
+
+\begin{proof}
+Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ and $y \in Y$. Since $A$ is connected, there is a path from $x$ to $y$ in $A$.  Using Proposition~\ref{prop:reorderpath}, reorder the path so that the right-moving edges occur before the left-moving edges. Since the left-moving edges stay in $Y$, the right-moving edges alone take $x$ to a vertex $y' \in Y$.  The sequence of right-moving edges provides a color sequence $i_1,\ldots,i_k$, and thus, a sequence of compositions $q_{i_k}\circ\cdots\circ q_{i_1}$.  Now $q_{i_k}\circ\cdots\circ q_{i_1}(x)=y'$.  By repeated application of Lemma~\ref{lem:qiconnected}, we have that $q_{i_k}\circ\cdots\circ q_{i_1}(X)$ is a connected component of $A_L$ that contains $y'$, which is $Y$.  By repeated application of Lemma~\ref{lem:qiso}, we have an isomorphism of graphs that preserves colors and the grading $h_L$.
+\end{proof}
