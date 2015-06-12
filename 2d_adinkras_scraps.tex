@@ -124,6 +124,26 @@ Let $X$ and $Y$ be two connected components of $A_L$. Pick vertices $x \in X$ an
 \end{proof}
 
 
+\begin{construction}
+\label{const:product}
+Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, c_1, \mu_1,h_1)$ be a $1$-d Adinkra with $p$ colors and let $A_2=(V_2, E_2, c_2, \mu_2,h_2)$ be a $1$-d Adinkra $q$ colors.  We define the \emph{product} of these Adinkras $A_1\times A_2$ as the following 2-Adinkra with $(p,q)$ colors:
+\[A_1\times A_2=(V,E,c,\mu,h_L,h_R)\]
+where
+\begin{eqnarray*}
+V&=&V_1\times V_2\\
+E&=&E_1\cup E_2\mbox{ where}\\
+E_1&=&\{((v_1,w),(v_2,w))\,|\,(v_1, v_2)\in E_1,\mbox{ and } w\in V_2\}\\
+E_2&=&\{((v,w_1),(v,w_2))\,|\,v\in V, \mbox{ and }(w_1,w_2)\in E_2\}\\
+c((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
+c((v,w_1),(v,w_2))&=&p+c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
+h_L(v,w)&=&h_1(v)\\
+h_R(v,w)&=&h_2(w)\\
+\mu((v_1,w),(v_2,w))&=&\mu_1(v_1,v_2)\\
+\mu((v,w_1),(v,w_2))&=&\mu_2(w_1,w_2)+h_1(v)\pmod{2}
+\end{eqnarray*}
+See Figure~\ref{fig:product} for an example.
+\end{construction}
+
 
 
 pick a path from $\overline{0}$ to $v$.  Use Proposition~\ref{prop:reorderpath} to obtain a left-moving path from $\overline{0}$ to a vertex $w$, and a right-moving path from $w$ to $v$.  Then $w\in A_L^0$ and define $h_L(v)=h_L(w)$.

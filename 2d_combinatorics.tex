@@ -214,7 +214,7 @@ Figure~\ref{fig:1d-examples} give examples of 1-d Adinkras.
 \end{figure}
 
 \subsection{The action of $\ZZ_2^n$ and the code}
-Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
+The material in this section is mainly found in \cite{d2l:omni}.  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
 
@@ -270,6 +270,7 @@ If $A$ is connected, then the code $C(A,v)$ does not depend on $v$.  Because of 
 In general the stabilizers of two points in the same orbit are conjugate, but because the group is abelian, they are the same.
 \end{proof}
 
+The code $C$ is always a doubly-even code\cite{d2l:omni}, meaning that every codeword has a number of $1$s that is a multiple of $4$.
 
 \subsection{Quotients of graphs and Adinkras}
 \label{sec:quotient}
@@ -507,24 +508,21 @@ With all this redundancy, what is the minimal amount of information required for
 
 Section \ref{sec:structural} hints that the information contained in a $2$-d Adinkra may be captured by just looking at two ``slices'' of the Adinkra. It is natural to guess that there is some product structure lying underneath, especially given the rectangular shape of the support proven in Corollary~\ref{cor:rectangle}. It is also desirable to have some way of combining Adinkras to make bigger ones (and conversely, breaking down bigger ones into smaller pieces). These considerations induce us to consider products of Adinkras. It turns out that one way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra gives the left-moving colors and the second Adinkra gives the right-moving colors. We will eventually see in the next section that this operation (plus a quotient) is all we need to characterize a $2$-d Adinkra.
 
+
+
 \begin{construction}
-\label{const:product}
 Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, c_1, \mu_1,h_1)$ be a $1$-d Adinkra with $p$ colors and let $A_2=(V_2, E_2, c_2, \mu_2,h_2)$ be a $1$-d Adinkra $q$ colors.  We define the \emph{product} of these Adinkras $A_1\times A_2$ as the following 2-Adinkra with $(p,q)$ colors:
-\[A_1\times A_2=(V,E,c,\mu,h_L,h_R)\]
-where
-\begin{eqnarray*}
-V&=&V_1\times V_2\\
-E&=&E_1\cup E_2\mbox{ where}\\
-E_1&=&\{((v_1,w),(v_2,w))\,|\,(v_1, v_2)\in E_1,\mbox{ and } w\in V_2\}\\
-E_2&=&\{((v,w_1),(v,w_2))\,|\,v\in V, \mbox{ and }(w_1,w_2)\in E_2\}\\
-c((v_1,w),(v_2,w))&=&c_1(v_1,v_2)\mbox{ for all $((v_1,w),(v_2,w))\in E_1$}\\
-c((v,w_1),(v,w_2))&=&p+c_2(w_1,w_2)\mbox{ for all $(v,w_1),(v,w_2)\in E_2$}\\
-h_L(v,w)&=&h_1(v)\\
-h_R(v,w)&=&h_2(w)\\
-\mu((v_1,w),(v_2,w))&=&\mu_1(v_1,v_2)\\
-\mu((v,w_1),(v,w_2))&=&\mu_2(w_1,w_2)+h_1(v)\pmod{2}
-\end{eqnarray*}
-See Figure~\ref{fig:product} for an example.
+\[A_1\times A_2=(V,E,c,\mu,h_1,h_2)\]
+where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
+\begin{itemize}
+\item For every $(v_1,v_2)\in E_1$ and $w\in V_2$, we have an edge $((v_1,w),(v_2,w))$ of color $c_1(v_1,v_2)$ and dashing $\mu_1(v_1,v_2)$
+\item For every $(w_1,w_2)\in E_2$ and $v\in V_1$, we have an edge $((v,w_1),(v,w_2))$ of color $p+c_2(w_1,w_2)$ and dashing
+\begin{equation}
+\label{eqn:dashprodshift}
+\mu_2(w_1,w_2)+h_1(v)
+\end{equation}
+\end{itemize}
+ See Figure~\ref{fig:product} for an example.
 \end{construction}
 
 \begin{figure}
@@ -619,7 +617,7 @@ See Figure~\ref{fig:product} for an example.
 \end{center}
 \end{figure}
 
-The main non-obvious part of the definition is the dashings. The naive approach, assigning $\mu((v,w_1), (v,w_2)) = \mu(w_1, w_2)$, would fail to give us the odd parity we desire. This situation is analogous to assigning signs in the differential to a double chain complex, such as in Bott and Tu \cite{bott_tu}, where one would have to do a similar symmetry breaking. We now show that this sign-tweaking in fact gives an admissable dashing:
+The main non-obvious part of the definition is (\ref{eqn:dashprodshift}) for the dashings. The naive approach, assigning $\mu((v,w_1), (v,w_2)) = \mu_2(w_1, w_2)$, would fail to give us the odd parity we desire. This situation is analogous to assigning signs in the differential to a double chain complex, such as in Bott and Tu \cite{bott_tu}, where one would have to do a similar symmetry breaking. We now show that this sign-tweaking in fact gives an admissable dashing:
 
 \begin{prop}
 \label{prop:product-admissable}
@@ -770,7 +768,7 @@ The map $\Phi$ defines a graph homomorphism
 that preserves colors and bigrading.
 \end{lem}
 \begin{proof}
-Suppose $i$ is a color and $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$.  Let $\vec{e}_i$ be the vector that has a single $1$ in the $i$th bit and $0$s elsewhere, so that for all vertices $v$, $\vec{e}v=q_i(v)$.  Using Lemma~\ref{lem:gphi}, we see that $\Phi(\vec{e}(v_1,v_2))=\vec{e}\Phi(v_1,v_2)$, so $\Phi$ sends edges of color $i$ to edges of color $i$.
+Suppose $i$ is a color and $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$.  Let $\vec{e}_i$ be the vector that has a single $1$ in the $i$th bit and $0$s elsewhere, so that for all vertices $v$, $\vec{e}_i v=q_i(v)$.  Using Lemma~\ref{lem:gphi}, we see that $\Phi(\vec{e}(v_1,v_2))=\vec{e}\Phi(v_1,v_2)$, so $\Phi$ sends edges of color $i$ to edges of color $i$.
 
 Now consider $h_L$.
 \begin{eqnarray*}
