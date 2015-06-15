@@ -274,6 +274,9 @@ The code $C$ is always a doubly-even code\cite{d2l:omni,d2l:decodes}, meaning th
 
 \subsection{Quotients of graphs and Adinkras}
 \label{sec:quotient}
+
+\com{As stated in the emails, I think this is the section that can be mostly removed and replaced with careful citation of earlier papers. We can even keep the theorems the same if you want. -Y}
+
 As we have seen, $\ZZ_2^n$, and therefore subgroups of $\ZZ_2^n$, act on Adinkras (more precisely, the underlying graphs), and it will be important to understand quotients of Adinkras by codes.
 
 Let $\Gamma=(V,E)$ be a graph and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  If we wish to define the quotient $\Gamma/C$, the vertex set of $\Gamma/C$ should be the orbit space $V/C$, but the edge set requires a bit more care.  We can indeed define an action of $C$ on $E$ so that if $g\in C$, and $(v,w)$ is an edge in $E$, then $g(v,w)=(gv,gw)$.  But what is needed is a set of edges for $\Gamma/C$.  Let $Cv$ and $Cw$ be elements of $V/C$.  We say there is an edge between these two vertices if there exist vertices $v_1\in Cv$ and $w_1\in Cw$ so that there is an edge $(v_1,w_1)$ in $E$.
@@ -346,6 +349,8 @@ If $Cv$ and $Cw$ are vertices in $\Gamma/C$ that are connected by an edge, then 
 
 
 \subsection{Vertex switching}
+
+\com{As stated in email, for sake of making introduction shorter it may be good to move this to where it is needed - since we don't use this for a long time, and only in an isolated area really.}
 The following concept is first introduced in \cite{d2l:first}, and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
 
 \begin{definition}[Vertex switching]
@@ -367,7 +372,7 @@ If $A$ is an Adinkra, then so is $A'$.
 Since the vertices, edges, coloring, and grading(s) are the same, the only thing to check is the admissibility of $\mu'$.  That is, given colors $c_1$ and $c_2$, and vertices $v$, $w$, $x$, and $y$, such that $(v,w)$ and $(x,y)$ are edges with color $c_1$ and $(w,x)$ and $(y,v)$ are edges with color $c_2$, that $\mu'(v,w)+\mu'(w,x)+\mu'(x,y)+\mu'(y,v)$ is odd.  If $v'$ is none of these vertices, then this sum is unchanged.  If $v'$ is any of these vertices, for instance, $v$, then $\mu'(v,w)$ and $\mu'(y,v)$ are both changed modulo $2$, so that the sum modulo $2$ is still unchanged.
 \end{proof}
 
-Douglas, Gates, and Wang \cite{douglas} examined dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs}, to disambiguate from Seidel's usage.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras.
+Douglas, Gates, and Wang \cite{douglas} examined dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs} in literature for disambiguation.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras.
 
 \section{$2$-d Adinkras}
 We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there: the proof is found in Appendix \com{...[maybe?]}
@@ -421,6 +426,8 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 
 \section{Structural Theorems}
 \label{sec:structural}
+
+\com{To be honest we can probably kill this whole section and get it as corollaries of the quotienting result... no piece of this seems to be used anywhere except 3.4, which is used once and can thus be used as a lemma.}
 
 In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. The main idea is that we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
 
