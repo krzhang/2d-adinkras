@@ -102,7 +102,7 @@ Adinkras are combinatorial objects developed to study supersymmetry representati
 \section{Preliminaries}
 
 \subsection{$1$-d Adinkras}
-Adinkras in \cite{d2l:first,d2l:graph-theoretic} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
+Adinkras in \cite{d2l:first,d2l:graph-theoretic,zhang:adinkras} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
 
 \begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  A \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
@@ -214,7 +214,7 @@ Figure~\ref{fig:1d-examples} give examples of 1-d Adinkras.
 \end{figure}
 
 \subsection{The action of $\ZZ_2^n$ and the code}
-The material in this section is mainly found in \cite{d2l:omni}.  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
+The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}.  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
 
@@ -249,11 +249,6 @@ The fact that this is an action by graph isomorphisms that preserve colors follo
 Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to a $1$ (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
 
 
-
-\begin{definition}
-Pick a vertex $v\in A$.  Define $C(A,v)$ to be the stabilizer of $v$ under this action of $\ZZ_2^n$.  Since it is a subgroup of $\ZZ_2^n$, $C(A,v)$ is a binary block code of length $n$.
-\end{definition}
-
 \begin{prop}
 \label{prop:transitive}
 The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.
@@ -264,7 +259,7 @@ This follows directly from interpreting the group action as following edges with
 \end{proof}
 
 \begin{prop}
-If $A$ is connected, then the code $C(A,v)$ does not depend on $v$.  Because of this, when $A$ is connected, we write $C(A)$ instead of $C(A,v)$, and we refer to this as the \emph{code} for $A$.
+If $A$ is connected, then the stabilizers of all vertices are equal.  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  As a subgroup of $\ZZ_2^n$, this is a binary block code of length $n$.
 \end{prop}
 \begin{proof}
 In general the stabilizers of two points in the same orbit are conjugate, but because the group is abelian, they are the same.
@@ -895,6 +890,55 @@ Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with
 Note that this is the same as $A_L^0\times A_R^0$ if we ignore dashing.  By Lemma~\ref{lem:mainiso}, this is isomorphic to $A$ as a graph with colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
 
+
+
+\section{Every $2$-d Adinkra is a Quotient of a Vertex-switched Product: cube version}
+\label{sec:quotient2}
+
+In Section~\ref{sec:products}, we showed that we can construct a $2$-d Adinkra by a product construction of two $1$-d Adinkras, each of which appears on the boundary of the product. In this section, we settle a conjecture of H\"ubsch \cite{hubsch:weaving} by showing that every $2$-d Adinkra is in fact a quotient of the the product of the two $1$-d Adinkras on its lower boundary. Our main result is:
+
+\begin{thm}
+\label{thm:quotient}
+Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$. Then there exists a binary linear block code $K$, and a vertex switch $F$ so that there is a distant action of $K$ on $F(A_L^0\times A_R^0)$ that preserves colors, dashing, and bigrading, and so that
+\[F(A_L^0\times A_R^0)/K\cong A\]
+as an isomorphism of $2$-d Adinkras (that is, as an isomorphism of graphs that preserves colors, dashing, and bigrading).  Furthermore
+\begin{equation}
+\label{eqn:kcomplement}
+C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K
+\end{equation}
+as an internal direct sum.
+\end{thm}
+
+
+We first prove the existence of $K$ satisfying (\ref{eqn:kcomplement}).  We then construct a color and bigrading preserving graph isomorphism
+\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A.\]
+Finally we identify the vertex switching $F$ that proves the theorem.
+
+
+\begin{lem}
+\label{lem:cplus}
+\[Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)) \subseteq C(A).\]
+\end{lem}
+\begin{proof}
+Let $g\in Z_L(C(A_L^0))$ and $h\in Z_R(C(A_R^0))$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in Z_L(C(A_L^0))$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
+\end{proof}
+
+\begin{lem}
+\label{lem:existk}
+There exists a binary linear block code $K$ so that
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.
+\]
+\end{lem}
+\begin{proof}
+From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^n$ that is a vector space complement of
+$Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
+\end{proof}
+
+Now recall that every connected Adinkra is the quotient of $I^n$ by the code.  So we have
+\[A\cong I^n/C(A)\]
+and
+\[A_L^0\times A_R^0 \cong I^n/(Z_L(C(A_L))\oplus Z_R(C(A_R))).\]
 
 
 \section{ESDE Codes}
