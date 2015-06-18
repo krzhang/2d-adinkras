@@ -935,10 +935,200 @@ $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
 \[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
 \end{proof}
 
-Now recall that every connected Adinkra is the quotient of $I^n$ by the code.  So we have
+
+\begin{lem}
+\label{lem:mainepicolors}
+There is a graph epimorphism
+\[\Phi:A_L^0\times A_R^0 \to A\]
+that preserves colors and sends $(\overline{0},\overline{0})$ to $\overline{0}$.
+\end{lem}
+\begin{proof}
+Recall that every connected Adinkra is the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
 \[A\cong I^n/C(A)\]
 and
-\[A_L^0\times A_R^0 \cong I^n/(Z_L(C(A_L))\oplus Z_R(C(A_R))).\]
+\[A_L^0\times A_R^0 \cong I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))).\]
+In particular, we have a color-preserving graph epimorphism
+\[\hat{\Phi}:I^n\to A\]
+that sends $\vec{0}=(0,\ldots,0)$ to $\overline{0}$, and a color-preserving graph epimorphism
+\[\pi:I^n\to A_L^0\times A_R^0,\]
+with $\pi(\vec{0})=(\overline{0},\overline{0})$.
+
+Since $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\subset C(A)$, the map $\hat{\Phi}$ factors through $\pi$ to produce a color-preserving graph epimorphism
+\[\Phi:A_L^0\times A_R^0\to A,\]
+where $\Phi\circ\pi=\hat{\Phi}$.
+\end{proof}
+
+%The following used to be part of the proof of color preserving.
+\begin{comment}
+Suppose $i$ is a color and $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$.  Let $\vec{e}_i$ be the vector that has a single $1$ in the $i$th bit and $0$s elsewhere, so that for all vertices $v$, $\vec{e}_i v=q_i(v)$.  Using Lemma~\ref{lem:gphi}, we see that $\Phi(\vec{e}(v_1,v_2))=\vec{e}\Phi(v_1,v_2)$, so $\Phi$ sends edges of color $i$ to edges of color $i$.
+\end{comment}
+
+It will be useful to have the following result:
+\begin{lem}
+\label{lem:gphi}
+If $g\in \ZZ_2^n$, then
+\[\Phi(g(v_1,v_2))=g\Phi(v_1,v_2).\]
+\end{lem}
+\begin{proof}
+Let $\vec{x}_1\in \ZZ_2^p$ be such that $\vec{x}_1\overline{0}=v_1$ in $A_L^0$ and $\vec{x}_2\in \ZZ_2^q$ be such that $\vec{x}_2\overline{0}=v_2$ in $A_R^0$.  Then $\pi_L(g)v_1 = \pi_L(g)\vec{x}_1\overline{0}=(\pi_L(g)+\vec{x}_1)\overline{0}$ and likewise $\pi_R(g)v_2=(\pi_R(g)+\vec{x}_2)\overline{0}$.  Then
+\begin{eqnarray*}
+\Phi(g(v_1,v_2))&=&\Phi(\pi_L(g)v_1,\pi_R(g)v_2)\\
+&=&(Z_L(\pi_L(g)+\vec{x}_1)+Z_R(\pi_R(g)+\vec{x}_2))\overline{0}\\
+&=&(g+Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}\\
+&=&g(Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}\\
+&=&g\Phi(v_1,v_2)
+\end{eqnarray*}
+\end{proof}
+
+\begin{lem}
+\label{lem:phisides}
+For all $v\in A_L^0$, $\Phi(v,\overline{0})=v$, and for all $w\in A_R^0$, $\Phi(\overline{0},w)=w$.  In particular, $\Phi$ restricted to $A_L^0\times\{\overline{0}\}$ is an isomorphism onto its image, and likewise for $\Phi$ restricted to $\{\overline{0}\}\times A_R^0$.
+\end{lem}
+\begin{proof}
+Let $\vec{x}\in \ZZ_2^p$ be such that $\vec{x}\overline{0}=v$.  By Lemma~\ref{lem:gphi}, $\Phi(v,0) = \Phi(Z_L(\vec{x})(\overline{0},\overline{0})) = Z_L(\vec{x})\Phi(\overline{0})=v$.  The proof for $w$ is similar.
+\end{proof}
+
+\begin{lem}
+\label{lem:mainepibigrading}
+The graph epimorphism $\Phi$ preserves the bigrading.
+\end{lem}
+\begin{proof}
+Let $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$. 
+\begin{eqnarray*}
+h_L(\Phi(v_1,v_2)) &=& h_L((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0})\\
+ &=& h_L(Z_R(\vec{x}_2)Z_L(\vec{x}_1)\overline{0})\\
+\end{eqnarray*}
+Since $Z_R(\vec{x}_2)$ follows right-moving colors, this does not affect $h_L$, and so the above is
+\[h_L(Z_L(\vec{x}_1)\overline{0}).\]
+Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h(v_1)$.  On the other hand, in $A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
+
+Therefore $\Phi$ preserves $h_L$.  The fact that it preserves $h_R$ is proved similarly.
+\end{proof}
+
+\begin{lem}
+\label{lem:kgrading}
+If $\vec{x}\in K$, and $(v_1,v_2)\in A_L^0\times A_R^0$, then $\vec{x}(v_1,v_2)$ has the same bigrading as $(v_1,v_2)$.
+\end{lem}
+\begin{proof}
+This follows from Lemma~\ref{lem:mainepibigrading} and the fact that $K\subset C(A)$, so if $\vec{x}\in K$, then $\vec{x}\Phi(v_1,v_2)=\Phi(v_1,v_2)$.
+\end{proof}
+
+\begin{cor}
+\label{cor:kquotient}
+The code $K$ acts on $A_L^0\times A_R^0$ so that $(A_L^0\times A_R^0)/K$ is a well-defined $2$-d Adinkra without dashing: that is, a graph with colors and bigrading, satisfying the conditions of a $2$-d Adinkra except those that refer to dashing.
+\end{cor}
+\begin{proof}
+Since $K\subset \ZZ_2^n$, it acts on $A_L^0\times A_R^0$ via color-preserving graph isomorphisms.  Since $K\subset C(A)$ which is doubly even, ...
+By \cite{zhang:adinkras}, this is a well-defined quotient...
+The colors descend from $A_L^0\times A_R^0$ to $(A_L^0\times A_R^0)/K$
+
+By Lemma~\ref{lem:kgrading}, the bigrading on $A_L^0\times A_R^0$ descends to $(A_L^0\times A_R^0)/K$.
+\end{proof}
+
+
+
+\begin{lem}
+\label{lem:isocolor}
+The map $\Phi$ descends to a map
+\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A\]
+which is a color-preserving graph isomorphism that preserves the bigrading.
+\end{lem}
+\begin{proof}
+Suppose $\vec{x}\in C(A)$ and let $w=\vec{x}v$.  Then $\Phi(w)=\Phi(\vec{x}v)=\Phi(v)$.  Therefore $\Phi$ descends to $\tilde{\Phi}$.
+
+Suppose $v$ and $w$ are such that $\Phi(v)=\Phi(w)$.  Then there is a $\vec{x}$ so that $\vec{x}v=w$.  So $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\vec{x}\Phi(w)=\Phi(\vec{x}w)$ so that $\vec{x}\in C(A)$.  By Lemma~\ref{lem:existk}, we can write $\vec{x}=\vec{x}_0+\vec{x}_K$ where $\vec{x}_0\in Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ and $\vec{x}_K\in K$.  Since $\vec{x}_0\in C(A_L^0\times A_R^0)$, we have $\vec{x}_0 v = v$.  Therefore $\vec{x}_K v= w$.  Therefore $\tilde{\Phi}$ is injective.
+
+The fact that $\tilde{\Phi}$ is surjective follows from $\Phi$ being surjective.
+\end{proof}
+
+\begin{cor}
+\label{cor:mainisocolorbigrading}
+The map $\tilde{\Phi}$ is a color-preserving graph isomorphism that preserves the bigrading.
+\end{cor}
+\begin{proof}
+This summarizes Lemma~\ref{lem:isocolor}, Lemma~\ref{lem:mainepibigrading}, and Lemma~\ref{lem:kgrading}.
+\end{proof}
+
+
+
+Unfortunately, it is too much to expect the dashing on $(A_L^0\times A_R^0)/K$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
+
+Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A_L^0\times A_R^0$.   The graph homomorphism
+\[\Phi:A_L^0\times A_R^0\to A\]
+pulls back the dashing $\mu$ to $\mu_2$ on $A_L^0\times A_R^0$. While $\mu_1$ and $\mu_2$ can be different, they agree on the following parts of the Adinkra:
+
+\begin{lem}
+\label{lem:agree-on-boundary}
+The dashings $\mu_1$ and $\mu_2$ agree on $A_L^0\times \{\overline{0}\}$ and on $\{\overline{0}\}\times A_R^0$.
+\end{lem}
+\begin{proof}
+The construction of $\mu_1$ gives each edge in $A_L^0\times\{\overline{0}\}$ the same dashing as in $A_L^0$ under the association of every edge $(v,w)$ with $((v,\overline{0}),(w,\overline{0}))$.  Lemma~\ref{lem:phisides} shows that the same is true for $\mu_2$.  Therefore $\mu_1$ and $\mu_2$ agree on $A_L^0\times\{\overline{0}\}$.  Likewise for $\{0\}\times A_R^0$.
+\end{proof}
+
+
+\begin{lem}
+\label{lem:cycles-switching-class}
+Two dashings have the same parity on all cycles\footnote{This type of result has a natural reformulation with homological algebra, done in independent ways by the first author's work using cubical cohomology \cite{dil:cohomology} and the second author's work using CW-complexes \cite{zhang:adinkras}. In either formulation, having parities of $\mu_1$ and $\mu_2$ agree on cycles is equivalent to $\mu_1 = \mu_2 = 0$ in cohomology.} if and only if they belong to the same vertex switching class.
+\end{lem}
+
+\begin{proof}
+Let the dashings be $\mu$ and $\mu'$ on the Adinkra $A$. Since vertex switching preserves parity on any cycle, the ``if'' direction is trivial and it suffices to prove the other direction.
+
+Assume $\mu$ and $\mu'$ have the same parity on all cycles. It suffices to prove the statement for $A$ connected, since we can repeat our argument on each connected component of $A$. Pick a spanning tree $T$ of $A$, and pick a vertex $v$ of $A$ to serve as the root. The choice of $v$ induces a map $d$ on the vertices of $A$ that associates to each vertex its distance from $v$ using just edges in $T$ (so $d(v) = 0$), which in turn induces a map on the edges of $T$ by associating to each edge $(x,y)$ the min of $d(x)$ and $d(y)$ (these two values are necessarily $1$ apart). We denote this value $d(x,y)$, which gives a partial ordering on the edges of $T$, which we also call $d$ by slight abuse of notation; to be precise, $d((x,y)) < d((x,y))$ in the ordering $d$ whenever $d(x,y) < d(x,y)$ in the edge function $d$.
+
+Now, extend $d$ to a total ordering $d'$ on the edges of $T$. We claim that we can vertex switch $\mu$ such that $\mu$ agrees with $\mu'$ on $T$. Take the minimal edge $e$ (under $d'$) where the two dashings differ. $e = (x,y)$, where without loss of generality $d(y) > d(x)$. Note that vertex switching at $y$ cannot change the dashing on any of the edges $e < e'$ under the ordering $d'$, since otherwise $d(y)$ should have been assigned a smaller value. Thus, we can greedily vertex switch to make $\mu$ and $\mu'$ equal on $T$.
+
+Finally, if $\mu$ and $\mu'$ are equal on $T$, consider any edge $e$ not in $T$. This edge completes at least one cycle with edges in $T$ (otherwise $T$ was not a minimal spanning tree). Since the two cycles have the same parity in $\mu$ and $\mu'$ by assumption and the dashings agree on all edges but $e$, $e$ must be dashed in the same way under the two dashings. Thus, the two dashings must actually agree on all edges, meaning the two original dashings are in the same vertex switching class.
+% However, since $\mu$ and $\mu'$ agree on all cyclesminimal cycles, they agree on all cycles by Lemma~\ref{lem:minimal-cycles-to-all-cycles}, and in particular this cycle. 
+
+\end{proof}
+
+
+
+
+\begin{lem}
+\label{lem:switch12}
+The parities of $\mu_1$ and $\mu_2$ agree on every cycle of $A_L^0\times A_R^0$.
+
+Hence, by the above lemma, there exists a vertex switching that sends $\mu_1$ to $\mu_2$.
+\end{lem}
+\begin{proof}
+Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$.  We first consider the case where $v_0=\overline{0}$.
+
+For this proof, we define a \emph{color sequence} of a path to be the sequence of colors $(c(v_0,v_1),c(v_1,v_2),\ldots,c(v_{k-1},v_k))$ of edges along the path.  Note that given a starting vertex $v_0$ and a color sequence, there is a unique path that starts at $v_0$ with that color sequence.  This follows by applying induction to Property 2 of the definition of an Adinkra.
+
+We begin with the color sequence for the cycle $(v_0,\ldots,v_k)$.  We will now describe a series of modifications to this cycle, described by modifying the color sequence.  The idea is to perform a ``bubble sort'', by iteratively swapping adjacent colors until the left-moving colors are all at the beginning and the right-moving colors are all at the end.
+
+First, given a color sequence
+\[(i_1,\ldots,i_{j-1},i_j,i_{j+1},i_{j+2},\ldots,i_k)\]
+an adjacent swap results in a color sequence
+\[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
+Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 4, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
+
+It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
+
+Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
+\end{proof}
+
+
+\begin{proof}[Proof of Theorem~\ref{thm:quotient}]
+Given a $2$-d Adinkra $A$, select a vertex $\overline{0}$ of $A$ and let $A_L^0$ and $A_R^0$ be the connected components of $A_L$ and $A_R$, respectively, that contain $\overline{0}$.  By Lemma~\ref{lem:existk}, there exists a binary linear block code $K$ so that
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.
+\]
+Use Construction~\ref{const:product} to construct the $2$-d Adinkra $A_L^0\times A_R^0$ with dashing $\mu_1$.
+By Lemma~\ref{lem:mainepicolors} and Lemma~\ref{lem:mainepibigrading}, there is a graph homomorphism
+\[\Phi:A_L^0\times A_R^0 \to A\]
+that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$, and pull it back using $\Phi$ to a dashing $\mu_2$ on $A_L^0\times A_R^0$, then Lemma~\ref{lem:switch12} says that there exists a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
+
+By Corollary~\ref{cor:kquotient}, $K$ acts on $A_L^0\times A_R^0$ to produce a well-defined $2$-d Adinkra without dashing:
+\[(A_L^0\times A_R^0)/K\]
+and an isomorphism
+\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A\]
+that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with dashing
+\[F(A_L^0\times A_R^0)/K\]
+Note that this is the same as $A_L^0\times A_R^0$ if we ignore dashing.  By Corollary~\ref{cor:mainisocolorbigrading}, this is isomorphic to $A$ as a graph with colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
+\end{proof}
+
 
 
 \section{ESDE Codes}
