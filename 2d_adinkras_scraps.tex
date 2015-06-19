@@ -150,3 +150,93 @@ pick a path from $\overline{0}$ to $v$.  Use Proposition~\ref{prop:reorderpath} 
 
 Likewise define $h_R$ on $A$.
 
+---------------------------
+
+Section \ref{sec:structural} hints that the information contained in a $2$-d Adinkra may be captured by just looking at two ``slices'' of the Adinkra. It is natural to guess that there is some product structure lying underneath, especially given the rectangular shape of the support proven in Corollary~\ref{cor:rectangle}. 
+
+---------------------------
+\section{Structural Theorems}
+\label{sec:structural}
+
+\com{To be honest we can probably kill this whole section and get it as corollaries of the quotienting result... no piece of this seems to be used anywhere except 3.4, which is used once and can thus be used as a lemma.}
+
+In this section, we show that the coherence conditions of $2$-d adinkras force a lot of structure onto them. The main idea is that we can think of the vertices of $2$-d adinkras as arranged in a rectangle, with the stucture of the entire adinkra basically determined by a horizontal and a vertical ``slice'' of the picture.
+
+Let the \emph{support} of a $2$-d adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Now, we show that the support of a connected $2$-d adinkra must form a rectangle in $\ZZ^2$.
+
+
+\begin{definition}
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $\pi_L:\ZZ_2^n\to\ZZ_2^p$ to be projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ to be projection onto the last $q$ bits.
+\end{definition}
+
+\begin{prop}
+\label{prop:rectangle-completion}
+Let $A$ be a connected Adinkra.  Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are in the support of $A$.  Then $(x_1,y_2)$ and $(x_2,y_1)$ are also in the support of $A$.
+\end{prop}
+\begin{proof}
+Suppose $v_1$ is a vertex with bigrading $(x_1,y_1)$ and $v_2$ is a vertex with bigrading $(x_2,y_2)$.  Since $A$ is connected, there is an $\vec{x}\in\ZZ_2^n$ so that $\vec{x}v_1=v_2$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$, where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $\vec{x}_R(\vec{x}_Lv_1)=v_2$, and acting on both sides with $\vec{x}_R$, we get $\vec{x}_Lv_1=\vec{x}_Rv_2$.  This is a vertex that shares the $h_R$ of $v_1$ and $h_L$ of $v_2$, so that it has bigrading $(x_2,y_1)$.  Likewise, $\vec{x}_L v_2=\vec{x}_R v_1$ has bigrading $(x_1,y_2)$.
+\end{proof}
+
+\begin{cor}
+\label{cor:rectangle}
+The support of a connected $2$-d Adinkra is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ so that the support is
+\[\{(x,y)\in\ZZ^2\,|\,x_0\le x\le x_1\mbox{ and }y_0\le y\le y_1\}\]
+\end{cor}
+\begin{proof}
+Let $x_0$ and $y_0$ be the minima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra.  By Proposition~\ref{prop:rectangle-completion}, $(x_0,y_0)$ is in the support as well.
+
+Likewise, if $x_1$ and $y_1$ are the maxima of the $x$ and $y$ coordinates, respectively, of the support of the Adinkra, then $(x_1,y_1)$ is in the support.  By Proposition~\ref{prop:rectangle-completion}, $(x_1,y_0)$ and $(x_0,y_1)$ are also in the support.
+
+Since the Adinkra is connected, there must be paths from vertices with bigrading $(x_0,y_0)$ to vertices with bigrading $(x_1,y_1)$.  Since $h_L$ and $h_R$ can change by at most 1 along these paths, we see that for all $x_0\le x\le x_1$, there must exist $y_x$ so that $(x,y_x)$ is in the support.  Likewise for all $y_0\le y\le y_1$, there must exist $x_y$ so that $(x_y,y)$ is in the support.  By application of Proposition~\ref{prop:rectangle-completion} again, we get that $(x,y)$ is in the support for all $x_0\le x\le x_1$ and $y_0\le y\le y_1$.
+\end{proof}
+
+\begin{prop}
+\label{prop:heightcode}
+Let $v$ be a vertex in the $2$-d Adinkra $A$, and let $\vec{x}\in C(A)$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $\vec{x}_L v=\vec{x}_R v$ and this has the same bigrading as $v$.
+\end{prop}
+This has a very similar proof to that of Proposition~\ref{prop:rectangle-completion}.
+
+\begin{proof}
+Since $\vec{x}\in C(A)$, we know that $\vec{x}v=v$.  Write this as $\vec{x}_R(\vec{x}_L v)=v$ and act on both sides with $\vec{x}_R$ to get $\vec{x}_L v = \vec{x}_R v$.  Since $\vec{x}_L v$ has the same $h_R$ as $v$ and since $\vec{x}_R v$ has the same $h_L$ as $v$, we have that $\vec{x}_L v$ has the same bigrading as $v$.
+\end{proof}
+
+\subsection{Left and Right parts of a $2$-d Adinkra}
+\begin{definition}
+Let $A$ be a $2$-d Adinkra with $(p,q)$ colors.  Let $A_L$ be the subgraph of $A$ consisting of the left-moving edges of $A$.  Together with the coloring, the dashing, and the grading $h_L$, this is a $1$-d Adinkra with $p$ colors.
+
+Let $A_R$ be the subgraph of $A$ consisting of right-moving edges of $A$.  Define the coloring $c'(e)=c(e)-p$ (so that the colors range from $1$ to $q$ instead of $p+1$ to $p+q$).  Using this coloring, the dashing, and the grading $h_R$, this is a $1$-d Adinkra with $q$ colors.
+\end{definition}
+The fact that these are $1$-d Adinkras is straightforward.  We now consider their connected components.
+
+\begin{lem}
+\label{lem:qiso}
+Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then there is a graph isomorphism between $X$ and $q_i(X)$ that preserves colors and $h_L$.  The analogous statement for $A_R$ also holds.
+\end{lem}
+\begin{proof}
+Propostion~\ref{prop:qmap} states that $q_i$ is a graph isomorphism from the underlying graph of $A$ to itself that preserves colors.  If we restrict  $q_i$ to a connected component $X$ of $A_L$, the restricted map is an isomorphism from $X$ to $q_i(X)$ that preserves colors.
+
+Since $i$ is a right-moving color, then for all vertices $v\in X$, $h_L(v)=h_L(q_i(v))$.
+\end{proof}
+
+\begin{lem}
+\label{lem:qiconnected}
+Let $A$ be a $2$-d Adinkra.  If $X$ is a connected component of $A_L$ and $i$ is a right-moving color, then $q_i(X)$ is the vertex set of a connected component of $A_L$. The analogous statement for $A_R$ also holds.
+\end{lem}
+\begin{proof}
+Because the property of connectedness is preserved under graph isomorphism, we know that $q_i(X)$ is connected.  If we let $X'$ be the connected component of $A_L$ that contains $q_i(X)$, then the same argument proves that $q_i(X')$ is connected as well.  Since $X$ was assumed to be a connected component of $A_L$, we have that $q_i(X')\subseteq X$.  But since $q_i^2$ is the identity, $X=q_i^2(X)\subseteq q_i(X')\subseteq X$.  This means $q_i(X')=X$.  By the fact that $q_i^2$ is the identity, we also have $q_i(X)=X'$.
+\end{proof}
+
+\begin{prop}
+\label{prop:kevin}
+Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+\end{prop}
+
+\begin{proof}
+Let $X$ and $Y$ be two connected components of $A_L$.  Since $A$ is connected, there is a $\vec{x}\in \ZZ_2^n$ that send a vertex in $X$ to a vertex in $Y$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ has only $1$s for left-moving colors, and $\vec{x}_R$ has only $1$s for right-moving colors.  Since $X$ is a connected component of $A_L$, $\vec{x}_L$ sends $X$ to itself, and so $\vec{x}_R$ sends $X$ to $Y$.
+
+Then $\vec{x}_R$ acts on $A$ via graph isomorphisms that preserve color, and preserves $h_L$.  Since $X$ is connected, $\vec{x}_R(X)$ is connected.  It is therefore a subset of $Y$.  Likewise, $\vec{x}_R(Y)$ is a connected subset of $X$.  Since $\vec{x}_R$ is an involution, $\vec{x}_R(X)=Y$ and acting by $\vec{x}_R$ produces an isomorphism.
+\end{proof}
+
+With all this redundancy, what is the minimal amount of information required for us to understand a $2$-d Adinkra? Proposition~\ref{prop:kevin} suggests we just need a single connected component for each direction to give us all the data; this turns out to basically be true, as we see in the upcoming sections.
+
+
