@@ -602,13 +602,18 @@ as an internal direct sum.
 Theorem \ref{thm:quotient} is very powerful; we immediately know a lot about what a $2$-d Adinkra must look like. Let the \emph{support} of a $2$-d Adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Then:
 \begin{cor}
 \label{cor:rectangle}
-Let $A$ be a connected $2$-d Adinkra.  The support of $A$ is a rectangle.  That is, there exist integers $x$ and $y$ such that the support is
-\[\{(x,y)\in\ZZ^2\,|\,0 \le x\le x\mbox{ and }0\le y\le y\}.\] All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+Let $A$ be a connected $2$-d Adinkra.  The support of $A$ is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ such that the support is
+\[\{(i,j)\in\ZZ^2\,|\,x_0 \le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\] All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
 \end{cor}
 \begin{proof}
-By the definition of the product, the support of $A_L^0 \times A_R^0$, where $A_L^0$ has support $\{(0,i) | 0 \leq i < y\}$ and $A_R^0$ has support $\{(i,0) | 0 \leq i < x\}$, is exactly the given rectangle; taking quotients does not change the support, so this is the support of $A$ as well.
+Since $A_L^0$ is a connected $1$-d Adinkra and edges change $h_L$ by 1, there are integers $x_0$ and $x_1$ so that the range of the grading is $\{i\,|\,x_0\le i\le x_1\}$.  Likewise $A_R^0$ has a range of grading $\{j\,|\,y_0\le j\le y_1\}$ for some integers $y_0$ and $y_1$.
 
-Let $A' = A_L^0 \times A_R^0$. All connected components of $A'_L$ (resp. $A'_R$) are isomorphic to $A_L^0$ (resp. $A_R^0$). Quotients preserve connected components and act the same way on each component, so all of the connected components of $A_L$ (resp. $A_R$) must be as well.
+By Construction~\ref{const:product}, the support of $A_L^0\times A_R^0$ is
+\[\{(i,j)\,|\,x_0\le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\]
+Since $\Phi$ preserves the bigrading, this is the support of $A$ as well.
+
+
+Let $A' = A_L^0 \times A_R^0$. All connected components of $A'_L$ (resp. $A'_R$) are isomorphic to $A_L^0$ (resp. $A_R^0$). \com{The following is not convincing.  KI}  Quotients preserve connected components and act the same way on each component, so all of the connected components of $A_L$ (resp. $A_R$) must be as well.
 \end{proof}
 
 To prove Theorem~\ref{thm:quotient}, we first prove the existence of $K$ satisfying (\ref{eqn:kcomplement}).  We then construct a color and bigrading preserving graph isomorphism
