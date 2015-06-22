@@ -559,18 +559,11 @@ Suppose $i$ is a color and $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\
 It will be useful to have the following result:
 \begin{lem}
 \label{lem:gphi}
-If $g\in \ZZ_2^n$, then
-\[\Phi(g(v_1,v_2))=g\Phi(v_1,v_2).\]
+If $\vec{x}\in \ZZ_2^n$, then
+\[\Phi(\vec{x}(v_1,v_2))=\vec{x}\Phi(v_1,v_2).\]
 \end{lem}
 \begin{proof}
-Let $\vec{x}_1\in \ZZ_2^p$ be such that $\vec{x}_1\overline{0}=v_1$ in $A_L^0$ and $\vec{x}_2\in \ZZ_2^q$ be such that $\vec{x}_2\overline{0}=v_2$ in $A_R^0$.  Then $\pi_L(g)v_1 = \pi_L(g)\vec{x}_1\overline{0}=(\pi_L(g)+\vec{x}_1)\overline{0}$ and likewise $\pi_R(g)v_2=(\pi_R(g)+\vec{x}_2)\overline{0}$.  Then
-\begin{eqnarray*}
-\Phi(g(v_1,v_2))&=&\Phi(\pi_L(g)v_1,\pi_R(g)v_2)\\
-&=&(Z_L(\pi_L(g)+\vec{x}_1)+Z_R(\pi_R(g)+\vec{x}_2))\overline{0}\\
-&=&(g+Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}\\
-&=&g(Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0}\\
-&=&g\Phi(v_1,v_2)
-\end{eqnarray*}
+For $\vec{x}=\vec{e}_i$, the vector that is $1$ in component $i$ and $0$ otherwise, is the statement that $\Phi$ is color-preserving.  By composing many maps of this type, we get the statement for all vectors $\vec{x}\in \ZZ_2^n$.
 \end{proof}
 
 \begin{lem}
