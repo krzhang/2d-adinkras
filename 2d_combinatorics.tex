@@ -581,12 +581,16 @@ The graph epimorphism $\Phi$ preserves the bigrading.
 \begin{proof}
 Let $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$. 
 \begin{eqnarray*}
-h_L(\Phi(v_1,v_2)) &=& h_L((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0})\\
- &=& h_L(Z_R(\vec{x}_2)Z_L(\vec{x}_1)\overline{0})\\
+h_L(\Phi(v_1,v_2))
+&=& h_L(\Phi(\vec{x}_1\overline{0},\vec{x}_2\overline{0}))\\
+&=& h_L(\Phi((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))(\overline{0},\overline{0})))\\
+&=& h_L((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\Phi(\overline{0},\overline{0}))\\
+&=& h_L((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0})\\
+&=& h_L(Z_R(\vec{x}_2)(Z_L(\vec{x}_1)\overline{0}))
 \end{eqnarray*}
 Since $Z_R(\vec{x}_2)$ follows right-moving colors, this does not affect $h_L$, and so the above is
 \[h_L(Z_L(\vec{x}_1)\overline{0}).\]
-Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h(v_1)$.  On the other hand, in $A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
+Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h_1(v_1)$ where $h_1$ is the grading for the $1$-d Adinkra $A_L^0$.  On the other hand, in $A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
 
 Therefore $\Phi$ preserves $h_L$.  The fact that it preserves $h_R$ is proved similarly.
 \end{proof}
@@ -620,7 +624,7 @@ The map $\Phi$ descends to a map
 which is a color-preserving graph isomorphism that preserves the bigrading.
 \end{lem}
 \begin{proof}
-Suppose $\vec{x}\in C(A)$ and let $w=\vec{x}v$.  Then $\Phi(w)=\Phi(\vec{x}v)=\Phi(v)$.  Therefore $\Phi$ descends to $\tilde{\Phi}$.
+Suppose $\vec{x}\in C(A)$ and let $w=\vec{x}v$.  Then $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\Phi(v)$.  Therefore $\Phi$ descends to $\tilde{\Phi}$.
 
 Suppose $v$ and $w$ are such that $\Phi(v)=\Phi(w)$.  Then there is a $\vec{x}$ so that $\vec{x}v=w$.  So $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\vec{x}\Phi(w)=\Phi(\vec{x}w)$ so that $\vec{x}\in C(A)$.  By Lemma~\ref{lem:existk}, we can write $\vec{x}=\vec{x}_0+\vec{x}_K$ where $\vec{x}_0\in Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ and $\vec{x}_K\in K$.  Since $\vec{x}_0\in C(A_L^0\times A_R^0)$, we have $\vec{x}_0 v = v$.  Therefore $\vec{x}_K v= w$.  Therefore $\tilde{\Phi}$ is injective.
 
