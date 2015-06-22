@@ -481,36 +481,13 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 \end{center}
 \end{figure}
 
-The main non-obvious part of the definition is (\ref{eqn:dashprodshift}) for the dashings. The naive approach, assigning $\mu((v,w_1), (v,w_2)) = \mu_2(w_1, w_2)$, would fail to give us the odd parity we desire. This situation is analogous to assigning signs in the differential to a double chain complex, such as in Bott and Tu \cite{bott_tu}, where one would have to do a similar symmetry breaking. We now show that this sign-tweaking in fact gives an admissable dashing:
+This definition is intended to be a graph-theoretic version of the tensor product construction in $\ZZ_2$-graded representations (see Appendix~\ref{app:repn} for more details).  The edges that come from $E_1$ give rise to left-moving edges, and the edges that come from $E_2$ give rise to right-moving edges.  It follows easily that for every vertex $v$ in $A_1\times A_2$ and for every color in $[n]$ there is a unique edge in $A_1\times A_2$ incident to $v$.  The fact that two-colored simple cycles have length $4$ follows from following cases, depending on whether the colors are both left-moving, both right-moving, or one of each.  The parity condition for an Adinkra also follows from considering these cases.  The properties related to the bigrading are straightforward.  We then have:
 
 \begin{prop}
 \label{prop:product-admissable}
-Given Adinkras $A_1$ and $A_2$, $\mu$ is an admissible dashing for $A_1\times A_2$.  That is, given colors $c_1$ and $c_2$, and vertices $v$, $w$, $x$, and $y$ in $A_1\times A_2$, with edges $(v,w)$, $(w,x)$, $(x,y)$, and $(y,v)$ and colors $c(v,w)=c(x,y)=c_1$ and $c(w,x)=c(y,v)=c_2$, we have $\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\equiv 1 \pmod{2}$.
+Given Adinkras $A_1$ and $A_2$, $A_1\times A_2$ is a $2$-d Adinkra.
 \end{prop}
-\begin{proof}
-If $c_1$ and $c_2$ are both left-moving colors, then write $v=(v_1,z)$.  Then $w=(w_1,z)$, $x=(x_1,z)$, and $y=(y_1,z)$.  Then we have
-\[\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)
-= \mu_1(v_1,w_1)+\mu_1(w_1,x_1)+\mu_1(x_1,y_1)+\mu_1(y_1,v_1)\]
-and the result follows from the fact that $\mu_1$ was an admissible dashing on $A_1$.
 
-If $c_1$ and $c_2$ are both right-moving colors, then write $v=(z,v_2)$.  Then $w=(z,w_2)$, $x=(z,x_2)$, and $y=(z,y_2)$.  Then
-\begin{eqnarray*}
-&&\mu(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\\
-&=& \mu_2(v_1,w_1)+h_1(z)+\mu_2(w_1,x_1)+h_1(z)+\mu_2(x_1,y_1)+h_1(z)+\mu_2(y_1,v_1)+h_1(z)
-\end{eqnarray*}
-which modulo $2$ is the same as 
-\[\mu_2(v_1,w_1)+\mu_2(w_1,x_1)+\mu_2(x_1,y_1)+\mu_2(y_1,v_1).\]
-The result follows from the fact that $\mu_2$ was an admissible dashing on $A_2$.
-
-
-Now if $c_1$ is left-moving and $c_2$ is right-moving, then write $v=(v_1,v_2)$.  Then $w=(w_1,v_2)$, $x=(w_1,x_2)$, and $y=(v_1,x_2)$.  Now note that $v_1$ and $w_1$ are connected by an edge in $A_1$, so $h_1(v_1)$ and $h_1(v_2)$ differ by 1.  In particular, one of these is even and the other is odd.  Without loss of generality, suppose $h_1(v_1)$ is even.  Then $\mu(v,w)=\mu_1(v_1,w_1)$, $\mu(w,x)=\mu_2(v_2,x_2)+1$, $\mu(x,y)=\mu_1(w_1,v_1)$, and $\mu(y,v)=\mu_2(x_2,v_2)$, and we have
-\begin{eqnarray*}
-&&\mu_(v,w)+\mu(w,x)+\mu(x,y)+\mu(y,v)\\
-&=&\mu_1(v_1,w_1)+\mu_2(v_2,x_2)+1+\mu_1(w_1,v_1)+\mu_2(x_2,v_2)\equiv 1\pmod{2}.
-\end{eqnarray*}
-\end{proof}
-
-We have shown that our definition of product creates a legitimate $2$-d Adinkra from two $1$-d Adinkras. Recall that Adinkras correspond to linear codes; it is natural to expect that the codes of the relevant Adinkras are related nicely.
 
 \begin{definition}[Extending codes]
 Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $Z_L:\ZZ_2^p\to\ZZ_2^n$ to be the function that appends $q$ zeros, so that for instance, if $p=4$ and $q=3$, then $Z_L(1011)=1011000$.  Likewise, define $Z_R:\ZZ_2^q\to\ZZ_2^n$ to be the function that prepends $p$ zeros.  Note that $Z_L$ is a right-inverse of $\pi_L$ and $Z_R$ is a right-inverse of $\pi_R$.
