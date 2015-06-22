@@ -237,56 +237,17 @@ Figure~\ref{fig:1d-examples} give examples of 1-d Adinkras.
 \label{sec:code}
 The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}.  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
 \[q_i:V\to V\]
-so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
+so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.  In \cite{d2l:omni}, it was shown that the map $q_i$ is a graph isomorphism (in fact, an involution) from the underlying graph of $A$ to itself which preserves colors.  The $q_i$ commute with each other.
 
-\com{Do we really need to define this?}
-\begin{definition}[Graph homomorphisms]
-\label{defn:homomorphism}
-A \emph{graph homomorphism} from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to [n]$ and a coloring $c_2:E_2\to [n]$, we say that $\phi$ \emph{preserves colors} if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  We likewise define what it means for $\phi$ to \emph{preserve dashings} or \emph{preserve gradings}.  If $\phi$ is bijective, we say that it is a \emph{graph isomorphism}.
-\end{definition}
-
-\begin{prop}
-\label{prop:qmap}
-The map $q_i$ is a graph isomorphism from the underlying graph of $A$ to itself which preserves colors.  It is an involution and for all $i$, $j$, we have
-\begin{equation}
-q_i\circ q_j=q_j\circ q_i.\label{eq:commute}
-\end{equation}
-\end{prop}
-\begin{proof}
-The statement that $q_i$ is a graph homomorphism means that if $(v,w)$ is an edge in $A$, then so is $(q_i(v),q_i(w))$.  This follows from items 2 and 3 in the definition of an Adinkra above, using $j=c(v,w)$.
-
-The fact that $q_i(q_i(v))=v$ for all $v\in V$ follows from item 2 in the definition.  This means that $q_i$ is an involution and in particular is an isomorphism.
-
-The equation (\ref{eq:commute}) follows from item 3 of the definition when $i\not=j$ and is trivial when $i=j$.
-\end{proof}
-
-By combining the $q_1,\ldots, q_n$ maps, we can define an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
+These facts can be used to combine the $q_1,\ldots, q_n$ maps into an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
 \begin{definition}
 The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on vertices by
 \[(x_1,\ldots,x_n)v=q_1^{x_1}\circ\cdots\circ q_n^{x_n}(v).\]
 \end{definition}
-The fact that this is an action by graph isomorphisms that preserve colors follows straightforwardly from Proposition~\ref{prop:qmap}.
 
 Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to a $1$ (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
 
-
-\begin{prop}
-\label{prop:transitive}
-The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.
-\end{prop}
-\begin{proof}
-This follows directly from interpreting the group action as following edges with various colors.  A path in the graph corresponds to a sequence of edges, which, depending on the color, gives an action of $q_i$.  The composite of these $q_i$'s, reordered using the commutativity of the $q_i$'s, is an action of an element of $\ZZ_2^n$.
-
-\end{proof}
-
-\begin{prop}
-If $A$ is connected, then the stabilizers of all vertices are equal.  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  As a subgroup of $\ZZ_2^n$, this is a binary block code of length $n$.
-\end{prop}
-\begin{proof}
-In general the stabilizers of two points in the same orbit are conjugate, but because the group is abelian, they are the same.
-\end{proof}
-
-The code $C$ is always a doubly-even code\cite{d2l:omni,d2l:decodes}, meaning that every codeword has a number of $1$s that is a multiple of $4$.
+The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate but note that the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  As a subgroup of $\ZZ_2^n$, this is a binary block code of length $n$.  The code $C(A)$ is always a doubly-even code\cite{d2l:omni,d2l:decodes}, meaning that every codeword has a number of $1$s that is a multiple of $4$.
 
 
 \subsection{Vertex switching}

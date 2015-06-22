@@ -1,5 +1,27 @@
 
 
+\com{Do we really need to define this?}
+\begin{definition}[Graph homomorphisms]
+\label{defn:homomorphism}
+A \emph{graph homomorphism} from a graph $(V_1,E_1)$ to a graph $(V_2,E_2)$ is a map $\phi:V_1\to V_2$ so that if $(v,w)\in E_1$ is an edge, then $(\phi(v),\phi(w))\in E_2$ is an edge.  If there is a coloring $c_1:E_1\to [n]$ and a coloring $c_2:E_2\to [n]$, we say that $\phi$ \emph{preserves colors} if $c_1(v,w)=c_2(\phi(v),\phi(w))$.  We likewise define what it means for $\phi$ to \emph{preserve dashings} or \emph{preserve gradings}.  If $\phi$ is bijective, we say that it is a \emph{graph isomorphism}.
+\end{definition}
+\begin{proof}
+The statement that $q_i$ is a graph homomorphism means that if $(v,w)$ is an edge in $A$, then so is $(q_i(v),q_i(w))$.  This follows from items 2 and 3 in the definition of an Adinkra above, using $j=c(v,w)$.
+
+The fact that $q_i(q_i(v))=v$ for all $v\in V$ follows from item 2 in the definition.  This means that $q_i$ is an involution and in particular is an isomorphism.
+
+The equation (\ref{eq:commute}) follows from item 3 of the definition when $i\not=j$ and is trivial when $i=j$.
+\end{proof}
+
+\begin{proof}
+This follows directly from interpreting the group action as following edges with various colors.  A path in the graph corresponds to a sequence of edges, which, depending on the color, gives an action of $q_i$.  The composite of these $q_i$'s, reordered using the commutativity of the $q_i$'s, is an action of an element of $\ZZ_2^n$.
+
+\end{proof}
+
+
+
+
+
  (\ref{eq:commute})
 \begin{prop}
 \label{prop:actioniso}
