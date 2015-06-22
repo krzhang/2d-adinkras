@@ -99,9 +99,29 @@
 Adinkras are combinatorial objects developed to study supersymmetry representations. Most of the work so far on Adinkras apply to $1$-dimensional supersymmetry; in this paper, we give formal definitions and structural theorems for \emph{$2$-d Adinkras} to study $2$-dimensional supersymmetry. We show that the natural definitions we want (products, quotients, etc.) behave unexpectedly well, having a nice interplay with the classical theory of \emph{switching graphs}. Our main result is settling a conjecture of H\"ubsch, which helps us understand most of the structure of $2$-d Adinkras. The methods are mostly self-contained.
 \end{abstract}
 
+
+\section{Introduction}
+Adinkras (in this paper, called $1$-d Adinkras) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:omni,d2l:topology,zhang:adinkras,dil:cohomology,d2l:decodes}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
+
+In this paper, we characterize $2$-d Adinkras.  At the core of this is the proof of a conjecture made in \cite{hubsch:weaving}.  In the language we use in this paper, the theorem is as follows:
+
+\begin{thm}
+\label{thm:main}
+Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ with $p$ and $q$ colors, respectively, so that
+\[A\cong F(A_1\times A_2)/\sim\]
+where $F$ is a vertex switch and  $\sim$ is described by a subgroup of $\ZZ_2^n$.
+\end{thm}
+
+In \cite{hubsch:weaving}, the conjecture was phrased differently, and in Appendix~\ref{app:repn}, we explain the connection between these two formulations, as well as more generally explain the relation between $2$-d Adinkras and representations of the super-Poincar\'e algebra in two dimensions.
+
+In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features.  In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how the product of two $1$-d Adinkras makes a $2$-d Adinkra, in the fashion described in the above theorem.  In Section~\ref{sec:quotient}, we prove the main theorem.
+\com{Not sure how the rest will be laid out.  Once we decide this, we can fill in details here}
+
 \section{Preliminaries}
+\label{sec:prelim}
 
 \subsection{$1$-d Adinkras}
+\label{sec:1d}
 Adinkras in \cite{d2l:first,d2l:graph-theoretic,zhang:adinkras} will be referred to as $1$-d Adinkras in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
 
 \begin{definition}[$1$-d Adinkras]
@@ -214,6 +234,7 @@ Figure~\ref{fig:1d-examples} give examples of 1-d Adinkras.
 \end{figure}
 
 \subsection{The action of $\ZZ_2^n$ and the code}
+\label{sec:code}
 The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}.  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.
@@ -269,6 +290,7 @@ The code $C$ is always a doubly-even code\cite{d2l:omni,d2l:decodes}, meaning th
 
 
 \subsection{Vertex switching}
+\label{sec:vertexswitch}
 
 \com{As stated in email, for sake of making introduction shorter it may be good to move this to where it is needed - since we don't use this for a long time, and only in an isolated area really.}
 The following concept is first introduced in \cite{d2l:first}, and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
@@ -295,6 +317,7 @@ Since the vertices, edges, coloring, and grading(s) are the same, the only thing
 Douglas, Gates, and Wang \cite{douglas} examined dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs} in literature for disambiguation.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras.
 
 \section{$2$-d Adinkras}
+\label{sec:2d}
 We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there: the proof is found in Appendix \com{...[maybe?]}
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally,
@@ -916,6 +939,7 @@ The authors wish to thank Charles Doran, Sylvester Gates, and Tristan H\"ubsch f
 \appendix
 
 \section{Representations of supersymmetry}
+\label{app:repn}
 The $1$-d $n$-extended supersymmetry algebra is a superalgebra consisting of an even operator $H$ and $n$ odd operators $Q_1, \ldots, Q_n$ with the following relations:
 \begin{eqnarray}
 \label{eqn:susy1d1}
