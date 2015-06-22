@@ -1,7 +1,7 @@
 \documentclass[12pt,twoside,singlespace]{article}
 \pagestyle{plain}
 
-\usepackage{array, paralist, enumerate, amsmath, amsthm, amsfonts, amssymb, color, mathrsfs,comment}
+\usepackage{array, paralist, enumerate, amsmath, amsthm, amsfonts, amssymb, amscd, color, mathrsfs,comment}
 %\usepackage{times}
 \usepackage{geometry}
 \usepackage{framed}
@@ -536,25 +536,33 @@ There is a graph epimorphism
 that preserves colors and sends $(\overline{0},\overline{0})$ to $\overline{0}$.
 \end{lem}
 \begin{proof}
-Recall that every connected Adinkra is the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
-\[A\cong I^n/C(A)\]
+Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
+\[I^n/C(A) \cong A\]
 and
-\[A_L^0\times A_R^0 \cong I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))).\]
-In particular, we have a color-preserving graph epimorphism
-\[\hat{\Phi}:I^n\to A\]
-that sends $\vec{0}=(0,\ldots,0)$ to $\overline{0}$, and a color-preserving graph epimorphism
-\[\pi:I^n\to A_L^0\times A_R^0,\]
-with $\pi(\vec{0})=(\overline{0},\overline{0})$.
+\[I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))\cong A_L^0\times A_R^0.\]
+These isomorphisms can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A_L^0\times A_R^0$, respectively.
 
-Since $Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\subset C(A)$, the map $\hat{\Phi}$ factors through $\pi$ to produce a color-preserving graph epimorphism
-\[\Phi:A_L^0\times A_R^0\to A,\]
-where $\Phi\circ\pi=\hat{\Phi}$.
+Define the quotient homomorphism
+\[\pi:I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))) \to
+(I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))))/K.\]
+A standard argument gives
+\[(I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))))/K
+\cong I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K)\]
+and since
+\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K\]
+we can take $\pi$ as
+\[\pi:I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))\to I^n/C(A).\]
+We then have the following commutative diagram
+\[
+\begin{CD}
+I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))) @>i_1>\cong> A_L^0\times A_R^0\\
+@VV\pi V @VV\Phi V\\
+I^n/C(A) @>i_2>\cong> A
+\end{CD}
+\]
+where $\Phi=i_2\circ\pi\circ i_1^{-1}$.
 \end{proof}
 
-%The following used to be part of the proof of color preserving.
-\begin{comment}
-Suppose $i$ is a color and $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$.  Let $\vec{e}_i$ be the vector that has a single $1$ in the $i$th bit and $0$s elsewhere, so that for all vertices $v$, $\vec{e}_i v=q_i(v)$.  Using Lemma~\ref{lem:gphi}, we see that $\Phi(\vec{e}(v_1,v_2))=\vec{e}\Phi(v_1,v_2)$, so $\Phi$ sends edges of color $i$ to edges of color $i$.
-\end{comment}
 
 It will be useful to have the following result:
 \begin{lem}
