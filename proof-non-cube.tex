@@ -224,3 +224,82 @@ Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with
 \[F(A_L^0\times A_R^0)/K\]
 Note that this is the same as $A_L^0\times A_R^0$ if we ignore dashing.  By Lemma~\ref{lem:mainiso}, this is isomorphic to $A$ as a graph with colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
+
+
+
+
+\subsection{Quotients of graphs and Adinkras}
+\label{sec:quotient}
+
+\com{As stated in the emails, I think this is the section that can be mostly removed and replaced with careful citation of earlier papers. We can even keep the theorems the same if you want. -Y}
+
+As we have seen, $\ZZ_2^n$, and therefore subgroups of $\ZZ_2^n$, act on Adinkras (more precisely, the underlying graphs), and it will be important to understand quotients of Adinkras by codes.
+
+Let $\Gamma=(V,E)$ be a graph and suppose $C$ is a group that acts on $V$ via graph isomorphisms.  If we wish to define the quotient $\Gamma/C$, the vertex set of $\Gamma/C$ should be the orbit space $V/C$, but the edge set requires a bit more care.  We can indeed define an action of $C$ on $E$ so that if $g\in C$, and $(v,w)$ is an edge in $E$, then $g(v,w)=(gv,gw)$.  But what is needed is a set of edges for $\Gamma/C$.  Let $Cv$ and $Cw$ be elements of $V/C$.  We say there is an edge between these two vertices if there exist vertices $v_1\in Cv$ and $w_1\in Cw$ so that there is an edge $(v_1,w_1)$ in $E$.
+
+It is tempting to consider $E/C$ as the set of edges in $\Gamma/C$, but these sets are not necessarily even the same cardinality.  The issue is that a group element might connect two neighbors of a vertex, and so in the quotient, there might be a multiple edge.  Multiple edges are not profoundly problematic, but the formalism we are using to describe graphs does not allow it and it is inconvenient to alter the formalism to accommodate these features.  Fortunately, for the group actions described in this paper, these situations cannot arise.
+
+\begin{definition}
+Suppose $C$ is a group that acts on a graph $(V,E)$ via graph isomorphisms.  We say that this group action is distant if for every non-identity group element $g\in C$, and every vertex $v\in V$, every path from $v$ to $gv$ is of length greater than 2.
+\end{definition}
+
+The following proposition allows us to consider $E/C$ as the set of edges in $\Gamma/C$ if the action is distant.
+
+\begin{prop}
+\label{prop:distiso}
+If $C$ is a distant group action, then the map $j$ sending $E/C$ to edges in $\Gamma/C$ which sends $C(v,w)$ to $(Cv,Cw)$ is bijective.
+\end{prop}
+\begin{proof}
+The fact that $j$ is surjective follows directly from the definition of the edges of $\Gamma/C$.
+
+To prove that $j$ is injective, suppose $(v,w)$ and $(v',w')$ are edges in $E$ and suppose $(Cv,Cw)=(Cv',Cw')$.  Then there are group elements $g_1$ and $g_2\in C$ so that $g_1v=v'$ and $g_2w=w'$.  On the other hand, there is an edge $(g_1v,g_1w)=(v',g_1w)$.  So $(v',g_1w)$ and $(v',g_2w)=(v',w')$ are edges in the graph.  Then $g_2g_1^{-1}$ is a group element that sends $g_1w$ to $g_2w$ but we have just constructed a path of length $2$ from $g_1w$ to $g_2w$.  Since the group action is distant, we know that $g_2g_1^{-1}=1$ so that $g_1=g_2$.  Therefore $(v',w')=g_1(v,w)$.
+\end{proof}
+
+The benefit to this comes when our edges have colors and the group action preserves colors:
+
+\begin{prop}
+\label{prop:quotient}
+If a group $C$ acts on an Adinkra $A$ using graph isomorphisms that preserve colors, and if the action is distant, then the coloring descends to a coloring on $A/C$ that satisfies those properties of Adinkras that relate to colors and not to dashings or grading.  That is, let $E/C$ denote the set of edges of $A/C$ as defined in the construction.  Then
+\begin{enumerate}
+\item If $(Cv,Cw)$ is an edge in $A/C$, then $(Cw,Cv)$ is also an edge.  Furthermore, $c(Cv,Cw)=c(Cw,Cv)$.
+\item For every $Cv\in V/C$ and $c\in [n]$, there exist exactly one $Cw\in V/C$ so that $(Cv,Cw)\in E/C$ and $c(Cv,Cw)=c$.
+\item Every two-colored simple cycle in $A/C$ has length 4.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Since Proposition~\ref{prop:distiso} says that the edges of $A/C$ can be identified with $E/C$, and since the action of $C$ preserves colors, we can define the coloring on $E/C$, and thus, on the edges of $A/C$.
+
+Property 1 follows from the construction of the edges of $A/C$.
+
+Now we prove Property 2.  Let $Cv\in V/C$ and $c\in [n]$.  Since $A$ is an Adinkra, there is exactly one vertex $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.  There is thus an edge $(Cv,Cw)$ in $A/C$ that has color $c$.  To show uniqueness, suppose there is an $x\in V$ so that $(Cv,Cx)$ is in $A/C$ with color $c$.  This means there are group elements $\alpha,\beta\in C$ so that $(\alpha v,\beta x)$ is an edge of $A$ of color $c$.  By acting by $\alpha^{-1}$, we see that without loss of generality, $\alpha=1$.  Because $A$ is an Adinkra, there is a unique edge from $v$ that has color $c$.  So $\beta x = w$.  Therefore $x\in Cw$.
+
+Now we prove Property 3.  Let $i$ and $j$ be two different colors, and $Cv\in V/C$.  Let $\vec{e}_i$ and $\vec{e}_j$ be the vectors that are $1$ for bit $i$ (resp. bit $j$) and $0$ otherwise.  The vertices $v$, $\vec{e}_1 v$, $(\vec{e_1}+\vec{e_2})v$, and $\vec{e_2}v$ forms a simple two-colored cycle in $A$.  Because the action is distant, and in any cycle of length $4$, the maximum distance between vertices is $2$, we see that no two vertices are identified in the quotient, and so in the quotient, the corresponding cycle is of length $4$.
+\end{proof}
+
+
+
+\begin{prop}
+If $A$ is an Adinkra and there is a distant action of $C$ on $A$ via graph isomorphisms, then the map
+\[\pi:A\to A/C\]
+given by $\pi(v)=Cv$ is a graph homomorphism.  If the action is distant and if $C$ acts preserving colors, then $\pi$ preserves colors.
+\end{prop}
+\begin{proof}
+If $(v,w)$ is an edge in $A$, then $(\pi(v),\pi(w))=(Cv,Cw)$ is an edge in $A/C$.  The fact that it preserves colors follows from how colors on $(Cv,Cw)$ are defined.
+\end{proof}
+
+Adinkras also have dashings and gradings (and in a later section, we will consider bigradings).  The following result is similar to what was proved for colors above.
+
+\begin{prop}
+\label{prop:quotient2}
+If $A$ is an Adinkra and there is a distant action of $C$ on $A$ via graph isomorphisms that preserve colors, dashings, and grading, then these colors, dashings, and gradings descend to $A/C$ to make $A/C$ an Adinkra, and the map
+\[\pi:A\to A/C\]
+is an Adinkra homomorphism.
+\end{prop}
+\begin{proof}
+Again, since edges in $A/C$ are identified with $E/C$, if $C$ preserves a dashing, then the dashing descends to the edges of $A/C$.  Likewise if $C$ preserves a grading, then the grading descends to $A/C$.  It follows that $\pi$ preserves these features.
+
+To prove $\mu$ on $A/C$ is admissible, note that as before, the projection $\pi$ maps simple two-colored cycles isomorphically onto their images.  The parity of the dashing on the two-colored cycle in $A/C$ is the same as the parity of the dashing on the two-colored cycle in $A$.
+
+If $Cv$ and $Cw$ are vertices in $\Gamma/C$ that are connected by an edge, then there are vertices $v'\in Cv$ and $w'\in Cw$ with $(v',w')$ an edge in $A$.  Since $A$ is an Adinkra, $|h(v')-h(w')|=1$, and so $|h(Cv)-h(Cw)|=1$.
+\end{proof}
+
