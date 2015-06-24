@@ -103,11 +103,11 @@ Adinkras are combinatorial objects developed to study supersymmetry representati
 \section{Introduction}
 Adinkras (in this paper, called $1$-d Adinkras) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:omni,d2l:topology,zhang:adinkras,dil:cohomology,d2l:decodes}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
 
-In this paper, we characterize $2$-d Adinkras.  At the core of this is the proof of a conjecture made in \cite{hubsch:weaving}.  In the language we use in this paper, the theorem is as follows:
+In this paper, we characterize $2$-d Adinkras.  At the core of this is the proof of a conjecture in \cite{hubsch:weaving}.  In the language we use in this paper, the theorem is as follows:
 
 \begin{thm}
 \label{thm:main}
-Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ with $p$ and $q$ colors, respectively, so that
+Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ so that
 \[A\cong F(A_1\times A_2)/\sim\]
 where $F$ is a vertex switch and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
@@ -457,6 +457,7 @@ Our most common use of this notation is as follows: if $C$ is a binary block cod
 \end{definition}
 
 \begin{prop}
+\label{prop:prodcode}
 Let $A_1$ and $A_2$ be as above.  Then
 \[C(A_1\times A_2)=Z_L(C(A_1))\oplus Z_R(C(A_2)).\]
 \end{prop}
@@ -466,99 +467,248 @@ Let $(v_1,v_2)\in A_1\times A_2$.  Let $\vec{x}\in \ZZ_2^N$.  We can write $\vec
 This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_Lv_1=v_1$ and $\vec{x}_R v_2=v_2$. So $\vec{x}\in C(A_1\times A_2)$ if and only if $\vec{x}_L\in Z_L(C(A_1))$ and $\vec{x}_R\in Z_R(C(A_2))$.
 \end{proof}
 
+\section{Codes for $2$-d Adinkras}
+\label{sec:code2d}
+Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits.
 
-\section{Every $2$-d Adinkra is a Quotient of a Vertex-switched Product}
-\label{sec:quotient}
+Define $\pi_L:\ZZ_2^n\to\ZZ_2^p$ to be the projection onto the first $p$ bits, and likewise define $\pi_R:\ZZ_2^n\to\ZZ_2^q$ to be projection onto the last $q$ bits.
 
-\com{We need to define $A_L$ and $A_R$ first}
-\com{Explain that $K$ is not uniquely defined but is $C/C'$}
-In Section~\ref{sec:products}, we showed that we can construct a $2$-d Adinkra by a product construction of two $1$-d Adinkras, each of which appears on the boundary of the product. In this section, we settle a conjecture of H\"ubsch \cite{hubsch:weaving} by showing that every $2$-d Adinkra is in fact a quotient of the the product of the two $1$-d Adinkras on its lower boundary. Our main result is:
-
+As was proved in \cite{hubsch:weaving}, if $A$ is a $2$-d Adinkra with $(p,q)$ colors and $C(A)$ is the code, then for every $\vec{x}\in C(A)$, the weight of $\vec{x}$ is a multiple of $4$, and the weights of $\pi_L(\vec{x})$ and $\pi_R(\vec{x})$ are both even.  In other words, $C(A)$ is a doubly even code and $\pi_L(C(A))$ and $\pi_R(C(A))$ are both even codes.  Such a code is called \emph{even-split doubly even}, or \emph{ESDE}.  Thus, \cite{hubsch:weaving} proves the following theorem:
 \begin{thm}
-\label{thm:quotient}
-Let $A$ be a connected $2$-d Adinkra.  Fix a vertex $\overline{0}$ in $A$ and let $A_L^0$ (resp. $A_R^0$) be the connected component of $A_L$ (resp. $A_R$) containing $\overline{0}$. Then there exists a binary linear block code $K$, and a vertex switch $F$ so that there is an action of $K$ on $F(A_L^0\times A_R^0)$ that preserves colors, dashing, and bigrading, and so that
-\[F(A_L^0\times A_R^0)/K\cong A\]
-as an isomorphism of $2$-d Adinkras (that is, as an isomorphism of graphs that preserves colors, dashing, and bigrading).  Furthermore
-\begin{equation}
-\label{eqn:kcomplement}
-C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K
-\end{equation}
-as an internal direct sum.
+\label{thm:esde}
+If $A$ is a connected $2$-d Adinkra with $(p,q)$ colors, then $C(A)$ is an ESDE.
 \end{thm}
 
+We now prove the converse of this theorem.  That is, given an ESDE code, there exists connected $2$-d Adinkra with that code.  This procedure is analogous to the Valise Adinkras in $1$-d,\cite{d2l:first,d2l:graph-theoretic} in that the possible values of each component $(h_L,h_R)$ of the bigrading is as small as possible, i.e., two values.
 
-Theorem \ref{thm:quotient} is very powerful; we immediately know a lot about what a $2$-d Adinkra must look like. Let the \emph{support} of a $2$-d Adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Then:
+\begin{construction}
+\label{cons:valise}
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$.\cite{d2l:omni,d2l:topology}  Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{C}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $C$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra.
+\end{construction}
+
+We therefore have:
+\begin{thm}
+\label{thm:esde}
+For a code $C \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
+\end{thm}
+
+\begin{figure}[htb]
+\begin{center}
+
+\begin{tikzpicture}[scale=0.10]
+%\SetVertexNormal
+\SetVertexNoLabel
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=-5,y=5]{H}
+\Vertex[x=0,y=20]{C}
+\Vertex[x=-5,y=25]{B}
+\Vertex[x=15,y=5]{D}
+\Vertex[x=20,y=0]{E}
+\Vertex[x=20,y=20]{G}
+\Vertex[x=15,y=25]{F}
+\Edges(A,B,G)
+\Edges(B,H,C)
+\Edges(G,D)
+\Edges(C,A,D,H,E,A)
+\Edges(D,F,C,G,E,F,B)
+\end{tikzpicture}
+\caption{A valise $2$-d adinkra that cannot be put into non-valise form.\label{fig:tight valise}}
+\end{center}
+\end{figure}
+
+The structure of the ESDE relates to interesting features of the colored graph of $A$.  Let $A_L$ be the $1$-d Adinkra with $p$ colors that consists of only the left-moving edges of $A$.  Let $A_R$ be the $1$-d Adinkra with $q$ colors that consists of only the right-moving edges of $A$ (where we shift the colors so that they range from $1$ to $q$ instead of $p+1$ to $p+q$).  Pick a vertex $\overline{0}$ in $A$.  Let $A_L^0$ be the connected component of $A_L$ containing $\overline{0}$ and let $A_R^0$ be the connected component of $A_R$ containing $\overline{0}$.
+
+We now see that the codes for $A_L^0$ and $A_R^0$ (with an appropriate number of $0$s added to the left or right as necessary) provide important linear subspaces of $C(A)$.
+
+\begin{prop}
+\[Z_L(C(A_L^0))=C(A)\cap Z_L(\ZZ_2^p)\]
+\[Z_R(C(A_R^0))=C(A)\cap Z_R(\ZZ_2^q)\]
+\end{prop}
+In other words, the codewords that are zero in the last $q$ bits are precisely the codewords from $C(A_L^0)$ with $q$ zeros appended to the right; and the codewords that are zero in the first $p$ bits are precisely the codewords from $C(A_R^0)$ with $p$ zeros prepended to the left.
+\begin{proof}
+If $\vec{x}\in Z_L(C(A_L^0))$, so that $\vec{x}=Z_L(\vec{y})$ for some $\vec{y}\in C(A_L^0)$.  Then trivially $\vec{x}\in Z_L(\ZZ_2^p)$.  Furthermore, $\vec{y}\overline{0}=\overline{0}$ in $A_L^0$.  In $A$, $Z_L(\vec{y})=\vec{x}$ does exactly the same thing, so $\vec{x}\overline{0}=\overline{0}$ in $A$.  Therefore $\vec{x}\in C(A)$.
+
+Conversely if $\vec{x}\in C(A)\cap Z_L(\ZZ_2^p)$, then by the definition of the group action there is a path in $A$ from $\overline{0}$ to $\overline{0}$ following the colors corresponding to the $1$s in $\vec{x}$.  Since $\vec{x}\in Z_L(\ZZ_2^p)$, we have that this path only consists of left-moving colors, and so lies in $A_L^0$.
+
+The proof for $Z_R(C(A_R^0))$ is similar.
+\end{proof}
+
 \begin{cor}
-\label{cor:rectangle}
-Let $A$ be a connected $2$-d Adinkra.  The support of $A$ is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ such that the support is
-\[\{(i,j)\in\ZZ^2\,|\,x_0 \le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\] All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+\label{cor:cplus}
+\[Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\subset C(A)\]
 \end{cor}
-\begin{proof}
-Since $A_L^0$ is a connected $1$-d Adinkra and edges change $h_L$ by 1, there are integers $x_0$ and $x_1$ so that the range of the grading is $\{i\,|\,x_0\le i\le x_1\}$.  Likewise $A_R^0$ has a range of grading $\{j\,|\,y_0\le j\le y_1\}$ for some integers $y_0$ and $y_1$.
+Comparing with Proposition~\ref{prop:prodcode}, this corollary says that the code for $A_L^0\times A_R^0$ is a linear subspace of the code for $A$.
 
-By Construction~\ref{const:product}, the support of $A_L^0\times A_R^0$ is
-\[\{(i,j)\,|\,x_0\le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\]
-Since $\Phi$ preserves the bigrading, this is the support of $A$ as well.
-
-
-Let $A' = A_L^0 \times A_R^0$. All connected components of $A'_L$ (resp. $A'_R$) are isomorphic to $A_L^0$ (resp. $A_R^0$). \com{The following is not convincing.  KI}  Quotients preserve connected components and act the same way on each component, so all of the connected components of $A_L$ (resp. $A_R$) must be as well.
-\end{proof}
-
-To prove Theorem~\ref{thm:quotient}, we first prove the existence of $K$ satisfying (\ref{eqn:kcomplement}).  We then construct a color and bigrading preserving graph isomorphism
-\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A.\]
-Finally we identify the vertex switching $F$ that proves the theorem.
-
-\com{Make this not a lemma?  Also, introduce $C'$ notation?  Prove that  $Z_L(C(A_L^0))$ is $C(A)\cap Z_L(\ZZ_2^p)$, etc.}
-\begin{lem}
-\label{lem:cplus}
-\[Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)) \subseteq C(A).\]
-\end{lem}
-\begin{proof}
-Let $g\in Z_L(C(A_L^0))$ and $h\in Z_R(C(A_R^0))$.  Then $g\overline{0}=\overline{0}$ because applying $g$ to $\overline{0}$ results in a path that lies completely inside $A_L^0$, and so the fact that $g\overline{0}=\overline{0}$ in $A_L^0$ (since $g\in Z_L(C(A_L^0))$) results in $g\overline{0}=\overline{0}$ in $A$.  Likewise $h\overline{0}=\overline{0}$.  So $(g+h)\overline{0}=g(h(\overline{0}))=\overline{0}$ and $g+h\in C(A)$.
-\end{proof}
+Simply for brevity (and thus, readability) in later descriptions, we define using the product construction above $A'=A_L^0\times A_R^0$, and the code $C'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Also, we write $C$ for $C(A)$.  Then $C(A')=C'$ and $C'\subset C$.
 
 \begin{lem}
 \label{lem:existk}
 There exists a binary linear block code $K$ so that
-\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.
+\[C=C' \oplus K.
 \]
 \end{lem}
 \begin{proof}
-From Lemma~\ref{lem:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^n$ that is a vector space complement of
-$Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ in $C(A)$.  That is,
-\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
+From Corollary~\ref{cor:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^n$ that is a vector space complement of
+$C'$ in $C$.
 \end{proof}
+Note that $K$ is not necessarily uniquely defined.  It is, however, uniquely defined up to adding vectors in $C'$.  So a more invariant approach would be to use $C/C'$ instead of $K$, but $K$ has the advantage of being a code, therefore more concrete for computational purposes.
+
+
+
+The interpretation of $K$ can be obtained by examining the set$V^0=A_L^0\cap A_R^0$.  Since $A_L^0$ has only left-moving edges and $A_R^0$ has only right-moving edges, $V^0$ has no edges at all: only vertices.  Furthermore, for every $v\in V^0$, we have $h_L(v)=h_L(\overline{0})$ and $h_R(v)=h_R(\overline{0})$ so all of the vertices in $V^0$ have the same bigrading.
+
+We now show that there is a bijection between $K$ and $V^0$.
+
+\begin{thm}
+\label{thm:kv0}
+The map
+\[\Psi:K\to V^0\]
+given by
+\[\Psi(\vec{x})=Z_L(\pi_L(\vec{x}))\overline{0}\]
+is a bijection.
+\end{thm}
+\begin{proof}
+If $\vec{x}\in C(A)$, then $(Z_L(\pi_L(\vec{x}))+Z_R(\pi_R(\vec{x})))\overline{0}=\overline{0}$, so $Z_L(\pi_L(\vec{x}))\overline{0}=Z_R(\pi_R(\vec{x}))\overline{0}$.  So $\Psi(\vec{x})\in A_L^0\cap A_R^0=V^0$.  This map is invariant under $C'$, so $\Psi$ is well-defined.
+
+Suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $Z_L(\pi_L(\vec{x}))\overline{0}=Z_L(\pi_L(\vec{y}))\overline{0}$.  Therefore $Z_L(\pi_L(\vec{x}+\vec{y}))\in C(A_L^0)$.  Likewise $Z_R(\pi_R(\vec{x}+\vec{y}))\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.  Since $C'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
+
+Let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L\in\ZZ_2^p$ so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R\in \ZZ_2^q$ so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{y}=Z_L(\vec{x}_L)+Z_R(\vec{x}_R)$ is in $C(A)$.  Since $C(A)=C'\oplus K$, we can write $\vec{y}=\vec{y}_0+\vec{y}_K$ where $\vec{y}_0\in C'$ and $\vec{y}_K\in K$.  Then
+\begin{eqnarray*}
+\Psi(\vec{y}_K)&=&Z_L(\pi_L(\vec{y}_K))\overline{0}\\
+&=&Z_L(\pi_L(\vec{y}-\vec{y}_0))\overline{0}\\
+&=&Z_L(\pi_L(\vec{y}))Z_L(\pi_L(\vec{y}_0))\overline{0}\\
+&=&Z_L(\pi_L(\vec{y}))\overline{0}\\
+&=&Z_L(\vec{x}_L)\overline{0}\\
+&=&v
+\end{eqnarray*}
+
+\end{proof}
+
+Consider the following examples.
+\begin{ex}
+Here $p=4$ and $q=2$ and the generating matrix for $C$ is
+\[\left[\begin{array}{cccc|cc}
+1&1&1&1&0&0\\
+0&0&1&1&1&1
+\end{array}\right]\]
+Then $Z_L(C(A_L^0))$ has generating matrix
+\[\left[\begin{array}{cccc|cc}
+1&1&1&1&0&0\\
+\end{array}\right]\]
+and $Z_R(C(A_R^0))=\{\vec{0}\}$, the trivial code.  We therefore see that $A_L^0$ is a $1$-d Adinkra with four colors with code with generating matrix
+\[\left[\begin{array}{cccc}
+1&1&1&1\\
+\end{array}\right]\]
+and $A_R^0$ is a $1$-d Adinkra with two colors with trivial code.  The code $K$ can be chosen to be generated by
+\[\left[\begin{array}{cccc|cc}
+0&0&1&1&1&1
+\end{array}\right]\]
+Another choice would have been
+\[\left[\begin{array}{cccc|cc}
+1&1&0&0&1&1
+\end{array}\right]\]
+which is obtained by adding the non-trivial element of $Z_L(C(A_L^0))$.
+
+To use Theorem~\ref{thm:kv0}, we start at $\overline{0}$ and follow an edge of color 3, then an edge of color 4, which uses the left-moving edges in 001111.  This brings us to a new vertex, which is in $V^0$.
+
+\end{ex}
+\begin{ex}
+Let $p=q=4$ and consider the following generating matrix for $C$:
+\[\left[\begin{array}{cccc|cccc}
+1&1&0&0&1&1&0&0\\
+1&1&1&1&1&1&1&1\\
+0&0&1&1&1&1&0&0\\
+1&0&1&0&1&0&1&0
+\end{array}\right]\]
+If we let $\vec{x}_1, \ldots, \vec{x}_4$ be the rows of this matrix, we see that $\vec{x}_1+\vec{x}_3$ has zeros on the right side of the vertical line.  Other than the zero word, no other combination has all zeros on the right side, so $Z_L(C(A_L^0))$ has generating matrix
+\[\left[\begin{array}{cccc|cccc}
+1&1&1&1&0&0&0&0
+\end{array}\right]\]
+and $C(A_L^0)$ has generating matrix
+\[\left[\begin{array}{cccc}
+1&1&1&1
+\end{array}\right].\]
+Likewise we can find $\vec{x}_1+\vec{x}_2+\vec{x}_3$ which is the unique nonzero codeword with all zeros on the left side, and so $Z_R(C(A_R^0))$ has generating matrix
+\[\left[\begin{array}{cccc|cccc}
+0&0&0&0&1&1&1&1
+\end{array}\right]\]
+and $C(A_R^0)$ has generating matrix
+\[\left[\begin{array}{cccc}
+1&1&1&1
+\end{array}\right].\]
+Then $A_L^0$ and $A_R^0$ are both $1$-d Adinkras with $4$ colors with code generated by $1111$, and $K$ can be taken to be (for instance)
+\[\left[\begin{array}{cccc|cccc}
+0&0&1&1&1&1&0&0\\
+1&0&1&0&1&0&1&0
+\end{array}\right].\]
+Standard arguments in linear algebra allow us to choose the generating basis for $C$ to consist of a generating basis for $Z_L(C(A_L^0))$, then a generating basis for $Z_R(C(A_R^0))$, then a generating basis for $K$.  In this case, we would write
+\[\left[\begin{array}{cccc|cccc}
+1&1&1&1&0&0&0&0\\\hline
+0&0&0&0&1&1&1&1\\\hline
+0&0&1&1&1&1&0&0\\
+1&0&1&0&1&0&1&0
+\end{array}\right]\]
+where the horizontal lines separate the three subspaces.  Each line has weight a multiple of $4$, where the first two lines have the $1$s all on one side or the other, while the last two lines (the ones responsible for $K$) have the $1$s split on both sides in a way that both sides have even weight.
+
+Then $V^0$ has four elements: $\overline{0}$, $(00110000)\overline{0}$, $(10100000)\overline{0}$, and $(10010000)\overline{0}$.
+\end{ex}
+
+\subsection{Classifying ESDE codes}
+While not necessary for proving the main theorem of this paper, \cite{hubsch:weaving} also asked how to classify ESDE codes.  To do this, it is useful to extend the notion of the splitting of $n$ into $p+q$.  In particular, instead of insisting that the left-moving colors be written as the first $p$ bits, we partition $[n]$ into $[n]=L\cup R$ such that $|L|=p$ and $|R|=q$.  We fix $n$ and a doubly even code $C$, then characterize which partitions into $L$ and $R$ make $C$ an ESDE.
+
+\begin{thm}
+\label{thm:esde}
+Given a doubly even code $C$ of length $n$, there is a bijection between codewords in $C^\perp$ and (ordered) paritions $L \cup R$ that make $C$ into an ESDE. There are $2^{n-k}$ such partitions. 
+\end{thm}
+\begin{proof}
+Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the codeword $w$ that is defined to have $1$ at all the positions in $L$ and $0$ at all the positions in $R$.  By definition of ESDE codes, all codewords in $C$ have an even number of $1$'s in the support of $w$, which is equivalent to saying that $w$ is orthogonal to all the codewords in $C$. Thus, $w \in C^\perp$.  Conversely, for any $w \in C^\perp$, $w$ is orthogonal to all codewords in $C$ and thus give an ESDE. Thus, there is a bijection between the two sets.  Note these are ordered partitions; the codeword which has $1$ at all the positions in $R$ and $0$ otherwise would give the same paritition, but in reversed order.
+\end{proof}
+
+\section{Every $2$-d Adinkra is a Quotient of a Vertex-switched Product}
+\label{sec:quotient}
+In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$, $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
+
+The main result is
+\begin{thm}
+\label{thm:quotient}
+Let $A$ be a connected $2$-d Adinkra.  Then there is a vertex switch $F$ and an action of $K$ on $F(A')$ that preserves colors, dashing, and bigrading, and so that
+\[F(A')/K\cong A\]
+as an isomorphism of $2$-d Adinkras (that is, as an isomorphism of graphs that preserves colors, dashing, and bigrading).
+\end{thm}
+
+To prove Theorem~\ref{thm:quotient}, we first construct a color and bigrading preserving graph isomorphism
+\[\tilde{\Phi}:A'/K\to A.\]
+Finally we identify the vertex switching $F$ that proves the theorem.
 
 
 \begin{lem}
 \label{lem:mainepicolors}
 There is a graph epimorphism
-\[\Phi:A_L^0\times A_R^0 \to A\]
+\[\Phi:A' \to A\]
 that preserves colors and sends $(\overline{0},\overline{0})$ to $\overline{0}$.
 \end{lem}
 \begin{proof}
 Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
-\[I^n/C(A) \cong A\]
+\[I^n/C \cong A\]
 and
-\[I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))\cong A_L^0\times A_R^0.\]
-These isomorphisms can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A_L^0\times A_R^0$, respectively.
+\[I^n/C'\cong A'.\]
+These isomorphisms can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
 
 Define the quotient homomorphism
-\[\pi:I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))) \to
-(I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))))/K.\]
+\[\pi:I^n/C' \to (I^n/C')/K.\]
 A standard argument gives
-\[(I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))))/K
-\cong I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K)\]
+\[(I^n/C')/K \cong I^n/(C'\oplus K)\]
 and since
-\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K\]
+\[C=C'\oplus K\]
 we can take $\pi$ as
-\[\pi:I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))\to I^n/C(A).\]
+\[\pi:I^n/C'\to I^n/C(A).\]
 We then have the following commutative diagram
 \[
 \begin{CD}
-I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))) @>i_1>\cong> A_L^0\times A_R^0\\
+I^n/C' @>i_1>\cong> A'\\
 @VV\pi V @VV\Phi V\\
-I^n/C(A) @>i_2>\cong> A
+I^n/C @>i_2>\cong> A
 \end{CD}
 \]
 where $\Phi=i_2\circ\pi\circ i_1^{-1}$.
@@ -601,7 +751,7 @@ Let $\vec{x}\in \ZZ_2^p$ be such that $\vec{x}\overline{0}=v$.  By Lemma~\ref{le
 The graph epimorphism $\Phi$ preserves the bigrading.
 \end{lem}
 \begin{proof}
-Let $(v_1,v_2)\in A_L^0\times A_R^0$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$. 
+Let $(v_1,v_2)\in A'$ with $v_1=\vec{x}_1\overline{0}$ and $v_2=\vec{x}_2\overline{0}$. 
 \begin{eqnarray*}
 h_L(\Phi(v_1,v_2))
 &=& h_L(\Phi(\vec{x}_1\overline{0},\vec{x}_2\overline{0}))\\
@@ -612,7 +762,7 @@ h_L(\Phi(v_1,v_2))
 \end{eqnarray*}
 Since $Z_R(\vec{x}_2)$ follows right-moving colors, this does not affect $h_L$, and so the above is
 \[h_L(Z_L(\vec{x}_1)\overline{0}).\]
-Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h_1(v_1)$ where $h_1$ is the grading for the $1$-d Adinkra $A_L^0$.  On the other hand, in $A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
+Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h_1(v_1)$ where $h_1$ is the grading for the $1$-d Adinkra $A_L^0$.  On the other hand, in $A'=A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
 
 Therefore $\Phi$ preserves $h_L$.  The fact that it preserves $h_R$ is proved similarly.
 \end{proof}
@@ -627,14 +777,14 @@ This follows from Lemma~\ref{lem:mainepibigrading} and the fact that $K\subset C
 
 \begin{cor}
 \label{cor:kquotient}
-The code $K$ acts on $A_L^0\times A_R^0$ so that $(A_L^0\times A_R^0)/K$ is a well-defined $2$-d Adinkra without dashing: that is, a graph with colors and bigrading, satisfying the conditions of a $2$-d Adinkra except those that refer to dashing.
+The code $K$ acts on $A'$ so that $A'/K$ is a well-defined $2$-d Adinkra without dashing: that is, a graph with colors and bigrading, satisfying the conditions of a $2$-d Adinkra except those that refer to dashing.
 \end{cor}
 \begin{proof}
-Since $K\subset \ZZ_2^n$, it acts on $A_L^0\times A_R^0$ via color-preserving graph isomorphisms.  Since $K\subset C(A)$ which is doubly even, ...\com{fill in detail here}
+Since $K\subset \ZZ_2^n$, it acts on $A'$ via color-preserving graph isomorphisms.  Since $K\subset C$ which is doubly even, ...\com{fill in detail here}
 By \cite{zhang:adinkras}, this is a well-defined quotient...
-The colors descend from $A_L^0\times A_R^0$ to $(A_L^0\times A_R^0)/K$
+The colors descend from $A'$ to $A'/K$
 
-By Lemma~\ref{lem:kgrading}, the bigrading on $A_L^0\times A_R^0$ descends to $(A_L^0\times A_R^0)/K$.
+By Lemma~\ref{lem:kgrading}, the bigrading on $A'$ descends to $A'/K$.
 \end{proof}
 
 
@@ -642,13 +792,13 @@ By Lemma~\ref{lem:kgrading}, the bigrading on $A_L^0\times A_R^0$ descends to $(
 \begin{lem}
 \label{lem:isocolor}
 The map $\Phi$ descends to a map
-\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A\]
+\[\tilde{\Phi}:A'/K\to A\]
 which is a color-preserving graph isomorphism that preserves the bigrading.
 \end{lem}
 \begin{proof}
 Suppose $\vec{x}\in C(A)$ and let $w=\vec{x}v$.  Then $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\Phi(v)$.  Therefore $\Phi$ descends to $\tilde{\Phi}$.
 
-Suppose $v$ and $w$ are such that $\Phi(v)=\Phi(w)$.  Then there is a $\vec{x}$ so that $\vec{x}v=w$.  So $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\vec{x}\Phi(w)=\Phi(\vec{x}w)$ so that $\vec{x}\in C(A)$.  By Lemma~\ref{lem:existk}, we can write $\vec{x}=\vec{x}_0+\vec{x}_K$ where $\vec{x}_0\in Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$ and $\vec{x}_K\in K$.  Since $\vec{x}_0\in C(A_L^0\times A_R^0)$, we have $\vec{x}_0 v = v$.  Therefore $\vec{x}_K v= w$.  Therefore $\tilde{\Phi}$ is injective.
+Suppose $v$ and $w$ are such that $\Phi(v)=\Phi(w)$.  Then there is a $\vec{x}$ so that $\vec{x}v=w$.  So $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\vec{x}\Phi(w)=\Phi(\vec{x}w)$ so that $\vec{x}\in C(A)$.  By Lemma~\ref{lem:existk}, we can write $\vec{x}=\vec{x}_0+\vec{x}_K$ where $\vec{x}_0\in C'$ and $\vec{x}_K\in K$.  Since $C' = C(A_L^0\times A_R^0)$, we have $\vec{x}_0 v = v$.  Therefore $\vec{x}_K v= w$.  Therefore $\tilde{\Phi}$ is injective.
 
 The fact that $\tilde{\Phi}$ is surjective follows from $\Phi$ being surjective.
 \end{proof}
@@ -663,11 +813,11 @@ This summarizes Lemma~\ref{lem:isocolor}, Lemma~\ref{lem:mainepibigrading}, and 
 
 
 
-Unfortunately, it is too much to expect the dashing on $(A_L^0\times A_R^0)/K$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A_L^0\times A_R^0$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
+Unfortunately, it is too much to expect the dashing on $A'/K$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A'$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
 
-Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A_L^0\times A_R^0$.   The graph homomorphism
-\[\Phi:A_L^0\times A_R^0\to A\]
-pulls back the dashing $\mu$ to $\mu_2$ on $A_L^0\times A_R^0$. While $\mu_1$ and $\mu_2$ can be different, they agree on the following parts of the Adinkra:
+Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A'=A_L^0\times A_R^0$.   The graph homomorphism
+\[\Phi:A'\to A\]
+pulls back the dashing $\mu$ to $\mu_2$ on $A'$. While $\mu_1$ and $\mu_2$ can be different, they agree on the following parts of the Adinkra:
 
 \begin{lem}
 \label{lem:agree-on-boundary}
@@ -700,7 +850,7 @@ Finally, if $\mu$ and $\mu'$ are equal on $T$, consider any edge $e$ not in $T$.
 
 \begin{lem}
 \label{lem:switch12}
-The parities of $\mu_1$ and $\mu_2$ agree on every cycle of $A_L^0\times A_R^0$.
+The parities of $\mu_1$ and $\mu_2$ agree on every cycle of $A'$.
 
 Hence, by the above lemma, there exists a vertex switching that sends $\mu_1$ to $\mu_2$.
 \end{lem}
@@ -724,117 +874,49 @@ Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^
 
 
 \begin{proof}[Proof of Theorem~\ref{thm:quotient}]
-Given a $2$-d Adinkra $A$, select a vertex $\overline{0}$ of $A$ and let $A_L^0$ and $A_R^0$ be the connected components of $A_L$ and $A_R$, respectively, that contain $\overline{0}$.  By Lemma~\ref{lem:existk}, there exists a binary linear block code $K$ so that
-\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.
-\]
-Use Construction~\ref{const:product} to construct the $2$-d Adinkra $A_L^0\times A_R^0$ with dashing $\mu_1$.
+Let $A$ be a connected $2$-d Adinkra, and define $A_L^0$, $A_R^0$, $A'$, $C'$, $K$, $\Phi$, and $\tilde{\Phi}$ as above.
+
+Use Construction~\ref{const:product} to construct the $2$-d Adinkra $A'=A_L^0\times A_R^0$ with dashing $\mu_1$.
 By Lemma~\ref{lem:mainepicolors} and Lemma~\ref{lem:mainepibigrading}, there is a graph homomorphism
-\[\Phi:A_L^0\times A_R^0 \to A\]
-that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$, and pull it back using $\Phi$ to a dashing $\mu_2$ on $A_L^0\times A_R^0$, then Lemma~\ref{lem:switch12} says that there exists a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
+\[\Phi:A' \to A\]
+that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$, and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} says that there exists a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
 
-By Corollary~\ref{cor:kquotient}, $K$ acts on $A_L^0\times A_R^0$ to produce a well-defined $2$-d Adinkra without dashing:
-\[(A_L^0\times A_R^0)/K\]
+By Corollary~\ref{cor:kquotient}, $K$ acts on $A'$ to produce a well-defined $2$-d Adinkra without dashing:
+\[A'/K\]
 and an isomorphism
-\[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A\]
+\[\tilde{\Phi}:A'/K\to A\]
 that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with dashing
-\[F(A_L^0\times A_R^0)/K\]
-Note that this is the same as $A_L^0\times A_R^0$ if we ignore dashing.  By Corollary~\ref{cor:mainisocolorbigrading}, this is isomorphic to $A$ as a graph with colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
+\[F(A')/K\]
+Note that this is the same as $A'/K$ if we ignore dashing.  By Corollary~\ref{cor:mainisocolorbigrading}, this is isomorphic to $A$ as a graph with colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
 
+\section{Some consequences}
 
-
-\section{ESDE Codes}
-
-We have shown that each $2$-d Adinkra is constructed from a pair of $1$-d Adinkras plus a code; it is natural to ask which codes can appear. In this section, we classify these codes, which is another part of the conjectures of H\"ubsch \cite{hubsch:weaving}. 
-
-\begin{definition}[Weights, ESDE codes]
-Let $p$ and $q$ be non-negative integers so that $p+q=n$. For any $S \subset [n]$ and every element $\vec{x} \in \ZZ_2^n$, define $\wt_S(\vec{x})$ to be the number of $1$'s in the places corresponding to $S$; so in particular, $\wt_{[n]} = \wt$ as functions. Define an \emph{ESDE (even-split doubly-even) code of length $(p,q)$} to be a doubly-even code of length $n$ and a partition $L \cup R = [n]$ such that $|L| = p$, $|R| = q$, and every word $\vec{x}$ in the code has both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ be even-valued. For our work, we always assume that $L = \{1, 2, \ldots, p\}$ and $R = \{p+1, p+2, \ldots, n\}$, since we can permute the indices without changing the structure of the code.
-\end{definition}
-
-We remark that ESDE codes are no more restrictive than doubly-even codes; an illustrative example is that any doubly-even code can be made into an ESDE code trivially by assigning $(p,q) = (n, 0)$ or $(0, n)$. This corresponds to the fact that any $1$-d Adinkra is trivially a $2$-d Adinkra with all colors left-moving or all colors right-moving. The main data in ESDE codes is the splitting. In fact, they are quite easy to classify:
-
-\begin{prop}
-\label{prop:esde}
-Given a doubly-even $[n,k]$-code $C$, there is a bijection between codewords in $C^\perp$ and (ordered) paritions $L \cup R$ that make $C$ into an ESDE. There are $2^{n-k}$ such partitions. 
-\end{prop}
-
+Theorem \ref{thm:quotient} is very powerful; we immediately know a lot about what a $2$-d Adinkra must look like. Let the \emph{support} of a $2$-d Adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Then:
+\begin{cor}
+\label{cor:rectangle}
+Let $A$ be a connected $2$-d Adinkra.  The support of $A$ is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ such that the support is
+\[\{(i,j)\in\ZZ^2\,|\,x_0 \le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\] All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+\end{cor}
 \begin{proof}
-Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the codeword $w$ that is defined to have $1$ at all the positions in $L$ and $0$ at all the positions in $R$. By definition of ESDE codes, all codewords in $C$ have an even number of $1$'s in the support of $w$, which is equivalent to saying that $w$ is orthogonal to all the codewords in $C$. Thus, $w \in C^\perp$. Conversely, for any $w \in C^\perp$, $w$ is orthogonal to all codewords in $C$ and thus give an ESDE. Thus, there is a bijection between the two sets. Note these are ordered partitions; the codeword which has $1$ at all the positions in $R$ and $0$ otherwise would give the same paritition, but in reversed order.
+Since $A_L^0$ is a connected $1$-d Adinkra and edges change $h_L$ by 1, there are integers $x_0$ and $x_1$ so that the range of the grading is $\{i\,|\,x_0\le i\le x_1\}$.  Likewise $A_R^0$ has a range of grading $\{j\,|\,y_0\le j\le y_1\}$ for some integers $y_0$ and $y_1$.
+
+By Construction~\ref{const:product}, the support of $A'=A_L^0\times A_R^0$ is
+\[\{(i,j)\,|\,x_0\le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\]
+Since $\Phi$ preserves the bigrading, this is the support of $A$ as well.
+
+Let $A'_L$ and $A'_R$ consist of the left-moving (resp. right-moving) edges of $A'$.  All connected components of $A'_L$ (resp. $A'_R$) are isomorphic to $A_L^0$ (resp. $A_R^0$). \com{The following is not convincing.  KI}  Quotients preserve connected components and act the same way on each component, so all of the connected components of $A_L$ (resp. $A_R$) must be as well.
 \end{proof}
 
 
-Recall\cite{d2l:omni,d2l:topology,d2l:decodes} that $1$-d chromotopologies are in bijection with quotients of the Hamming cube $I^n$ by a doubly-even code $K$, so any Adinkra $A$ has a well-defined associated code $C(A)$ that is uniquely determined by just the graph structure of the adinkra. Our goal is to show that ESDE codes are exactly the codes that appear for $2$-d adinkras.
-
-In \cite{d2l:first,d2l:graph-theoretic}, there was a class of $1$-d Adinkras that were particularly easy to construct and study, called {\em Valise} Adinkras, whose height function had values in two adjacent integers (usually $0$ and $1$).  By analogy, given a ESDE code, we construct a $2$-d Adinkra called the {\em Valise 2-d Adinkra} that has support in a $2\times 2$ square.
 
 
-\begin{construction}
-\label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $K$, called the {\em Valise 2-d Adinkra}. First, since $K$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = K$.\cite{d2l:omni,d2l:topology}  Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{K}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $K$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra. % Note t, h_R(v)) =    For every vertex $v$ of $A$, pick a path from $\overline{0}$ to $v$.  This produces a color sequence $d$.  Define $h_L(v)$ to be the number $\pmod{2}$ of left-moving colors in $d$ and likewise $h_R(v)$ is the number modulo 2 of right-moving colors in $d$.  These functions are well-defined if every path from $\overline{0}$ to $v$ has the same parity in number of left-moving colors and in number of right-moving colors.  This occurs if and only if every loop starting from $\overline{0}$ has an even number of left-moving colors and an odd number of right-moving colors.  If $K$ is ESDE, then this is the case.
-\end{construction}
-
-\begin{figure}[htb]
-\begin{center}
-
-\begin{tikzpicture}[scale=0.10]
-%\SetVertexNormal
-\SetVertexNoLabel
-\SetUpEdge[labelstyle={draw}]
-\Vertex[x=0,y=0]{A}
-\Vertex[x=-5,y=5]{H}
-\Vertex[x=0,y=20]{C}
-\Vertex[x=-5,y=25]{B}
-\Vertex[x=15,y=5]{D}
-\Vertex[x=20,y=0]{E}
-\Vertex[x=20,y=20]{G}
-\Vertex[x=15,y=25]{F}
-\Edges(A,B,G)
-\Edges(B,H,C)
-\Edges(G,D)
-\Edges(C,A,D,H,E,A)
-\Edges(D,F,C,G,E,F,B)
-\end{tikzpicture}
-\caption{A valise $2$-d adinkra that cannot be put into non-valise form.\label{fig:tight valise}}
-\end{center}
-\end{figure}
-
-\begin{thm}
-\label{thm:esde}
-For a code $K \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = K$ if and only if $K$ is a ESDE code.
-\end{thm}
-\begin{proof}
-Suppose $C(A) = K$ for some $2$-d Adinkra $A$. We know that $K$ is doubly-even. Consider any codeword $\alpha \in K$. Starting at $\overline{0} \in A$, moving by a path corresponding to $\alpha$ must end up back at $\overline{0}$. In particular, it must use an even number of left-moving (resp. right-moving) edges since each of such edge changes the $h_L$ (resp. $h_R$) by $1$ in absolute value. Thus, $C$ must be ESDE. 
-
-Conversely, given an ESDE code $K$, we can use Construction~\ref{cons:valise} to get a $2$-d Adinkra with code $K$. By construction, $A$ is a $1$-d Adinkra with code $K$.  The only thing left to check is whether the $h_L$ and $h_R$ that are defined satisfy the correct properties on edges. Let $(v,w)$ be a left-moving edge in the Adinkra $A$.  Then the color of the edge is left-moving and so $h_L(v)\not=h_L(w)$ and $h_R(v)=h_R(w)$.  Since the possible values for $h_L$ and $h_R$ are $0$ and $1$, it follows that $|h_R(v)-h_R(w)|=1$. The proof is similar for right-moving edges.
-
-\end{proof}
-
-Given a $2$-d Adinkra $A$, with special basepoint $\overline{0}$ and corresponding $A_L^0$ and $A_R^0$, there remains the question of finding the code $K$.  Recall that
-\[C(A)=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))\oplus K.\]
-There is some choice involved in defining $K$; it merely has to be a vector space complement to
-\[C'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)).\]
-$K$ will more naturally be defined as $C(A)/C'$, though computationally we can choose a representative to be $K$.
 
 
-Let $V^0=A_L^0\cap A_R^0$.  Now for every $v\in V^0$, we have $h_L(v)=h_L(\overline{0})$ and $h_R(v)=h_R(\overline{0})$ so in particular, $V^0$ has no edges; only vertices.
 
-We construct a bijection between $V^0$ and $C(A)/C'$.
 
-\begin{thm}
-\label{thm:findk}
-The map
-\[\Psi:C(A)/C'\to V^0\]
-given by
-\[\Psi(\vec{x})=\pi_L(\vec{x})\overline{0}\]
-is a bijection.
-\end{thm}
-\begin{proof}
-If $\vec{x}\in C(A)$, then $(\pi_L(\vec{x})+\pi_R(\vec{x}))\overline{0}=\overline{0}$, so $\pi_L(\vec{x})\overline{0}=\pi_R(\vec{x})\overline{0}$.  So $\Psi(\vec{x})\in A_L^0\cap A_R^0=V^0$.  This map is invariant under $C'$, so $\Psi$ is well-defined.
 
-Suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $\pi_L(\vec{x})\overline{0}=\pi_L(\vec{y})\overline{0}$.  Therefore $\pi_L(\vec{x}+\vec{y})\in C(A_L^0)$.  Likewise $\pi_R(\vec{x}+\vec{y})\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.
-\end{proof}
-
-\section{Enumerating $2$-d Adinkras}
+\subsection{Enumerating $2$-d Adinkras}
 As a final illustration that we have characterized all $2$-d Adinkras, note that the constructions so far suffice to enumerate all $2$-d Adinkras.
 
 \begin{construction}
