@@ -508,6 +508,7 @@ To prove Theorem~\ref{thm:quotient}, we first prove the existence of $K$ satisfy
 \[\tilde{\Phi}:(A_L^0\times A_R^0)/K\to A.\]
 Finally we identify the vertex switching $F$ that proves the theorem.
 
+\com{Make this not a lemma?  Also, introduce $C'$ notation?  Prove that  $Z_L(C(A_L^0))$ is $C(A)\cap Z_L(\ZZ_2^p)$, etc.}
 \begin{lem}
 \label{lem:cplus}
 \[Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)) \subseteq C(A).\]
@@ -536,7 +537,7 @@ There is a graph epimorphism
 that preserves colors and sends $(\overline{0},\overline{0})$ to $\overline{0}$.
 \end{lem}
 \begin{proof}
-Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
+Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
 \[I^n/C(A) \cong A\]
 and
 \[I^n/(Z_L(C(A_L^0))\oplus Z_R(C(A_R^0)))\cong A_L^0\times A_R^0.\]
@@ -561,6 +562,19 @@ I^n/C(A) @>i_2>\cong> A
 \end{CD}
 \]
 where $\Phi=i_2\circ\pi\circ i_1^{-1}$.
+\com{We can use this to prove $\tilde{\Phi}$ is an isomorphism.}
+
+\[
+\begin{CD}
+I^n/C' @>i_1>\cong> A'\\
+@VV\pi_1 V @VV\pi_2 V\\
+(I^n/C')/K @>i_2>\cong> A'/K & @VV\Phi V\\
+@Vi_4 V\cong V @V\tilde{\Phi} V\cong V\\
+I^n/(C'\oplus K) @>i_3>\cong> A
+\end{CD}
+\]
+
+
 \end{proof}
 
 
