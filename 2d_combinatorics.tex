@@ -1,14 +1,15 @@
 \documentclass[12pt,twoside,singlespace]{article}
 \pagestyle{plain}
 
-\usepackage{array, paralist, enumerate, amsmath, amsthm, amsfonts, amssymb, amscd, color, mathrsfs,comment}
+\usepackage{array, paralist, enumerate, amsmath, amsfonts, amssymb, amscd, color, mathrsfs,comment}
+\usepackage{amsthm} % place after to make qedhere work
 %\usepackage{times}
 \usepackage{geometry}
 \usepackage{framed}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{epstopdf}
-
+\usepackage[all,cmtip]{xy}
 \usepackage{tikz}
 \usepackage{tkz-graph}
 \usetikzlibrary{arrows,%
@@ -481,11 +482,11 @@ As was proved in \cite{hubsch:weaving}, if $A$ is a $2$-d Adinkra with $(p,q)$ c
 If $A$ is a connected $2$-d Adinkra with $(p,q)$ colors, then $C(A)$ is an ESDE.
 \end{thm}
 
-We now prove the converse of this theorem.  That is, given an ESDE code, there exists connected $2$-d Adinkra with that code.  This procedure is analogous to the Valise Adinkras in $1$-d,\cite{d2l:first,d2l:graph-theoretic} in that the possible values of each component $(h_L,h_R)$ of the bigrading is as small as possible, i.e., two values.
+We now prove the converse of this theorem.  That is, given an ESDE code, there exist connected $2$-d Adinkra with that code.  This procedure is analogous to the Valise Adinkras in $1$-d,\cite{d2l:first,d2l:graph-theoretic} in that the possible values of each component $(h_L,h_R)$ of the bigrading is as small as possible, i.e., two values.
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$.\cite{d2l:omni,d2l:topology}  Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{C}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $C$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$. \cite{d2l:omni,d2l:topology} \com{(I think this kind of situation is exactly where it is best to have a concrete statement that the reader could refer to in section 2. -Y)} Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{C}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $C$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra.
 \end{construction}
 
 We therefore have:
@@ -576,15 +577,13 @@ If $\vec{x}\in C(A)$, then $(Z_L(\pi_L(\vec{x}))+Z_R(\pi_R(\vec{x})))\overline{0
 Suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $Z_L(\pi_L(\vec{x}))\overline{0}=Z_L(\pi_L(\vec{y}))\overline{0}$.  Therefore $Z_L(\pi_L(\vec{x}+\vec{y}))\in C(A_L^0)$.  Likewise $Z_R(\pi_R(\vec{x}+\vec{y}))\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.  Since $C'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
 
 Let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L\in\ZZ_2^p$ so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R\in \ZZ_2^q$ so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{y}=Z_L(\vec{x}_L)+Z_R(\vec{x}_R)$ is in $C(A)$.  Since $C(A)=C'\oplus K$, we can write $\vec{y}=\vec{y}_0+\vec{y}_K$ where $\vec{y}_0\in C'$ and $\vec{y}_K\in K$.  Then
-\begin{eqnarray*}
-\Psi(\vec{y}_K)&=&Z_L(\pi_L(\vec{y}_K))\overline{0}\\
-&=&Z_L(\pi_L(\vec{y}-\vec{y}_0))\overline{0}\\
-&=&Z_L(\pi_L(\vec{y}))Z_L(\pi_L(\vec{y}_0))\overline{0}\\
-&=&Z_L(\pi_L(\vec{y}))\overline{0}\\
-&=&Z_L(\vec{x}_L)\overline{0}\\
-&=&v
-\end{eqnarray*}
-
+\begin{align*}
+\Psi(\vec{y}_K)&= Z_L(\pi_L(\vec{y}_K))\overline{0}\\
+&= Z_L(\pi_L(\vec{y}-\vec{y}_0))\overline{0}\\
+&= Z_L(\pi_L(\vec{y}))Z_L(\pi_L(\vec{y}_0))\overline{0}\\
+&= Z_L(\pi_L(\vec{y}))\overline{0}\\
+&= Z_L(\vec{x}_L)\overline{0} = v. \qedhere
+\end{align*} 
 \end{proof}
 
 Consider the following examples.
@@ -718,7 +717,6 @@ I^n/C @>i_2>\cong> A
 \end{CD}
 \]
 where $\Phi=i_2\circ\pi\circ i_1^{-1}$.
-\com{We can use this to prove $\tilde{\Phi}$ is an isomorphism.}
 
 \[
 \begin{CD}
@@ -726,19 +724,26 @@ I^n/C' @>i_1>\cong> A'\\
 @VV\pi_1 V @VV\pi_2 V\\
 (I^n/C')/K @>i_2>\cong> A'/K & @VV\Phi V\\
 @Vi_4 V\cong V @V\tilde{\Phi} V\cong V\\
-I^n/(C'\oplus K) @>i_3>\cong> A
-\end{CD}
+I^n/(C'\oplus K) @>i_3>\cong> A. 
+\end{CD}  
 \]
 
+Note that the bottom square shows that $\tilde{\Phi}$ is an isomorphism.
 
+\com{Here's my take, with xymatrix. If you like this, then replace the thing above with it / edit as you wish. Note I only made one of them a bijection arrow -- either remove or replace all isomorphisms with the bijection arrows at your liking. -Y}
+\[
+\xymatrixcolsep{5pc}
+\xymatrix{
+I^n/C' \ar[d]^{\pi_1} \ar[r]^{i_1}_{\cong} &A'\ar[d]^{\pi_2}\ar@/^2pc/[dd]^{\Phi} \\
+(I^n/C')/K \ar[d]^{i_4}_{\cong} \ar[r]^{i_2}_\cong &A'/K\ar[d]_{\cong}^{\tilde{\Phi}}\\
+I^n/(C'\oplus K) \ar@{^{(}->>}[r]^{i_3}_\cong &A.}
+\]
 \end{proof}
-
 
 It will be useful to have the following result:
 \begin{lem}
 \label{lem:gphi}
-If $\vec{x}\in \ZZ_2^n$, then
-\[\Phi(\vec{x}(v_1,v_2))=\vec{x}\Phi(v_1,v_2).\]
+If $\vec{x}\in \ZZ_2^n$, then $\Phi(\vec{x}(v_1,v_2))=\vec{x}\Phi(v_1,v_2).$
 \end{lem}
 \begin{proof}
 For $\vec{x}=\vec{e}_i$, the vector that is $1$ in component $i$ and $0$ otherwise, this lemma is the statement that $\Phi$ is color-preserving.  By composing many maps of this type, we get the statement for all vectors $\vec{x}\in \ZZ_2^n$.
@@ -766,11 +771,7 @@ h_L(\Phi(v_1,v_2))
 &=& h_L((Z_L(\vec{x}_1)+Z_R(\vec{x}_2))\overline{0})\\
 &=& h_L(Z_R(\vec{x}_2)(Z_L(\vec{x}_1)\overline{0}))
 \end{eqnarray*}
-Since $Z_R(\vec{x}_2)$ follows right-moving colors, this does not affect $h_L$, and so the above is
-\[h_L(Z_L(\vec{x}_1)\overline{0}).\]
-Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h_1(v_1)$ where $h_1$ is the grading for the $1$-d Adinkra $A_L^0$.  On the other hand, in $A'=A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$.
-
-Therefore $\Phi$ preserves $h_L$.  The fact that it preserves $h_R$ is proved similarly.
+Since $Z_R(\vec{x}_2)$ follows right-moving colors, this does not affect $h_L$, and so the above is equal to $h_L(Z_L(\vec{x}_1)\overline{0})$. Since $Z_L(\vec{x}_1)\overline{0}$ in $A$ is the same as $\vec{x}_1\overline{0}$ in $A_L^0$, we have that this is $h_1(v_1)$ where $h_1$ is the grading for the $1$-d Adinkra $A_L^0$.  On the other hand, in $A'=A_L^0\times A_R^0$, this is $h_L(v_1,v_2)$. Therefore $\Phi$ preserves $h_L$.  The fact that it preserves $h_R$ is proved similarly.
 \end{proof}
 
 \begin{lem}
