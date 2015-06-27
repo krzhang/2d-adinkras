@@ -687,57 +687,41 @@ To prove Theorem~\ref{thm:quotient}, we first construct a color and bigrading pr
 Finally we identify the vertex switching $F$ that proves the theorem.
 
 
-\begin{lem}
-\label{lem:mainepicolors}
-There is a graph epimorphism
+\begin{thm}
+\label{thm:isocolors}
+The code $K$ acts on $A'$ via color preserving isomorphisms to produce a quotient $A'/K$.  There is a color preserving graph epimorphism
 \[\Phi:A' \to A\]
-that preserves colors and sends $(\overline{0},\overline{0})$ to $\overline{0}$.
-\end{lem}
+that sends $(\overline{0},\overline{0})$ to $\overline{0}$.  This descends to $A'/K$ to produce a color preserving graph isomorphism
+\[\tilde{\Phi}:A'/K\to A.\]
+\end{thm}
 \begin{proof}
 Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
 \[I^n/C \cong A\]
 and
 \[I^n/C'\cong A'.\]
-These isomorphisms can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
+These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
 
-Define the quotient homomorphism
-\[\pi:I^n/C' \to (I^n/C')/K.\]
-A standard argument gives
-\[(I^n/C')/K \cong I^n/(C'\oplus K)\]
-and since
-\[C=C'\oplus K\]
-we can take $\pi$ as
-\[\pi:I^n/C'\to I^n/C(A).\]
-We then have the following commutative diagram
-\[
-\begin{CD}
-I^n/C' @>i_1>\cong> A'\\
-@VV\pi V @VV\Phi V\\
-I^n/C @>i_2>\cong> A
-\end{CD}
-\]
-where $\Phi=i_2\circ\pi\circ i_1^{-1}$.
+Now $K$ is a doubly even code, and $K\cap C'=0$, so $K$ acts on $I^n/C'$ and on $A'$ in a way that nontrivial elements of $K$ move vertices a distance greater than $2$.  By \cite{zhang:adinkras}, this means we can quotient by $I^n/C'$, and thus $A'$, by $K$.  We then have the following commutative diagram of colored graphs:
 
 \[
 \begin{CD}
 I^n/C' @>i_1>\cong> A'\\
 @VV\pi_1 V @VV\pi_2 V\\
-(I^n/C')/K @>i_2>\cong> A'/K & @VV\Phi V\\
-@Vi_4 V\cong V @V\tilde{\Phi} V\cong V\\
-I^n/(C'\oplus K) @>i_3>\cong> A. 
+(I^n/C')/K @>i_2>\cong> A'/K\\
 \end{CD}  
 \]
 
-Note that the bottom square shows that $\tilde{\Phi}$ is an isomorphism.
-
-\com{Here's my take, with xymatrix. If you like this, then replace the thing above with it / edit as you wish. Note I only made one of them a bijection arrow -- either remove or replace all isomorphisms with the bijection arrows at your liking. -Y}
+A standard argument gives
+\[(I^n/C')/K \cong I^n/(C'\oplus K)=I^n/C,\]
+and adding this to the above commutative diagram, we then have:
 \[
 \xymatrixcolsep{5pc}
 \xymatrix{
 I^n/C' \ar[d]^{\pi_1} \ar[r]^{i_1}_{\cong} &A'\ar[d]^{\pi_2}\ar@/^2pc/[dd]^{\Phi} \\
 (I^n/C')/K \ar[d]^{i_4}_{\cong} \ar[r]^{i_2}_\cong &A'/K\ar[d]_{\cong}^{\tilde{\Phi}}\\
-I^n/(C'\oplus K) \ar@{^{(}->>}[r]^{i_3}_\cong &A.}
+I^n/(C'\oplus K) \ar[r]^{i_3}_\cong &A.}
 \]
+where $\tilde{\Phi}=i_3\circ i_4\circ i_2^{-1}$ and $\Phi=\tilde{\Phi}\circ \pi_2$.  Then $\tilde{\Phi}$ is an isomorphism of colored graphs, and $\Phi$ is an epimorphism of colored graphs.  Standard diagram chasing shows that $\Phi(\overline{0},\overline{0})=\overline{0}$.
 \end{proof}
 
 It will be useful to have the following result:
@@ -782,45 +766,16 @@ If $\vec{x}\in K$, and $(v_1,v_2)\in A_L^0\times A_R^0$, then $\vec{x}(v_1,v_2)$
 This follows from Lemma~\ref{lem:mainepibigrading} and the fact that $K\subset C(A)$, so if $\vec{x}\in K$, then $\vec{x}\Phi(v_1,v_2)=\Phi(v_1,v_2)$.
 \end{proof}
 
-\begin{cor}
-\label{cor:kquotient}
-The code $K$ acts on $A'$ so that $A'/K$ is a well-defined $2$-d Adinkra without dashing: that is, a graph with colors and bigrading, satisfying the conditions of a $2$-d Adinkra except those that refer to dashing.
-\end{cor}
+\begin{thm}
+\label{thm:isograding}
+The code $K$ acts on $A'$ via color and bigrading preserving isomorphisms to produce a quotient $A'/K$.  The map $\Phi$ (resp. $\tilde{\Phi}$) is a color and bigrading preserving epimorphism (resp. isomorphism).
+\end{thm}
 \begin{proof}
-Since $K\subset \ZZ_2^n$, it acts on $A'$ via color-preserving graph isomorphisms.  Since $K\subset C$ which is doubly even, ...\com{fill in detail here}
-By \cite{zhang:adinkras}, this is a well-defined quotient...
-The colors descend from $A'$ to $A'/K$
-
-By Lemma~\ref{lem:kgrading}, the bigrading on $A'$ descends to $A'/K$.
+This theorem builds on Theorem~\ref{thm:isocolors}.  Lemma~\ref{lem:kgrading} means that the action of $K$ on $A'$ preserves the bigrading.  Lemma~\ref{lem:mainepibigrading} provides the rest of this theorem.
 \end{proof}
 
 
-
-\begin{lem}
-\label{lem:isocolor}
-The map $\Phi$ descends to a map
-\[\tilde{\Phi}:A'/K\to A\]
-which is a color-preserving graph isomorphism that preserves the bigrading.
-\end{lem}
-\begin{proof}
-Suppose $\vec{x}\in C(A)$ and let $w=\vec{x}v$.  Then $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\Phi(v)$.  Therefore $\Phi$ descends to $\tilde{\Phi}$.
-
-Suppose $v$ and $w$ are such that $\Phi(v)=\Phi(w)$.  Then there is a $\vec{x}$ so that $\vec{x}v=w$.  So $\Phi(w)=\Phi(\vec{x}v)=\vec{x}\Phi(v)=\vec{x}\Phi(w)=\Phi(\vec{x}w)$ so that $\vec{x}\in C(A)$.  By Lemma~\ref{lem:existk}, we can write $\vec{x}=\vec{x}_0+\vec{x}_K$ where $\vec{x}_0\in C'$ and $\vec{x}_K\in K$.  Since $C' = C(A_L^0\times A_R^0)$, we have $\vec{x}_0 v = v$.  Therefore $\vec{x}_K v= w$.  Therefore $\tilde{\Phi}$ is injective.
-
-The fact that $\tilde{\Phi}$ is surjective follows from $\Phi$ being surjective.
-\end{proof}
-
-\begin{cor}
-\label{cor:mainisocolorbigrading}
-The map $\tilde{\Phi}$ is a color-preserving graph isomorphism that preserves the bigrading.
-\end{cor}
-\begin{proof}
-This summarizes Lemma~\ref{lem:isocolor}, Lemma~\ref{lem:mainepibigrading}, and Lemma~\ref{lem:kgrading}.
-\end{proof}
-
-
-
-Unfortunately, it is too much to expect the dashing on $A'/K$ to agree with the dashing on $A$; it is also almost always false that the dashing on $A'$ is invariant under the quotienting action of $K$. However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
+Unfortunately, it is too much to expect $\Phi$ to preserve the dashing, or even that the dashing on $A'=A_L^0\times A_R^0$ is invariant under the action of $K$, so that $A'/K$ could have a well-defined dashing.  However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
 
 Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A'=A_L^0\times A_R^0$.   The graph homomorphism
 \[\Phi:A'\to A\]
@@ -888,13 +843,13 @@ By Lemma~\ref{lem:mainepicolors} and Lemma~\ref{lem:mainepibigrading}, there is 
 \[\Phi:A' \to A\]
 that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$, and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} says that there exists a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
 
-By Corollary~\ref{cor:kquotient}, $K$ acts on $A'$ to produce a well-defined $2$-d Adinkra without dashing:
+By Theorem~\ref{thm:isograding}, $K$ acts on $A'$ to produce a well-defined $2$-d Adinkra without dashing:
 \[A'/K\]
 and an isomorphism
 \[\tilde{\Phi}:A'/K\to A\]
 that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with dashing
 \[F(A')/K\]
-Note that this is the same as $A'/K$ if we ignore dashing.  By Corollary~\ref{cor:mainisocolorbigrading}, this is isomorphic to $A$ as a graph with colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
+Note that this is the same as $A'/K$ if we ignore dashing.  Since $F(A')$ and $A'$ only differ in dashing, $\tilde{Phi}$ is still an isomorphism that preserves colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
 
 \section{Some consequences}
