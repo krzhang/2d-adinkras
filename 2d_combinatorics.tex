@@ -858,7 +858,7 @@ Theorem \ref{thm:quotient} is very powerful; we immediately know a lot about wha
 \begin{cor}
 \label{cor:rectangle}
 Let $A$ be a connected $2$-d Adinkra.  The support of $A$ is a rectangle.  That is, there exist integers $x_0$, $x_1$, $y_0$, and $y_1$ such that the support is
-\[\{(i,j)\in\ZZ^2\,|\,x_0 \le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\] All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+\[\{(i,j)\in\ZZ^2\,|\,x_0 \le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\]
 \end{cor}
 \begin{proof}
 Since $A_L^0$ is a connected $1$-d Adinkra and edges change $h_L$ by 1, there are integers $x_0$ and $x_1$ so that the range of the grading is $\{i\,|\,x_0\le i\le x_1\}$.  Likewise $A_R^0$ has a range of grading $\{j\,|\,y_0\le j\le y_1\}$ for some integers $y_0$ and $y_1$.
@@ -866,11 +866,34 @@ Since $A_L^0$ is a connected $1$-d Adinkra and edges change $h_L$ by 1, there ar
 By Construction~\ref{const:product}, the support of $A'=A_L^0\times A_R^0$ is
 \[\{(i,j)\,|\,x_0\le i\le x_1\mbox{ and }y_0\le j\le y_1\}.\]
 Since $\Phi$ preserves the bigrading, this is the support of $A$ as well.
-
-Let $A'_L$ and $A'_R$ consist of the left-moving (resp. right-moving) edges of $A'$.  All connected components of $A'_L$ (resp. $A'_R$) are isomorphic to $A_L^0$ (resp. $A_R^0$). \com{The following is not convincing.  KI}  Quotients preserve connected components and act the same way on each component, so all of the connected components of $A_L$ (resp. $A_R$) must be as well.
 \end{proof}
 
 
+\begin{lem}
+\label{lem:componentiso}
+Let $A$ be a connected $2$-d Adinkra.  Let $A'_L$ and $A'_R$ be the $1$-d Adinkras consisting of the left-moving (resp. right-moving) edges of $A'$.
+
+The connected components of $A'_L$ are of the form $A_L^0\times\{w\}$ for some $w\in A_R^0$.  Similarly, the connected components of $A'_R$ are of the form $\{v\}\times A_R^0$ for some $v\in A_L^0$.  The map $\Phi$ restricted to a connected component of $A'_L$ or $A'_R$ is an isomorphism onto its image.
+\end{lem}
+\begin{proof}
+Suppose $(v,w)$ and $(v',w')$ are in the same connected component of $A'_L$.  Then there is a $\vec{x}\in Z_L(\ZZ_2^p)$ so that $\vec{x}(v,w)=(v',w')$.  Since $\vec{x}\in Z_L(\ZZ_2^p)$, we have $w=w'$.
+
+Now fix a particular component $A_L^0\times \{w\}$.  Let $\vec{x}\in\ZZ_2^q$ so that $\vec{x}\overline{0}=w$ in $A_R^0$.  Then $\Phi$ restricted to this component is
+\begin{align*}
+\Phi(v,w)
+&=\Phi(Z_R(\vec{x})(v,\overline{0}))\\
+&=Z_R(\vec{x})\Phi(v,\overline{0})=Z_R(\vec{x})v
+\end{align*}
+where in the last step we have used Lemma~\ref{lem:phisides}.  The action on $v$ by $Z_R(\vec{x})$ is an isomorphism because it is a group action.
+\end{proof}
+
+\begin{cor}
+\label{cor:componentsiso}
+Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
+\end{cor}
+\begin{proof}
+By Lemma~\ref{lem:componentiso}, the connected components of $A_L$ are isomorphic to their preimages under $\Phi$.  These are isomorphic to $A_L^0\times\{w\}$ for some $w\in A_R^0$.
+\end{proof}
 
 
 
