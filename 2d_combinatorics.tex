@@ -887,44 +887,20 @@ Consider a connected component of $A_L$.  Suppose $v$ is a vertex in this connec
 \end{proof}
 
 
-\subsection{Enumerating $2$-d Adinkras}
-As a final illustration that we have characterized all $2$-d Adinkras, note that the constructions so far suffice to enumerate all $2$-d Adinkras.
+\subsection{Constructing $2$-d Adinkras}
+One way to view Theorem~\ref{thm:quotient} is as a way to construct all $2$-d Adinkras.
 
 \begin{construction}
-First choose an ESDC code $C$.  Let $\pi_L:\ZZ_2^n\to\ZZ_2^p$ and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ be projections onto the first $p$ and last $q$ bits, respectively.
+First choose an ESDC code $C$.  Write
+\[C=C_L\oplus C_R\oplus K\]
+where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$.
 
-Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkra $A=I^n/C$ with code $C$.  Use the splitting of $[n]$ to designate some edges left-moving and the others, right-moving.  Fix a vertex $\overline{0}$ in $A$.  Let $A_L^0$ and $A_R^0$ be as above. \com{Refer to specific construction}  Use the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} on $A_L^0/\pi_L(C)$ and pull it back to $A_L^0$ to create a height function $\tilde{h}_L$ on $A_L^0$ that is invariant under $\pi_L(C)$.  Likewise create a height function $\tilde{h}_R$ on $A_R^0$ invariant under $\pi_R(C)$.
+Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$.  Use the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} on $A_1/\pi_L(K)$ and $A_2/\pi_R(K)$ to create a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$.
 
-Now extend $\tilde{h}_L$ to a grading $h_L$ on the rest of $A$ as follows: for every vertex $v$ of $A$, let $\vec{x}\in \ZZ_2^n$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Then $v_L=\vec{x}_L\overline{0}\in A_L^0$.  Define $h_L(v)=\tilde{h}_L(v_L)$.  Likewise $v_R=\vec{x}_R\overline{0}\in A_R^0$.  Define $h_R(v)=\tilde{h}_R(v_R)$.
+Let $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading.  The fact that this bigrading descends to the quotient by $K$ requires that the gradings $h_1$ and $h_2$ were invariant under $\pi_L(K)$ and $\pi_R(K)$, respectively.
+
+The fact that $C$ is doubly even implies that there is an admissible dashing on $A$.  To construct these, one approach would be to use \cite{d2l:topology} to come up with a dashing on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull this back to $A$.
 \end{construction}
-
-The fact that the result is a $2$-d Adinkra follows from the following results.
-
-\begin{lem}
-The gradings $h_L$ and $h_R$ defined above are independent of $\vec{x}$.\label{lem:indep}
-\end{lem}
-
-\begin{proof}
-Suppose $\vec{x}$ and $\vec{y}$ have $\vec{x}\overline{0}=\vec{y}\overline{0}$.  Then $\vec{y}-\vec{x}\in C$.  Since $\tilde{h}_L$ is invariant under $\pi_L(C)$, we have that $\tilde{h}_L(\vec{y}_L\overline{0})=\tilde{h}_L(\vec{x}_L\overline{0})$.  So $h_L$ is independent of $\vec{x}$.  Likewise for $h_R$.
-\end{proof}
-
-\begin{lem}
-If $v$ and $v'$ are vertices and $(v,v')$ is a left-moving edge, then
-$|h_L(v)-h_L(v')|=1$ and $h_R(v)=h_R(v')$.  If $(v,v')$ is a right-moving edge, then $|h_R(v)-h_R(v')|=1$ and $h_L(v)=h_L(v')$.
-\end{lem}
-
-\begin{proof}
-Let $v$ and $v'$ be vertices connected by an edge of color $i$.  Let $\vec{x}$ be such that $\vec{x}\overline{0}=v$.  Write $\vec{x}=\vec{x}_L+\vec{x}_R$ where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Let $w=\vec{x}_L\overline{0}$.  Then $\vec{x}_R w = v$ so $h_L(v)=h_L(w)$.
-
-Supppose the color $i$ is right-moving.  Then $\vec{e}_i v = v'$ and $h_L(v')=\tilde{h}_L(\pi_L(\vec{x}+\vec{e}_i)\overline{0})=\tilde{h}_L(\pi_L(\vec{x}))=h_L(v)$.
-
-
-Now suppose the color $i$ is left-moving.  Let $w'=q_i(w)$.  Then 
-$h_L(w')=\tilde{h}_L((\vec{x}_L+\vec{e}_i)\overline{0})=h_L(v')$.  Both $w'$ and $w$ are in $A_L^0$, so $|h_L(w)-h_L(w')|=1$.  Since $h_L(w')=h_L(v')$ and $h_L(w)=h_L(v)$, we conclude that $|h_L(v)-h_L(v')|=1$.
-
-The other cases can be obtained by symmetry.
-\end{proof}
-
 
 \begin{thm}
 Every $2$-d Adinkra can obtained by this construction.
@@ -938,10 +914,59 @@ Restrict the gradings $h_L$ and $h_R$ onto $A_L^0$ and $A_R^0$.  Note that if $g
 The dashings, as described in \cite{d2l:topology}, can be obtained by choosing the specific quotient $I^n/C$.
 
 Theorem~\ref{thm:quotient} gives a description of $A$ in terms of this construction.
-
 \end{proof}
 
 \com{Give some examples of this construction}
+
+\begin{ex}
+Consider the code given by the generating matrix
+\[\left[\begin{array}{cc|cc}
+1&1&1&1
+\end{array}\right].\]
+Then $C_L$ and $C_R$ are trivial, with $p=q=2$, so the Adinkras $A_1$ and $A_2$ are both $I^2$.  But the height function must be invariant under $\pi_L(C)=\pi_R(C)=\langle 11\rangle$, so the only possibility for $A_1$ and $A_2$ is this:
+\begin{center}
+picture of $A_1$ and $A_2$
+\end{center}
+
+We take the product $A_1\times A_2$:
+\begin{center}
+picture of product
+\end{center}
+and quotient by $K$, which identifies each vertex with the vertex that is obtained by following all four colors:
+\begin{center}
+picture of quotiented product
+\end{center}
+We can add dashings:
+\begin{center}
+picture of final result with dashings
+\end{center}
+\end{ex}
+
+\begin{ex}
+Consider the code given by the generating matrix
+\[\left[\begin{array}{cccc|cccc}
+1&1&1&1&0&0&0&0\\\hline
+0&0&0&0&1&1&1&1\\\hline
+0&0&1&1&1&1&0&0\\
+1&0&1&0&1&0&1&0
+\end{array}\right].\]
+Note that the horizontal lines above separate $C_L$, $C_R$, and $K$.  The Adinkras $A_1$ and $A_2$ must be given by $I^4/\langle 1111\rangle$, invariant under the code $\langle 0011,1010\rangle$.  Quotienting by this further we have a graph with one edge, and up to reversing the two vertices, there is only one grading:
+\begin{center}
+picture of vertical edge
+\end{center}
+This pulls back to the following Adinkra for $A_1$ and $A_2$:
+\begin{center}
+Valise $n=4$ quotiented
+\end{center}
+We construct $A_1\times A_2$ to get the product
+\begin{center}
+product
+\end{center}
+and quotient by $K$ to get the following:
+\begin{center}
+quotiented product
+\end{center}
+\end{ex}
 
 \section*{Acknowledgments}
 
