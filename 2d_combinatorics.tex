@@ -114,10 +114,9 @@ Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and
 where $F$ is a vertex switch and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
 
-In \cite{hubsch:weaving}, the conjecture was phrased differently, and in Appendix~\ref{app:repn}, we explain the connection between these two formulations, as well as more generally explain the relation between $2$-d Adinkras and representations of the super-Poincar\'e algebra in two dimensions.
+In \cite{hubsch:weaving}, the conjecture was phrased differently, and in Appendix~\ref{app:repn}, we explain the connection between these two formulations.
 
-In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features.  In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how the product of two $1$-d Adinkras makes a $2$-d Adinkra, in the fashion described in the above theorem.  In Section~\ref{sec:quotient}, we prove the main theorem.
-\com{Not sure how the rest will be laid out.  Once we decide this, we can fill in details here}
+In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features, including the code associated with an Adinkra, and vertex switching.  In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how the product of two $1$-d Adinkras makes a $2$-d Adinkra, in the fashion described in the above theorem.  Section~\ref{sec:code2d} describes the codes for $2$-d Adinkras, called ESDE codes.  In Section~\ref{sec:quotient}, we prove the main theorem.  Then Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras.
 
 \section{Preliminaries}
 \label{sec:prelim}
@@ -670,7 +669,7 @@ Given a doubly even code $C$ of length $n$, there is a bijection between codewor
 Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the codeword $w$ that is defined to have $1$ at all the positions in $L$ and $0$ at all the positions in $R$.  By definition of ESDE codes, all codewords in $C$ have an even number of $1$'s in the support of $w$, which is equivalent to saying that $w$ is orthogonal to all the codewords in $C$. Thus, $w \in C^\perp$.  Conversely, for any $w \in C^\perp$, $w$ is orthogonal to all codewords in $C$ and thus give an ESDE. Thus, there is a bijection between the two sets.  Note these are ordered partitions; the codeword which has $1$ at all the positions in $R$ and $0$ otherwise would give the same paritition, but in reversed order.
 \end{proof}
 
-\section{Every $2$-d Adinkra is a Quotient of a Vertex-switched Product}
+\section{Proof of main theorem}
 \label{sec:quotient}
 In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$, $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
 
@@ -857,6 +856,7 @@ Note that this is the same as $A'/K$ if we ignore dashing.  Since $F(A')$ and $A
 \end{proof}
 
 \section{The Structure of $2$-d Adinkras}
+\label{sec:structure}
 Theorem \ref{thm:quotient} is very powerful; we immediately know a lot about what a $2$-d Adinkra must look like. Let the \emph{support} of a $2$-d Adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Then:
 \begin{cor}
 \label{cor:rectangle}
