@@ -453,7 +453,7 @@ Given Adinkras $A_1$ and $A_2$, $A_1\times A_2$ is a $2$-d Adinkra.
 
 
 \begin{definition}[Extending codes]
-Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $Z_L:\ZZ_2^p\to\ZZ_2^n$ to be the function that appends $q$ zeros, so that for instance, if $p=4$ and $q=3$, then $Z_L(1011)=1011000$.  Likewise, define $Z_R:\ZZ_2^q\to\ZZ_2^n$ to be the function that prepends $p$ zeros.  Note that $Z_L$ is a right-inverse of $\pi_L$ and $Z_R$ is a right-inverse of $\pi_R$.
+Let $p$ and $q$ be non-negative integers and let $n=p+q$.  Define $Z_L:\ZZ_2^p\to\ZZ_2^n$ to be the function that appends $q$ zeros, so that for instance, if $p=4$ and $q=3$, then $Z_L(1011)=1011000$.  Likewise, define $Z_R:\ZZ_2^q\to\ZZ_2^n$ to be the function that prepends $p$ zeros.
 
 Our most common use of this notation is as follows: if $C$ is a binary block code of length $p$, we write $Z_L(C)$ for the image under $Z_L$.  Likewise, if $C$ is a binary block code of length $q$, we write $Z_R(C)$ for the image under $Z_R$.
 \end{definition}
@@ -473,9 +473,9 @@ This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_Lv_1=v_1$ a
 \label{sec:code2d}
 Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits.
 
-Define $\pi_L:\ZZ_2^n\to\ZZ_2^p$ to be the projection onto the first $p$ bits, and likewise define $\pi_R:\ZZ_2^n\to\ZZ_2^q$ to be projection onto the last $q$ bits.
+For any vector $\vec{x}\in\ZZ_2^n$, the \emph{weight} of $\vec{x}$, denoted $\wt(\vec{x})$, is the number of $1$s in $\vec{x}$.  Likewise, $\wt_L(\vec{x})$ is the the number of $1$s in the first $p$ bits and $\wt_R(\vec{x})$ is the number of $1$s in the last $q$ bits of $\vec{x}$.
 
-As was proved in \cite{hubsch:weaving}, if $A$ is a $2$-d Adinkra with $(p,q)$ colors and $C(A)$ is the code, then for every $\vec{x}\in C(A)$, the weight of $\vec{x}$ is a multiple of $4$, and the weights of $\pi_L(\vec{x})$ and $\pi_R(\vec{x})$ are both even.  In other words, $C(A)$ is a doubly even code and $\pi_L(C(A))$ and $\pi_R(C(A))$ are both even codes.  Such a code is called \emph{even-split doubly even}, or \emph{ESDE}.  Thus, \cite{hubsch:weaving} proves the following theorem:
+As was proved in \cite{hubsch:weaving}, if $A$ is a $2$-d Adinkra with $(p,q)$ colors and $C(A)$ is the code, then for every $\vec{x}\in C(A)$, we have that $\wt(\vec{x})$ is a multiple of $4$ and that both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ are even.  Such a code is called \emph{even-split doubly even}, or \emph{ESDE}.  Thus, \cite{hubsch:weaving} proves the following theorem:
 \begin{thm}
 \label{thm:esde}
 If $A$ is a connected $2$-d Adinkra with $(p,q)$ colors, then $C(A)$ is an ESDE.
@@ -485,7 +485,7 @@ We now prove the converse of this theorem.  That is, given an ESDE code, there e
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$. \cite{d2l:omni,d2l:topology} \com{(I think this kind of situation is exactly where it is best to have a concrete statement that the reader could refer to in section 2. -Y)} Fix a vertex $\overline{0}$ of $A$. Now every vertex $v$ corresponds to a vector $\vec{v} \pmod{C}$. Define $h_L(v) = \wt_L(\vec{v}) \pmod{2}$ and $h_R(v) = \wt_R(\vec{v}) \pmod{2}$. Note that these functions are well-defined since $C$ is ESDE. $(h_L, h_R)$ gives a bigrading to $A$, making it a $2$-d Adinkra.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$. \cite{d2l:omni,d2l:topology} \com{(I think this kind of situation is exactly where it is best to have a concrete statement that the reader could refer to in section 2. -Y)} Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.
 \end{construction}
 
 We therefore have:
@@ -558,32 +558,33 @@ Note that $K$ is not necessarily uniquely defined.  It is, however, uniquely def
 
 
 
-The interpretation of $K$ can be obtained by examining the set$V^0=A_L^0\cap A_R^0$.  Since $A_L^0$ has only left-moving edges and $A_R^0$ has only right-moving edges, $V^0$ has no edges at all: only vertices.  Furthermore, for every $v\in V^0$, we have $h_L(v)=h_L(\overline{0})$ and $h_R(v)=h_R(\overline{0})$ so all of the vertices in $V^0$ have the same bigrading.
+The interpretation of $K$ can be obtained by examining the set $V^0=A_L^0\cap A_R^0$.  Since $A_L^0$ has only left-moving edges and $A_R^0$ has only right-moving edges, $V^0$ has no edges at all: only vertices.  Furthermore, for every $v\in V^0$, we have $h_L(v)=h_L(\overline{0})$ and $h_R(v)=h_R(\overline{0})$ so all of the vertices in $V^0$ have the same bigrading.
 
 We now show that there is a bijection between $K$ and $V^0$.
+
+As before, for every $\vec{x}\in\ZZ_2^n$, we write $\vec{x}=\vec{x}_L+\vec{x}_R$, where $\vec{x}_L$ is zero in the last $q$ bits and $\vec{x}_R$ is zero in the first $p$ bits.  Using this notation, we have the following theorem.
 
 \begin{thm}
 \label{thm:kv0}
 The map
 \[\Psi:K\to V^0\]
 given by
-\[\Psi(\vec{x})=Z_L(\pi_L(\vec{x}))\overline{0}\]
+\[\Psi(\vec{x})=\vec{x}_L\overline{0}\]
 is a bijection.
 \end{thm}
 \begin{proof}
-If $\vec{x}\in C(A)$, then $(Z_L(\pi_L(\vec{x}))+Z_R(\pi_R(\vec{x})))\overline{0}=\overline{0}$, so $Z_L(\pi_L(\vec{x}))\overline{0}=Z_R(\pi_R(\vec{x}))\overline{0}$.  So $\Psi(\vec{x})\in A_L^0\cap A_R^0=V^0$.  This map is invariant under $C'$, so $\Psi$ is well-defined.
+If $\vec{x}\in K\subset C(A)$, then $(\vec{x}_L+\vec{x}_R)\overline{0}=\overline{0}$, so $\vec{x}_L\overline{0}=\vec{x}_R\overline{0}$.  So $\Psi(\vec{x})\in A_L^0\cap A_R^0=V^0$.
 
-Suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $Z_L(\pi_L(\vec{x}))\overline{0}=Z_L(\pi_L(\vec{y}))\overline{0}$.  Therefore $Z_L(\pi_L(\vec{x}+\vec{y}))\in C(A_L^0)$.  Likewise $Z_R(\pi_R(\vec{x}+\vec{y}))\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.  Since $C'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
+To prove $\Psi$ is one-to-one, suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $\vec{x}_L\overline{0}=\vec{y}_L\overline{0}$.  Therefore $\vec{x}_L+\vec{y}_L\in C(A_L^0)$.  Likewise $\vec{x}_R+\vec{y}_R\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.  Since $C'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
 
-Let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L\in\ZZ_2^p$ so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R\in \ZZ_2^q$ so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{y}=Z_L(\vec{x}_L)+Z_R(\vec{x}_R)$ is in $C(A)$.  Since $C(A)=C'\oplus K$, we can write $\vec{y}=\vec{y}_0+\vec{y}_K$ where $\vec{y}_0\in C'$ and $\vec{y}_K\in K$.  Then
-\begin{align*}
-\Psi(\vec{y}_K)&= Z_L(\pi_L(\vec{y}_K))\overline{0}\\
-&= Z_L(\pi_L(\vec{y}-\vec{y}_0))\overline{0}\\
-&= Z_L(\pi_L(\vec{y}))Z_L(\pi_L(\vec{y}_0))\overline{0}\\
-&= Z_L(\pi_L(\vec{y}))\overline{0}\\
-&= Z_L(\vec{x}_L)\overline{0} = v. \qedhere
-\end{align*} 
+To prove $\Psi$ is onto, let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L$ with last $q$ bits zero, so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R$ with first $p$ bits zero, so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{x}=\vec{x}_L+\vec{x}_R\in C(A)$.  Since $C(A)=C'\oplus K$, we can write $\vec{x}=\vec{c}+\vec{k}$ where $\vec{c}\in C'$ and $\vec{k}\in K$.  By the fact that $C'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$, we have that $\vec{c}_L\in Z_L(C(A_L^0))$ and so $\vec{c}_L\overline{0}=\overline{0}$.  Then
+$\Psi(\vec{k})=\vec{k}_L\overline{0}
+=(\vec{x}_L-\vec{c}_L)\overline{0}
+=\vec{x}_L(\vec{c}_L(\overline{0}))
+=\vec{x}_L(\overline{0})
+=v.$
 \end{proof}
+
 
 Consider the following examples.
 \begin{ex}
@@ -894,9 +895,9 @@ One way to view Theorem~\ref{thm:quotient} is as a way to construct all $2$-d Ad
 \begin{construction}
 First choose an ESDC code $C$.  Write
 \[C=C_L\oplus C_R\oplus K\]
-where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$.
+where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$.  Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$, where $\pi_L:\ZZ_2^n\to\ZZ_2^p$ is projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ is projection onto the last $q$ bits.
 
-Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$.  Use the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} on $A_1/\pi_L(K)$ and $A_2/\pi_R(K)$ to create a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$.
+Use the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} on $A_1/\pi_L(K)$ and $A_2/\pi_R(K)$ to create a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$.
 
 Let $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading.  The fact that this bigrading descends to the quotient by $K$ requires that the gradings $h_1$ and $h_2$ were invariant under $\pi_L(K)$ and $\pi_R(K)$, respectively.
 
@@ -999,7 +1000,8 @@ The statement of Theorem~\ref{thm:quotient} is a bit different from the statemen
 
 \begin{conjecture}[Conjecture 2.1 (completeness)] The application of Constructions 2.1, 2.2 and 2.3 together with the projections of the kind (28)--detailed in Section 3--generates all $(p,q)$-Adinkras and so also all adinkraic off-shell worldsheet $(p, q)$-supermultiplets--for all $p, q \ge 0$.
 \end{conjecture}
-\begin{construction}[Construction 2.1 (off-shell)] Let $R_+$ and $R_-$ denote off-shell representations of two copies of the(centrally unextended) worldline supersymmetry algebras, $Sp_+^{1|p}$ and $Sp_-^{1|q}$ respectively, and let $Z$ be a symmetry of $R_+ \otimes R_-$, covariant with supersymmetry (1) and including the trivial case, $Z = 1$. The $Z$-quotient of the tensor product $(R_+ \otimes R_-)/Z$ is then an off-shell representation of $Sp^{1,1|p,q} = Sp^{1|p}\oplus Sp^{1|q}$, but when $Z\not= l$ need not itself be a tensor product.
+\begin{construction}[Construction 2.1 (off-shell)] Let $R_+$ and $R_-$ denote off-shell representations of two copies of the
+(centrally unextended) worldline supersymmetry algebras, $Sp_+^{1|p}$ and $Sp_-^{1|q}$ respectively, and let $Z$ be a symmetry of $R_+ \otimes R_-$, covariant with supersymmetry (1) and including the trivial case, $Z = 1$. The $Z$-quotient of the tensor product $(R_+ \otimes R_-)/Z$ is then an off-shell representation of $Sp^{1,1|p,q} = Sp^{1|p}\oplus Sp^{1|q}$, but when $Z\not= l$ need not itself be a tensor product.
 \end{construction}
 
 
