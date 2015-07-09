@@ -149,90 +149,43 @@ If a dashing $\mu$ satisfies this condition for all two-colored simple cycles, w
 Figure~\ref{fig:1d-examples} give examples of $1$-d Adinkras.
 \end{definition}
 
+
 \begin{figure}
 \begin{center}
-\begin{tabular}{cc}
 \begin{tikzpicture}[scale=0.15]
+\SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
-\Vertex[x=10,y=0]{11}
-\Vertex[x=10,y=10]{10}
-\Vertex[x=0,y=10]{01}
-\Vertex[x=0,y=0]{00}
-\Edge[color=green](00)(10)
-\Edge[color=red, style=dashed](00)(01)
-\Edge[color=red](10)(11)
-\Edge[color=green](01)(11)
+\Vertex[x=0,y=0]{A}
+\Vertex[x=0,y=10]{B}
+\Vertex[x=0,y=20]{C}
+\Vertex[x=20,y=10]{D}
+\Vertex[x=-10,y=10]{E}
+\Vertex[x=10,y=10]{F}
+\Vertex[x=-10,y=20]{G}
+\Vertex[x=10,y=20]{H}
+\Edge [color=red](G)(B)
+\Edge[color=red](D)(H)
+\Edge[color=red](C)(F)
+\Edge[color=red](E)(A)
+\Edge[color=green](D)(G)
+\Edge[color=green, style=dashed](H)(B)
+\Edge[color=green](C)(E)
+\Edge[color=green, style=dashed](F)(A)
+\Edge(D)(C)
+\Edge[style=dashed](H)(F)
+\Edge[style=dashed](G)(E)
+\Edge(B)(A)
+\draw [->] (-20,-5) -- (-20,25);
+\draw (-19,0) -- (-21,0) node [align=right, left] {$1$};
+\draw (-19,10) -- (-21,10) node [align=right, left] {$2$};
+\draw (-19,20) -- (-21,20) node [align=right, left] {$3$};
+\node [right] at (-20,25) {$h$};
 \end{tikzpicture}
-& 
-\begin{tikzpicture}[scale=0.15]
-%\SetVertexNormal
-\SetUpEdge[labelstyle={draw}]
-\Vertex[x=0,y=0]{111}
-\Vertex[x=0,y=10]{101}
-\Vertex[x=0,y=20]{010}
-\Vertex[x=20,y=10]{000}
-\Vertex[x=-10,y=10]{110}
-\Vertex[x=10,y=10]{011}
-\Vertex[x=-10,y=20]{100}
-\Vertex[x=10,y=20]{001}
-\Edge[color=red](100)(101)
-\Edge[color=red](000)(001)
-\Edge[color=red](010)(011)
-\Edge[color=red](110)(111)
-\Edge[color=green](000)(100)
-\Edge[color=green, style=dashed](001)(101)
-\Edge[color=green](010)(110)
-\Edge[color=green, style=dashed](011)(111)
-\Edge[color=blue](000)(010)
-\Edge[color=blue, style=dashed](001)(011)
-\Edge[color=blue, style=dashed](100)(110)
-\Edge[color=blue](101)(111)
-\end{tikzpicture}
-\\
-\begin{tikzpicture}[scale=0.15]
-\SetUpEdge[labelstyle={draw}]
-\Vertex[x=5,y=15]{11}
-\Vertex[x=10,y=7]{10}
-\Vertex[x=0,y=7]{01}
-\Vertex[x=5,y=0]{00}
-\Edge[color=green](00)(10)
-\Edge[color=red, style=dashed](00)(01)
-\Edge[color=red](10)(11)
-\Edge[color=green](01)(11)
-\end{tikzpicture}
-&
-\begin{tikzpicture}[scale=0.15]
-%\SetVertexNormal
-\SetUpEdge[labelstyle={draw}]
-\Vertex[x=0,y=0]{111}
-\Vertex[x=0,y=10]{101}
-\Vertex[x=20,y=0]{010}
-\Vertex[x=20,y=10]{000}
-\Vertex[x=-10,y=10]{110}
-\Vertex[x=10,y=10]{011}
-\Vertex[x=-10,y=0]{100}
-\Vertex[x=10,y=0]{001}
-\Edge[color=red](100)(101)
-\Edge[color=red](000)(001)
-\Edge[color=red](010)(011)
-\Edge[color=red](110)(111)
-\Edge[color=green](000)(100)
-\Edge[color=green, style=dashed](001)(101)
-\Edge[color=green](010)(110)
-\Edge[color=green, style=dashed](011)(111)
-\Edge[color=blue](000)(010)
-\Edge[color=blue, style=dashed](001)(011)
-\Edge[color=blue, style=dashed](100)(110)
-\Edge[color=blue](101)(111)
-\Edge[color=black](100)(011)
-\Edge[color=black, style=dashed](000)(111)
-\Edge[color=black](010)(101)
-\Edge[color=black](110)(001)
-\end{tikzpicture}
-\end{tabular}
-\caption{Examples of $1$-d Adinkras. In each picture, the grading function is represented by the relative vertical heights on the page.  \label{fig:1d-examples}}
+\caption{Examples of a $1$-d Adinkra with $3$ colors.  The grading function is represented by the vertical height as indicated on the axis on the left.
+\label{fig:1d-examples}}
 \end{center}
 \end{figure}
+
 
 \subsection{The action of $\ZZ_2^n$ and the code}
 \label{sec:code}
@@ -294,7 +247,7 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \begin{figure}[htb]
 \begin{center}
 \begin{tikzpicture}[scale=0.05]
-\SetVertexNoLabel
+\SetVertexSimple[MinSize=5pt]
 \node[text width=3cm] at (-10, 0) {(0,0)};
 \node[text width=3cm] at (-35, 30) {(1,0)};
 \node[text width=3cm] at (70, 30) {(0,1)};
@@ -325,10 +278,10 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \Edge[color=black](G)(C)
 \Edge[color=black](B)(F)
 \end{tikzpicture}
-
 \caption{A $2$-d Adinkra with $(2,2)$ colors. The grading coordinates is given next to the nodes as $(h_L, h_R)$. \label{fig:2d-example}}
 \end{center}
 \end{figure}
+
 
 \section{Products}
 \label{sec:products}
@@ -355,9 +308,8 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 \begin{center}
 \begin{tabular}{c|c|c}
 \begin{tikzpicture}[scale=0.1]
-%\SetVertexNormal
+\SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
-\SetVertexNoLabel
 \Vertex[x=0,y=0]{A}
 \Vertex[x=10,y=0]{B}
 \Vertex[x=0,y=20]{E}
@@ -369,7 +321,8 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale=0.1]
-\SetVertexNoLabel
+\SetVertexSimple[MinSize=5pt]
+\SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{A}
 \Vertex[x=0,y=40]{B}
 \Vertex[x=-5,y=20]{E}
@@ -381,8 +334,7 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale=0.1]
-%\SetVertexNormal
-\SetVertexNoLabel
+\SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{BA}
 \Vertex[x=-10,y=0]{AA}
@@ -484,7 +436,7 @@ We now prove the converse of this theorem.  That is, given an ESDE code, there e
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$. \cite{d2l:omni,d2l:topology} \com{(I think this kind of situation is exactly where it is best to have a concrete statement that the reader could refer to in section 2. -Y)} Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$. \cite{d2l:omni,d2l:topology} \com{(I think this kind of situation is exactly where it is best to have a concrete statement that the reader could refer to in section 2. -Y)} Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.  An example of the kind of $2$-d Adinkra that arises from this construction is Figure~\ref{fig:2d-example}.
 \end{construction}
 
 We therefore have:
@@ -493,30 +445,8 @@ We therefore have:
 For a code $C \subset \ZZ_2^n$, there exists a $2$-d Adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
 \end{thm}
 
-\begin{figure}[htb]
-\begin{center}
 
-\begin{tikzpicture}[scale=0.10]
-%\SetVertexNormal
-\SetVertexNoLabel
-\SetUpEdge[labelstyle={draw}]
-\Vertex[x=0,y=0]{A}
-\Vertex[x=-5,y=5]{H}
-\Vertex[x=0,y=20]{C}
-\Vertex[x=-5,y=25]{B}
-\Vertex[x=15,y=5]{D}
-\Vertex[x=20,y=0]{E}
-\Vertex[x=20,y=20]{G}
-\Vertex[x=15,y=25]{F}
-\Edges(A,B,G)
-\Edges(B,H,C)
-\Edges(G,D)
-\Edges(C,A,D,H,E,A)
-\Edges(D,F,C,G,E,F,B)
-\end{tikzpicture}
-\caption{A valise $2$-d Adinkra that cannot be put into non-valise form.\label{fig:tight valise}}
-\end{center}
-\end{figure}
+
 
 The structure of the ESDE relates to interesting features of the colored graph of $A$.  Let $A_L$ be the $1$-d Adinkra with $p$ colors that consists of only the left-moving edges of $A$.  Let $A_R$ be the $1$-d Adinkra with $q$ colors that consists of only the right-moving edges of $A$ (where we shift the colors so that they range from $1$ to $q$ instead of $p+1$ to $p+q$).  Pick a vertex $\overline{0}$ in $A$.  Let $A_L^0$ be the connected component of $A_L$ containing $\overline{0}$ and let $A_R^0$ be the connected component of $A_R$ containing $\overline{0}$.
 
