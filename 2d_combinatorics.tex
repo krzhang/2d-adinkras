@@ -35,6 +35,7 @@
 \newtheorem{remark}[equation]{Remark}
 \newtheorem{prob}{Problem}
 \newtheorem{construction}[equation]{Construction}
+\newtheorem{conjecture}[equation]{Conjecture}
 
 \newcommand{\BB}{\mathbf{B}}
 \newcommand{\ZZ}{\mathbf{Z}}
@@ -974,7 +975,36 @@ The authors wish to thank Charles Doran, Sylvester Gates, and Tristan H\"ubsch f
 
 \appendix
 
-\section{Representations of supersymmetry}
+\section{Relation to H\"ubsch's original language}
+The statement of Theorem~\ref{thm:quotient} is a bit different from the statement of the conjecture in \cite{hubsch:weaving}.  There, the language was partly in terms of representations of the $2$-d SUSY algebra instead of graphs.
+\begin{construction}[Construction 2.1 (off-shell)] Let $R_+$ and $R_-$ denote off-shell representations of two copies of the $1$-d SUSY algebra with $p$ and $q$ colors, respectively, and let $Z$ be a symmetry of $R_+ \otimes R_-$, as a representation. The $Z$-quotient of the tensor product $(R_+ \otimes R_-)/Z$ is then an off-shell representation of $2$-d SUSY algebra with $(p,q)$ colors.
+\end{construction}
+The conjecture in \cite{hubsch:weaving} then says that every Adinkraic representation of $2$-d SUSY with $(p,q)$ colors is obtained by this construction.
+
+The relation between this conjecture and Theorem~\ref{thm:quotient} will be apparent once we establish the following relationships.  None of these facts are new to this paper, but this information is collected here for the convenience of the reader.
+\begin{itemize}
+\item The relationship between off-shell representations of SUSY and Adinkras: This is the central idea behind the original paper on Adinkras\cite{d2l:first}, and so we do not go into detail here.  The idea is that each vertex $v$ of the Adinkra corresponds to a field $f_v$ in the SUSY representation, and $Q_i$ acts on fields by the edge of color $i$, with possible derivatives depending on the grading or bigrading (as the case may be), and with an extra minus sign if the corresponding edge is dashed.
+\item The relationship between $A_1\times A_2$ and $R_+\otimes R_-$: The definition of $R_+\otimes R_-$ as a representation of $2$-d SUSY that
+\[Q_i(f_v\otimes f_w)=Q_i(f_v)\otimes f_w \]
+if $i\le p$ and
+\[Q_i(f_v\otimes f_w)=(-1)^{|h(v)|}f_v\otimes Q_i(f_w)\]
+if $i >p$.  This is the standard way in which tensor products are defined in $\ZZ_2$-graded algebras.\cite{?}\com{Not sure where to cite here.}  Then Construction~\ref{const:product} mimics this definition on the level of Adinkras.
+\item A vertex switch on $v$ corresponds to replacing $f_v$ with $-f_v$.  Then all equations involving $Q_i(f_v)$ or $f_v$ will get an extra minus sign.  This reverses all dashings on edges connected to $v$.
+\item A quotient defined in Theorem~\ref{thm:quotient} is a symmetry $Z$ of the representation.
+\end{itemize}
+
+\subsection{Original language}
+\com{This is copied and pasted from Tristan's article.  Probably don't include this.}
+The statement of Theorem~\ref{thm:quotient} is a bit different from the statement of the conjecture in \cite{hubsch:weaving}:
+
+\begin{conjecture}[Conjecture 2.1 (completeness)] The application of Constructions 2.1, 2.2 and 2.3 together with the projections of the kind (28)--detailed in Section 3--generates all $(p,q)$-Adinkras and so also all adinkraic off-shell worldsheet $(p, q)$-supermultiplets--for all $p, q \ge 0$.
+\end{conjecture}
+\begin{construction}[Construction 2.1 (off-shell)] Let $R_+$ and $R_-$ denote off-shell representations of two copies of the(centrally unextended) worldline supersymmetry algebras, $Sp_+^{1|p}$ and $Sp_-^{1|q}$ respectively, and let $Z$ be a symmetry of $R_+ \otimes R_-$, covariant with supersymmetry (1) and including the trivial case, $Z = 1$. The $Z$-quotient of the tensor product $(R_+ \otimes R_-)/Z$ is then an off-shell representation of $Sp^{1,1|p,q} = Sp^{1|p}\oplus Sp^{1|q}$, but when $Z\not= l$ need not itself be a tensor product.
+\end{construction}
+
+
+\subsection{Detailed Formal Nonsense section}
+\com{This is what I had originally but it was maybe too detailed and too mathematically formal.  I'm keeping it here just in case.}
 \label{app:repn}
 The $1$-d $n$-extended supersymmetry algebra is a superalgebra consisting of an even operator $H$ and $n$ odd operators $Q_1, \ldots, Q_n$ with the following relations:
 \begin{eqnarray}
@@ -1071,7 +1101,7 @@ Given a $2$-d Adinkra $A=(V,E,c,\mu,h_L,h_R)$ with $(p,q)$ colors, we get a repr
 \item If $i>p$ then
 \[Q_i(b_v\otimes P_-^k P_+^l)=
 (-1)^{\mu(v,w)}b_w\otimes P_-^k P_+^{l+\frac12(1-h_L(w)+h_L(v))} \]
-\item There is a $\ZZ_2$ grading of $R(A)$: let the $\ZZ_2$ grading of $b_v\otimes H^k$ be $h_L(v)+h_R(v)\pmod{2}$.
+\item There is a $\ZZ_2$ grading of $R(A)$: let the $\ZZ_2$ grading of $b_v\otimes P_-^k P_+^l$ be $h_L(v)+h_R(v)\pmod{2}$.
 \end{itemize}
 \end{construction}
 
