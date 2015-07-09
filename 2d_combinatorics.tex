@@ -129,7 +129,7 @@ In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition 
 \begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
-\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly from the grading and property 5 below.}
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 5 below.}
  $V$ and edge set $E\subset V\times V$,
 \item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring},
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},
@@ -440,7 +440,7 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 
 \end{tikzpicture}
 \end{tabular}
-\caption{Constructing the $2$-d Adinkra from two smaller $1$-d Adinkras. Note that the dashings are all ``consistent'' with the smaller Adinkras, except for the right-moving edges on the upper-left ``boundary'' of the rectangle; these correspond to right-moving edges where the grading corresponding to the first adinkra has height $1$.\label{fig:product}}
+\caption{Constructing the $2$-d Adinkra from two smaller $1$-d Adinkras. Note that the dashings are all ``consistent'' with the smaller Adinkras, except for the right-moving edges on the upper-left ``boundary'' of the rectangle; these correspond to right-moving edges where the grading corresponding to the first Adinkra has height $1$.\label{fig:product}}
 \end{center}
 \end{figure}
 
@@ -491,7 +491,7 @@ Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d 
 We therefore have:
 \begin{thm}
 \label{thm:esde}
-For a code $C \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
+For a code $C \subset \ZZ_2^n$, there exists a $2$-d Adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
 \end{thm}
 
 \begin{figure}[htb]
@@ -515,7 +515,7 @@ For a code $C \subset \ZZ_2^n$, there exists a $2$-d adinkra $A$ with $C(A) = C$
 \Edges(C,A,D,H,E,A)
 \Edges(D,F,C,G,E,F,B)
 \end{tikzpicture}
-\caption{A valise $2$-d adinkra that cannot be put into non-valise form.\label{fig:tight valise}}
+\caption{A valise $2$-d Adinkra that cannot be put into non-valise form.\label{fig:tight valise}}
 \end{center}
 \end{figure}
 
@@ -1190,21 +1190,21 @@ we have the isomorphism.
 \section{Equivalence with other notions of $2$-d Adinkras}
 
 
-If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
+If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d Adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
 \begin{itemize}
-\item It is an $1$-d adinkra (with the associated ranking, dashing, etc.).
+\item It is an $1$-d Adinkra (with the associated ranking, dashing, etc.).
 \item It has $p + q = n$ colors, where the first $p$-colors are called ``left-moving'' and the second $q$-colors are called ``right-moving.''
-\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
+\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d Adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
 \end{itemize} 
 
 Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
 
 %%
 
-The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
+The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d Adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
 
 \begin{prop}
-A $1$-d adinkra can be extended to a $2$-d adinkra if and only if the $1$-d adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
+A $1$-d Adinkra can be extended to a $2$-d Adinkra if and only if the $1$-d Adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
 \end{prop}
 
 \begin{proof}
