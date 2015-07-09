@@ -856,8 +856,7 @@ that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, 
 Note that this is the same as $A'/K$ if we ignore dashing.  Since $F(A')$ and $A'$ only differ in dashing, $\tilde{\Phi}$ is still an isomorphism that preserves colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
 
-\section{Some consequences}
-
+\section{The Structure of $2$-d Adinkras}
 Theorem \ref{thm:quotient} is very powerful; we immediately know a lot about what a $2$-d Adinkra must look like. Let the \emph{support} of a $2$-d Adinkra (and/or its bigrading function $(h_L,h_R)$) be defined as the range of $(h_L,h_R)$, its bigrading function. Then:
 \begin{cor}
 \label{cor:rectangle}
@@ -878,13 +877,6 @@ Since $\Phi$ preserves the bigrading, this is the support of $A$ as well.
 Let $A$ be a connected $2$-d Adinkra.  All connected components of $A_L$ (and respectively $A_R$) are isomorphic as graded posets.
 \end{cor}
 \begin{proof}
-Let $A'=A_L^0\times A_R^0$ and $A'_L$ and $A'_R$ be the $1$-d Adinkras consisting of the left-moving (resp. right-moving) edges of $A'$.  From the definition of the product, and the fact that $A_L^0$ is connected, it is clear that the connected components of $A'_L$ are of the form $A_L^0\times\{w\}$ for some $w\in A_R^0$.  For such a $w$, let $\vec{x}\in\ZZ_2^q$ be so that $\vec{x}\overline{0}=w$ in $A_R^0$.  By Lemma~\ref{lem:phiformula}, $\Phi(v,w)=Z_R(\vec{x})v$, which is one-to-one as a function of $v$.  Therefore $\Phi$ restricted to $A_L^0\times\{w\}$ is an isomorphism onto its image.
-
-Consider a connected component of $A_L$.  Since $\Phi$ is surjective, there is a connected component of $A'_L$ that maps to it under $\Phi$.  Both the connected component of $A_L$ and the image under $\Phi$ of the connected component of $A'_L$ are $1$-d Adinkras, and so they must be equal.
-\end{proof}
-
-\com{Note: this is harder than the following proof which doesn't use the main theorem at all:}
-\begin{proof}[Alternate proof]
 Consider a connected component of $A_L$.  Suppose $v$ is a vertex in this connected component.  Then there is a $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then the map $f:A_L\to A_L$ with $f(w)=\vec{x}(w)$ is a color-preserving graph isomorphism.  Thus, it sends connected components onto connected components, and in particular, $A_L^0$ to the connected component containing $v$.
 \end{proof}
 
