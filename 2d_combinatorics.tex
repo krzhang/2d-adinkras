@@ -116,7 +116,7 @@ where $F$ is a vertex switch and  $\sim$ is described by an action of a subgroup
 
 In \cite{hubsch:weaving}, the conjecture was phrased differently, and in Appendix~\ref{app:repn}, we explain the connection between these two formulations.
 
-In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features, including the code associated with an Adinkra, and vertex switching.  In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how the product of two $1$-d Adinkras makes a $2$-d Adinkra, in the fashion described in the above theorem.  Section~\ref{sec:code2d} describes the codes for $2$-d Adinkras, called ESDE codes.  In Section~\ref{sec:quotient}, we prove the main theorem.  Then Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras.
+In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features, including the code associated with an Adinkra and the concept of vertex switching.  In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how the product of two $1$-d Adinkras makes a $2$-d Adinkra, in the fashion described in the above theorem.  Section~\ref{sec:code2d} describes the codes for $2$-d Adinkras, called ESDE codes.  In Section~\ref{sec:quotient}, we prove the main theorem.  Then Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras.
 
 \section{Preliminaries}
 \label{sec:prelim}
@@ -129,7 +129,7 @@ In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition 
 Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
 \begin{itemize}
 \item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 5 below.}
- $V$ and edge set $E\subset V\times V$,
+ $V$ and edge set $E$,
 \item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring},
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},
 \item $h:V\to\ZZ$ is a map called the \emph{grading}.
@@ -137,8 +137,7 @@ Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $
 
 These are required to satisfy the following:
 \begin{enumerate}
-\item If $(v,w)\in E$, then $(w,v)\in E$.  Furthermore, $c(v,w)=c(w,v)$ and $\mu(v,w)=\mu(w,v)$.  Intuitively, the edges are undirected.
-\item For every $v\in V$ and $c\in [n]$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$.
+\item For every $v\in V$ and $c\in [n]$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. 
 \item Every two-colored simple cycle must be of length 4.  (A \emph{simple} cycle is one which does not repeat vertices, with the exception of the start vertex equalling the end vertex.  A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$.)
 \item The parity of $\mu$ on every two-colored simple cycle is odd; the \emph{parity} of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ means the sum
 \[\sum_{i=0}^{k-1}\mu(v_i,v_{i+1})\pmod{2}.\]
@@ -236,7 +235,7 @@ A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called
 \begin{definition}[$2$-d Adinkras]
 Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
-\item $h(v)=h_L(v)+h_R(v)$
+\item $h(v)=h_L(v)+h_R(v)$.
 \item Let $(v,w)\in E$.  If $c(v,w)\le p$ then $(v,w)$ is called a left-moving edge; if $c(v,w)>p$ then it is called a right-moving edge.
 \item if $(v,w)$ is a left-moving edge, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)$ is a right-moving edge, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_L(w)$.
 \end{itemize}
@@ -278,7 +277,7 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \Edge[color=black](G)(C)
 \Edge[color=black](B)(F)
 \end{tikzpicture}
-\caption{A $2$-d Adinkra with $(2,2)$ colors. The grading coordinates is given next to the nodes as $(h_L, h_R)$. \label{fig:2d-example}}
+\caption{A $2$-d Adinkra with $(2,2)$ colors. The grading coordinates are given next to the nodes as $(h_L, h_R)$. \label{fig:2d-example}}
 \end{center}
 \end{figure}
 
@@ -611,24 +610,14 @@ Let $A$ be a connected $2$-d Adinkra.  Then there is a vertex switch $F$ and an 
 as an isomorphism of $2$-d Adinkras (that is, as an isomorphism of graphs that preserves colors, dashing, and bigrading).
 \end{thm}
 
-To prove Theorem~\ref{thm:quotient}, we first construct a color and bigrading preserving graph isomorphism
-\[\tilde{\Phi}:A'/K\to A.\]
-Finally we identify the vertex switching $F$ that proves the theorem.
-
+We prove Theorem~\ref{thm:quotient} in two steps, by first constructing a (color and bigrading preserving) graph isomorphism $\tilde{\Phi}:A'/K\to A$ and then finding a suitable vertex switch $F$.
 
 \begin{thm}
 \label{thm:isocolors}
-The code $K$ acts on $A'$ via color preserving isomorphisms to produce a quotient $A'/K$.  There is a color preserving graph epimorphism
-\[\Phi:A' \to A\]
-that sends $(\overline{0},\overline{0})$ to $\overline{0}$.  This descends to $A'/K$ to produce a color preserving graph isomorphism
-\[\tilde{\Phi}:A'/K\to A.\]
+The code $K$ acts on $A'$ via color preserving isomorphisms to produce a quotient $A'/K$.  There is a color preserving graph epimorphism $\Phi:A' \to A$ that sends $(\overline{0},\overline{0})$ to $\overline{0}$.  This descends to $A'/K$ to produce a color preserving graph isomorphism $\tilde{\Phi}:A'/K\to A$.
 \end{thm}
 \begin{proof}
-Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have
-\[I^n/C \cong A\]
-and
-\[I^n/C'\cong A'.\]
-These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
+Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have $I^n/C \cong A$ and $I^n/C'\cong A'$. These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
 
 Now $K$ is a doubly even code, and $K\cap C'=0$, so $K$ acts on $I^n/C'$ and on $A'$ in a way that nontrivial elements of $K$ move vertices a distance greater than $2$.  By \cite{zhang:adinkras}, this means we can quotient the colored graph $I^n/C'$, and thus $A'$, by $K$.  We then have the following commutative diagram of colored graphs:
 
@@ -745,9 +734,7 @@ Finally, if $\mu$ and $\bar{\mu}$ are equal on $T$, consider any edge $e$ not in
 
 \begin{lem}
 \label{lem:switch12}
-The parities of $\mu_1$ and $\mu_2$ agree on every cycle of $A'$.
-
-Hence, by the above lemma, there exists a vertex switching that sends $\mu_1$ to $\mu_2$.
+The parities of $\mu_1$ and $\mu_2$ agree on all cycles of $A'$.
 \end{lem}
 \begin{proof}
 Let our cycle be $(v_0,v_1,\ldots,v_k)$ with $v_0=v_k$.  We first consider the case where $v_0=\overline{0}$.
@@ -767,22 +754,15 @@ It is straightforward to find a series of adjacent swaps so that the left-moving
 Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
 \end{proof}
 
+We are now ready to put everything together and prove our main theorem.
 
 \begin{proof}[Proof of Theorem~\ref{thm:quotient}]
 Let $A$ be a connected $2$-d Adinkra, and define $A_L^0$, $A_R^0$, $A'$, $C'$, $K$, $\Phi$, and $\tilde{\Phi}$ as above.
 
 Use Construction~\ref{const:product} to construct the $2$-d Adinkra $A'=A_L^0\times A_R^0$ with dashing $\mu_1$.
-By Theorem~\ref{thm:isocolors} and Theorem~\ref{thm:isograding}, there is a graph homomorphism
-\[\Phi:A' \to A\]
-that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$, and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} says that there exists a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
+By Theorem~\ref{thm:isocolors} and Theorem~\ref{thm:isograding}, there is a graph homomorphism $\Phi:A' \to A$ that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$ and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} and Lemma~\ref{lem:cycles-switching-class} together gives the existence of a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
 
-By Theorem~\ref{thm:isograding}, $K$ acts on $A'$ to produce a well-defined $2$-d Adinkra without dashing:
-\[A'/K\]
-and an isomorphism
-\[\tilde{\Phi}:A'/K\to A\]
-that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, there is a well-defined $2$-d Adinkra with dashing
-\[F(A')/K\]
-Note that this is the same as $A'/K$ if we ignore dashing.  Since $F(A')$ and $A'$ only differ in dashing, $\tilde{\Phi}$ is still an isomorphism that preserves colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
+By Theorem~\ref{thm:isograding}, $K$ acts on $A'$ to produce $A'/K$, a well-defined $2$-d Adinkra without dashing, and an isomorphism $\tilde{\Phi}:A'/K\to A$ that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, we obtain  $F(A')/K$, a well-defined $2$-d Adinkra with dashing. Since $F(A')$ and $A'$ only differ in dashing, $\tilde{\Phi}$ is still an isomorphism that preserves colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
 
 \section{The Structure of $2$-d Adinkras}
