@@ -390,7 +390,7 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 
 \end{tikzpicture}
 \end{tabular}
-\caption{Constructing the $2$-d Adinkra from two smaller $1$-d Adinkras. Note that the dashings are all ``consistent'' with the smaller Adinkras, except for the right-moving edges on the upper-left ``boundary'' of the rectangle; these correspond to right-moving edges where the grading corresponding to the first Adinkra has height $1$.\label{fig:product}}
+\caption{Constructing the $2$-d Adinkra (right) from two smaller $1$-d Adinkras (middle and left) as a product. Note that the dashings are all ``consistent'' with the smaller Adinkras, except for the right-moving edges on the upper-left ``boundary'' of the rectangle; these correspond to right-moving edges where the grading corresponding to the first Adinkra has height $1$.\label{fig:product}}
 \end{center}
 \end{figure}
 
@@ -538,25 +538,25 @@ See Figure~\ref{fig:example-quotient} for this example. To use Theorem~\ref{thm:
 
 \begin{figure}
 \begin{center}
-\begin{tabular}{c}
+\begin{tabular}{c|c|c}
 \begin{tikzpicture}[scale=0.1]
 \SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{000000}
-\Vertex[x=-50,y=40]{000100}
-\Vertex[x=-40,y=40]{001000}
+\Vertex[x=-40,y=40]{000100}
+\Vertex[x=-30,y=40]{001000}
 \Vertex[x=10,y=0]{001100}
-\Vertex[x=-30,y=40]{010000}
+\Vertex[x=-20,y=40]{010000}
 \Vertex[x=20,y=0]{010100}
 \Vertex[x=30,y=0]{011000}
-\Vertex[x=-20,y=40]{011100}
-\Vertex[x=40,y=40]{000001}
+\Vertex[x=-10,y=40]{011100}
+\Vertex[x=30,y=40]{000001}
 \Vertex[x=0,y=80]{000101}
 \Vertex[x=10,y=80]{001001}
-\Vertex[x=50,y=40]{001101}
+\Vertex[x=40,y=40]{001101}
 \Vertex[x=20,y=80]{010001}
-\Vertex[x=60,y=40]{010101}
-\Vertex[x=70,y=40]{011001}
+\Vertex[x=50,y=40]{010101}
+\Vertex[x=60,y=40]{011001}
 \Vertex[x=30,y=80]{011101}
 
 \Edge[color=blue](000000)(000100)
@@ -612,9 +612,7 @@ See Figure~\ref{fig:example-quotient} for this example. To use Theorem~\ref{thm:
 \Edge[color=purple](001100)(001101)
 \Edge[color=purple](011000)(011001)
 \Edge[color=purple](011100)(011101)
-\end{tikzpicture} \\
-\hline
-\begin{tabular}{l|r}
+\end{tikzpicture} &
 \begin{tikzpicture}[scale=0.1]
 \SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
@@ -655,10 +653,9 @@ See Figure~\ref{fig:example-quotient} for this example. To use Theorem~\ref{thm:
 \Edge[color=purple](000000)(000001)
 \Edge[color=purple](001100)(001101)
 \end{tikzpicture}
-\end{tabular} 
 \end{tabular}
 \end{center}
-\caption{Top: a $2$-d Adinkra with dashes omitted. Bottom: picking any vertex and looking at connected components give us a pair of $1$-d Adinkras $A_L^0$ and $A_R^0$, the product of which contains as a quotient the original Adinkra; in this case we quotient via a $1$-dimensional code of size $2^1 = 2$, obtaining $8 \times 4 / 2 = 16$ vertices, as desired.  \label{fig:example-quotient}}
+\caption{Left: a $2$-d Adinkra with dashes omitted. Middle and right: picking any vertex and looking at connected components give us a pair of $1$-d Adinkras $A_L^0$ and $A_R^0$, the product of which contains as a quotient the original Adinkra; in this case we quotient via a $1$-dimensional code of size $2^1 = 2$, obtaining the desired $8 \times 4 / 2 = 16$ vertices.  \label{fig:example-quotient}}
 \end{figure}
 
 
@@ -701,8 +698,6 @@ Standard arguments in linear algebra allow us to choose the generating basis for
 where the horizontal lines separate the three subspaces.  Each line has weight a multiple of $4$, where the first two lines have the $1$s all on one side or the other, while the last two lines (the ones responsible for $K$) have the $1$s split on both sides in a way that both sides have even weight.
 
 Then $V^0$ has four elements: $\overline{0}$, $(00110000)\overline{0}$, $(10100000)\overline{0}$, and $(10010000)\overline{0}$.
-
-\com{Should we draw a $2$-d Adinkra for this?}
 \end{ex}
 
 
