@@ -907,18 +907,16 @@ Consider a connected component of $A_L$.  Suppose $v$ is a vertex in this connec
 From these results and the results of the previous section, we now fully know what a $2$-d Adinkra looks like. All of the graphical data of a $2$-d Adinkra is basically dictated by the connected components (one from left-moving colors and one from right-moving colors) of any single vertex and how they are glued together (this is what $K$ encodes); then these ``slices'' are put together into a rectangle.
 
 \subsection{Constructing $2$-d Adinkras}
-One way to view Theorem~\ref{thm:quotient} is as a way to construct all $2$-d Adinkras.
+An alternate way to view Theorem~\ref{thm:quotient} is as a way to construct all $2$-d Adinkras.
 
 \begin{construction}
-First choose an ESDC code $C$.  Write
-\[C=C_L\oplus C_R\oplus K\]
+First choose any doubly-even code and any codeword in its orthogonal complement. Theorem~\ref{thm:esde} shows this is exactly the amount of data we need to create an ESDC code $C$.  Write
+\[C=C_L\oplus C_R\oplus K,\]
 where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$.  Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$, where $\pi_L:\ZZ_2^n\to\ZZ_2^p$ is projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ is projection onto the last $q$ bits.
 
-Use the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} on $A_1/\pi_L(K)$ and $A_2/\pi_R(K)$ to create a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$.
+Second, we need a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$. There are a finite number of rank functions to consider for each graph. One can use either the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} or consider the vertices of the ``rank family poset'' from \cite{zhang:adinkras}. Construct the quotient $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading. The invariance of the gradings $h_1$ and $h_2$ makes this bi-grading well-defined under the quotient.
 
-Let $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading.  The fact that this bigrading descends to the quotient by $K$ requires that the gradings $h_1$ and $h_2$ were invariant under $\pi_L(K)$ and $\pi_R(K)$, respectively.
-
-The fact that $C$ is doubly even implies that there is an admissible dashing on $A$.  To construct these, one approach would be to use \cite{d2l:topology} to come up with a dashing on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull this back to $A$.
+Finally, we put an admissable dashing on $A$. This is possible because $C$ is doubly even: one approach would be to use \cite{d2l:topology} to come up with a dashing on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull this back to $A$.
 \end{construction}
 
 \begin{thm}
@@ -928,11 +926,7 @@ Every $2$-d Adinkra can obtained by this construction.
 \begin{proof}
 Given any $2$-d Adinkra $A$, there is an ESDC code $C$.  Pick a vertex $\overline{0}$ and define $A_L^0$ and $A_R^0$ as in (\ref{thm:quotient}).
 
-Restrict the gradings $h_L$ and $h_R$ onto $A_L^0$ and $A_R^0$.  Note that if $g\in C$, then $\pi_L(g)v=\pi_R(g)v$, and so $h_L(\pi_L(g)v)=h_L(v)$ and $h_R(\pi_L(g)v)=h_R(v)$.  Therefore $h_L$ restricted to $A_L^0$ is invariant under $\pi_L$.  Likewise $h_R$ restricted to $A_R^0$ is invariant under $\pi_R$.
-
-The dashings, as described in \cite{d2l:topology}, can be obtained by choosing the specific quotient $I^n/C$.
-
-Theorem~\ref{thm:quotient} gives a description of $A$ in terms of this construction.
+Restrict the gradings $h_L$ and $h_R$ onto $A_L^0$ and $A_R^0$.  Note that if $g\in C$, then $\pi_L(g)v=\pi_R(g)v$, and so $h_L(\pi_L(g)v)=h_L(v)$ and $h_R(\pi_L(g)v)=h_R(v)$.  Therefore $h_L$ restricted to $A_L^0$ is invariant under $\pi_L$.  Likewise $h_R$ restricted to $A_R^0$ is invariant under $\pi_R$. The dashings, as described in \cite{d2l:topology}, can be obtained by choosing the specific quotient $I^n/C$. Theorem~\ref{thm:quotient} gives a description of $A$ in terms of this construction.
 \end{proof}
 
 \com{Give some examples of this construction}
