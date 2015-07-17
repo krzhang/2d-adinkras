@@ -511,7 +511,7 @@ Let $C$ be an ESDE code.  We will describe a construction that provides a $2$-d 
 
 We therefore have:
 \begin{thm}
-\label{thm:esde}
+\label{thm:esdeiff}
 For a code $C \subset \ZZ_2^n$, there exists a $2$-d Adinkra $A$ with $C(A) = C$ if and only if $C$ is a ESDE code.
 \end{thm}
 
@@ -762,7 +762,7 @@ Then $V^0$ has four elements: $\overline{0}$, $(00110000)\overline{0}$, $(101000
 While not necessary for proving the main theorem of this paper, \cite{hubsch:weaving} also asked how to classify ESDE codes.  To do this, it is useful to extend the notion of the splitting of $n$ into $p+q$.  In particular, instead of insisting that the left-moving colors be written as the first $p$ bits, we partition $[n]$ into $[n]=L\cup R$ such that $|L|=p$ and $|R|=q$.  We fix $n$ and a doubly even code $C$, then characterize which partitions into $L$ and $R$ make $C$ an ESDE.
 
 \begin{thm}
-\label{thm:esde}
+\label{thm:esdeclassify}
 Given a doubly even code $C$ of length $n$, there is a bijection between codewords in $C^\perp$ and (ordered) paritions $L \cup R$ that make $C$ into an ESDE. There are $2^{n-k}$ such partitions. 
 \end{thm}
 \begin{proof}
@@ -880,19 +880,17 @@ The construction of $\mu_1$ gives each edge in $A_L^0\times\{\overline{0}\}$ the
 
 \begin{lem}
 \label{lem:cycles-switching-class}
-Two dashings have the same parity on all cycles\footnote{This type of result has a natural reformulation with homological algebra, done in independent ways by the first author's work using cubical cohomology \cite{dil:cohomology} and the second author's work using CW-complexes \cite{zhang:adinkras}. In either formulation, having parities of $\mu_1$ and $\mu_2$ agree on cycles is equivalent to $\mu_1 = \mu_2 = 0$ in cohomology.} if and only if they belong to the same vertex switching class.
+Two dashings $\mu$ and $\bar{\mu}$ on an Adinkra $A$ have the same parity on all cycles\footnote{This type of result has a natural reformulation with homological algebra, done in independent ways by the first author's work using cubical cohomology \cite{dil:cohomology} and the second author's work using CW-complexes \cite{zhang:adinkras}. In either formulation, having parities of $\mu$ and $\bar{\mu}$ agree on cycles is equivalent to $\mu - \bar{\mu_2} = 0$ in cohomology.} if and only if there is a sequence of vertex switches that turns $\mu$ into $\bar{\mu}$.
 \end{lem}
 
 \begin{proof}
-Let the dashings be $\mu$ and $\bar{\mu}$ on the Adinkra $A$. Since vertex switching preserves parity on any cycle, the ``if'' direction is trivial and it suffices to prove the other direction.
+Since vertex switching preserves parity on any cycle, the ``if'' direction is trivial and it suffices to prove the other direction.
 
-Assume $\mu$ and $\bar{\mu}$ have the same parity on all cycles. It suffices to prove the statement for $A$ connected, since we can repeat our argument on each connected component of $A$. Pick a spanning tree $T$ of $A$, and pick a vertex $v$ of $A$ to serve as the root. The choice of $v$ induces a map $d$ on the vertices of $A$ that associates to each vertex its distance from $v$ using just edges in $T$ (so $d(v) = 0$), which in turn induces a map on the edges of $T$ by associating to each edge $(x,y)$ the min of $d(x)$ and $d(y)$ (these two values are necessarily $1$ apart). We denote this value $d(x,y)$, which gives a partial ordering on the edges of $T$, which we also call $d$ by slight abuse of notation; to be precise, $d((x,y)) < d((x,y))$ in the ordering $d$ whenever $d(x,y) < d(x,y)$ in the edge function $d$.
+Assume $\mu$ and $\bar{\mu}$ have the same parity on all cycles. It suffices to prove the statement for $A$ connected, since we can repeat our argument on each connected component of $A$.
 
-Now, extend $d$ to a total ordering $d'$ on the edges of $T$. We claim that we can vertex switch $\mu$ such that $\mu$ agrees with $\bar{\mu}$ on $T$. Take the minimal edge $e$ (under $d'$) where the two dashings differ. $e = (x,y)$, where without loss of generality $d(y) > d(x)$. Note that vertex switching at $y$ cannot change the dashing on any of the edges $e < e'$ under the ordering $d'$, since otherwise $d(y)$ should have been assigned a smaller value. Thus, we can greedily vertex switch to make $\mu$ and $\bar{\mu}$ equal on $T$.
+Next, we shall prove that for any tree $T$ that is a subgraph of $A$, there exists a vertex switch $F$ on $A$ so that $F(\mu)$ and $\bar{\mu}$ agree on $T$.  This can be proved by induction the number of vertices in $T$.  The base case of one vertex is trivial.  If $T$ has more than one vertex, then there is a leaf $v$ in $T$ connected to only one other vertex in $T$.  Let $e$ be the edge connecting $v$ to a vertex in $T$, and let $T_0$ be the tree with the vertex $v$ and edge $e$ omitted.  Then $T_0$ has one fewer vertex than $T$ so by the inductive hypothesis, there is a vertex switch $F_0$ on $A$ so that $F_0(\mu)$ and $\bar{\mu}$ agree on $T_0$.  If $F_0(\mu)(e)\not=\bar{\mu}(e)$, then let $F$ be the vertex switch $F_0$ followed by a vertex switch on $v$; otherwise let $F=F_0$.  Then $F(\mu)$ and $F_0(\mu)$ agree on $T_0$, so $F(\mu)$ agrees with $\bar{\mu}$ on all of $T$.
 
-Finally, if $\mu$ and $\bar{\mu}$ are equal on $T$, consider any edge $e$ not in $T$. This edge completes at least one cycle with edges in $T$ (otherwise $T$ was not a minimal spanning tree). Since the two cycles have the same parity in $\mu$ and $\bar{\mu}$ by assumption and the dashings agree on all edges but $e$, $e$ must be dashed in the same way under the two dashings. Thus, the two dashings must actually agree on all edges, meaning the two original dashings are in the same vertex switching class.
-% However, since $\mu$ and $\mu'$ agree on all cyclesminimal cycles, they agree on all cycles by Lemma~\ref{lem:minimal-cycles-to-all-cycles}, and in particular this cycle. 
-
+Now in the case where $T$ is a spanning tree (so that it is maximal), we claim that $F(\mu)$ and $\bar{\mu}$ agree on all of $A$.  Consider any edge $e$ not in $T$. This edge completes at least one cycle with edges in $T$ (otherwise $T$ was not a spanning tree). Since the two cycles have the same parity in $F(\mu)$ and $\bar{\mu}$ by assumption, and the $F(\mu)$ and $\bar{\mu}$ agree on all edges in the cycle except for $e$, they must agree on $e$ as well.  Thus, $F(\mu)=\bar{\mu}$ on all of $A$.
 \end{proof}
 
 
@@ -962,7 +960,7 @@ From these results and the results of the previous section, we now fully know wh
 An alternate way to view Theorem~\ref{thm:quotient} is as a way to construct all $2$-d Adinkras.
 
 \begin{construction}
-First choose any doubly-even code and any codeword in its orthogonal complement. Theorem~\ref{thm:esde} shows this is exactly the amount of data we need to create an ESDC code $C$.  Write
+First choose any doubly-even code and any codeword in its orthogonal complement. Theorem~\ref{thm:esdeclassify} shows this is exactly the amount of data we need to create an ESDC code $C$.  Write
 \[C=C_L\oplus C_R\oplus K,\]
 where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$. Use the quotient construction involved in Theorem~\ref{thm:1d-quotients} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$, where $\pi_L:\ZZ_2^n\to\ZZ_2^p$ is projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ is projection onto the last $q$ bits.
 
