@@ -307,14 +307,12 @@ We would like to study $2$-d supersymmetry. The corresponding notion of what $2$
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally:
 \begin{definition}[$2$-d Adinkras]
-Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra} with $(p,q)$ colors is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
+Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra with $(p,q)$ colors} is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
 \item $h(v)=h_L(v)+h_R(v)$.
-\item Let $(v,w)\in E$.  If $c(v,w)\le p$ then $(v,w)$ is called a left-moving edge; if $c(v,w)>p$ then it is called a right-moving edge.
+\item Let $(v,w)\in E$.  If $c(v,w)\le p$ then $(v,w)$ is called a \emph{left-moving edge}; if $c(v,w)>p$ then it is called a \emph{right-moving edge}. Similarly, the first $p$ colors are called \emph{left-moving colors} and the last $q$ colors are called \emph{right-moving colors}.
 \item if $(v,w)$ is a left-moving edge, then $|h_L(v)-h_L(w)|=1$ and $h_R(v)=h_R(w)$.  If $(v,w)$ is a right-moving edge, then $|h_R(v)-h_R(w)|=1$ and $h_L(v)=h_L(w)$.
 \end{itemize}
-
-See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \end{definition}
 
 \begin{figure}[htb]
@@ -355,6 +353,7 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra.
 \end{center}
 \end{figure}
 
+See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra. The main goal of this paper is to follow the program set out in \cite{hubsch:weaving} and completely characterize $2$-d Adinkras.
 
 \section{Products}
 \label{sec:products}
