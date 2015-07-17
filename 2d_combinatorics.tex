@@ -186,10 +186,16 @@ Figure~\ref{fig:1d-examples} give examples of $1$-d Adinkras.
 \end{center}
 \end{figure}
 
+\subsection{Codes}
+When we say \emph{code} in this paper, we always refer to a \emph{binary linear code} in $\ZZ_2^n$, which is a subspace of $\ZZ_2^n$. We call the elements of this subspace \emph{codewords}. The \emph{weight} of a codeword $w$ is the number of $1$'s in the word. A code is called \emph{even} if all its codewords have even weight. A code is called \emph{doubly-even} if all its codewords have weight divisible by $4$. An example of a doubly-even code is the span $\langle 110000, 001111\rangle$, which has $2^2 = 4$ elements. An example of a code that is even but not doubly-even is the $1$-dimensional code $\langle 11 \rangle$.
 
-\subsection{The action of $\ZZ_2^n$ and the code}
+Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
+
+\subsection{Structural aspects of $1$-d Adinkras}
 \label{sec:code}
-The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}, with minor paraphrasing.  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
+Here, we give some tools from previous work on the strucutral theory  $1$-d Adinkras, without proof. The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}, with minor paraphrasing. 
+
+ Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
 \[q_i:V\to V\]
 so that for all $v\in V$, $q_i(v)$ is the unique vertex joined to $v$ by an edge of color $i$.  In \cite{d2l:omni}, it was shown that the map $q_i$ is a graph isomorphism (in fact, an involution) from the underlying graph of $A$ to itself which preserves colors. The $q_i$ commute with each other. These facts can be used to combine the $q_1,\ldots, q_n$ maps into an action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra in the following way:
 \begin{definition}
@@ -199,7 +205,80 @@ The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on 
 
 Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to a $1$ (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
 
-The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  As a subgroup of $\ZZ_2^n$, this is a binary block code of length $n$.  The code $C(A)$ is always a doubly-even code\cite{d2l:omni,d2l:decodes}, meaning that every codeword has a number of $1$s that is a multiple of $4$. It is a useful intuition to think of the underlying graph of an Adinkra as the quotient of the $n$-dimensional Hamming cube graph under such a code\cite{d2l:omni,zhang:adinkras}. This inspires us to think about using quotients later in Section~\ref{sec:quotient}.
+The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  As a subgroup of $\ZZ_2^n$, this is a code of length $n$.
+
+We can also go in the other direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. Thus, codes in $\ZZ_2^n$ act on $I^n$. A natural operation to consider on a graph $G$ and a group $K$ acting on the vertices of $G$ is the \emph{quotient} $G/K$, where the vertices are defined to be equivalence classes of $V(G)$ under $K$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. Note that the quotient $G/K$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.
+
+\begin{thm}
+\label{thm:1d-quotients}
+$I^n/K$ is a graph of some $1$-d Adinkra if and only if $K$ is a doubly-even code.
+\end{thm}
+\begin{proof}
+See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence between graph properties of the quotient $I^n/K$ and properties of the code $K$.
+\end{proof}
+
+It is a useful intuition to think of the underlying graph of an Adinkra as the quotient of $I^n$. This also inspires us to think about using quotients later in Section~\ref{sec:quotient}. For an example of such a quotient, see Figure~\ref{fig:4cube folding}.
+
+\begin{figure}[htb]
+\begin{center}
+
+\begin{tabular}{cc}
+\begin{tikzpicture}[scale=0.10]
+\SetVertexSimple[MinSize=5pt]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=-5,y=10]{C}
+\Vertex[x=-15,y=10]{B}
+\Vertex[x=5,y=10]{D}
+\Vertex[x=15,y=10]{E}
+\Vertex[x=-25,y=20]{H'}
+\Vertex[x=-15,y=20]{G'}
+\Vertex[x=-5,y=20]{F'}
+\Vertex[x=25,y=20]{H}
+\Vertex[x=15,y=20]{G}
+\Vertex[x=5,y=20]{F}
+\Vertex[x=-5,y=30]{D'}
+\Vertex[x=-15,y=30]{E'}
+\Vertex[x=5,y=30]{C'}
+\Vertex[x=15,y=30]{B'}
+\Vertex[x=0,y=40]{A'}
+\Edges(A,B,H',C,A,D,H,E,A)
+\Edges(B,G',D,F,C,G,E,F',B)
+\Edges(A',B',H,C',A',D',H',E',A')
+\Edges(B',G,D',F',C',G',E',F,B')
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale=0.10]
+\SetVertexSimple[MinSize=5pt]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=-5,y=10]{C}
+\Vertex[x=-15,y=10]{B}
+\Vertex[x=5,y=10]{D}
+\Vertex[x=15,y=10]{E}
+%\Vertex[x=-25,y=20]{H'}
+%\Vertex[x=-15,y=20]{G'}
+%\Vertex[x=-5,y=20]{F'}
+\Vertex[x=25,y=20]{H}
+\Vertex[x=15,y=20]{G}
+\Vertex[x=5,y=20]{F}
+%\Vertex[x=-5,y=30]{D'}
+%\Vertex[x=-15,y=30]{E'}
+%\Vertex[x=5,y=30]{C'}
+%\Vertex[x=15,y=30]{B'}
+%\Vertex[x=0,y=40]{A'}
+\Edges(A,B,G)
+\Edges(B,H,C)
+\Edges(C,A,D,H,E,A)
+\Edges(D,F,C,G,E,F,B)
+%\Edges(A',B',H,C',A',D',H',E',A')
+%\Edges(B',G,D',F',C',G',E',F,B')
+
+\end{tikzpicture}
+\end{tabular}
+%\includegraphics[scale=0.5]{4cubefold}
+\caption{The graphs $I^4$ and $G = I^4/\{0000,1111\}$. As the code $\{000, 1111\}$ is doubly-even, there exists an Adinkra with $G$ as its underlying graph. \label{fig:4cube folding}}
+\end{center}
+\end{figure}
 
 
 \subsection{Vertex switching}
@@ -424,7 +503,7 @@ We now prove the converse of this theorem.  That is, given an ESDE code, there e
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$. \cite{d2l:omni,d2l:topology} \com{(I think this kind of situation is exactly where it is best to have a concrete statement that the reader could refer to in section 2. -Y)} Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.  An example of the kind of $2$-d Adinkra that arises from this construction is Figure~\ref{fig:2d-example}.
+Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$ by Theorem~\ref{thm:1d-quotients}. Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.  An example of the kind of $2$-d Adinkra that arises from this construction is Figure~\ref{fig:2d-example}.
 \end{construction}
 
 We therefore have:
@@ -700,7 +779,7 @@ Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the co
 \label{sec:quotient}
 In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$, $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
 
-The main result is
+We now try to prove the following (slight) restatement of Theorem~\ref{thm:main}:
 \begin{thm}
 \label{thm:quotient}
 Let $A$ be a connected $2$-d Adinkra.  Then there is a vertex switch $F$ and an action of $K$ on $F(A')$ that preserves colors, dashing, and bigrading, and so that
@@ -715,9 +794,9 @@ We prove Theorem~\ref{thm:quotient} in two steps, by first constructing a (color
 The code $K$ acts on $A'$ via color preserving isomorphisms to produce a quotient $A'/K$.  There is a color preserving graph epimorphism $\Phi:A' \to A$ that sends $(\overline{0},\overline{0})$ to $\overline{0}$.  This descends to $A'/K$ to produce a color preserving graph isomorphism $\tilde{\Phi}:A'/K\to A$.
 \end{thm}
 \begin{proof}
-Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.\cite{d2l:omni}  So we have $I^n/C \cong A$ and $I^n/C'\cong A'$. These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
+Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall from Theorem~\ref{thm:1d-quotients} that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.  So we have $I^n/C \cong A$ and $I^n/C'\cong A'$. These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
 
-Now $K$ is a doubly even code, and $K\cap C'=0$, so $K$ acts on $I^n/C'$ and on $A'$ in a way that nontrivial elements of $K$ move vertices a distance greater than $2$.  By \cite{zhang:adinkras}, this means we can quotient the colored graph $I^n/C'$, and thus $A'$, by $K$.  We then have the following commutative diagram of colored graphs:
+Now $K$ is a doubly even code, and $K\cap C'=0$, so $K$ acts on $I^n/C'$ and on $A'$ in a way that nontrivial elements of $K$ move vertices a distance greater than $2$. By the content of the proof of Theorem~\ref{thm:1d-quotients} \cite{zhang:adinkras}, this means we can quotient the colored graph $I^n/C'$, and thus $A'$, by $K$.  We then have the following commutative diagram of colored graphs:
 
 \[
 \begin{CD}
@@ -759,13 +838,10 @@ Let $\vec{x}\in \ZZ_2^p$ be such that $\vec{x}\overline{0}=v$.  By Lemma~\ref{le
 
 \begin{lem}
 \label{lem:phiformula}
-Let $(v,w)\in A'$, with $w=\vec{x}\overline{0}$.  Then
-\[\Phi(v,w)=Z_R(\vec{x})v.\]
+Let $(v,w)\in A'$, with $w=\vec{x}\overline{0}$.  Then $\Phi(v,w)=Z_R(\vec{x})v.$
 \end{lem}
 \begin{proof}
-We have
-\[\Phi(v,\overline{0})=v\]
-from Lemma~\ref{lem:phisides}.  Act on both sides with $Z_R(\vec{x})$, and using Lemma~\ref{lem:gphi}, the result follows.
+We have $\Phi(v,\overline{0})=v$ from Lemma~\ref{lem:phisides}.  Act on both sides with $Z_R(\vec{x})$, and using Lemma~\ref{lem:gphi}, the result follows.
 \end{proof}
 
 \begin{lem}
@@ -797,9 +873,7 @@ This theorem builds on Theorem~\ref{thm:isocolors}.  Lemma~\ref{lem:kgrading} me
 
 Unfortunately, it is too much to expect $\Phi$ to preserve the dashing, or even that the dashing on $A'=A_L^0\times A_R^0$ is invariant under the action of $K$, so that $A'/K$ could have a well-defined dashing.  However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
 
-Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A'=A_L^0\times A_R^0$.   The graph homomorphism
-\[\Phi:A'\to A\]
-pulls back the dashing $\mu$ to $\mu_2$ on $A'$. While $\mu_1$ and $\mu_2$ can be different, they agree on the following parts of the Adinkra:
+Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A'=A_L^0\times A_R^0$.   The graph homomorphism $\Phi:A'\to A$ pulls back the dashing $\mu$ to $\mu_2$ on $A'$. While $\mu_1$ and $\mu_2$ can be different, they agree on the following parts of the Adinkra:
 
 \begin{lem}
 \label{lem:agree-on-boundary}
@@ -896,11 +970,11 @@ An alternate way to view Theorem~\ref{thm:quotient} is as a way to construct all
 \begin{construction}
 First choose any doubly-even code and any codeword in its orthogonal complement. Theorem~\ref{thm:esde} shows this is exactly the amount of data we need to create an ESDC code $C$.  Write
 \[C=C_L\oplus C_R\oplus K,\]
-where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$.  Use the construction from \cite{d2l:omni,d2l:topology} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$, where $\pi_L:\ZZ_2^n\to\ZZ_2^p$ is projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ is projection onto the last $q$ bits.
+where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$. Use the quotient construction involved in Theorem~\ref{thm:1d-quotients} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$, where $\pi_L:\ZZ_2^n\to\ZZ_2^p$ is projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ is projection onto the last $q$ bits.
 
 Second, we need a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$. There are a finite number of rank functions to consider for each graph. One can use either the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} or consider the vertices of the ``rank family poset'' from \cite{zhang:adinkras}. Construct the quotient $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading. The invariance of the gradings $h_1$ and $h_2$ makes this bi-grading well-defined under the quotient.
 
-Finally, we put an admissable dashing on $A$. This is possible because $C$ is doubly even: one approach would be to use \cite{d2l:topology} to come up with a dashing on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull this back to $A$.
+Finally, we put an admissable dashing on $A$. This is possible because $C$ is doubly even: one approach would be to use \cite{d2l:topology} to come up with a dashing on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull this back to $A$; a more heavy-handed approach is to use the enumeration from \cite{zhang:adinkras} and note that the formula returns a nonzero number of admissable dashings.
 \end{construction}
 
 \begin{thm}
@@ -1079,8 +1153,9 @@ To construct $A_1 \times A_2/K$, recall that $K$ is generated by $\begin{bmatrix
 \end{center}
 \end{ex}
 
-\com{I think we should remove this example. It is unclear what separate concept it illustrates, and the above example is already quite thorough. If we were to do another example, it may be good to do one where the grading isn't forced, for example.}
 \begin{ex}
+\com{I think we should remove this example. It is unclear what separate concept it illustrates, and the above example is already quite thorough. If we were to do another example, I feel we should illustrate a different concept instead of just making it more complicated; e.g. do one where the grading isn't forced.}
+
 Consider the code given by the generating matrix
 \[\left[\begin{array}{cccc|cccc}
 1&1&1&1&0&0&0&0\\\hline
