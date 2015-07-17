@@ -207,19 +207,19 @@ We call the elements of a code  \emph{codewords}. The \emph{weight} of a codewor
 Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
 
 \subsection{Quotients}
-We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. Thus, codes in $\ZZ_2^n$ act on $I^n$. A natural operation to consider on a graph $G$ and a group $K$ acting on the vertices of $G$ is the \emph{quotient} $G/K$, where the vertices are defined to be equivalence classes of $V(G)$ under $K$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. Note that the quotient $G/K$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.
+We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. Thus, codes in $\ZZ_2^n$ act on $I^n$. A natural operation to consider on a graph $G$ and a group $C$ acting on the vertices of $G$ is the \emph{quotient} $G/C$, where the vertices are defined to be equivalence classes of $V(G)$ under $C$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. 
 
 \begin{thm}
 \label{thm:1d-quotients}
-$I^n/K$ is a graph of some $1$-d Adinkra if and only if $K$ is a doubly-even code.
+$I^n/C$ is a graph of some $1$-d Adinkra if and only if $C$ is a doubly-even code.
 \end{thm}
 \begin{proof}
-See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence between graph properties of the quotient $I^n/K$ and properties of the code $K$.
+See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
 \end{proof}
 
-Encoded within the proof of this theorem is the fact that if $K$ is a doubly-even code, then there exists an admissable dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissable dashings for any doubly-even code.
+Encoded within the proof of this theorem is the fact that if $C$ is a doubly-even code, then there exists an admissable dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissable dashings for any doubly-even code.
 
-It is a useful intuition to think of the underlying graph of an Adinkra as the quotient of $I^n$. This also inspires us to think about using quotients later in Section~\ref{sec:quotient}. For an example of such a quotient, see Figure~\ref{fig:4cube folding}.
+For an example of such a quotient, see Figure~\ref{fig:4cube folding}. Thinking about stabilizers of the group action encodes the same data as thinking about the quotient, but it helps to have both intuitions. The quotient presentation also inspires us to think about using quotients later in Section~\ref{sec:quotient}. 
 
 \begin{figure}[htb]
 \begin{center}
