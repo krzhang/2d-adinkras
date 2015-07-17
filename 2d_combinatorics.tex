@@ -106,7 +106,9 @@ Adinkras are combinatorial objects developed to study supersymmetry representati
 \section{Introduction}
 Adinkras (in this paper, called $1$-d Adinkras) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:omni,d2l:topology,zhang:adinkras,dil:cohomology,d2l:decodes}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
 
-In this paper, we characterize $2$-d Adinkras.  At the core of this is the proof of a conjecture in \cite{hubsch:weaving}.  In the language we use in this paper, the theorem is as follows:
+In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features, including the code associated with an Adinkra and the concept of vertex switching. In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how to take the product of two $1$-d Adinkras to create a $2$-d Adinkra; this operation actually turns out to be relevant to the classification of all $2$-d Adinkras in Section~\ref{sec:quotient}. Section~\ref{sec:code2d} describes the codes for $2$-d Adinkras, called \emph{ESDE codes}.
+
+In Section~\ref{sec:quotient}, we prove the main theorem:
 
 \begin{thm}
 \label{thm:main}
@@ -114,10 +116,7 @@ Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and
 \[A\cong F(A_1\times A_2)/\sim\]
 where $F$ is a vertex switch and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
-
-In \cite{hubsch:weaving}, the conjecture was phrased differently, and in Appendix~\ref{app:repn}, we explain the connection between these two formulations.
-
-In this paper, we begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features, including the code associated with an Adinkra and the concept of vertex switching.  In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how the product of two $1$-d Adinkras makes a $2$-d Adinkra, in the fashion described in the above theorem.  Section~\ref{sec:code2d} describes the codes for $2$-d Adinkras, called ESDE codes.  In Section~\ref{sec:quotient}, we prove the main theorem.  Then Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras.
+(in \cite{hubsch:weaving}, the conjecture was phrased differently, and in Appendix~\ref{app:repn}, we explain the connection between these two formulations) Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}.
 
 \section{Preliminaries}
 \label{sec:prelim}
@@ -276,7 +275,7 @@ It is a useful intuition to think of the underlying graph of an Adinkra as the q
 \end{tikzpicture}
 \end{tabular}
 %\includegraphics[scale=0.5]{4cubefold}
-\caption{The graphs $I^4$ and $G = I^4/\{0000,1111\}$. As the code $\{000, 1111\}$ is doubly-even, there exists an Adinkra with $G$ as its underlying graph. \label{fig:4cube folding}}
+\caption{The graphs $I^4$ and $G = I^4/\{0000,1111\}$. As the code $\{0000, 1111\}$ is doubly-even, there exists an Adinkra with $G$ as its underlying graph. \label{fig:4cube folding}}
 \end{center}
 \end{figure}
 
@@ -1179,8 +1178,8 @@ quotiented product
 \end{center}
 \end{ex}
 
-\section{Future Work}
-
+\section{Conclusion and Future Work}
+\label{sec:conclusion}
 In this work, we have continued in the vein of \cite{hubsch:weaving} to study $2$-d Adinkras and provided stuctural results to study them combinatorially. One obvious next step is to study higher dimensions, in each case translating the physics and representation theory into combinatorics. 
 
 \com{What else? Pure or applied?}
