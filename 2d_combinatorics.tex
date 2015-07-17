@@ -217,7 +217,7 @@ $I^n/C$ is a graph of some $1$-d Adinkra if and only if $C$ is a doubly-even cod
 See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
 \end{proof}
 
-Encoded within the proof of this theorem is the fact that if $C$ is a doubly-even code, then there exists an admissable dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissable dashings for any doubly-even code.
+Encoded within the proof of this theorem is the fact that if $C$ is a doubly-even code, then there exists an admissible dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissible dashings for any doubly-even code.
 
 For an example of such a quotient, see Figure~\ref{fig:4cube folding}. Thinking about stabilizers of the group action encodes the same data as thinking about the quotient, but it helps to have both intuitions. The quotient presentation also inspires us to think about using quotients later in Section~\ref{sec:quotient}. 
 
@@ -296,7 +296,7 @@ Given an Adinkra $A$, and a vertex $v$ of $A$, we define \emph{vertex switching 
 \mu(e),&\mbox{otherwise.}
 \end{cases}
 \end{equation}
-We leave to the reader to check that $\bar{\mu}$ is still an admissable dashing; since the vertices, edges, coloring, and grading(s) are the same, $\bar{A}$ remains an Adinkra. We also use a \emph{vertex switching of $A$} to refer to a composition of vertex switchings at various vertices of $A$. 
+We leave to the reader to check that $\bar{\mu}$ is still an admissible dashing; since the vertices, edges, coloring, and grading(s) are the same, $\bar{A}$ remains an Adinkra. We also use a \emph{vertex switching of $A$} to refer to a composition of vertex switchings at various vertices of $A$. 
 \end{definition}
 
 In \cite{douglas}, vertex switching was first applied to dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs} in literature for disambiguation.}. An enumeration of vertex switching classes leading to counting the number of dashings of any $1$-d Adinkra can be found in \cite{zhang:adinkras}.
@@ -466,7 +466,7 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 This definition is intended to be a graph-theoretic version of the tensor product construction in $\ZZ_2$-graded representations (see Appendix~\ref{app:repn} for more details).  The edges that come from $E_1$ give rise to left-moving edges, and the edges that come from $E_2$ give rise to right-moving edges.  It follows easily that for every vertex $v$ in $A_1\times A_2$ and for every color in $[n]$ there is a unique edge in $A_1\times A_2$ incident to $v$.  The fact that two-colored simple cycles have length $4$ follows from following cases, depending on whether the colors are both left-moving, both right-moving, or one of each.  The parity condition for an Adinkra also follows from considering these cases.  The properties related to the bigrading are straightforward.  We then have:
 
 \begin{prop}
-\label{prop:product-admissable}
+\label{prop:product-admissible}
 Given Adinkras $A_1$ and $A_2$, $A_1\times A_2$ is a $2$-d Adinkra.
 \end{prop}
 
@@ -493,7 +493,7 @@ This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_Lv_1=v_1$ a
 Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits. A natural question is: ``knowing that an $1$-d Adinkra is actually a $2$-d Adinkra, what else can we say about its code?'' In this section, we address this question.
 
 \begin{definition}[Weights for left-moving and right-moving colors; ESDE codes]
-Recall that for any vector $\vec{x}\in\ZZ_2^n$, the \emph{weight} of $\vec{x}$, denoted $\wt(\vec{x})$, is the number of $1$'s in $\vec{x}$.  Likewise, $\wt_L(\vec{x})$ is the the number of $1$'s in the first $p$ bits and $\wt_R(\vec{x})$ is the number of $1$'s in the last $q$ bits of $\vec{x}$. Let a code $K$, along with the parameters $(p,q)$, be called a \emph{even-split doubly even (ESDE) code} if $K$ is doubly-even and all codewords $\vec{x}$ in $K$ have both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
+Recall that for any vector $\vec{x}\in\ZZ_2^n$, the \emph{weight} of $\vec{x}$, denoted $\wt(\vec{x})$, is the number of $1$'s in $\vec{x}$.  Likewise, $\wt_L(\vec{x})$ is the the number of $1$'s in the first $p$ bits and $\wt_R(\vec{x})$ is the number of $1$'s in the last $q$ bits of $\vec{x}$. Let a code $C$, along with the parameters $(p,q)$, be called a \emph{even-split doubly even (ESDE) code} if $C$ is doubly-even and all codewords $\vec{x}$ in $C$ have both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
 \end{definition}
 
 This definition of ESDE codes is due to \cite{hubsch:weaving}, which also proves the following: 
@@ -506,7 +506,7 @@ We now prove the converse of this theorem.  That is, given an ESDE code, there e
 
 \begin{construction}
 \label{cons:valise}
-Let $K$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$ by Theorem~\ref{thm:1d-quotients}. Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.  An example of the kind of $2$-d Adinkra that arises from this construction is Figure~\ref{fig:2d-example}.
+Let $C$ be an ESDE code.  We will describe a construction that provides a $2$-d Adinkra with code $C$, called the {\em Valise 2-d Adinkra}. First, since $C$ is doubly-even, there exists a connected $1$-d Adinkra $A$ with code $C(A) = C$ by Theorem~\ref{thm:1d-quotients}. Fix a vertex $\overline{0}$ of $A$.  Now for every vertex $v$ there is a vector $\vec{x}\in\ZZ_2^n$ so that $\vec{x}\overline{0}=v$.  Then define $h_L(v)=\wt_L(\vec{x})\pmod{2}$ and $h_R(v)=\wt_R(\vec{x})\pmod{2}$.  Note that these functions are well-defined since $C$ is ESDE.  Then $(h_L, h_R)$ is a bigrading for $A$, making it a $2$-d Adinkra.  An example of the kind of $2$-d Adinkra that arises from this construction is Figure~\ref{fig:2d-example}.
 \end{construction}
 
 We therefore have:
@@ -719,7 +719,7 @@ See Figure~\ref{fig:example-quotient} for this example. To use Theorem~\ref{thm:
 \end{tikzpicture}
 \end{tabular}
 \end{center}
-\caption{Left: a $2$-d Adinkra with dashes omitted. Right: picking any vertex and looking at connected components give us a pair of $1$-d Adinkras $A_L^0$ and $A_R^0$, the product of which contains as a quotient the original Adinkra; in this case we quotient via a $1$-dimensional code of size $2^1 = 2$, obtaining the desired $8 \times 4 / 2 = 16$ vertices.  \label{fig:example-quotient}}
+\caption{Left: a $2$-d Adinkra with dashes omitted. Right: picking any vertex and looking at connected components give us a pair of $1$-d Adinkras $A_L^0$ and $A_R^0$, the product of which contains as a quotient the original Adinkra; in this case we quotient via a $1$-dimensional code $K$ of size $2^1 = 2$, obtaining the desired $8 \times 4 / 2 = 16$ vertices.  \label{fig:example-quotient}}
 \end{figure}
 
 
@@ -968,7 +968,7 @@ where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$. Use the quotient co
 
 Second, we need a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$. There are a finite number of rank functions to consider for each graph, so it is definitely possible in theory to enumerate through all gradings\footnote{For specific algorithms, one can use either the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} or consider the vertices of the ``rank family poset'' from \cite{zhang:adinkras}.} though this ends up being computationally difficult for higher $n$. Construct the quotient $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading. The invariance of the gradings $h_1$ and $h_2$ makes this bi-grading well-defined under the quotient.
 
-Finally, we put an admissable dashing on $A$. There is again a finite number of possible dashings, so this doable via an exhaustive process. We can obtain dashings on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull them back to $A$. Recall the discussion after Theorem~\ref{thm:1d-quotients} for relevant results. 
+Finally, we put an admissible dashing on $A$. There is again a finite number of possible dashings, so this doable via an exhaustive process. We can obtain dashings on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull them back to $A$. Recall the discussion after Theorem~\ref{thm:1d-quotients} for relevant results. 
 
 \end{construction}
 
@@ -1115,7 +1115,7 @@ We now take the product $A_1\times A_2$, which has $4 \times 4 = 16$ vertices:
 \end{tikzpicture}
 \end{center}
 
-To construct $A_1 \times A_2/K$, recall that $K$ is generated by $\begin{bmatrix} 1 & 1 & 1 & 1\end{bmatrix}$, which means that each vertex is identified with the vertex that is obtained by following all four colors once. We should now get a graph with $16 / 2 = 8$ vertices. If we put an admissable dashing on it, we obtain a complete $2$-d Adinkra. One such choice recovers our Adinkra from Figure~\ref{fig:1d-examples}:
+To construct $A_1 \times A_2/K$, recall that $K$ is generated by $\begin{bmatrix} 1 & 1 & 1 & 1\end{bmatrix}$, which means that each vertex is identified with the vertex that is obtained by following all four colors once. We should now get a graph with $16 / 2 = 8$ vertices. If we put an admissible dashing on it, we obtain a complete $2$-d Adinkra. One such choice recovers our Adinkra from Figure~\ref{fig:1d-examples}:
 \begin{center}
 \begin{tikzpicture}[scale=0.1]
 \SetVertexSimple[MinSize=5pt]
