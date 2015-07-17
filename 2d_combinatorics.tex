@@ -4,6 +4,7 @@
 \usepackage{array, paralist, enumerate, amsmath, amsfonts, amssymb, amscd, color, mathrsfs,comment}
 \usepackage{amsthm} % place after to make qedhere work
 %\usepackage{times}
+
 \usepackage{geometry}
 \usepackage{framed}
 \usepackage{hyperref}
@@ -214,16 +215,8 @@ Given an Adinkra $A$, and a vertex $v$ of $A$, we define \emph{vertex switching 
 \mu(e),&\mbox{otherwise.}
 \end{cases}
 \end{equation}
-A vertex switching of $A$ is a composition of vertex switchings at various vertices of $A$.
+We leave to the reader to check that $\bar{\mu}$ is still an admissable dashing; since the vertices, edges, coloring, and grading(s) are the same, $\bar{A}$ remains an Adinkra. We also use a \emph{vertex switching of $A$} to refer to a composition of vertex switchings at various vertices of $A$. 
 \end{definition}
-
-\begin{prop}
-\label{prop:switching-still-adinkra}
-If $A$ is an Adinkra, then so is $\bar{A}$.
-\end{prop}
-\begin{proof}
-Since the vertices, edges, coloring, and grading(s) are the same, the only thing to check is the admissibility of $\bar{\mu}$.  This is straightforward and left to the reader.
-\end{proof}
 
 Douglas, Gates, and Wang \cite{douglas} examined dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs} in literature for disambiguation.}. The second author \cite{zhang:adinkras} enumerated vertex switching classes and the number of dashings of $1$-d Adinkras.
 
