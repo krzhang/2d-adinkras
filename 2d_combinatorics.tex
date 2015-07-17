@@ -123,7 +123,8 @@ where $F$ is a vertex switch and  $\sim$ is described by an action of a subgroup
 
 \subsection{$1$-d Adinkras}
 \label{sec:1d}
-\emph{Adinkras} in \cite{d2l:first,d2l:graph-theoretic,zhang:adinkras} will be referred to as \emph{$1$-d Adinkras} in this paper, since they relate to supersymmetry in $1$ dimension.  We will review a definition of $1$-d Adinkras now.
+\emph{Adinkras} in \cite{d2l:first,d2l:graph-theoretic,zhang:adinkras} will be referred to as \emph{$1$-d Adinkras} in this paper, since they relate to supersymmetry in $1$ dimension. In this section, we  review a definition of $1$-d Adinkras and give some tools from previous work on their structural theory. The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}, with minor paraphrasing. 
+
 
 \begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
@@ -185,14 +186,9 @@ Figure~\ref{fig:1d-examples} give examples of $1$-d Adinkras.
 \end{center}
 \end{figure}
 
-\subsection{Codes}
-When we say \emph{code} in this paper, we always refer to a \emph{binary linear code} in $\ZZ_2^n$, which is a subspace of $\ZZ_2^n$. We call the elements of this subspace \emph{codewords}. The \emph{weight} of a codeword $w$ is the number of $1$'s in the word. A code is called \emph{even} if all its codewords have even weight. A code is called \emph{doubly-even} if all its codewords have weight divisible by $4$. An example of a doubly-even code is the span $\langle 110000, 001111\rangle$, which has $2^2 = 4$ elements. An example of a code that is even but not doubly-even is the $1$-dimensional code $\langle 11 \rangle$.
-
-Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
 
 \subsection{Structural aspects of $1$-d Adinkras}
 \label{sec:code}
-Here, we give some tools from previous work on the strucutral theory  $1$-d Adinkras, without proof. The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}, with minor paraphrasing. 
 
  Let $A$ be a $1$-d Adinkra with $n$ colors, with vertex set $V$.  For all $i\in [n]$, define
 \[q_i:V\to V\]
@@ -204,9 +200,14 @@ The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on 
 
 Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to a $1$ (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
 
-The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  As a subgroup of $\ZZ_2^n$, this is a code of length $n$.
+The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  This is a \emph{binary linear code} of length $n$ (subspace of $\ZZ_2^n$). From now on, \emph{code} will always mean binary linear codes.
 
-We can also go in the other direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. Thus, codes in $\ZZ_2^n$ act on $I^n$. A natural operation to consider on a graph $G$ and a group $K$ acting on the vertices of $G$ is the \emph{quotient} $G/K$, where the vertices are defined to be equivalence classes of $V(G)$ under $K$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. Note that the quotient $G/K$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.
+We call the elements of a code  \emph{codewords}. The \emph{weight} of a codeword $w$ is the number of $1$'s in the word. A code is called \emph{even} if all its codewords have even weight. A code is called \emph{doubly-even} if all its codewords have weight divisible by $4$. An example of a doubly-even code is the span $\langle 110000, 001111\rangle$, which has $2^2 = 4$ elements. An example of a code that is even but not doubly-even is the $1$-dimensional code $\langle 11 \rangle$.
+
+Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
+
+\subsection{Quotients}
+We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. Thus, codes in $\ZZ_2^n$ act on $I^n$. A natural operation to consider on a graph $G$ and a group $K$ acting on the vertices of $G$ is the \emph{quotient} $G/K$, where the vertices are defined to be equivalence classes of $V(G)$ under $K$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. Note that the quotient $G/K$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.
 
 \begin{thm}
 \label{thm:1d-quotients}
@@ -215,6 +216,8 @@ $I^n/K$ is a graph of some $1$-d Adinkra if and only if $K$ is a doubly-even cod
 \begin{proof}
 See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence between graph properties of the quotient $I^n/K$ and properties of the code $K$.
 \end{proof}
+
+Encoded within the proof of this theorem is the fact that if $K$ is a doubly-even code, then there exists an admissable dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissable dashings for any doubly-even code.
 
 It is a useful intuition to think of the underlying graph of an Adinkra as the quotient of $I^n$. This also inspires us to think about using quotients later in Section~\ref{sec:quotient}. For an example of such a quotient, see Figure~\ref{fig:4cube folding}.
 
@@ -488,11 +491,13 @@ This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_Lv_1=v_1$ a
 
 \section{Codes for $2$-d Adinkras}
 \label{sec:code2d}
-Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits.
+Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits. A natural question is: ``knowing that an $1$-d Adinkra is actually a $2$-d Adinkra, what else can we say about its code?'' In this section, we address this question.
 
-For any vector $\vec{x}\in\ZZ_2^n$, the \emph{weight} of $\vec{x}$, denoted $\wt(\vec{x})$, is the number of $1$s in $\vec{x}$.  Likewise, $\wt_L(\vec{x})$ is the the number of $1$s in the first $p$ bits and $\wt_R(\vec{x})$ is the number of $1$s in the last $q$ bits of $\vec{x}$.
+\begin{definition}[Weights for left-moving and right-moving colors; ESDE codes]
+Recall that for any vector $\vec{x}\in\ZZ_2^n$, the \emph{weight} of $\vec{x}$, denoted $\wt(\vec{x})$, is the number of $1$'s in $\vec{x}$.  Likewise, $\wt_L(\vec{x})$ is the the number of $1$'s in the first $p$ bits and $\wt_R(\vec{x})$ is the number of $1$'s in the last $q$ bits of $\vec{x}$. Let a code $K$, along with the parameters $(p,q)$, be called a \emph{even-split doubly even (ESDE) code} if $K$ is doubly-even and all codewords $\vec{x}$ in $K$ have both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
+\end{definition}
 
-As was proved in \cite{hubsch:weaving}, if $A$ is a $2$-d Adinkra with $(p,q)$ colors and $C(A)$ is the code, then for every $\vec{x}\in C(A)$, we have that $\wt(\vec{x})$ is a multiple of $4$ and that both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ are even.  Such a code is called \emph{even-split doubly even}, or \emph{ESDE}.  Thus, \cite{hubsch:weaving} proves the following theorem:
+This definition of ESDE codes is due to \cite{hubsch:weaving}, which also proves the following: 
 \begin{thm}
 \label{thm:esde}
 If $A$ is a connected $2$-d Adinkra with $(p,q)$ colors, then $C(A)$ is an ESDE.
@@ -727,23 +732,17 @@ Let $p=q=4$ and consider the following generating matrix for $C$:
 0&0&1&1&1&1&0&0\\
 1&0&1&0&1&0&1&0
 \end{array}\right]\]
-If we let $\vec{x}_1, \ldots, \vec{x}_4$ be the rows of this matrix, we see that $\vec{x}_1+\vec{x}_3$ has zeros on the right side of the vertical line.  Other than the zero word, no other combination has all zeros on the right side, so $Z_L(C(A_L^0))$ has generating matrix
-\[\left[\begin{array}{cccc|cccc}
+If we let $\vec{x}_1, \ldots, \vec{x}_4$ be the rows of this matrix, we see that $\vec{x}_1+\vec{x}_3$ has zeros on the right side of the vertical line.  Other than the zero word, no other combination has all zeros on the right side, so $Z_L(C(A_L^0))$ has generating matrix/vector $\left[\begin{array}{cccc|cccc}
 1&1&1&1&0&0&0&0
-\end{array}\right]\]
-and $C(A_L^0)$ has generating matrix
-\[\left[\begin{array}{cccc}
+\end{array}\right]$ and $C(A_L^0)$ has generating matrix/vector $\left[\begin{array}{cccc}
 1&1&1&1
-\end{array}\right].\]
-Likewise we can find $\vec{x}_1+\vec{x}_2+\vec{x}_3$ which is the unique nonzero codeword with all zeros on the left side, and so $Z_R(C(A_R^0))$ has generating matrix
-\[\left[\begin{array}{cccc|cccc}
+\end{array}\right].$
+
+Likewise we can find $\vec{x}_1+\vec{x}_2+\vec{x}_3$ which is the unique nonzero codeword with all zeros on the left side, and so $Z_R(C(A_R^0))$ has generating matrix/vector $\left[\begin{array}{cccc|cccc}
 0&0&0&0&1&1&1&1
-\end{array}\right]\]
-and $C(A_R^0)$ has generating matrix
-\[\left[\begin{array}{cccc}
+\end{array}\right]$ and $C(A_R^0)$ has generating matrix $\left[\begin{array}{cccc}
 1&1&1&1
-\end{array}\right].\]
-Then $A_L^0$ and $A_R^0$ are both $1$-d Adinkras with $4$ colors with code generated by $1111$, and $K$ can be taken to be (for instance)
+\end{array}\right].$ Then $A_L^0$ and $A_R^0$ are both $1$-d Adinkras with $4$ colors with code generated by $1111$, and $K$ can be taken to be (for instance)
 \[\left[\begin{array}{cccc|cccc}
 0&0&1&1&1&1&0&0\\
 1&0&1&0&1&0&1&0
@@ -761,7 +760,6 @@ Then $V^0$ has four elements: $\overline{0}$, $(00110000)\overline{0}$, $(101000
 \end{ex}
 
 
-\subsection{Classifying ESDE codes}
 While not necessary for proving the main theorem of this paper, \cite{hubsch:weaving} also asked how to classify ESDE codes.  To do this, it is useful to extend the notion of the splitting of $n$ into $p+q$.  In particular, instead of insisting that the left-moving colors be written as the first $p$ bits, we partition $[n]$ into $[n]=L\cup R$ such that $|L|=p$ and $|R|=q$.  We fix $n$ and a doubly even code $C$, then characterize which partitions into $L$ and $R$ make $C$ an ESDE.
 
 \begin{thm}
@@ -969,9 +967,10 @@ First choose any doubly-even code and any codeword in its orthogonal complement.
 \[C=C_L\oplus C_R\oplus K,\]
 where $C_L=C\cap Z_L(\ZZ_2^p)$ and $C_R=C\cap Z_R(\ZZ_2^q)$. Use the quotient construction involved in Theorem~\ref{thm:1d-quotients} to create the $1$-d Adinkras $A_1=I^p/\pi_L(C_L)$ and $A_2=I^q/\pi_R(C_R)$, where $\pi_L:\ZZ_2^n\to\ZZ_2^p$ is projection onto the first $p$ bits and $\pi_R:\ZZ_2^n\to\ZZ_2^q$ is projection onto the last $q$ bits.
 
-Second, we need a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$. There are a finite number of rank functions to consider for each graph. One can use either the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} or consider the vertices of the ``rank family poset'' from \cite{zhang:adinkras}. Construct the quotient $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading. The invariance of the gradings $h_1$ and $h_2$ makes this bi-grading well-defined under the quotient.
+Second, we need a grading $h_1$ on $A_1$ that is invariant under $\pi_L(K)$ and a grading $h_2$ on $A_2$ that is invariant under $\pi_R(K)$. There are a finite number of rank functions to consider for each graph, so it is definitely possible in theory to enumerate through all gradings\footnote{For specific algorithms, one can use either the ``hanging gardens'' construction in Ref.~\cite{d2l:graph-theoretic} or consider the vertices of the ``rank family poset'' from \cite{zhang:adinkras}.} though this ends up being computationally difficult for higher $n$. Construct the quotient $A=(A_1\times A_2)/K$ using Construction~\ref{const:product}.  This produces a graph with colors and a bigrading. The invariance of the gradings $h_1$ and $h_2$ makes this bi-grading well-defined under the quotient.
 
-Finally, we put an admissable dashing on $A$. This is possible because $C$ is doubly even: one approach would be to use \cite{d2l:topology} to come up with a dashing on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull this back to $A$; a more heavy-handed approach is to use the enumeration from \cite{zhang:adinkras} and note that the formula returns a nonzero number of admissable dashings.
+Finally, we put an admissable dashing on $A$. There is again a finite number of possible dashings, so this doable via an exhaustive process. We can obtain dashings on the $1$-d Adinkra $I^n/C$ and use $\Phi$ to pull them back to $A$. Recall the discussion after Theorem~\ref{thm:1d-quotients} for relevant results. 
+
 \end{construction}
 
 \begin{thm}
