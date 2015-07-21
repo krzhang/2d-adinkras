@@ -114,7 +114,7 @@ In Section~\ref{sec:quotient}, we prove the main theorem, which is H\"ubsch's co
 \label{thm:main}
 Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ so that
 \[A\cong F(A_1\times A_2)/\sim\]
-where $F$ is a vertex switch and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
+where $F$ is a vertex switching and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
 Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}.
 
@@ -1242,12 +1242,12 @@ In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}. 
 We now try to prove the following (slight) restatement of Theorem~\ref{thm:main}:
 \begin{thm}
 \label{thm:quotient}
-Let $A$ be a connected $2$-d Adinkra.  Then there is a vertex switch $F$ and an action of $K$ on $F(A')$ that preserves colors, dashing, and bigrading, and so that
+Let $A$ be a connected $2$-d Adinkra.  Then there is a vertex switching $F$ and an action of $K$ on $F(A')$ that preserves colors, dashing, and bigrading, and so that
 \[F(A')/K\cong A\]
 as an isomorphism of $2$-d Adinkras (that is, as an isomorphism of graphs that preserves colors, dashing, and bigrading).
 \end{thm}
 
-We prove Theorem~\ref{thm:quotient} in two steps, by first constructing a (color and bigrading preserving) graph isomorphism $\tilde{\Phi}:A'/K\to A$ and then finding a suitable vertex switch $F$.
+We prove Theorem~\ref{thm:quotient} in two steps, by first constructing a (color and bigrading preserving) graph isomorphism $\tilde{\Phi}:A'/K\to A$ and then finding a suitable vertex switching $F$.
 
 \begin{thm}
 \label{thm:isocolors}
@@ -1346,7 +1346,7 @@ The construction of $\mu_1$ gives each edge in $A_L^0\times\{\overline{0}\}$ the
 
 \begin{lem}
 \label{lem:cycles-switching-class}
-Two dashings $\mu$ and $\bar{\mu}$ on an Adinkra $A$ have the same parity on all cycles\footnote{This type of result has a natural reformulation with homological algebra, done in independent ways by the first author's work using cubical cohomology \cite{dil:cohomology} and the second author's work using CW-complexes \cite{zhang:adinkras}. In either formulation, having parities of $\mu$ and $\bar{\mu}$ agree on cycles is equivalent to $\mu - \bar{\mu_2} = 0$ in cohomology.} if and only if there is a sequence of vertex switches that turns $\mu$ into $\bar{\mu}$.
+Two dashings $\mu$ and $\bar{\mu}$ on an Adinkra $A$ have the same parity on all cycles\footnote{This type of result has a natural reformulation with homological algebra, done in independent ways by the first author's work using cubical cohomology \cite{dil:cohomology} and the second author's work using CW-complexes \cite{zhang:adinkras}. In either formulation, having parities of $\mu$ and $\bar{\mu}$ agree on cycles is equivalent to $\mu - \bar{\mu_2} = 0$ in cohomology.} if and only if there is a vertex switching on $A$ that turns $\mu$ into $\bar{\mu}$.
 \end{lem}
 
 \begin{proof}
@@ -1354,7 +1354,7 @@ Since vertex switching preserves parity on any cycle, the ``if'' direction is tr
 
 Assume $\mu$ and $\bar{\mu}$ have the same parity on all cycles. It suffices to prove the statement for $A$ connected, since we can repeat our argument on each connected component of $A$.
 
-Next, we shall prove that for any tree $T$ that is a subgraph of $A$, there exists a vertex switch $F$ on $A$ so that $F(\mu)$ and $\bar{\mu}$ agree on $T$.  This can be proved by induction the number of vertices in $T$.  The base case of one vertex is trivial.  If $T$ has more than one vertex, then there is a leaf $v$ in $T$ connected to only one other vertex in $T$.  Let $e$ be the edge connecting $v$ to a vertex in $T$, and let $T_0$ be the tree with the vertex $v$ and edge $e$ omitted.  Then $T_0$ has one fewer vertex than $T$ so by the inductive hypothesis, there is a vertex switch $F_0$ on $A$ so that $F_0(\mu)$ and $\bar{\mu}$ agree on $T_0$.  If $F_0(\mu)(e)\not=\bar{\mu}(e)$, then let $F$ be the vertex switch $F_0$ followed by a vertex switch on $v$; otherwise let $F=F_0$.  Then $F(\mu)$ and $F_0(\mu)$ agree on $T_0$, so $F(\mu)$ agrees with $\bar{\mu}$ on all of $T$.
+Next, we shall prove that for any tree $T$ that is a subgraph of $A$, there exists a vertex switching $F$ on $A$ so that $F(\mu)$ and $\bar{\mu}$ agree on $T$.  This can be proved by induction the number of vertices in $T$.  The base case of one vertex is trivial.  If $T$ has more than one vertex, then there is a leaf $v$ in $T$ incident to only one edge $e$ in $T$.  Let $T_0$ be the tree with the vertex $v$ and edge $e$ omitted.  Then $T_0$ has one fewer vertex than $T$ so by the inductive hypothesis, there is a vertex switching $F_0$ on $A$ so that $F_0(\mu)$ and $\bar{\mu}$ agree on $T_0$.  If $F_0(\mu)(e)\not=\bar{\mu}(e)$, then let $F$ be the vertex switching $F_0$ followed by a vertex switching at $v$; otherwise let $F=F_0$.  Then $F(\mu)$ and $F_0(\mu)$ agree on $T_0$, so $F(\mu)$ agrees with $\bar{\mu}$ on all of $T$.
 
 Now in the case where $T$ is a spanning tree (so that it is maximal), we claim that $F(\mu)$ and $\bar{\mu}$ agree on all of $A$.  Consider any edge $e$ not in $T$. This edge completes at least one cycle with edges in $T$ (otherwise $T$ was not a spanning tree). Since the two cycles have the same parity in $F(\mu)$ and $\bar{\mu}$ by assumption, and the $F(\mu)$ and $\bar{\mu}$ agree on all edges in the cycle except for $e$, they must agree on $e$ as well.  Thus, $F(\mu)=\bar{\mu}$ on all of $A$.
 \end{proof}
@@ -1390,7 +1390,7 @@ We are now ready to put everything together and prove our main theorem.
 Let $A$ be a connected $2$-d Adinkra, and define $A_L^0$, $A_R^0$, $A'$, $C'$, $K$, $\Phi$, and $\tilde{\Phi}$ as above.
 
 Use Construction~\ref{const:product} to construct the $2$-d Adinkra $A'=A_L^0\times A_R^0$ with dashing $\mu_1$.
-By Theorem~\ref{thm:isocolors} and Theorem~\ref{thm:isograding}, there is a graph homomorphism $\Phi:A' \to A$ that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$ and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} and Lemma~\ref{lem:cycles-switching-class} together gives the existence of a vertex switch $F$ sending $\mu_1$ to $\mu_2$.
+By Theorem~\ref{thm:isocolors} and Theorem~\ref{thm:isograding}, there is a graph homomorphism $\Phi:A' \to A$ that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$ and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} and Lemma~\ref{lem:cycles-switching-class} together gives the existence of a vertex switching $F$ sending $\mu_1$ to $\mu_2$.
 
 By Theorem~\ref{thm:isograding}, $K$ acts on $A'$ to produce $A'/K$, a well-defined $2$-d Adinkra without dashing, and an isomorphism $\tilde{\Phi}:A'/K\to A$ that preserves colors and the bigrading.  Since $\mu_2$ is invariant under $K$, we obtain  $F(A')/K$, a well-defined $2$-d Adinkra with dashing. Since $F(A')$ and $A'$ only differ in dashing, $\tilde{\Phi}$ is still an isomorphism that preserves colors and bigrading.  Since $\mu_2$ is obtained by pulling back $\mu$ from $A$, this isomorphism preserves dashing as well.
 \end{proof}
@@ -1645,7 +1645,7 @@ The relation between this conjecture and Theorem~\ref{thm:quotient} will be appa
 if $i\le p$ and
 \[Q_i(f_v\otimes f_w)=(-1)^{|h(v)|}f_v\otimes Q_i(f_w)\]
 if $i >p$.  This is the standard way in which tensor products are defined in $\ZZ_2$-graded algebras.\cite{bott_tu,freed}  Then Construction~\ref{const:product} mimics this definition on the level of Adinkras.
-\item A vertex switch on $v$ corresponds to replacing $f_v$ with $-f_v$.  Then all equations involving $Q_i(f_v)$ or $f_v$ will get an extra minus sign.  This reverses all dashings on edges connected to $v$.
+\item A vertex switching at $v$ corresponds to replacing $f_v$ with $-f_v$.  Then all equations involving $Q_i(f_v)$ or $f_v$ will get an extra minus sign.  This reverses all dashings on edges connected to $v$.
 \item A quotient defined in Theorem~\ref{thm:quotient} is a symmetry $Z$ of the representation.
 \end{itemize}
 
