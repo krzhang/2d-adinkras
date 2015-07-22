@@ -89,7 +89,7 @@
 
 %\usepackage{babel}
 
-\title{Structural Theory of 2D Adinkras}
+\title{Structural Theory of $2$-d Adinkras}
 \author{Kevin Iga and Yan X Zhang}
 
 \begin{document}
@@ -99,21 +99,26 @@
 \maketitle
 
 \begin{abstract}
-Adinkras are combinatorial objects developed to study supersymmetry representations. Most of the work so far on Adinkras apply to $1$-dimensional supersymmetry; more recently, the definition of Adinkras has been modified so as to describe $2$-dimensional supersymmetry: these we call \emph{$2$-d Adinkras}.  We prove a conjecture of T. H\"ubsch and thus in principle characterize all $2$-d Adinkras.  Along the way we characterize the codes used in $2$-d Adinkras (called \emph{even split doubly even codes} in T. H\"ubsch's work), and describe a method to construct all $2$-d Adinkras.
+Adinkras are combinatorial objects developed to study supersymmetry representations. Most of the work so far on Adinkras apply to $1$-dimensional supersymmetry; more recently, the definition of Adinkras has been modified so as to describe $2$-dimensional supersymmetry: these we call \emph{$2$-d Adinkras}.  We prove a conjecture of T. H\"ubsch and thus in principle characterize all $2$-d Adinkras.  Along the way we characterize the codes used in $2$-d Adinkras (called \emph{even-split doubly even codes} in T. H\"ubsch's work), and describe a method to construct all $2$-d Adinkras.
 \end{abstract}
 
 
 \section{Introduction}
-Adinkras (in this paper, called $1$-d Adinkras) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:omni,d2l:topology,zhang:adinkras,dil:cohomology,d2l:decodes}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
+Adinkras (in this paper, called \emph{$1$-d Adinkras}) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:omni,d2l:topology,zhang:adinkras,dil:cohomology,d2l:decodes}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
 
-In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of $1$-d Adinkras and some of their features, including the code associated with an Adinkra and the concept of vertex switching. In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how to take the product of two $1$-d Adinkras to create a $2$-d Adinkra; this operation actually turns out to be relevant to the classification of all $2$-d Adinkras in Section~\ref{sec:quotient}. Section~\ref{sec:code2d} describes the codes for $2$-d Adinkras, called \emph{ESDE codes}.
+In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, including:
+\begin{itemize}
+\item the \emph{code} associated with an Adinkra, an algebraic object that compactly stores the graphical data in an Adinkra, and 
+\item the concept of \emph{vertex switching}, an operation that produces an equivalence class on Adinkras.
+\end{itemize} 
+In Section~\ref{sec:2d} we define a $2$-d Adinkra in the spirit of \cite{gates:dimensional_extension,hubsch:weaving}.  In Section~\ref{sec:products} we define how to take the product of two $1$-d Adinkras to create a $2$-d Adinkra; this operation actually turns out to be relevant to the classification of all $2$-d Adinkras in Section~\ref{sec:quotient}. Section~\ref{sec:code2d} describes and classifies the codes for $2$-d Adinkras, called \emph{even-split doubly even (ESDE) codes}.
 
 In Section~\ref{sec:quotient}, we prove the main theorem, which is H\"ubsch's conjecture:\footnote{The formulation in \cite{hubsch:weaving} is slightly different: see Appendix~\ref{app:repn} for details.}
 
 \begin{thm}
 \label{thm:main}
 Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ so that
-\[A\cong F(A_1\times A_2)/\sim\]
+\[A\cong F(A_1\times A_2)/\sim, \]
 where $F$ is a vertex switching and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
 Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}.
@@ -146,7 +151,7 @@ If a dashing $\mu$ satisfies this condition for all two-colored simple cycles, w
 \item If $(v,w)\in E$, then $|h(v)-h(w)|=1$. Equivalently, $h$ provides a height function that makes $(V,E)$ into the Hasse diagram of a ranked poset.
 \end{enumerate}
 
-Figure~\ref{fig:1d-examples} give examples of $1$-d Adinkras.
+Figure~\ref{fig:1d-examples} gives an example of a $1$-d Adinkra.
 \end{definition}
 
 
