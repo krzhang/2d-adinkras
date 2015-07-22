@@ -954,6 +954,28 @@ an adjacent swap results in a color sequence
 \[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
 Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 4, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
 
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+\SetVertexSimple[MinSize=5pt]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=20,y=0]{B}
+\Vertex[x=40,y=20]{C}
+\Vertex[x=40,y=-20]{D}
+\Vertex[x=60,y=0]{E}
+\Vertex[x=80,y=0]{F}
+\Edge[color=green](A)(B)
+\Edge[color=black,style=dashed](B)(C)
+\Edge[color=red,style=dashed](C)(E)
+\Edge[color=red](B)(D)
+\Edge[color=black,style=dashed](D)(E)
+\Edge[color=blue,style=dashed](E)(F)
+\end{tikzpicture}
+\end{center}
+\caption{Illustrating an adjacent swap of colors.}
+\end{figure}
+
 It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
 
 Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
