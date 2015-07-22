@@ -341,7 +341,8 @@ In \cite{douglas}, vertex switching was first applied to dashings in Adinkras fr
 
 \section{$2$-d Adinkras}
 \label{sec:2d}
-We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there: the proof is found in Appendix \com{...[maybe?]}
+We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there.\footnote{The main notational difference is a kind of change of coordinates: there, nodes are labeled by \emph{mass dimension}, which is $h_L+h_R$, and \emph{spin}, which is $h_R-h_L$.  Mass dimension is the units of mass associated with the field, where $c=\hbar=1$ and spin is the eigenvalue of $\partial_t-\partial_x$.}
+
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally:
 \begin{definition}[$2$-d Adinkras]
@@ -1222,30 +1223,6 @@ if $i >p$.  This is the standard way in which tensor products are defined in $\Z
 \item A vertex switching at $v$ corresponds to replacing $f_v$ with $-f_v$.  Then all equations involving $Q_i(f_v)$ or $f_v$ will get an extra minus sign.  This reverses all dashings on edges connected to $v$.
 \item A quotient defined in Theorem~\ref{thm:quotient} is a symmetry $Z$ of the representation.
 \end{itemize}
-
-\section{Equivalence with other notions of $2$-d Adinkras}
-
-
-If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d Adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
-\begin{itemize}
-\item It is an $1$-d Adinkra (with the associated ranking, dashing, etc.).
-\item It has $p + q = n$ colors, where the first $p$-colors are called ``left-moving'' and the second $q$-colors are called ``right-moving.''
-\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d Adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
-\end{itemize} 
-
-Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
-
-%%
-
-The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d Adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
-
-\begin{prop}
-A $1$-d Adinkra can be extended to a $2$-d Adinkra if and only if the $1$-d Adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
-\end{prop}
-
-\begin{proof}
-Proof delayed until talking more with Kevin and Tristan about the easiest way to write things up to avoid reinventing wheels.
-\end{proof}
 
 \bibliographystyle{abbrv}
 \bibliography{Adinkras}

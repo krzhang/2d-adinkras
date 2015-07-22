@@ -473,3 +473,36 @@ we have the isomorphism.
 \end{proof}
 
 
+
+
+
+%%%%
+
+
+
+\section{Equivalence with other notions of $2$-d Adinkras}
+
+In \cite{gates:dimensional_extension,hubsch:weaving}, the notion of a $2$-d Adinkra is equivalent to that given here.
+
+If I read Tristan's stuff right, we can completely translate the combinatorial rules to: a \emph{2-d Adinkra} (of dimension $n$) is a finite simple connected graph $A$ such that:
+\begin{itemize}
+\item It is an $1$-d Adinkra (with the associated ranking, dashing, etc.).
+\item It has $p + q = n$ colors, where the first $p$-colors are called ``left-moving'' and the second $q$-colors are called ``right-moving.''
+\item A coherence condition: for any cycle, we imagine the following sum: going up (here ``up'' comes from the grading we have from the engineering dimension in our ranking for the $1$-d Adinkra) a left-handed edge adds $-1$, and going up a right-handed edge adds $1$; going down the edges give contributions with opposite signs. The sum of this around any cycle must be $0$. (in particular, this rules out things like ambidextrous bow-ties)
+\end{itemize} 
+
+Assuming I interpreted these rules correctly, now I can do combinatorics without needing any physics.
+
+%%
+
+The first structural fact we can impose is a bi-grading that is compatible with the grading we already have from the $1$-d Adinkra structure, in the sense that the $1$-d grading is simply one of the coordinates of our bi-grading.
+
+\begin{prop}
+A $1$-d Adinkra can be extended to a $2$-d Adinkra if and only if the $1$-d Adinkra has a \emph{bigrading} to $\ZZ^2$. This is a map $g: V \rightarrow \ZZ^2$, such that all left-moving edges correspond to displacements of $(0, 1)$ and right-moving edges correspond to displacements of $(1, 0)$.
+\end{prop}
+
+\begin{proof}
+Proof delayed until talking more with Kevin and Tristan about the easiest way to write things up to avoid reinventing wheels.
+\end{proof}
+
+
