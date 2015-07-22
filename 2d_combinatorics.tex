@@ -944,14 +944,14 @@ For this proof, we define a \emph{color sequence} of a path to be the sequence o
 We begin with the color sequence for the cycle $(v_0,\ldots,v_k)$.  We will now describe a series of modifications to this cycle, described by modifying the color sequence.  The idea is to perform a ``bubble sort'', by iteratively swapping adjacent colors until the left-moving colors are all at the beginning and the right-moving colors are all at the end.
 
 First, given a color sequence
-\[(i_1,\ldots,i_{j-1},i_j,i_{j+1},i_{j+2},\ldots,i_k)\]
+\[(c_1,\ldots,c_{j-1},c_j,c_{j+1},c_{j+2},\ldots,c_k)\]
 an adjacent swap results in a color sequence
-\[(i_1,\ldots,i_{j-1},i_{j+1},i_j,i_{j+2},\ldots,i_k).\]
-Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed.  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 4, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
+\[(c_1,\ldots,c_{j-1},c_{j+1},c_j,c_{j+2},\ldots,c_k).\]
+Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed (see Figure~\ref{fig:colorswap}).  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 4, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
 
 \begin{figure}
 \begin{center}
-\begin{tikzpicture}[scale=0.15]
+\begin{tikzpicture}[scale=0.1]
 \SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{A}
@@ -966,9 +966,28 @@ Modifying a color sequence in this way leads to a new path from $\overline{0}$. 
 \Edge[color=red](B)(D)
 \Edge[color=black,style=dashed](D)(E)
 \Edge[color=blue,style=dashed](E)(F)
+\Vertex[x=-4,y=0]{E1}
+\Vertex[x=-8,y=0]{E2}
+\Vertex[x=-12,y=0]{E3}
+\Vertex[x=84,y=0]{E4}
+\Vertex[x=88,y=0]{E5}
+\Vertex[x=92,y=0]{E6}
+\node[text width=3cm] at (15, -5) {$v_{j-2}$};
+\node[text width=3cm] at (30, -5) {$v_{j-1}$};
+\node[text width=3cm] at (53, 24) {$v_{j}$};
+\node[text width=3cm] at (53, -24) {$v_{j}{}'$};
+\node[text width=3cm] at (75, -5) {$v_{j+1}$};
+\node[text width=3cm] at (90, -5) {$v_{j+2}$};
+\node[text width=3cm] at (20,3) {$c_{j-1}$};
+\node[text width=3cm] at (40,12) {$c_{j}$};
+\node[text width=3cm] at (65,12) {$c_{j+1}$};
+\node[text width=3cm] at (39,-13) {$c_{j+1}$};
+\node[text width=3cm] at (66,-13) {$c_{j}$};
+\node[text width=3cm] at (80,3) {$c_{j+2}$};
 \end{tikzpicture}
 \end{center}
-\caption{Illustrating an adjacent swap of colors.}
+\caption{An adjacent swap of colors.  If we swap colors in position $j$ and $j+1$, vertex $v_j$ will be replaced by vertex $v_j{}'$, and the path gets modified from the upper path to the lower path in the diagram.  The parity of the path changes by exactly $1$ because the square above has odd parity.
+\label{fig:colorswap}}
 \end{figure}
 
 It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
