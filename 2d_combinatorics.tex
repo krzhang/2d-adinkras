@@ -104,9 +104,9 @@ Adinkras are combinatorial objects developed to study supersymmetry representati
 
 
 \section{Introduction}
-Adinkras (in this paper, called \emph{$1$-d Adinkras}) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:omni,d2l:topology,zhang:adinkras,dil:cohomology,d2l:decodes}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
+Adinkras (in this paper, called \emph{$1$-d Adinkras}) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:decodes,d2l:topology, d2l:graph-theoretic,dil:cohomology,d2l:omni,zhang:adinkras}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
 
-In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, reviewing the \emph{code} associated with an Adinkra\cite{d2l:omni} and the concept of \emph{vertex switching}.\cite{zhang:adinkras,dil:cohomology}  Sections~\ref{sec:2d}--\ref{sec:code2d} discuss $2$-d Adinkras: the definition, some basic constructions, and characterizing the codes associated with them.
+In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, reviewing the \emph{code} associated with an Adinkra\cite{d2l:omni} and the concept of \emph{vertex switching}.\cite{dil:cohomology,zhang:adinkras}  Sections~\ref{sec:2d}--\ref{sec:code2d} discuss $2$-d Adinkras: the definition, some basic constructions, and characterizing the codes associated with them.
 
 In Section~\ref{sec:quotient}, we prove the main theorem, which is H\"ubsch's conjecture:\footnote{The formulation in \cite{hubsch:weaving} is slightly different: see Appendix~\ref{app:repn} for details.}
 
@@ -205,25 +205,8 @@ We call the elements of a code  \emph{codewords}. The \emph{weight} of a codewor
 Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
 
 \subsection{Quotients}
-We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place.  This edge can be colored by the coordinate where they differ.  Now, codes in $\ZZ_2^n$ act on $I^n$ by left-translation modulo $2$, and this preserves colors.  A natural operation to consider on a graph $G$ and a group $C$ acting on the vertices of $G$ is the \emph{quotient} $G/C$, where the vertices are defined to be equivalence classes of $V(G)$ under $C$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. 
-
-\begin{thm}
-\label{thm:1d-quotients}
-$I^n/C$ is the colored graph of some $1$-d Adinkra if and only if $C$ is a doubly-even code.
-\end{thm}
-\begin{proof}
-See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
-\end{proof}
-
-Encoded within the proof of this theorem is the fact that if $C$ is a doubly-even code, then there exists an admissible dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissible dashings for any doubly-even code.
-
-For an example of such a quotient, see Figure~\ref{fig:4cube folding}. Thinking about stabilizers of the group action encodes the same data as thinking about the quotient, but it helps to have both intuitions. The quotient presentation also inspires us to think about using quotients later in Section~\ref{sec:quotient}. 
-
-
-
-
-
-
+We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place.  This edge can be colored by the coordinate where they differ.  Now, codes in $\ZZ_2^n$ act on $I^n$ by bitwise addition modulo $2$, and this preserves colors.  A natural operation to consider on a graph $G$ and a group $C$ acting on the vertices of $G$ is the \emph{quotient} $G/C$, where the vertices are defined to be equivalence classes of $V(G)$ under $C$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. 
+Figure~\ref{fig:4cube folding} provides an example of a quotient of $I^4$ by a code.
 
 \begin{figure}[htb]
 \begin{center}
@@ -256,13 +239,11 @@ For an example of such a quotient, see Figure~\ref{fig:4cube folding}. Thinking 
 \Edge[color=green](A')(D')
 \Edge[color=blue](A)(E)
 \Edge[color=blue](A')(E')
-\Edge[color=red](B)(F)
 \Edge[color=red](B')(F')
 \Edge[color=green](B)(G)
 \Edge[color=green](B')(G')
 \Edge[color=blue](B)(H')
 \Edge[color=blue](B')(H)
-\Edge[color=black](C)(F)
 \Edge[color=black](C')(F')
 \Edge[color=green](C)(H)
 \Edge[color=green](C')(H')
@@ -270,8 +251,10 @@ For an example of such a quotient, see Figure~\ref{fig:4cube folding}. Thinking 
 \Edge[color=blue](C')(G)
 \Edge[color=black](D)(G)
 \Edge[color=black](D')(G')
+\Edge[color=red](B)(F)
 \Edge[color=red](D)(H)
 \Edge[color=red](D')(H')
+\Edge[color=black](C)(F)
 \Edge[color=blue](D)(F')
 \Edge[color=blue](D')(F)
 \Edge[color=black](E)(H')
@@ -293,28 +276,39 @@ For an example of such a quotient, see Figure~\ref{fig:4cube folding}. Thinking 
 \Vertex[x=10,y=10]{F}
 \Vertex[x=5,y=13]{G}
 \Vertex[x=15,y=3]{H}
-\Edge[color=black](A)(B)
-\Edge[color=red](A)(C)
-\Edge[color=green](A)(D)
-\Edge[color=blue](A)(E)
-\Edge[color=red](B)(F)
-\Edge[color=green](B)(G)
-\Edge[color=blue](B)(H)
-\Edge[color=black](C)(F)
-\Edge[color=green](C)(H)
-\Edge[color=blue](C)(G)
 \Edge[color=black](D)(G)
 \Edge[color=red](D)(H)
-\Edge[color=blue](D)(F)
 \Edge[color=black](E)(H)
 \Edge[color=red](E)(G)
+\Edge[color=blue](A)(E)
+\Edge[color=blue](B)(H)
+\Edge[color=blue](C)(G)
+\Edge[color=blue](D)(F)
+\Edge[color=green](A)(D)
+\Edge[color=green](B)(G)
 \Edge[color=green](E)(F)
+\Edge[color=green](C)(H)
+\Edge[color=black](A)(B)
+\Edge[color=red](A)(C)
+\Edge[color=red](B)(F)
+\Edge[color=black](C)(F)
 \end{tikzpicture}
 \end{tabular}
 \caption{The graphs $I^4$ and $G = I^4/\{0000,1111\}$. As the code $\{0000, 1111\}$ is doubly-even, there exists an Adinkra with $G$ as its underlying graph. \label{fig:4cube folding}}
 \end{center}
 \end{figure}
 
+\begin{thm}
+\label{thm:1d-quotients}
+$I^n/C$ is the colored graph of some $1$-d Adinkra if and only if $C$ is a doubly-even code.
+\end{thm}
+\begin{proof}
+See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
+\end{proof}
+
+Encoded within the proof of this theorem is the fact that if $C$ is a doubly-even code, then there exists an admissible dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissible dashings for any doubly-even code.
+
+Thinking about stabilizers of the group action encodes the same data as thinking about the quotient, but it helps to have both intuitions. The quotient presentation also inspires us to think about using quotients later in Section~\ref{sec:quotient}. 
 
 \subsection{Vertex switching}
 \label{sec:vertexswitch}
@@ -331,6 +325,67 @@ Given an Adinkra $A$, and a vertex $v$ of $A$, we define \emph{vertex switching 
 \end{equation}
 We leave to the reader to check that $\bar{\mu}$ is still an admissible dashing; since the vertices, edges, coloring, and grading(s) are the same, $\bar{A}$ remains an Adinkra. We also use a \emph{vertex switching of $A$} to refer to a composition of vertex switchings at various vertices of $A$. 
 \end{definition}
+
+\begin{figure}[htb]
+\begin{center}
+\begin{tabular}{cc}
+\begin{tikzpicture}[scale=0.15]
+\SetVertexSimple[MinSize=5pt]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=0,y=10]{B}
+\Vertex[x=10,y=0]{C}
+\Vertex[x=5,y=3]{D}
+\Vertex[x=15,y=13]{E}
+\Vertex[x=10,y=10]{F}
+\Vertex[x=5,y=13]{G}
+\Vertex[x=15,y=3]{H}
+\Edge[color=black,style=dashed](A)(B)
+\Edge[color=red](A)(C)
+\Edge[color=green](A)(D)
+\Edge[color=black](D)(G)
+\Edge[color=red](B)(F)
+\Edge[color=green](B)(G)
+\Edge[color=green,style=dashed](C)(H)
+\Edge[color=red](D)(H)
+\Edge[color=black](C)(F)
+\Edge[color=black](E)(H)
+\Edge[color=red,style=dashed](E)(G)
+\Edge[color=green](E)(F)
+\node[text width=1cm] at (19,15) {$v$};
+\node[text width=1cm] at (10,-5){$A$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale=0.15]
+\SetVertexSimple[MinSize=5pt]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=0,y=0]{A}
+\Vertex[x=0,y=10]{B}
+\Vertex[x=10,y=0]{C}
+\Vertex[x=5,y=3]{D}
+\Vertex[x=15,y=13]{E}
+\Vertex[x=10,y=10]{F}
+\Vertex[x=5,y=13]{G}
+\Vertex[x=15,y=3]{H}
+\Edge[color=black,style=dashed](A)(B)
+\Edge[color=red](A)(C)
+\Edge[color=green](A)(D)
+\Edge[color=black](D)(G)
+\Edge[color=red](B)(F)
+\Edge[color=green](B)(G)
+\Edge[color=green,style=dashed](C)(H)
+\Edge[color=red](D)(H)
+\Edge[color=black](C)(F)
+\Edge[color=black,style=dashed](E)(H)
+\Edge[color=red](E)(G)
+\Edge[color=green,style=dashed](E)(F)
+\node[text width=1cm] at (19,15) {$v$};
+\node[text width=1cm] at (10,-5){$\bar{A}$};
+\end{tikzpicture}
+\end{tabular}
+\caption{A vertex switching at $v$ turns the Adinkra $A$ on the left into the Adinkra $\bar{A}$ on the right.  The two Adinkras have the same dashing except precisely the edges that are incident to $v$.  Note that in both cases, each face of the cube has an odd number of dashed edges.\label{fig:vertexswitch}}
+\end{center}
+\end{figure}
 
 In \cite{douglas}, vertex switching was first applied to dashings in Adinkras from a point of view inspired by Seidel's \emph{two-graphs} \cite{seidel:survey} \footnote{In Seidel's setting, \emph{vertex switching} switched the existence of edges, not the sign of edges; this can be seen as equivalent our definition applied to the complete graph. The type of vertex switching we do in this paper is sometimes called vertex switching on \emph{signed graphs} in literature for disambiguation.}. An enumeration of vertex switching classes leading to counting the number of dashings of any $1$-d Adinkra can be found in \cite{zhang:adinkras}.
 
