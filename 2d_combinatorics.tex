@@ -140,7 +140,7 @@ Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $
 
 \begin{enumerate}
 \item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 5 below.} $V$ and edge set $E$.
-\item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring}. We require that for every $v\in V$ and $c\in [n]$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. We also require that every two-colored simple cycle be of length $4$ (A \emph{simple} cycle is one which does not repeat vertices other than the starting vertex; A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$).
+\item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring}. We require that for every $v\in V$ and $c \in [n]$, there exists exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. We also require that every two-colored simple cycle be of length $4$ (A \emph{simple} cycle is one which does not repeat vertices other than the starting vertex; A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$).
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing}.  The \emph{parity} of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ is defined as the sum
 \[\sum_{i=0}^{k-1}\mu(v_i,v_{i+1})\pmod{2}.\]
 We require that the parity of $\mu$ on every two-colored simple cycle to be odd. Such a dashing $\mu$ is called \emph{admissible}.
@@ -206,13 +206,12 @@ We call the elements of a code  \emph{codewords}. The \emph{weight} of a codewor
 Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
 
 \subsection{Quotients}
-We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place.  This edge can be colored by the coordinate where they differ.  Now, codes in $\ZZ_2^n$ act on $I^n$ by bitwise addition modulo $2$, and this preserves colors.  A natural operation to consider on a graph $G$ and a group $C$ acting on the vertices of $G$ is the \emph{quotient} $G/C$, where the vertices are defined to be equivalence classes of $V(G)$ under $C$ and we have an edge $(v,w)$ if and only if there is at least one edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. 
-Figure~\ref{fig:4cube folding} provides an example of a quotient of $I^4$ by a code.
+We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place.  This edge can be colored by the coordinate where they differ.  Now, codes in $\ZZ_2^n$ act on $I^n$ by bitwise addition modulo $2$, and this preserves colors.  A natural operation to consider on a graph with coloring $G$ and a group $C$ acting on the vertices of $G$ is the \emph{quotient} $G/C$, where the vertices are defined to be equivalence classes of $V(G)$ under $C$ and we have an $c$-colored edge $(v,w)$ if and only if there is at least one $c$-colored edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. 
 
 \begin{figure}[htb]
 \begin{center}
 
-\begin{tabular}{cc}
+\begin{tabular}{ccc}
 \begin{tikzpicture}[scale=0.15]
 \SetVertexSimple[MinSize=5pt]
 \SetUpEdge[labelstyle={draw}]
@@ -294,8 +293,37 @@ Figure~\ref{fig:4cube folding} provides an example of a quotient of $I^4$ by a c
 \Edge[color=red](B)(F)
 \Edge[color=black](C)(F)
 \end{tikzpicture}
+&
+\begin{tikzpicture}[scale=0.15]
+\SetVertexSimple[MinSize=5pt]
+\SetUpEdge[labelstyle={draw}]
+\Vertex[x=15,y=20]{0000}
+\Vertex[x=0,y=10]{0001}
+\Vertex[x=10,y=10]{0010}
+\Vertex[x=20,y=10]{0100}
+\Vertex[x=30,y=10]{0111}
+\Vertex[x=5,y=0]{0011}
+\Vertex[x=15,y=0]{0101}
+\Vertex[x=25,y=0]{0110}
+\Edge[color=black](0100)(0101)
+\Edge[color=red](0100)(0110)
+\Edge[color=black](0111)(0110)
+\Edge[color=red, style=dashed](0111)(0101)
+\Edge[color=blue,style=dashed](0000)(0111)
+\Edge[color=blue,style=dashed](0001)(0110)
+\Edge[color=blue,style=dashed](0010)(0101)
+\Edge[color=blue](0100)(0011)
+\Edge[color=green](0000)(0100)
+\Edge[color=green](0001)(0101)
+\Edge[color=green](0111)(0011)
+\Edge[color=green, style=dashed](0010)(0110)
+\Edge[color=black, style=dashed](0000)(0001)
+\Edge[color=red](0000)(0010)
+\Edge[color=red](0001)(0011)
+\Edge[color=black](0010)(0011)
+\end{tikzpicture}
 \end{tabular}
-\caption{The graphs $I^4$ and $G = I^4/\{0000,1111\}$. As the code $\{0000, 1111\}$ is doubly-even, there exists an Adinkra with $G$ as its underlying graph. \label{fig:4cube folding}}
+\caption{Left: the colored graph $I^4$. Middle: the quotient $I^4/\{0000,1111\}$. Right: as the code $\{0000, 1111\}$ is doubly-even, there exists an Adinkra with the quotient as its underlying graph by Theorem~\ref{thm:1d-quotients}. \label{fig:4cube folding}}
 \end{center}
 \end{figure}
 
@@ -304,10 +332,10 @@ Figure~\ref{fig:4cube folding} provides an example of a quotient of $I^4$ by a c
 $I^n/C$ is the colored graph of some $1$-d Adinkra if and only if $C$ is a doubly-even code.
 \end{thm}
 \begin{proof}
-See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
+See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph. It may also have edges with different colors between two vertices. Part of the work here is to show these pathologies do not happen when $C$ is a doubly-even code.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
 \end{proof}
 
-Encoded within the proof of this theorem is the fact that if $C$ is a doubly-even code, then there exists an admissible dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissible dashings for any doubly-even code.
+Figure~\ref{fig:4cube folding} provides an example of a quotient of $I^4$ by a code that obeys this theorem. Encoded within the proof of Theorem~\ref{thm:1d-quotients} is the fact that if $C$ is a doubly-even code, then there exists an admissible dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissible dashings for any doubly-even code.
 
 Thinking about stabilizers of the group action encodes the same data as thinking about the quotient, but it helps to have both intuitions. The quotient presentation also inspires us to think about using quotients later in Section~\ref{sec:quotient}. 
 
