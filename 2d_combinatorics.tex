@@ -136,23 +136,15 @@ Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to und
 
 
 \begin{definition}[$1$-d Adinkras]
-Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where
-\begin{itemize}
-\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 5 below.}
- $V$ and edge set $E$,
-\item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring},
-\item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing},\footnote{When we draw a graph, we draw a dashed edge if $\mu(e)=1$ and a solid edge if $\mu(e)=0$.}
-\item $h:V\to\ZZ$ is a map called the \emph{grading}.
-\end{itemize}
+Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where: 
 
-These are required to satisfy the following:
 \begin{enumerate}
-\item For every $v\in V$ and $c\in [n]$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. 
-\item Every two-colored simple cycle must be of length 4.  (A \emph{simple} cycle is one which does not repeat vertices, with the exception of the start vertex equalling the end vertex.  A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$.)
-\item The parity of $\mu$ on every two-colored simple cycle is odd; the \emph{parity} of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ means the sum
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 5 below.} $V$ and edge set $E$.
+\item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring}. We require that for every $v\in V$ and $c\in [n]$, there exist exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. We also require that every two-colored simple cycle be of length $4$ (A \emph{simple} cycle is one which does not repeat vertices other than the starting vertex; A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$).
+\item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing}.  The \emph{parity} of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ is defined as the sum
 \[\sum_{i=0}^{k-1}\mu(v_i,v_{i+1})\pmod{2}.\]
-If a dashing $\mu$ satisfies this condition for all two-colored simple cycles, we call $\mu$ \emph{admissible}.
-\item If $(v,w)\in E$, then $|h(v)-h(w)|=1$. Equivalently, $h$ provides a height function that makes $(V,E)$ into the Hasse diagram of a ranked poset.
+We require that the parity of $\mu$ on every two-colored simple cycle to be odd. Such a dashing $\mu$ is called \emph{admissible}.
+\item $h:V\to\ZZ$ is a map called the \emph{grading}. We require that if $(v,w)\in E$, then $|h(v)-h(w)|=1$. Equivalently, $h$ provides a height function that makes $(V,E)$ into the Hasse diagram of a ranked poset.
 \end{enumerate}
 
 Figure~\ref{fig:1d-examples} gives an example of a $1$-d Adinkra.
@@ -190,7 +182,7 @@ Figure~\ref{fig:1d-examples} gives an example of a $1$-d Adinkra.
 \draw (-19,20) -- (-21,20) node [align=right, left] {$3$};
 \node [right] at (-20,25) {$h$};
 \end{tikzpicture}
-\caption{Example of a $1$-d Adinkra with $3$ colors.  The grading function is represented by the vertical height as indicated on the axis on the left.
+\caption{Example of a $1$-d Adinkra with $3$ colors. The coloring is represented by colors on the edges. The dashing is represented by having a dashed edge if $\mu(e)=1$ and a solid edge if $\mu(e)=0$. The grading is represented by the vertical height as indicated on the axis on the left.
 \label{fig:1d-examples}}
 \end{center}
 \end{figure}
