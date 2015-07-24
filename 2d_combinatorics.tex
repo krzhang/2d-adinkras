@@ -651,19 +651,19 @@ The proof for $Z_R(C(A_R^0))$ is similar.
 \end{cor}
 Comparing with Proposition~\ref{prop:prodcode}, this corollary says that the code for $A_L^0\times A_R^0$ is a linear subspace of the code for $A$.
 
-Simply for brevity (and thus, readability) in later descriptions, we define using the product construction above $A'=A_L^0\times A_R^0$, and the code $C'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Also, we write $C$ for $C(A)$.  Then $C(A')=C'$ and $C'\subset C$.
+Simply for brevity (and thus, readability) in later descriptions, we define using the product construction above $A'=A_L^0\times A_R^0$, and the code $C\,'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Also, we write $C$ for $C(A)$.  Then $C(A')=C\,'$ and $C\,'\subset C$.
 
 \begin{lem}
 \label{lem:existk}
 There exists a binary linear block code $K$ so that
-\[C=C' \oplus K.
+\[C=C\,' \oplus K.
 \]
 \end{lem}
 \begin{proof}
 From Corollary~\ref{cor:cplus} and basic linear algebra, there exists a vector subspace $K$ of $\ZZ_2^n$ that is a vector space complement of
-$C'$ in $C$.
+$C\,'$ in $C$.
 \end{proof}
-Note that $K$ is not necessarily uniquely defined.  It is, however, uniquely defined up to adding vectors in $C'$.  So a more invariant approach would be to use $C/C'$ instead of $K$, but $K$ has the advantage of being a code, therefore more concrete for computational purposes.
+Note that $K$ is not necessarily uniquely defined.  It is, however, uniquely defined up to adding vectors in $C\,'$.  So a more invariant approach would be to use $C/C\,'$ instead of $K$, but $K$ has the advantage of being a code, therefore more concrete for computational purposes.
 
 
 
@@ -679,9 +679,9 @@ given by $\Psi(\vec{x})=\vec{x}_L\overline{0}$ is a bijection.
 \begin{proof}
 If $\vec{x}\in K\subset C(A)$, then $(\vec{x}_L+\vec{x}_R)\overline{0}=\overline{0}$, so $\vec{x}_L\overline{0}=\vec{x}_R\overline{0}$.  So $\Psi(\vec{x})\in A_L^0\cap A_R^0=V^0$.
 
-To prove $\Psi$ is one-to-one, suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $\vec{x}_L\overline{0}=\vec{y}_L\overline{0}$.  Therefore $\vec{x}_L+\vec{y}_L\in C(A_L^0)$.  Likewise $\vec{x}_R+\vec{y}_R\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C'$.  Since $C'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
+To prove $\Psi$ is one-to-one, suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $\vec{x}_L\overline{0}=\vec{y}_L\overline{0}$.  Therefore $\vec{x}_L+\vec{y}_L\in C(A_L^0)$.  Likewise $\vec{x}_R+\vec{y}_R\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C\,'$.  Since $C\,'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
 
-To prove $\Psi$ is onto, let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L$ with last $q$ bits zero, so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R$ with first $p$ bits zero, so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{x}=\vec{x}_L+\vec{x}_R\in C(A)$.  Since $C(A)=C'\oplus K$, we can write $\vec{x}=\vec{c}+\vec{k}$ where $\vec{c}\in C'$ and $\vec{k}\in K$.  By the fact that $C'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$, we have that $\vec{c}_L\in Z_L(C(A_L^0))$ and so $\vec{c}_L\overline{0}=\overline{0}$.  Then
+To prove $\Psi$ is onto, let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L$ with last $q$ bits zero, so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R$ with first $p$ bits zero, so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{x}=\vec{x}_L+\vec{x}_R\in C(A)$.  Since $C(A)=C\,'\oplus K$, we can write $\vec{x}=\vec{c}+\vec{k}$ where $\vec{c}\in C\,'$ and $\vec{k}\in K$.  By the fact that $C\\,'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$, we have that $\vec{c}_L\in Z_L(C(A_L^0))$ and so $\vec{c}_L\overline{0}=\overline{0}$.  Then
 $\Psi(\vec{k})=\vec{k}_L\overline{0}
 =(\vec{x}_L-\vec{c}_L)\overline{0}
 =\vec{x}_L(\vec{c}_L(\overline{0}))
@@ -883,7 +883,7 @@ Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the co
 
 \section{Proof of main theorem}
 \label{sec:quotient}
-In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$, $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
+In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$, $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C\,'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
 
 We now try to prove the following (slight) restatement of Theorem~\ref{thm:main}:
 \begin{thm}
@@ -900,27 +900,27 @@ We prove Theorem~\ref{thm:quotient} in two steps, by first constructing a (color
 The code $K$ acts on $A'$ via color preserving isomorphisms to produce a quotient $A'/K$.  There is a color preserving graph epimorphism $\Phi:A' \to A$ that sends $(\overline{0},\overline{0})$ to $\overline{0}$.  This descends to $A'/K$ to produce a color preserving graph isomorphism $\tilde{\Phi}:A'/K\to A$.
 \end{thm}
 \begin{proof}
-Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall from Theorem~\ref{thm:1d-quotients} that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.  So we have $I^n/C \cong A$ and $I^n/C'\cong A'$. These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
+Let $I^n$ be the colored Hamming cube: that is, a graph with vertex set $\{0,1\}^n$ and two vertices are connected with an edge of color $i$ if they differ only in bit $i$.  Recall from Theorem~\ref{thm:1d-quotients} that every connected Adinkra is, as a colored graph, the quotient of $I^n$ by the code for the Adinkra.  So we have $I^n/C \cong A$ and $I^n/C\,'\cong A'$. These are isomorphisms as colored graphs.  They can be chosen so that $\vec{0}=(0,\ldots,0)$ is sent to $\overline{0}$ in $A$ and $(\overline{0},\overline{0})$ in $A'$, respectively.
 
-Now $K$ is a doubly even code, and $K\cap C'=0$, so $K$ acts on $I^n/C'$ and on $A'$ in a way that nontrivial elements of $K$ move vertices a distance greater than $2$. By the content of the proof of the extension of Theorem~\ref{thm:1d-quotients} in \cite{zhang:adinkras}, this means we can quotient the colored graph $I^n/C'$, and thus $A'$, by $K$.  We then have the following commutative diagram of colored graphs:
+Now $K$ is a doubly even code, and $K\cap C\,'=0$, so $K$ acts on $I^n/C\,'$ and on $A'$ in a way that nontrivial elements of $K$ move vertices a distance greater than $2$. By the content of the proof of the extension of Theorem~\ref{thm:1d-quotients} in \cite{zhang:adinkras}, this means we can quotient the colored graph $I^n/C\,'$, and thus $A'$, by $K$.  We then have the following commutative diagram of colored graphs:
 
 \[
 \begin{CD}
-I^n/C' @>i_1>\cong> A'\\
+I^n/C\,' @>i_1>\cong> A'\\
 @VV\pi_1 V @VV\pi_2 V\\
-(I^n/C')/K @>i_2>\cong> A'/K\\
+(I^n/C\,')/K @>i_2>\cong> A'/K\\
 \end{CD}  
 \]
 
 A standard argument gives
-\[(I^n/C')/K \cong I^n/(C'\oplus K)=I^n/C,\]
+\[(I^n/C\,'\,)/K \cong I^n/(C\,'\oplus K)=I^n/C,\]
 and adding this to the above commutative diagram, we then have:
 \[
 \xymatrixcolsep{5pc}
 \xymatrix{
-I^n/C' \ar[d]^{\pi_1} \ar[r]^{i_1}_{\cong} &A'\ar[d]^{\pi_2}\ar@/^2pc/[dd]^{\Phi} \\
-(I^n/C')/K \ar[d]^{i_4}_{\cong} \ar[r]^{i_2}_\cong &A'/K\ar[d]_{\cong}^{\tilde{\Phi}}\\
-I^n/(C'\oplus K) \ar[r]^{i_3}_\cong &A.}
+I^n/C\,' \ar[d]^{\pi_1} \ar[r]^{i_1}_{\cong} &A'\ar[d]^{\pi_2}\ar@/^2pc/[dd]^{\Phi} \\
+(I^n/C\,')/K \ar[d]^{i_4}_{\cong} \ar[r]^{i_2}_\cong &A'/K\ar[d]_{\cong}^{\tilde{\Phi}}\\
+I^n/(C\,'\oplus K) \ar[r]^{i_3}_\cong &A.}
 \]
 where $\tilde{\Phi}=i_3\circ i_4\circ i_2^{-1}$ and $\Phi=\tilde{\Phi}\circ \pi_2$.  Then $\tilde{\Phi}$ is an isomorphism of colored graphs, and $\Phi$ is an epimorphism of colored graphs.  Standard diagram chasing shows that $\Phi(\overline{0},\overline{0})=\overline{0}$.
 \end{proof}
@@ -1074,7 +1074,7 @@ Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^
 We are now ready to put everything together and prove our main theorem.
 
 \begin{proof}[Proof of Theorem~\ref{thm:quotient}]
-Let $A$ be a connected $2$-d Adinkra, and define $A_L^0$, $A_R^0$, $A'$, $C'$, $K$, $\Phi$, and $\tilde{\Phi}$ as above.
+Let $A$ be a connected $2$-d Adinkra, and define $A_L^0$, $A_R^0$, $A'$, $C\,'$, $K$, $\Phi$, and $\tilde{\Phi}$ as above.
 
 Use Construction~\ref{const:product} to construct the $2$-d Adinkra $A'=A_L^0\times A_R^0$ with dashing $\mu_1$.
 By Theorem~\ref{thm:isocolors} and Theorem~\ref{thm:isograding}, there is a graph homomorphism $\Phi:A' \to A$ that preserves colors and bigrading.  If we take the dashing $\mu$ from $A$ and pull it back using $\Phi$ to a dashing $\mu_2$ on $A'$, then Lemma~\ref{lem:switch12} and Lemma~\ref{lem:cycles-switching-class} together gives the existence of a vertex switching $F$ sending $\mu_1$ to $\mu_2$.
