@@ -99,7 +99,7 @@
 \maketitle
 
 \begin{abstract}
-Adinkras are combinatorial objects developed to study supersymmetry representations.  Adinkras that describe $2$-dimensional supersymmetry are called \emph{$2$-d Adinkras}.  We prove a conjecture of T. H\"ubsch, thereby describing a classification of all $2$-d Adinkras. \com{For advertising / diversity of content purposes, why not mention something about codes? maybe something like ``continuing with the tradition of understanding Adinkras through coding theory, we also classify the doubly even codes that appear when studying $2$-d Adinkras.''?}
+Adinkras are combinatorial objects developed to study supersymmetry representations.  Adinkras that describe $2$-dimensional supersymmetry are called \emph{$2$-d Adinkras}.  We prove a conjecture of T. H\"ubsch, thereby describing a classification of all $2$-d Adinkras.  Along the way, we classify even-split doubly even codes.
 \end{abstract}
 
 
@@ -117,14 +117,6 @@ Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and
 where $F$ is a vertex switching and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
 
-\com{possible alternate version below. Just pick whichever one you think sounds best to a person who doesn't know what we are doing. -Y:}
-\begin{thm}
-\label{thm:main}
-Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ so that
-\[A\cong A_1\times A_2/\sim, \]
-where $\sim$ is described by an action of a subgroup of $\ZZ_2^n$. This isomorphism is defined for vertex switching equivalence classes.
-\end{thm}
-
 Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}.
 
 \section{Preliminaries}
@@ -139,7 +131,7 @@ Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to und
 Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where: 
 
 \begin{enumerate}
-\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 5 below.} $V$ and edge set $E$.
+\item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 4 below.} $V$ and edge set $E$.
 \item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring}. We require that for every $v\in V$ and $c \in [n]$, there exists exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. We also require that every two-colored simple cycle be of length $4$ (A \emph{simple} cycle is one which does not repeat vertices other than the starting vertex; A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$).
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing}.  The \emph{parity} of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ is defined as the sum
 \[\sum_{i=0}^{k-1}\mu(v_i,v_{i+1})\pmod{2}.\]
@@ -1031,7 +1023,7 @@ First, given a color sequence
 \[(c_1,\ldots,c_{j-1},c_j,c_{j+1},c_{j+2},\ldots,c_k)\]
 an adjacent swap results in a color sequence
 \[(c_1,\ldots,c_{j-1},c_{j+1},c_j,c_{j+2},\ldots,c_k).\]
-Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 3, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed (see Figure~\ref{fig:colorswap}).  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 4, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
+Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 2, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed (see Figure~\ref{fig:colorswap}).  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 3, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
 
 \begin{figure}
 \begin{center}
