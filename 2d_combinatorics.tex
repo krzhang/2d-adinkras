@@ -412,10 +412,10 @@ In \cite{douglas}, vertex switching was first applied to dashings in Adinkras fr
 
 \section{$2$-d Adinkras}
 \label{sec:2d}
-We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there.\footnote{The main notational difference is a kind of change of coordinates: there, nodes are labeled by \emph{mass dimension}, which is $h_L+h_R$, and \emph{spin}, which is $h_R-h_L$.  Mass dimension is the units of mass associated with the field, where $c=\hbar=1$ and spin is the eigenvalue of $\partial_t-\partial_x$.}
+We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there.\footnote{The main notational difference is a kind of change of coordinates: there, nodes are labeled by \emph{mass dimension}, which is $h_L+h_R$, and \emph{spin}, which is $h_R-h_L$.  Mass dimension is the units of mass associated with the field, where $c=\hbar=1$ and spin is the eigenvalue of $x\partial_t+t \partial_x$.}
 
 
-A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving edges, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally:
+A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving colors, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally:
 \begin{definition}[$2$-d Adinkras]
 Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra with $(p,q)$ colors} is a 1-d Adinkra $(V,E,c,\mu,h)$ with $p+q$ colors, and two grading functions $h_L:V\to \ZZ$ and $h_R:V\to \ZZ$ so that
 \begin{itemize}
@@ -476,12 +476,8 @@ Let $p$ and $q$ be non-negative integers.  Let $A_1=(V_1, E_1, c_1, \mu_1,h_1)$ 
 \[A_1\times A_2=(V,E,c,\mu,h_1,h_2)\]
 where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 \begin{itemize}
-\item For every $(v_1,v_2)\in E_1$ and $w\in V_2$, we have an edge $((v_1,w),(v_2,w))$ of color $c_1(v_1,v_2)$ and dashing $\mu_1(v_1,v_2)$
-\item For every $(w_1,w_2)\in E_2$ and $v\in V_1$, we have an edge $((v,w_1),(v,w_2))$ of color $p+c_2(w_1,w_2)$ and dashing
-\begin{equation}
-\label{eqn:dashprodshift}
-\mu_2(w_1,w_2)+h_1(v)
-\end{equation}
+\item For every edge $e$ in $E_1$ connecting vertices $v$ and $w\in V_1$, and for every vertex $x\in V_2$, we have an edge in $E$ between vertices $(v,x)$ and $(w,x)$ in $V=V_1\times V_2$ of color $c_1(e)$ and dashing $\mu_1(e)$.
+\item For every edge $e$ in $E_2$ connecting vertices $v$ and $w\in V_2$ and for every vertex $x\in V_1$, we have an edge in $E$ between vertices $(x,v)$ and $(x,w)$ in $V=V_1\times V_2$ of color $p+c_2(e)$ and dashing $\mu_2(e)+h_1(x)\pmod{2}$.
 \end{itemize}
  See Figure~\ref{fig:product} for an example.
 \end{construction}
