@@ -132,7 +132,7 @@ Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $
 
 \begin{enumerate}
 \item $(V,E)$ is a finite undirected graph (called the \emph{underlying graph} of the Adinkra) with vertex set\footnote{In \cite{d2l:first,d2l:graph-theoretic}, there is also a bipartition of the vertices, where some vertices are represented by open circles and called bosons, and other vertices are represented by filled circles and called fermions.  This is not necessary to include in our definition, because the bipartition can be obtained directly by taking the grading $h$ modulo $2$, which is a bipartition by property 4 below.} $V$ and edge set $E$.
-\item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring}. We require that for every $v\in V$ and $c \in [n]$, there exists exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=c$. We also require that every two-colored simple cycle be of length $4$ (A \emph{simple} cycle is one which does not repeat vertices other than the starting vertex; A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$).
+\item $c:E\to [n] := \{1,\ldots,n\}$ is a map called the \emph{coloring}. We require that for every $v\in V$ and $i \in [n]$, there exists exactly one $w\in V$ so that $(v,w)\in E$ and $c(v,w)=i$. We also require that every two-colored simple cycle be of length $4$ (A \emph{simple} cycle is one which does not repeat vertices other than the starting vertex; A \emph{two-colored} cycle is one where the set of colors of the edges has cardinality $2$).
 \item $\mu:E\to \ZZ_2=\{0,1\}$ is a map called the \emph{dashing}.  The \emph{parity} of $\mu$ on a cycle given by vertices $(v_0,\ldots,v_k)$ is defined as the sum
 \[\sum_{i=0}^{k-1}\mu(v_i,v_{i+1})\pmod{2}.\]
 We require that the parity of $\mu$ on every two-colored simple cycle to be odd. Such a dashing $\mu$ is called \emph{admissible}.
@@ -191,14 +191,14 @@ The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on 
 
 Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to a $1$ (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
 
-The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  This is a \emph{binary linear code} of length $n$ (subspace of $\ZZ_2^n$). From now on, \emph{code} will always mean binary linear codes.
+The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  This is a \emph{binary linear code} of length $n$ (i.e., a linear subspace of $\ZZ_2^n$). From now on, \emph{code} will always mean a binary linear code.
 
-We call the elements of a code  \emph{codewords}. The \emph{weight} of a codeword $w$ is the number of $1$'s in the word. A code is called \emph{even} if all its codewords have even weight. A code is called \emph{doubly-even} if all its codewords have weight divisible by $4$. An example of a doubly-even code is the span $\langle 110000, 001111\rangle$, which has $2^2 = 4$ elements. An example of a code that is even but not doubly-even is the $1$-dimensional code $\langle 11 \rangle$.
+We call the elements of a code  \emph{codewords}. The \emph{weight} of a codeword $w$ is the number of $1$'s in the word. A code is called \emph{even} if all its codewords have even weight. A code is called \emph{doubly-even} if all its codewords have weight divisible by $4$. An example of a doubly-even code is the span $\langle 111100, 001111\rangle$, which has $2^2 = 4$ elements. An example of a code that is even but not doubly-even is the $1$-dimensional code $\langle 11 \rangle$.
 
 Codes are surprisingly relevant to the structural theory of Adinkras; in fact, one should basically think of the underlying graph of an Adinkra as a doubly-even code, as we now see.
 
 \subsection{Quotients}
-We now know that the stabilizer of our action on the graph is a code. We can also go in the dual direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. There is a natural coloring on $I^n$: just color each edge by the coordinate where the two vertices differ.  Now, codes in $\ZZ_2^n$ act on $I^n$ by bitwise addition modulo $2$, and this preserves colors.  A natural operation to consider on a graph with coloring $G$ and a group $C$ acting on the vertices of $G$ is the \emph{quotient} $G/C$, where the vertices are defined to be equivalence classes of $V(G)$ under $C$ and we have an $c$-colored edge $(v,w)$ if and only if there is at least one $c$-colored edge $(v',w') \in E(G)$ with $v'$ in the preimage of $v$ and $w'$ in the preimage of $w'$. 
+We now know that the stabilizer of our action on the graph is a code. We can also go in the opposite direction: let $I^n$, the \emph{Hamming cube}, be the graph with $2^n$ vertices labeled by strings of length $n$ using the alphabet $\{0, 1\}$, with an edge between two vertices $v$ and $w$ if and only if they differ in exactly one place. There is a natural coloring on $I^n$: just color each edge by the coordinate where the two vertices differ.  Now, codes in $\ZZ_2^n$ act on $I^n$ by bitwise addition modulo $2$, and these are isomorphisms that preserve colors.  A natural operation to consider on a colored graph $\Gamma=(V,E,c)$ and a group $C$ acting on $V$ via graph isomorphisms that preserve colors is the \emph{quotient} $\Gamma/C$, where the vertices are defined to be orbits in $V/C$, and we have an $c$-colored edge $(v,w)$ if and only if there is at least one $c$-colored edge $(v',w') \in E$ with $v'$ in the orbit $v$ and $w'$ in the orbit $w$. 
 
 \begin{figure}[htb]
 \begin{center}
@@ -323,18 +323,15 @@ We now know that the stabilizer of our action on the graph is a code. We can als
 \label{thm:1d-quotients}
 $I^n/C$ is the colored graph of some $1$-d Adinkra if and only if $C$ is a doubly-even code.
 \end{thm}
-\begin{proof}
-See \cite{d2l:omni} for the original proof. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $G/C$ does not necessarily retain nice properties of $G$; it does not even have to be a simple graph. It may also have edges with different colors between two vertices. Part of the work here is to show these pathologies do not happen when $C$ is a doubly-even code.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
-\end{proof}
+
+See \cite{d2l:omni} for the original proof of this result. See \cite{zhang:adinkras} for a more general treatment of quotienting by a code and a slightly extended correspondence\footnote{Note that the quotient $\Gamma/C$ does not necessarily retain nice properties of $\Gamma$; it does not even have to be a simple graph. It may also have edges with different colors between two vertices. Part of the work here is to show these pathologies do not happen when $C$ is a doubly-even code.} between graph properties of the quotient $I^n/C$ and properties of the code $C$.
+
 
 Figure~\ref{fig:4cube folding} provides an example of a quotient of $I^4$ by a code that obeys this theorem. Encoded within the proof of Theorem~\ref{thm:1d-quotients} is the fact that if $C$ is a doubly-even code, then there exists an admissible dashing. A constructive proof of existence can be found in \cite{d2l:topology}. See \cite{zhang:adinkras} for an enumeration of all admissible dashings for any doubly-even code.
 
-Thinking about stabilizers of the group action encodes the same data as thinking about the quotient, but it helps to have both intuitions. The quotient presentation also inspires us to think about using quotients later in Section~\ref{sec:quotient}. 
-
 \subsection{Vertex Switching}
 \label{sec:vertexswitch}
-
-The following concept, somewhat ubiquitous in combinatorics under different guises, is first introduced in the context of Adinkras in \cite{d2l:first} and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
+Vertex switching was first introduced in the context of Adinkras in \cite{d2l:first} and is more thoroughly set in its context in \cite{dil:cohomology,zhang:adinkras}.
 
 \begin{definition}[Vertex switching]
 Given an Adinkra $A$, and a vertex $v$ of $A$, we define \emph{vertex switching at $v$} to be the operation on $A$ that returns a new Adinkra $\bar{A}$ with the same vertices, edges, coloring, and grading but a new dashing $\bar{\mu}$ so that
@@ -412,7 +409,7 @@ In \cite{douglas}, vertex switching was first applied to dashings in Adinkras fr
 
 \section{$2$-d Adinkras}
 \label{sec:2d}
-We would like to study $2$-d supersymmetry. The corresponding notion of what $2$-d Adinkras should be is described in \cite{gates:dimensional_extension,hubsch:weaving}.  We use a definition here that is equivalent to the one found there.\footnote{The main notational difference is a kind of change of coordinates: there, nodes are labeled by \emph{mass dimension}, which is $h_L+h_R$, and \emph{spin}, which is $h_R-h_L$.  Mass dimension is the units of mass associated with the field, where $c=\hbar=1$ and spin is the eigenvalue of $x\partial_t+t \partial_x$.}
+Just as $1$-d Adinkras were used to study $1$-d supersymmetry, Gates and H\"ubsch developed $2$-d Adinkras to study $2$-d supersymmetry.\cite{gates:dimensional_extension,hubsch:weaving}  We use a definition here that is equivalent to the one found there.\footnote{The main notational difference is a kind of change of coordinates: there, nodes are labeled by \emph{mass dimension}, which is $h_L+h_R$, and \emph{spin}, which is $h_R-h_L$.  Mass dimension is the units of mass associated with the field, where $c=\hbar=1$ and spin is the eigenvalue of $x\partial_t+t \partial_x$.}
 
 
 A $2$-d Adinkra is similar to a $1$-d Adinkra except that some colors are called ``left-moving'' and the other colors called ``right-moving''.  Edges are called ``left-moving'' if they are colored by left-moving colors, and right-moving otherwise.  Furthermore, there are two gradings, one that is affected by the left-moving edges and the other for the right-moving edges. More formally:
@@ -467,8 +464,7 @@ See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra. The main goal
 
 \section{Products}
 \label{sec:products}
-
-We now begin to explore the structural theory of $2$-d Adinkras. It is desirable to have some way of combining Adinkras to make bigger ones (and conversely, breaking down bigger ones into smaller pieces). It is thus natural to consider defining products of Adinkras. With the right definition, it turns out that one way to get $2$-d Adinkras is to take a product of two $1$-d Adinkras, where the first Adinkra gives the left-moving colors and the second Adinkra gives the right-moving colors. We will eventually see in the next section that this operation (plus a quotient) is all we need to characterize a $2$-d Adinkra.
+One important way to produce a $2$-d Adinkra with $(p,q)$ colors is to take the product of two $1$-d Adinkras (one with $p$ colors, and the other with $q$ colors), using the following construction.
 
 \begin{construction}
 \label{const:product}
@@ -512,21 +508,24 @@ where $V=V_1\times V_2$ and there are two kinds of edges in $E$:
 \SetUpEdge[labelstyle={draw}]
 \Vertex[x=0,y=0]{BA}
 \Vertex[x=-10,y=0]{AA}
+
 \Vertex[x=-35,y=40]{EA}
 \Vertex[x=-25,y=40]{FA}
-\Vertex[x=25,y=45]{AF}
+
+\Vertex[x=15,y=35]{AF}
+\Vertex[x=25,y=35]{BF}
 \Vertex[x=15,y=45]{AE}
-\Vertex[x=0,y=85]{EF}
-\Vertex[x=-10,y=85]{EE}
+\Vertex[x=25,y=45]{BE}
+
+\Vertex[x=-10,y=75]{EF}
 \Vertex[x=0,y=75]{FF}
-\Vertex[x=-10,y=75]{FE}
+\Vertex[x=-10,y=85]{EE}
+\Vertex[x=0,y=85]{FE}
 
 \Vertex[x=40,y=80]{AB}
 \Vertex[x=50,y=80]{BB}
 \Vertex[x=15,y=120]{EB}
 \Vertex[x=25,y=120]{FB}
-\Vertex[x=25,y=35]{BF}
-\Vertex[x=15,y=35]{BE}
 
 \Edge[color=blue](AA)(EA)
 \Edge[color=blue, style=dashed](BA)(FA)
@@ -677,7 +676,7 @@ If $\vec{x}\in K\subset C(A)$, then $(\vec{x}_L+\vec{x}_R)\overline{0}=\overline
 
 To prove $\Psi$ is one-to-one, suppose $\Psi(\vec{x})=\Psi(\vec{y})$.  Then $\vec{x}_L\overline{0}=\vec{y}_L\overline{0}$.  Therefore $\vec{x}_L+\vec{y}_L\in C(A_L^0)$.  Likewise $\vec{x}_R+\vec{y}_R\in C(A_R^0)$.  So $\vec{x}+\vec{y}\in C\,'$.  Since $C\,'\cap K=\{\vec{0}\}$, we have that $\Psi$ is one-to-one.
 
-To prove $\Psi$ is onto, let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L$ with last $q$ bits zero, so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R$ with first $p$ bits zero, so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{x}=\vec{x}_L+\vec{x}_R\in C(A)$.  Since $C(A)=C\,'\oplus K$, we can write $\vec{x}=\vec{c}+\vec{k}$ where $\vec{c}\in C\,'$ and $\vec{k}\in K$.  By the fact that $C\\,'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$, we have that $\vec{c}_L\in Z_L(C(A_L^0))$ and so $\vec{c}_L\overline{0}=\overline{0}$.  Then
+To prove $\Psi$ is onto, let $v\in V^0$.  Since $v\in A_L^0$, there exists $\vec{x}_L$ with last $q$ bits zero, so that $\vec{x}_L\overline{0}=v$ in $A_L^0$.  Likewise there exists $\vec{x}_R$ with first $p$ bits zero, so that $\vec{x}_R\overline{0}=v$ in $A_R^0$.  Then $\vec{x}=\vec{x}_L+\vec{x}_R\in C(A)$.  Since $C(A)=C\,'\oplus K$, we can write $\vec{x}=\vec{c}+\vec{k}$ where $\vec{c}\in C\,'$ and $\vec{k}\in K$.  By the fact that $C\,'=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$, we have that $\vec{c}_L\in Z_L(C(A_L^0))$ and so $\vec{c}_L\overline{0}=\overline{0}$.  Then
 $\Psi(\vec{k})=\vec{k}_L\overline{0}
 =(\vec{x}_L-\vec{c}_L)\overline{0}
 =\vec{x}_L(\vec{c}_L(\overline{0}))
@@ -879,7 +878,7 @@ Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the co
 
 \section{Proof of Main Theorem}
 \label{sec:quotient}
-In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$, $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C\,'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
+In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$ and $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C\,'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
 
 We now try to prove the following (slight) restatement of Theorem~\ref{thm:main}:
 \begin{thm}
