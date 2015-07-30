@@ -967,7 +967,7 @@ This theorem builds on Theorem~\ref{thm:isocolors}.  Lemma~\ref{lem:kgrading} me
 \end{proof}
 
 
-Unfortunately, it is too much to expect $\Phi$ to preserve the dashing, or even that the dashing on $A'=A_L^0\times A_R^0$ is invariant under the action of $K$, so that $A'/K$ could have a well-defined dashing.  However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
+Unfortunately, it is too much to expect $\Phi$ to preserve the dashing, or even that the dashing on $A'=A_L^0\times A_R^0$ is invariant under the action of $K$ (so that $A'/K$ could have an obviously well-defined dashing).  However, if we allow the operation of \emph{vertex switching}, then we can basically accomplish these goals, giving $F$ of Theorem~\ref{thm:quotient}.
 
 Consider the dashing $\mu$ on $A$.  This restricts to $A_L^0$ and $A_R^0$, and Construction~\ref{const:product} produces a dashing $\mu_1$ on $A'=A_L^0\times A_R^0$.   The graph homomorphism $\Phi:A'\to A$ pulls back the dashing $\mu$ to $\mu_2$ on $A'$. While $\mu_1$ and $\mu_2$ can be different, they agree on the following parts of the Adinkra:
 
@@ -1010,7 +1010,7 @@ For this proof, we define a \emph{color sequence} of a path to be the sequence o
 We begin with the color sequence for the cycle $(v_0,\ldots,v_k)$.  We will now describe a series of modifications to this cycle, described by modifying the color sequence.  The idea is to perform a ``bubble sort'', by iteratively swapping adjacent colors until the left-moving colors are all at the beginning and the right-moving colors are all at the end.
 
 First, given a color sequence
-\[(c_1,\ldots,c_{j-1},c_j,c_{j+1},c_{j+2},\ldots,c_k)\]
+\[(c_1,\ldots,c_{j-1},c_j,c_{j+1},c_{j+2},\ldots,c_k), \]
 an adjacent swap results in a color sequence
 \[(c_1,\ldots,c_{j-1},c_{j+1},c_j,c_{j+2},\ldots,c_k).\]
 Modifying a color sequence in this way leads to a new path from $\overline{0}$.  The path is unchanged up to $v_{j-1}$, but by the definition of Adinkras, property 2, the path returns to $v_{j+1}$ so it is only $v_j$ that has changed (see Figure~\ref{fig:colorswap}).  Thus, the new path is still a cycle starting at $\overline{0}$.  The effect on the parity of any dashing is, by property 3, to add $1$ modulo $2$.  In particular, $\mu_1$ and $\mu_2$ are both affected in the same way.
@@ -1056,9 +1056,9 @@ Modifying a color sequence in this way leads to a new path from $\overline{0}$. 
 \label{fig:colorswap}}
 \end{figure}
 
-It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parity on this modified path is the same.  Therefore, their parity on the original loop was the same.
+It is straightforward to find a series of adjacent swaps so that the left-moving colors are moved to the beginning of the color sequence.  Then the resulting path starts from $\overline{0}$, stays in $A_L^0\times\{0\}$, then follows right-moving edges, ending in $\overline{0}$.  Since the right-moving edges end in $\overline{0}$, it must be that the right-moving edges are in $\{0\}\times A_R^0$.  By Lemma~\ref{lem:agree-on-boundary}, $\mu_1$ and $\mu_2$ are equal here, and so their parities on this modified path are the same.  Therefore, their parities on the original loop were the same.
 
-Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parity of $\mu_1$ and $\mu_2$ agree on all loops.
+Now we consider loops $p$ where $v_0\not=\overline{0}$.  Since $A_L^0\times A_R^0$ is connected, there is a path $p_0$ from $\overline{0}$ to $v_0$.  Take the path $p_0$, followed by $p$, then followed by $p_0^{-1}$ (meaning $p_0$ traversed in the opposite sense).  This is a loop starting and ending in $\overline{0}$, but the parity of a dashing is the same as that of $p$, since every new edge in $p_0$ is counterbalanced by a new edge in $p_0^{-1}$.  Therefore the parities of $\mu_1$ and $\mu_2$ agree on all loops.
 \end{proof}
 
 We are now ready to put everything together and prove our main theorem.
