@@ -592,7 +592,7 @@ This means that $\vec{x}(v_1,v_2)=(v_1,v_2)$ if and only if $\vec{x}_Lv_1=v_1$ a
 
 \section{Codes for $2$-d Adinkras}
 \label{sec:code2d}
-Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits. A natural question is: ``knowing that an $1$-d Adinkra is actually a $2$-d Adinkra, what else can we say about its code?'' In this section, we address this question.
+Let $A$ be a connected $2$-d Adinkra with $(p,q)$ colors.  Then there is a doubly even code $C(A)$ associated with $A$.  But as a $2$-d Adinkra, we make a distinction between the first $p$ colors and the last $q$ colors, which for a code translates to the first $p$ bits and the last $q$ bits. A natural question is: ``knowing that an $1$-d Adinkra can be enriched into a $2$-d Adinkra, what else can we say about its code?'' In this section, we address this question.
 
 \begin{definition}[Weights for left-moving and right-moving colors; ESDE codes]
 Recall that for any vector $\vec{x}\in\ZZ_2^n$, the \emph{weight} of $\vec{x}$, denoted $\wt(\vec{x})$, is the number of $1$'s in $\vec{x}$.  Likewise, $\wt_L(\vec{x})$ is the the number of $1$'s in the first $p$ bits and $\wt_R(\vec{x})$ is the number of $1$'s in the last $q$ bits of $\vec{x}$. Let a code $C$, along with the parameters $(p,q)$, be called a \emph{even-split doubly even (ESDE) code} if $C$ is doubly-even and all codewords $\vec{x}$ in $C$ have both $\wt_L(\vec{x})$ and $\wt_R(\vec{x})$ even.
@@ -681,8 +681,6 @@ $\Psi(\vec{k})=\vec{k}_L\overline{0}
 =v.$
 \end{proof}
 
-
-Consider the following examples.
 \begin{ex}
 Let $p=4$ and $q=2$ and the generating matrix for $C$ be
 \[\left[\begin{array}{cccc|cc}
@@ -863,7 +861,7 @@ Then $V^0$ has four elements: $\overline{0}$, $(00110000)\overline{0}$, $(101000
 \end{ex}
 
 
-While not necessary for proving the main theorem of this paper, \cite{hubsch:weaving} also asked how to classify ESDE codes.  To do this, it is useful to extend the notion of the splitting of $n$ into $p+q$.  In particular, instead of insisting that the left-moving colors be written as the first $p$ bits, we partition $[n]$ into $[n]=L\cup R$ such that $|L|=p$ and $|R|=q$.  We fix $n$ and a doubly even code $C$, then characterize which partitions into $L$ and $R$ make $C$ an ESDE.
+While not necessary for proving the main theorem of this paper, \cite{hubsch:weaving} also asked how to classify ESDE codes. It turns out that the answer is fairly concise. To do this, it is useful to extend the notion of the splitting of $n$ into $p+q$.  In particular, instead of insisting that the left-moving colors be written as the first $p$ bits, we partition $[n]$ into $[n]=L\cup R$ such that $|L|=p$ and $|R|=q$.  We fix $n$ and a doubly even code $C$, then characterize which partitions into $L$ and $R$ make $C$ an ESDE.
 
 \begin{thm}
 \label{thm:esdeclassify}
