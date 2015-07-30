@@ -186,9 +186,9 @@ The action of $\ZZ_2^n$ on the graph $(V,E)$ underlying the Adinkra is given on 
 \[(x_1,\ldots,x_n)v=q_1^{x_1}\circ\cdots\circ q_n^{x_n}(v).\]
 \end{definition}
 
-Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to a $1$ (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
+Intuitively, the action of a sequence of bits, for instance, $11001$, on a vertex is obtained by following edges with colors that correspond to $1$'s in the sequence (in this case, colors $1$, $2$, and $5$).  The fact that the $q_i$'s commute implies that the order of the colors does not matter.
 
-The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  This is a \emph{binary linear code} of length $n$ (i.e., a linear subspace of $\ZZ_2^n$). From now on, \emph{code} will always mean a binary linear code.
+The Adinkra $A$ is connected if and only if the $\ZZ_2^n$ action is transitive on the vertex set of $A$.  In this case the stabilizers of all vertices are equal (in general the stabilizers of two points in the same orbit are conjugate; here we know more since the group is abelian).  Define $C(A)$, the \emph{code of the Adinkra} $A$, to be this stabilizer.  This is a \emph{binary linear code} of length $n$ (i.e., a linear subspace of $\ZZ_2^n$). As these are the only types of codes we use, from now on we simply say \emph{code} to mean ``binary linear code.''
 
 We call the elements of a code  \emph{codewords}. The \emph{weight} of a codeword $w$ is the number of $1$'s in the word. A code is called \emph{even} if all its codewords have even weight. A code is called \emph{doubly-even} if all its codewords have weight divisible by $4$. An example of a doubly-even code is the span $\langle 111100, 001111\rangle$, which has $2^2 = 4$ elements. An example of a code that is even but not doubly-even is the $1$-dimensional code $\langle 11 \rangle$.
 
@@ -457,7 +457,7 @@ Let $p$ and $q$ be non-negative integers. A \emph{2-d Adinkra with $(p,q)$ color
 \end{center}
 \end{figure}
 
-See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra. The main goal of this paper is to follow the program set out in \cite{hubsch:weaving} and completely characterize $2$-d Adinkras.
+See Figure~\ref{fig:2d-example} for an example of a $2$-d Adinkra. The main goal of this paper is to follow the program set out in \cite{hubsch:weaving} and completely characterize $2$-d Adinkras. As a first step, we define the natural notion of \emph{products} in the following section.
 
 \section{Products}
 \label{sec:products}
