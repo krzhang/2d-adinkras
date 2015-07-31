@@ -99,16 +99,16 @@
 \maketitle
 
 \begin{abstract}
-Adinkras are combinatorial objects developed to study supersymmetry representations.  Adinkras that describe $2$-dimensional supersymmetry are called \emph{$2$-d Adinkras}.  We prove a conjecture of T. H\"ubsch, thereby describing a classification of all $2$-d Adinkras.  Along the way, we obtain other structural results, including a simple characterization of H\"ubsch's \emph{even-split doubly even codes}. No specialist background knowledge is required.
+Adinkras are combinatorial objects developed to study ($1$-dimensional) supersymmetry representations. Recently, \emph{$2$-d Adinkras} have been developed to study $2$-dimensional supersymmetry.  In this paper, we classify all $2$-d Adinkras, confirming a conjecture of T. H\"ubsch.  Along the way, we obtain other structural results, including a simple characterization of H\"ubsch's \emph{even-split doubly even codes}. 
 \end{abstract}
 
 
 \section{Introduction}
 Adinkras (in this paper, called \emph{$1$-d Adinkras}) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:decodes,d2l:topology, d2l:graph-theoretic,dil:cohomology,d2l:omni,zhang:adinkras}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
 
-In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, reviewing the \emph{code} associated with an Adinkra\cite{d2l:omni} and the concept of \emph{vertex switching}.\cite{dil:cohomology,zhang:adinkras}  Sections~\ref{sec:2d}--\ref{sec:code2d} discuss $2$-d Adinkras: the definition, some basic constructions, and characterizing the codes associated with them.
+In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, reviewing the \emph{code} associated with an Adinkra\cite{d2l:omni} and the concept of \emph{vertex switching}.\cite{dil:cohomology,zhang:adinkras} As this paper is a mostly self-contained work of combinatorial classification, we do not discuss (or require from the reader) the physics and representation theory background relating to $1$-d Adinkras; the interested reader may see Appendix~\ref{app:repn} and the aforementioned references for more information along these lines. Instead, Section~\ref{sec:prelim}'s goal is to provide the minimum background to understand and manipulate Adinkras as purely combinatorial objects. 
 
-In Section~\ref{sec:quotient}, we prove the main theorem, which is H\"ubsch's conjecture:\footnote{The formulation in \cite{hubsch:weaving} is slightly different: see Appendix~\ref{app:repn} for details.}
+Then, Sections~\ref{sec:2d}--\ref{sec:code2d} discuss $2$-d Adinkras: the definition, some basic constructions, and characterizing their codes. In Section~\ref{sec:quotient}, we prove the main theorem, which is H\"ubsch's conjecture:\footnote{The formulation in \cite{hubsch:weaving} is slightly different: see Appendix~\ref{app:repn} for details.}
 
 \begin{thm}
 \label{thm:main}
@@ -117,14 +117,15 @@ Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and
 where $F$ is a vertex switching and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
 \end{thm}
 
-Then, Section~\ref{sec:structure} demonstrates how the main theorem leads to understanding the basic structure of $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}.
+Finally, Section~\ref{sec:structure}, guided by the main theorem, summarizes the basic structure of $2$-d Adinkras, including a (computable but impractical due to combinatorial explosion) scheme to generate all $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}. 
+
 
 \section{Preliminaries}
 \label{sec:prelim}
 
 \subsection{$1$-d Adinkras}
 \label{sec:1d}
-\emph{Adinkras} in \cite{d2l:first,d2l:graph-theoretic,zhang:adinkras} will be referred to as \emph{$1$-d Adinkras} in this paper, since they relate to supersymmetry in $1$ dimension. In this section, we  review a definition of $1$-d Adinkras and give some tools from previous work on their structural theory. The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}, with minor paraphrasing. As we focus on combinatorial classification in this paper, we do not discuss the physics and representation theory background relating to $1$-d Adinkras; the interested reader may see Appendix~\ref{app:repn} and the aforementioned references for more information. 
+\emph{Adinkras} in \cite{d2l:first,d2l:graph-theoretic,zhang:adinkras} will be referred to as \emph{$1$-d Adinkras} in this paper, since they relate to supersymmetry in $1$ dimension. In this section, we  review a definition of $1$-d Adinkras and give some tools from previous work on their structural theory. The material in this section is mainly found in \cite{d2l:omni,zhang:adinkras}, with minor paraphrasing. 
 
 \begin{definition}[$1$-d Adinkras]
 Let $n$ be a non-negative integer.  An \emph{$1$-d Adinkra} with $n$ colors is $(V,E,c,\mu,h)$ where: 
