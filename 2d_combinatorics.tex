@@ -24,6 +24,8 @@
 \usepackage[latin1]{inputenc}
 %\usepackage[inline]{showlabels}
 
+\newtheorem*{thm*}{Theorem}
+
 \numberwithin{equation}{section}
 \newtheorem{thm}[equation]{Theorem}
 \newtheorem{lem}[equation]{Lemma}
@@ -104,18 +106,20 @@ Adinkras are combinatorial objects developed to study ($1$-dimensional) supersym
 
 
 \section{Introduction}
-Adinkras (in this paper, called \emph{$1$-d Adinkras}) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:decodes,d2l:omni,d2l:topology, dil:cohomology,zhang:adinkras}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving}
+Adinkras (in this paper, called \emph{$1$-d Adinkras}) were introduced in \cite{d2l:first} to study representations of the super-Poincar\'e algebra in one dimension.  There have been a number of developments that have led to the classification of $1$-d Adinkras.\cite{d2l:graph-theoretic,d2l:decodes,d2l:omni,d2l:topology, dil:cohomology,zhang:adinkras}  Based on the success of this program, there have been a few recent approaches to using Adinkra-like ideas to study the super-Poincar\'e algebra in two dimensions.  This has led to the development of $2$-d Adinkras.\cite{gates:dimensional_extension,hubsch:weaving} In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. 
 
-In this paper, we characterize $2$-d Adinkras, guided by the approach and conjectures set forth in \cite{hubsch:weaving}. We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, reviewing the \emph{code} associated with an Adinkra\cite{d2l:omni} and the concept of \emph{vertex switching}.\cite{dil:cohomology,zhang:adinkras} As this paper is a mostly self-contained work of combinatorial classification, we do not discuss (or require from the reader) the physics and representation theory background relating to $1$-d Adinkras; the interested reader may see Appendix~\ref{app:repn} and the aforementioned references for more information along these lines. Instead, Section~\ref{sec:prelim}'s goal is to provide the minimum background to understand and manipulate Adinkras as purely combinatorial objects. 
+We now briefly sketch the motivation of this phase of the Adinkras program. $1$-d Adinkras were presented in \cite{d2l:first} as graphical tools in the classification of representations off-shell $N$-extended $1$-d supersymmetry algebras, classifying a certain class of well-behaved \emph{adinkraic} representations. It seems promising to higher-dimensional theories to use these $1$-d Adinkras as building blocks of a graphical ``calculus'' to study higher dimensions. In fact, one of the main ideas in this paper is tensor together $1$-d Adinkras to create $2$-d Adinkras in studying $2$-dimensional supersymmetry, a direction that we wish to further pursue into higher dimensions. Furthermore, the graphical ``calculus'' idea is very visibie in this paper because once the fundamental physics ideas are instilled into the definitions, we only need to perform combinatorial manipulations and very little algebra.
 
-Then, Sections~\ref{sec:2d}--\ref{sec:code2d} discuss $2$-d Adinkras: the definition, some basic constructions, and characterizing their codes. In Section~\ref{sec:quotient}, we prove the main theorem, which is H\"ubsch's conjecture:\footnote{The formulation in \cite{hubsch:weaving} is slightly different: see Appendix~\ref{app:repn} for details.}
+We begin in Section~\ref{sec:prelim} by recalling the definition of ($1$-d) Adinkras and some of their features, reviewing the \emph{code} associated with an Adinkra\cite{d2l:omni} and the concept of \emph{vertex switching}.\cite{dil:cohomology,zhang:adinkras} As this paper is a mostly self-contained work of combinatorial classification, we do not discuss (or require from the reader) the physics and representation theory background relating to $1$-d Adinkras; the interested reader may see Appendix~\ref{app:repn} and the aforementioned references for more information along these lines. Instead, Section~\ref{sec:prelim}'s goal is to provide the minimum background to understand and manipulate Adinkras as purely combinatorial objects. 
 
-\begin{thm}
+Then, Sections~\ref{sec:2d}--\ref{sec:code2d} discuss $2$-d Adinkras: the definition, some basic constructions, and characterizing their codes. In Section~\ref{sec:quotient}, we settle H\"ubsch's conjecture\footnote{The formulation in \cite{hubsch:weaving} is slightly different: see Appendix~\ref{app:repn} for details.} in Theorem~\ref{thm:quotient}. In slightly less detailed form (the version found in Section~\ref{sec:quotient} contains more precise statements), it reads:
+\begin{thm*}[Theorem \ref{thm:quotient}, sketch]
 \label{thm:main}
-Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$ so that
-\[A\cong F(A_1\times A_2)/\sim, \]
-where $F$ is a vertex switching and  $\sim$ is described by an action of a subgroup of $\ZZ_2^n$.
-\end{thm}
+Let $A$ be a connected $2$-d Adinkra.  Then there exist $1$-d Adinkras $A_1$ and $A_2$, a vertex switching $F$, and a code $K$ such that
+\[A\cong F(A_1\times A_2)/\sim \]
+as an isomorphism of $2$-d Adinkras.
+\end{thm*}
+This is a powerful result, as it tells us we can ``basically'' think of $2$-d Adinkras as products of $1$-d Adinkras with an additional group action, even though the definitions of $2$-d Adinkras contain some complicated-looking combinatiorial constraints.
 
 Finally, Section~\ref{sec:structure}, guided by the main theorem, summarizes the basic structure of $2$-d Adinkras, including a (computable but impractical due to combinatorial explosion) scheme to generate all $2$-d Adinkras. We end with some remarks in Section~\ref{sec:conclusion}. 
 
@@ -874,13 +878,13 @@ Consider a partition $L \cup R$ that makes $C$ into an ESDE, and consider the co
 
 \section{Proof of Main Theorem}
 \label{sec:quotient}
-In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$ and $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C\,'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code given by Lemma~\ref{lem:existk}.
+In this section we prove the main theorem of the paper, Theorem~\ref{thm:main}.  This refers to a connected $2$-d Adinkra $A$ with $(p,q)$ colors.  As in Section~\ref{sec:code2d} we pick a vertex $\overline{0}$ in $A$ and define $A_L^0$ and $A_R^0$.  We use Construction~\ref{const:product} to define $A'=A_L^0\times A_R^0$ and let $C=C(A)$ and $C\,'=C(A')=Z_L(C(A_L^0))\oplus Z_R(C(A_R^0))$.  Let $K$ be a code such that $C=C\,' \oplus K$ (the existence of which is guaranteed by Lemma~\ref{lem:existk}).
 
-We now try to prove the following (slight) restatement of Theorem~\ref{thm:main}:
+We now try to prove the following restatement of Theorem~\ref{thm:main}:
 \begin{thm}
 \label{thm:quotient}
-Let $A$ be a connected $2$-d Adinkra.  Then there is a vertex switching $F$ and an action of $K$ on $F(A')$ that preserves colors, dashing, and bigrading, and so that
-\[F(A')/K\cong A\]
+Let $A$ be a connected $2$-d Adinkra. Then there is a vertex switching $F$ and an action of the code $K$ on $F(A')$ that preserves colors, dashing, and bigrading, such that
+\[A\cong F(A')/K \]
 as an isomorphism of $2$-d Adinkras (that is, as an isomorphism of graphs that preserves colors, dashing, and bigrading).
 \end{thm}
 
@@ -1309,7 +1313,7 @@ Many mathematicians may appreciate Adinkras simply as nice combinatorial objects
 \end{itemize}
 
 \section*{Acknowledgments}
-The authors wish to thank Charles Doran, Sylvester Gates, and Tristan H\"ubsch for helpful conversation.
+We wish to thank Charles Doran, Sylvester Gates, Tristan H\"ubsch, and Richard Eager for helpful conversation. Also, we are grateful for two anonymous referees for their feedback.
 
 \appendix
 
